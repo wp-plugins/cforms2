@@ -1,0 +1,35 @@
+/*                                                    */
+/* the below CSS code needs to be added to            */
+/* your cforms.css file                               */
+/*                                                    */
+
+#cforms4form p.subtitle	{ font-size:12px;text-align:left; padding:10px 0 0 10px; }
+#cforms4form p.subtext	{ font-size:9px; padding:0 0 0 10px;margin-bottom:10px; background:white; }
+
+#cforms4form p.textonly	{ text-align:left; padding-top:10px; }
+#cforms4form textarea		{ height:70px; }
+
+#cforms4form .cformfieldset1,
+#cforms4form .cformfieldset2,
+#cforms4form .cformfieldset3	{ margin:10px 0 0 0; padding:40px 0 10px 0; border:0; }
+#cforms4form .cformfieldset1	{ background: url(images/fieldset_bg_sample2.jpg) no-repeat!important; }
+#cforms4form .cformfieldset2	{ background: url(images/fieldset_bg_sample2b.jpg) no-repeat!important;}
+#cforms4form .cformfieldset3	{ background: url(images/fieldset_bg_sample2c.jpg) no-repeat!important;}
+
+#cforms4form .cformfieldset1 legend,
+#cforms4form .cformfieldset2 legend,
+#cforms4form .cformfieldset3 legend { display:none; }
+
+#cforms4form label,
+#cforms4form .cformradiolabel	{color:#666666;}
+
+#cforms4form input,
+#cforms4form select,
+#cforms4form textarea { background:white; border-color:#bbbbbb; color:#666666;}
+
+#cforms4form span.reqtxt,
+#cforms4form span.emailreqtxt	{ color:#a2a2a2; font-size:9px; }
+
+#cforms4form input.sendbutton	{ background: white url(images/submitbtn2.jpg) no-repeat!important;
+																 border:0!important; height:24px; width:120px; padding-bottom:4px; }
+
