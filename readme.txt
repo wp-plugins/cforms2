@@ -36,7 +36,7 @@ management, you can even have multiple forms on the same page!
 	* check boxes
 	* radio buttons
 * …and a few special ones:
-	* “CC me” check box for visitors
+	* "CC me" check box for visitors
 	* fieldsets
 	* multiple form recipient (drop down list)
 	* visitor verification
@@ -74,7 +74,7 @@ for the default/first form and/or `insert_cform('**X**');` for any other form.
 
 Check your blog template. 99% it's due to a *div container* (holding the post data) that's **not floated properly**! This often happens to 3-column layouts but could also happen to 2-column blog templates.
 
-= My browser shows a TinyMCE error (“realtinyMCE” is undefined) ?! =
+= My browser shows a TinyMCE error ("realtinyMCE" is undefined) ?! =
 
 This might be a known Wordpress issue, check [here](http://trac.wordpress.org/ticket/3882) for more info and possible work-arounds, fixes until the next release of WP takes care of it.
 
