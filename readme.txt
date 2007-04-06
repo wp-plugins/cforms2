@@ -35,7 +35,7 @@ management, you can even have multiple forms on the same page!
 	* select boxes (drop down)
 	* check boxes
 	* radio buttons
-* …and a few special ones:
+* ...and a few special ones:
 	* "CC me" check box for visitors
 	* fieldsets
 	* multiple form recipient (drop down list)
