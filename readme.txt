@@ -90,9 +90,7 @@ The CSS information for the 2nd form has been customized for demo purposes, feel
 
 == Screenshots ==
 
-Random user examples:
-
-![custom form](http://www.deliciousdays.com/wp-content/themes/dd/images/cforms/user_00.jpg)
+[Please visit the cforms plugin page for screenshots & samples](http://www.deliciousdays.com/cforms-plugin)
 
 
 == A custom form example ==
@@ -120,6 +118,6 @@ to
 
 = Screenshot =
 
-![custom form](http://www.deliciousdays.com/wp-content/themes/dd/images/cforms/form_tshirt_order.jpg)
+[custom form](http://www.deliciousdays.com/wp-content/themes/dd/images/cforms/form_tshirt_order.jpg)
 
 
