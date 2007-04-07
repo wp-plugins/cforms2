@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== cforms ===
 Contributors: olivers
 Donate link: http://www.deliciousdays.com/
 Tags: email, secure, custom, contact, form, visitor, input, order
