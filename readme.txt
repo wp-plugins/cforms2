@@ -50,7 +50,7 @@ management, you can even have multiple forms on the same page!
 #Installation
 
 1. Download & extract plugin using its default directory
-2. Upload plugin directory to the wordpress `/wp-content/plugins/` directory
+2. Upload plugin directory `/contactforms/` to the wordpress `/wp-content/plugins/` directory
 3. Activate the plugin through the 'Plugins' menu in WordPress
 4. *Optionally check cforms.css for indvidual styling of your forms*
 
@@ -63,7 +63,7 @@ To do so, please insert `<!--cforms-->` for the first form and/or `<!--cforms**X
 mode to include them in either your **pages** or **posts**.
 
 = Inserting a form via the PHP function call =
-Alternatively, you can specifically insert a form (into the sidebar, footer etc. ) per the PHP function `call insert_cform();`
+Alternatively, you can specifically insert a form (into the sidebar, footer etc. ) per the PHP function call `insert_cform();`
 for the default/first form and/or `insert_cform('**X**');` for any other form.
 
 * **Note**: "**X**" represents the number of the form, starting with **2**, 3,4 ..and so forth.*
