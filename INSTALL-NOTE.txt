@@ -1,0 +1,4 @@
+
+Please only upload the directory /contactforms/, contained in this zip file, 
+to your WP plugin directory!
+
