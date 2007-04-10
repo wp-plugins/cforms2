@@ -74,8 +74,10 @@ _**Note**: "**X**" represents the number of the form, starting with **2**, 3,4 .
 
 Check your blog template. 99% it's due to a *div container* (holding the post data) that's **not floated properly**! This often happens to 3-column layouts but could also happen to 2-column blog templates.
 
-*Update*: Check your `cforms.css` files for the following line 
-`.cformfieldsets { margin:10px 0; padding:8px 0 11px 0; border:1px solid #adadad; border-left-color:#ececec; border-top-color:#ececec; clear:left; }`
+*Update*: Check your `cforms.css` files for the following line
+`
+.cformfieldsets { margin:10px 0; padding:8px 0 11px 0; border:1px solid #adadad; border-left-color:#ececec; border-top-color:#ececec; **clear:left;** }
+`
 and remove the last attribute: `clear:left;`. This should help fix many of the issues seen especially with 3 column WP themes that come with a non-floated middle column. 
 
 If it still looks funny (and/or your sendbutton seems displaced) try also to remove the following two lines:
