@@ -6,7 +6,7 @@ please see cforms.php for more information
 
 load_plugin_textdomain('cforms');
 
-$plugindir   = 'contactforms';    // if you change this setting, see also cforms.php !!
+$plugindir   = substr( plugin_basename( __FILE__ ),0,strrpos(plugin_basename( __FILE__ ),'/') );
 $cforms_root = get_settings('siteurl') . '/wp-content/plugins/'.$plugindir;
 
 
@@ -26,7 +26,7 @@ if(!current_user_can('manage_cforms')) {
 		<p><?php _e('Please use <code style="background:#D8FFCC">&lt;!--cforms--&gt;</code> for the first form and/or '.
 					'<code style="background:#D8FFCC">&lt;!--cforms<span style="color:red; font-weight:bold;">X</span>--&gt;</code> for your other forms to include '.
 					'them in your <em>Pages/Posts</em>. You can apply the aforementioned code either manually or via the editor button (if turned in the '.
-					'<a href="?page=contactforms/cforms-global-settings.php">Plugin Settings</a>). ', 'cforms'); ?></p>
+					'<a href="?page='.$plugindir.'/cforms-global-settings.php">Plugin Settings</a>). ', 'cforms'); ?></p>
 
 		<p><?php _e('Alternatively, you can specifically insert a form (into the sidebar for instance etc.) per the PHP '.
 					'function call <code style="background:#D8FFCC">insert_cform();</code> for the default/first form and/or '.
@@ -150,7 +150,7 @@ if(!current_user_can('manage_cforms')) {
 			<li><?php _e('Example: &nbsp;&nbsp;&nbsp; <code style="background:#D8FFCC">#please cc: me</code>', 'cforms');?></li>
 			<img style="float:left; list-style:none;" src="<?php echo $cforms_root; ?>/images/example-cc.png"  alt=""/>
 			<li style="margin-top:25px;"><?php _e('If the visitor chooses to be CC\'ed <strong>AND</strong> than no additional auto confirmation email '.
-						'(<a href="?page=contactforms/cforms-options.php#autoconf">if configured</a>) is sent out!', 'cforms');?></li>
+						'(<a href="?page='.$plugindir.'/cforms-options.php#autoconf">if configured</a>) is sent out!', 'cforms');?></li>
 			<li><?php _e('Please see also see <em>check boxes</em> above.', 'cforms');?></li>			
 		</ul>
 		
@@ -161,7 +161,7 @@ if(!current_user_can('manage_cforms')) {
 		<a id="multirecipients"></a>
 		<ul class="helpfields">
 		  <strong><?php _e('Multiple Recipients: ', 'cforms'); ?></strong>
-					<em style="color:red;font-size:10px;"><?php _e('Note: This requires corresponding email addresses <a href="?page=contactforms/cforms-options.php#anchoremail">here</a>!!', 'cforms'); ?></em>
+					<em style="color:red;font-size:10px;"><?php _e('Note: This requires corresponding email addresses <a href="?page='.$plugindir.'/cforms-options.php#anchoremail">here</a>!!', 'cforms'); ?></em>
 			<li style="margin-top:5px;">
 				<?php _e('Format: &nbsp;&nbsp;&nbsp; <em>field name</em><span style="color:red; font-weight:bold;">#</span>'.
 						'<em>Name1</em><span style="color:red; font-weight:bold;">#</span><em>Name2</em>'.
@@ -170,7 +170,7 @@ if(!current_user_can('manage_cforms')) {
 			<img style="float:left; list-style:none;" src="<?php echo $cforms_root; ?>/images/example-multi.png"  alt=""/>
 			<li style="margin-top:25px;"><?php _e('Example: &nbsp;&nbsp;&nbsp; <code style="background:#D8FFCC">Send to#Joe#Pete#Hillary</code>', 'cforms');?></li>
 			<li><?php _e('The order of the names(1,2,3...) provided in the input field <strong>directly</strong> corresponds with the order of email '.
-						'addresses configured <a href="?page=contactforms/cforms-options.php#anchoremail">here</a>.', 'cforms');?>
+						'addresses configured <a href="?page='.$plugindir.'/cforms-options.php#anchoremail">here</a>.', 'cforms');?>
 			</li>
 		</ul>
 		
@@ -183,7 +183,7 @@ if(!current_user_can('manage_cforms')) {
 			<li style="margin-top:10px;">
 				<?php _e('Format: --', 'cforms');?></li>
 			<li><?php _e('No format required, the field has no configurable label per se, as it is determined at run-time from the list of '.
-						 '<strong>Question & Answers</strong> provided <a href="?page=contactforms/cforms-global-settings.php#visitorv">here</a>.', 'cforms');?></li>
+						 '<strong>Question & Answers</strong> provided <a href="?page='.$plugindir.'/cforms-global-settings.php#visitorv">here</a>.', 'cforms');?></li>
 			<li><?php _e('It makes sense to encapsulate this field inside a FIELDSET, to do that simply add a '.
 						 '<code style="background:#D8FFCC">New Fieldset</code> field in front of this one.', 'cforms');?></li>		  
 
@@ -207,7 +207,7 @@ if(!current_user_can('manage_cforms')) {
 				<?php _e('Format: &nbsp;&nbsp;&nbsp; <em>form label</em>', 'cforms');?>
 			</li>
 			<li><?php _e('Example: &nbsp;&nbsp;&nbsp; <code style="background:#D8FFCC">Please select a file</code>', 'cforms');?></li>
-			<li><?php _e('Please also double-check the <a href="?page=contactforms/cforms-global-settings.php#upload">general settings</a> for <code style="background:#D8FFCC">File Upload</code> fields.', 'cforms');?>
+			<li><?php _e('Please also double-check the <a href="?page='.$plugindir.'/cforms-global-settings.php#upload">general settings</a> for <code style="background:#D8FFCC">File Upload</code> fields.', 'cforms');?>
 			</li>
 
 			<img style="float:left; list-style:none;" src="<?php echo $cforms_root; ?>/images/example-upload.png"  alt=""/>

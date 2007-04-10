@@ -6,7 +6,7 @@ please see cforms.php for more information
 
 load_plugin_textdomain('cforms');
 
-$plugindir   = 'contactforms';    // if you change this setting, see also cforms.php !!
+$plugindir   = substr( plugin_basename( __FILE__ ),0,strrpos(plugin_basename( __FILE__ ),'/') );
 $cforms_root = get_settings('siteurl') . '/wp-content/plugins/'.$plugindir;
 
 
@@ -474,7 +474,7 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 
 <div class="wrap"><a id="top"></a><img src="<?php echo $cforms_root; ?>/images/p1-title.jpg">
 
-	<p><?php _e('This plugin allows you <a href="?page=contactforms/cforms-help.php#inserting">to insert</a> one or more custom designed contact forms, which on submission '.
+	<p><?php _e('This plugin allows you <a href="?page='.$plugindir.'/cforms-help.php#inserting">to insert</a> one or more custom designed contact forms, which on submission '.
 				'(preferably via ajax) will send the visitor info via email and optionally store the feedback in the database, too.', 'cforms') ?></p>
 
 	<form name="chgform" method="post" action="#">
@@ -531,17 +531,17 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 	<fieldset class="cformsoptions">
 		<p class="cflegend"><?php _e('Form Fields', 'cforms') ?></p>
 
-		<p><?php _e('Please see the help section for information on how to deploy the <a href="?page=contactforms/cforms-help.php#fields">supported fields</a>.', 'cforms');?></p>
+		<p><?php _e('Please see the help section for information on how to deploy the <a href="?page='.$plugindir.'/cforms-help.php#fields">supported fields</a>.', 'cforms');?></p>
 
 		<p class="ex"><?php _e('For the <em>auto confirmation</em> feature to work, make sure to mark at least one field <code style="background:#D8FFCC">Is Email</code>, otherwise <strong>NO</strong> auto confirmation email will be sent out! '.
 					'If multiple fields are checked "Is Email", only the first in the list will receive a notification.', 'cforms') ?></p>
 
 		<p><?php _e('How to structure your form using <strong>FIELDSETS</strong>? Check out the '.
-					'<a href="?page=contactforms/cforms-help.php#hfieldsets">help section</a> for a sample screenshot depicting proper setup.', 'cforms') ?></p>
+					'<a href="?page='.$plugindir.'/cforms-help.php#hfieldsets">help section</a> for a sample screenshot depicting proper setup.', 'cforms') ?></p>
 
-		<p><?php _e('<strong>Default values</strong> can be set for single & multi-line fields. <a href="?page=contactforms/cforms-help.php#single">See help</a>.', 'cforms') ?></p>
+		<p><?php _e('<strong>Default values</strong> can be set for single & multi-line fields. <a href="?page='.$plugindir.'/cforms-help.php#single">See help</a>.', 'cforms') ?></p>
 
-		<p><?php _e('Single & Multi line input fields support custom <strong>regular expressions</strong> for specific field validation! Check the <a href="?page=contactforms/cforms-help.php#regexp">help</a> '.
+		<p><?php _e('Single & Multi line input fields support custom <strong>regular expressions</strong> for specific field validation! Check the <a href="?page='.$plugindir.'/cforms-help.php#regexp">help</a> '.
 					'section for examples and make sure to check <code style="background:#D8FFCC">Is Required</code>.', 'cforms') ?></p>
 
 		<p id="cformswarning"><?php echo $usermsg; ?></p>
@@ -691,7 +691,7 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 
 			<p><?php _e('These are the messages displayed to the user on successful (or failed) form submission. '.
 						'These messages are form specific, a general message for entering a wrong <strong>visitor verification code</strong> '.
-						'can be found <a href="?page=contactforms/cforms-global-settings.php#visitorv">here</a>.', 'cforms') ?></p>
+						'can be found <a href="?page='.$plugindir.'/cforms-global-settings.php#visitorv">here</a>.', 'cforms') ?></p>
 
 			<p class="ex"><?php _e('Please <strong>do not use HTML code</strong> in these fields instead, adjust the '.
 						'(cforms.css) stylesheet to your needs. Line breaks and quotes are fine. The actual success & failure '.
@@ -746,7 +746,7 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 									'separated by a <strong style="color:red">comma</strong>. &nbsp; <em><u>Note:</u></em> &nbsp; If you want the visitor to choose from '.
 									'any of these per select box, you need to add a corresponding "<code style="background:#D8FFCC">Multiple Recipients</code>" '.
 									'input field <a href="#anchorfields">above</a> (see the HELP section for '.
-									'<a href="?page=contactforms/cforms-help.php#multirecipients">details</a> on the entry '.
+									'<a href="?page='.$plugindir.'/cforms-help.php#multirecipients">details</a> on the entry '.
 									'format expected!). If <strong>no</strong> "Multiple Recipients" input field is defined above, the '.
 									'submitted form data will go out to <strong>every email recipient</strong>!', 'cforms') ?></p>
 			<br/>

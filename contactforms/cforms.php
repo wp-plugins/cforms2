@@ -148,7 +148,7 @@ v1.5
 
 load_plugin_textdomain('cforms');
 
-$plugindir   = 'contactforms';  // if you change this setting, see also cforms-options.php !!
+$plugindir   = substr( plugin_basename( __FILE__ ),0,strrpos(plugin_basename( __FILE__ ),'/') );
 $cforms_root = get_settings('siteurl') . '/wp-content/plugins/'.$plugindir;
 
 ### db settings
@@ -240,8 +240,8 @@ function download_cforms() {
 			header("Expires: 0");
 			header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
 			header("Content-Type: application/force-download");
-			header("Content-Type: text/csv");
 			header("Content-Type: text/download");
+			header("Content-Type: text/csv");
 			header("Content-Disposition: attachment; filename=\"formdata." . $_REQUEST['downloadformat'] . "\"");
 			header("Content-Transfer-Encoding: binary");
 			header("Content-Length: " .(string)(strlen($buffer)) );
@@ -1328,7 +1328,7 @@ function cforms_options_page_style() {
   
  	// other admin pages
 	global $cforms_root;
-	if (   strpos($_SERVER['REQUEST_URI'], 'contactforms/cforms') !== false )
+	if (   strpos($_SERVER['REQUEST_URI'], $plugindir.'/cforms') !== false )
 		echo	'<link rel="stylesheet" type="text/css" href="' . $cforms_root . '/cforms-admin.css" />' . "\n" .
 					'<script type="text/javascript" src="' . $cforms_root . '/js/dbx.js"></script>' . "\n" .
 					'<script type="text/javascript" src="' . $cforms_root . '/js/cformsadmin.js"></script>' . "\n";

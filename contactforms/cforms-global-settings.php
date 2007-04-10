@@ -6,7 +6,7 @@ please see cforms.php for more information
 
 load_plugin_textdomain('cforms');
 
-$plugindir   = 'contactforms';    // if you change this setting, see also cforms.php !!
+$plugindir   = substr( plugin_basename( __FILE__ ),0,strrpos(plugin_basename( __FILE__ ),'/') );
 $cforms_root = get_settings('siteurl') . '/wp-content/plugins/'.$plugindir;
 
 ### db settings
@@ -176,7 +176,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 			<p class="cflegend" style="margin-top:10px;"><?php _e('File Upload Settings', 'cforms') ?></p>
 
 			<p><?php _e('Configure and double-check these settings in case you are adding a "<code style="background:#D8FFCC">'.
-										'File Upload Box</code>" to your form (also see the <a href="?page=contactforms/cforms-help.php#upload">'.
+										'File Upload Box</code>" to your form (also see the <a href="?page='.$plugindir.'/cforms-help.php#upload">'.
 										'Help!</a> for further information).', 'cforms') ?></p>
 
 			<p class="ex"><?php _e('Also, note that by adding a <em>File Upload Box</em> to your form, the Ajax (if enabled) submission method '.
