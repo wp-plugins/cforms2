@@ -134,6 +134,12 @@ See the "**Other Notes**" section for another example.
 
 == Frequently Asked Questions ==
 
+= The Submit Button is being pushed to the bottom of the page? =
+
+Try changing the CSS style for the *send button* `.cform input.sendbutton {...` in this way:
+Remove these attributes: `clear:both; float:right;`
+And add these instead: `margin: 0 0 0 310px; float:none!important;`
+
 = The form is being pushed to the bottom on my blog?! =
 
 Check your blog template. 99% it's due to a *div container* (holding the post data) that's **not floated properly**! This often happens to 3-column layouts but could also happen to 2-column blog templates.
