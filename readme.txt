@@ -110,6 +110,8 @@ _**Note**: "**X**" represents the number of the form, starting with **2**, 3,4 .
     Begin of a fieldset: `fieldsetstart`  
     End of a fieldset: `fieldsetend`  
 
+    *) should only be used **once** per generated form!
+
    
 6. Simple example:
 
@@ -128,10 +130,7 @@ _**Note**: "**X**" represents the number of the form, starting with **2**, 3,4 .
     `insert_custom_cform($fields,'');`
 
 
-    
-*) should only be used **once** per generated form!
-
-See the "Other Notes" section for another example.
+See the "**Other Notes**" section for another example.
 
 == Frequently Asked Questions ==
 
