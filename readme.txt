@@ -65,7 +65,6 @@ or disregard the option and do it manually.
 To do so, please insert `<!--cforms-->` for the first form and/or `<!--cforms**X**-->` for your other forms in the code view/edit
 mode to include them in either your **pages** or **posts**.
 
-***
 
 = Inserting a form via the PHP function call =
 Alternatively, you can specifically insert a form (into the sidebar, footer etc. ) per the PHP function call `insert_cform();`
@@ -77,24 +76,42 @@ _**Note**: "**X**" represents the number of the form, starting with **2**, 3,4 .
 
 **Note:**
 
-1. Custom Dynamic Forms only work in non-Ajax mode.
+1. Dynamic forms only work in **non-Ajax** mode.
 
-2. Each custom dynamic form references and thus requires a base form defined in the cforms form settings. It will use all settings, except the form (&field) definition.
+2. Each dynamic form references and thus requires **a base form** defined in the cforms form settings. All its settings will be used, except the form (&field) definition.
 
-3. Dynamic forms are generated with: `insert_custom_cform($fields:array,$form-no:int);` with 
+3. Any of the form fields described in the plugins' **HELP!** section can be dynamically generated. 
+
+4. **Function call** to generate dynamic forms: `insert_custom_cform($fields:array,$form-no:int);` with 
 
     `$form-no`: '' for the first (default) form and **2**,3,4... for any subsequent form  
     `$fields` : 
     `
-	$fields['label'][n]   = 'label';
+	$fields['label'][n]   = 'label';                no default value: expected format described in plugin HELP! section 
 	$fields['type'][n]    = 'input field type';     default: 'textfield';
 	$fields['isreq'][n]   = true|false;             default: false;
 	$fields['isemail'][n] = true|false;             default: false;
 
     n = 0,1,2...
     `
+
+5. Input field types ('type'):
+
+    text paragraph: `textonly`  
+    single input field: `textfield`  
+    multi line field: `textarea`  
+    check boxes: `checkbox`  
+    drop down fields: `selectbox`  
+    radio buttons: `radiobuttons`  
+    'CC' check box: `ccbox` \*)  
+    Multi-recipients field: `emailtobox` \*)  
+    Spam/Visitor verification: `verification` \*)  
+    File Upload fields: `upload` \*)  
+    Begin of a fieldset: `fieldsetstart`  
+    End of a fieldset: `fieldsetend`  
+
    
-4. Example:
+6. Simple example:
 
     `$fields = array();`
     
@@ -110,20 +127,6 @@ _**Note**: "**X**" represents the number of the form, starting with **2**, 3,4 .
 	
     `insert_custom_cform($fields,'');`
 
-5. input field types (codes):
-
-    text paragraph: `textonly`  
-    single input field: `textfield`  
-    multi line field: `textarea`  
-    check boxes: `checkbox`  
-    drop down fields: `selectbox`  
-    radio buttons: `radiobuttons`  
-    'CC' check box: `ccbox` \*)  
-    Multi-recipients field: `emailtobox` \*)  
-    Spam/Visitor verification: `verification` \*)  
-    File Upload fields: `upload` \*)  
-    Begin of a fieldset: `fieldsetstart`  
-    End of a fieldset: `fieldsetend`  
 
     
 *) should only be used **once** per generated form!
@@ -197,7 +200,7 @@ Please download [this zip](http://www.deliciousdays.com/download/custom-cform-ex
 
 This example shows you how to store certain input field (select/drop-down box) information in a file and load it dynamically at run-time.
 
-File: months.txt *(to be copied into your `theme` directory)*
+File: [months.txt](http://www.deliciousdays.com/download/months.txt) *(to be copied into your WP `theme` directory)*
 
 Code: *(to go into your page.php or whereever else you want it :)*
 
@@ -216,9 +219,10 @@ $fields['type'][2]   ='textonly';
 $fields['label'][3]='Deliver on#Please pick a month|-#';
 
 $fp = fopen(dirname(__FILE__).'/months.txt', "r"); // need to put this file into your themes dir!
-while ($nextitem = fgets($fp, 512)) {		
+
+while ($nextitem = fgets($fp, 512))		
 	$fields['label'][3] .= $nextitem.'#';
-} //endwhile
+
 fclose ($fp);
 $fields['label'][3] = substr( $fields['label'][3], 0, strlen($fields['label'][3])-1 );  //remove the last '#'
 

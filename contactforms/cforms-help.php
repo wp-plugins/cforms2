@@ -92,7 +92,7 @@ if(!current_user_can('manage_cforms')) {
 			<li style="margin-top:5px;">
 				<?php _e('Format: &nbsp;&nbsp;&nbsp; <em>field name<span style="color:red; font-weight:bold;">#</span>'.
 							'option1<span style="color:red; font-weight:bold;">|</span>value1<span style="color:red; font-weight:bold;">#</span>option2'.
-							'<span style="color:red; font-weight:bold;">|</span>value1<span style="color:red; font-weight:bold;">#</span>option3</em>...', 'cforms');?>
+							'<span style="color:red; font-weight:bold;">|</span>value2<span style="color:red; font-weight:bold;">#</span>option3</em>...', 'cforms');?>
 			</li>
 			<li><?php _e('Example: &nbsp;&nbsp;&nbsp; <code style="background:#D8FFCC">Your age#12-18|kiddo#19-30|young#31-45#45+|older</code>', 'cforms');?></li>
 			<li><?php _e('Starting with a \'#\', e.g. #item1#item2#item3... will result in not showing a label '.
@@ -104,7 +104,7 @@ if(!current_user_can('manage_cforms')) {
 			<li><?php _e('<strong><u>Special case (Select box marked "Is Required"):</u></strong> Using a minus symbol <code style="background:#D8FFCC">-</code> as the value (after '.
 									'<code style="background:#D8FFCC">|</code>), will mark an option as "not valid"!', 'cforms');?>
 									
-     			<ul style="margin-top:15px; padding:0; ">
+     			<ul style="margin-top:25px; padding:0; ">
 								<img src="<?php echo $cforms_root; ?>/images/example-dropdown.png" style="float:left;" alt=""/>
 							  <li><?php _e('<strong>Select box</strong>: <code style="background:#D8FFCC">Your age'.
 														 '#Please pick your age group|-#12-18|kiddo#19-30|young#31-45#45+|older</code>', 'cforms');?>
@@ -116,6 +116,25 @@ if(!current_user_can('manage_cforms')) {
 							  <li><?php _e('"45+" has NO value set, hence the value sent defaults to the text displayed ("45+").', 'cforms');?></li>
 						</ul>
 			 </li>
+		</ul>
+
+
+		<br style="clear:both;"/>
+
+		<a id="multiselect"></a>
+		<ul class="helpfields">
+		  <strong><?php _e('Multi select boxes:', 'cforms'); ?></strong>
+			<li style="margin-top:5px;">
+				<?php _e('Format: &nbsp;&nbsp;&nbsp; <em>field name<span style="color:red; font-weight:bold;">#</span>'.
+							'option1<span style="color:red; font-weight:bold;">|</span>value1<span style="color:red; font-weight:bold;">#</span>option2'.
+							'<span style="color:red; font-weight:bold;">|</span>value2<span style="color:red; font-weight:bold;">#</span>option3</em>...', 'cforms');?>
+			</li>
+			<li><?php _e('Example: &nbsp;&nbsp;&nbsp; <code style="background:#D8FFCC">Please choose#red#blue#green#yellow#orange#pink</code>', 'cforms');?></li>
+			<img style="float:left; list-style:none;" src="<?php echo $cforms_root; ?>/images/example-ms.png"  alt=""/>
+			<li style="margin-top:25px;"><?php _e('Multi select fields can be set to <strong>Is Required</strong>. Unless at least one entry is selected the form won\'t validate.', 'cforms');?>
+			<li><?php _e('If <code style="background:#D8FFCC">value1,2,..</code> are not specfified, they default to '.
+                                            '<code style="background:#D8FFCC">option1,2,...</code>.', 'cforms');?></li>
+			<li><?php _e('Examples for specific values could be the matching color codes: e.g. <code style="background:#D8FFCC">red|#ff0000</code>', 'cforms');?></li>
 		</ul>
 
 
@@ -283,6 +302,129 @@ if(!current_user_can('manage_cforms')) {
 			</li>
 			<li><?php _e('More information can be found <a href="http://weblogtoolscollection.com/regex/regex.php">here</a>, a great regexp repository <a href="http://regexlib.com">here</a>.', 'cforms');?></li>
 		</ul>
+
+
+
+		<a id="dynamicforms"></a>
+	    <h3><?php _e('Deploying dynamic forms', 'cforms'); ?></h3>
+
+		<p><?php _e('This is really for hard core deployments, where <em>real-time manipulation</em> of a form & fields are required.', 'cforms'); ?></p>
+
+		<p><?php _e('<strong>A few things to note:</strong>', 'cforms'); ?></p>
+		<ol>
+			<li><?php _e('Dynamic forms only work in <strong>non-Ajax</strong> mode.', 'cforms');?></li>
+			<li><?php _e('Each dynamic form references and thus requires <strong>a base form defined</strong> in the cforms form settings. All its settings will be used, except the form (&field) definition.', 'cforms');?></li>
+			<li><?php _e('Any of the form fields described in the plugins\' <strong>HELP!</strong> section can be dynamically generated.', 'cforms');?></li>
+			<li><?php _e('Function call to generate dynamic forms: <code style="background:#D8FFCC">insert_custom_cform($fields:array,$form-no:int);</code> with', 'cforms');?>
+
+                <br/><br/>
+                <code style="background:#D8FFCC">$form-no</code>: empty string for the first (default) form and <strong>2</strong>,3,4... for any subsequent form<br/>
+                <code style="background:#D8FFCC">$fields</code> : 
+    
+                <code style="background:#D8FFCC"><pre>
+            $fields['label'][n]   = 'label';                no default value: expected format described in plugin HELP! section 
+            $fields['type'][n]    = 'input field type';     default: 'textfield';
+            $fields['isreq'][n]   = true|false;             default: false;
+            $fields['isemail'][n] = true|false;             default: false;
+            
+            n = 0,1,2...
+                </pre></code></li>
+    		</ol>
+
+
+        <strong>Form input field types ('type'):</strong>
+        <ul style="list-style:none;">
+        <li>        
+            <table>
+                <tr><td>text paragraph:</td><td> <code style="background:#D8FFCC">textonly</code></td></tr>
+                <tr><td>single input field:</td><td> <code style="background:#D8FFCC">textfield</code></td></tr>
+                <tr><td>multi line field:</td><td> <code style="background:#D8FFCC">textarea</code></td></tr>
+                <tr><td>check boxes:</td><td> <code style="background:#D8FFCC">checkbox</code></td></tr>
+                <tr><td>drop down fields:</td><td> <code style="background:#D8FFCC">selectbox</code></td></tr>
+                <tr><td>radio buttons:</td><td> <code style="background:#D8FFCC">radiobuttons</code></td></tr>
+                <tr><td>'CC' check box <sup>*)</sup>:</td><td> <code style="background:#D8FFCC">ccbox</code></td></tr>
+                <tr><td>Multi-recipients field <sup>*)</sup>:</td><td> <code style="background:#D8FFCC">emailtobox</code></td></tr>
+                <tr><td>Spam/Visitor verification <sup>*)</sup>:</td><td> <code style="background:#D8FFCC">verification</code></td></tr>
+                <tr><td>File Upload fields <sup>*)</sup>:</td><td> <code style="background:#D8FFCC">upload</code></td></tr>
+                <tr><td>Begin of a fieldset:</td><td> <code style="background:#D8FFCC">fieldsetstart</code></td></tr>
+                <tr><td>End of a fieldset:</td><td> <code style="background:#D8FFCC">fieldsetend</code></td></tr>
+            </table>
+        </li>
+        <li><sup>*)</sup> <em>should only be used <strong>once</strong> per generated form!</em></li>
+        </ul>
+
+        <br/>
+
+        <strong>Simple example:</strong>
+        <ul style="list-style:none;">
+        <li>
+        <code style="background:#D8FFCC"><pre>
+$fields = array();
+
+$fields['label'][0]   ='Your Name|Your Name';
+$fields['type'][0]    ='textfield';
+$fields['isreq'][0]   ='1';
+$fields['isemail'][0] ='0';
+
+$fields['label'][1]   ='Your Email';
+$fields['type'][1]    ='textfield';
+$fields['isreq'][1]   ='0';
+$fields['isemail'][1] ='1';
+
+insert_custom_cform($fields,'');    //call default form with new fields (2)
+        </pre></code>
+        </li>
+        </ul>
+
+        <br/>
+
+        <strong>More advanced example</strong> (file access)<strong>:</strong>
+        <ul style="list-style:none;">
+        <li>
+        <code style="background:#D8FFCC"><pre>
+$fields['label'][0]  ='Your Name|Your Name';
+$fields['type'][0]   ='textfield';
+$fields['isreq'][0]  ='1';
+$fields['isemail'][0]='0';
+$fields['label'][1]  ='Email';
+$fields['type'][1]   ='textfield';
+$fields['isreq'][1]  ='0';
+$fields['isemail'][1]='1';
+$fields['label'][2]  ='Please pick a month for delivery:||font-size:14px; padding-top:12px; text-align:left;';
+$fields['type'][2]   ='textonly';
+
+$fields['label'][3]='Deliver on#Please pick a month|-#';
+
+$fp = fopen(dirname(__FILE__).'/months.txt', "r"); // need to put this file into your themes dir!
+
+while ($nextitem = fgets($fp, 512))		
+	$fields['label'][3] .= $nextitem.'#';
+
+fclose ($fp);
+$fields['label'][3] = substr( $fields['label'][3], 0, strlen($fields['label'][3])-1 );  //remove the last '#'
+
+$fields['type'][3]='selectbox';
+$fields['isreq'][3]='1';
+$fields['isemail'][3]='0';
+
+insert_custom_cform($fields,5);    //call form #5 with new fields (4)
+</pre></code>
+        </li>
+        </ul>
+
+        With <code style="background:#D8FFCC">month.txt</code> containing all months of a year:
+        <ul style="list-style:none;">
+        <li>
+        <code style="background:#D8FFCC"><pre>
+January
+February
+March
+...
+        </pre></code>
+        </li>
+        </ul>
+                
+		<a href="#top"><?php _e('Back to the top.', 'cforms') ?></a>
 
 
 

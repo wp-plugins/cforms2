@@ -14,7 +14,7 @@ Copyright 2006  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 
 v3.4
 *) feature: multi-select fields
-*) feature: dynamic forms (on the fly form creation)
+*) feature: dynamic forms (form creation at run-time)
 *) bugfix: minor display bug on admin page: "add new field" button
 *) bugfix: fixed a CSS bug to better support 3 column WP themes 
    (w/ middle column not floated)
