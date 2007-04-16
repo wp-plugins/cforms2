@@ -3,7 +3,7 @@ Contributors: olivers
 Donate link: http://www.deliciousdays.com/
 Tags: email, secure, custom, contact, form, visitor, input, order
 Requires at least: 1.6+
-Tested up to: 2.1.2
+Tested up to: 2.1.3
 Stable tag: 3.4
 
 cforms is a highly customizable, flexible and powerful contact form plugin, 
