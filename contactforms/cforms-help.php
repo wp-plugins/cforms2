@@ -6,7 +6,7 @@ please see cforms.php for more information
 
 load_plugin_textdomain('cforms');
 
-$plugindir   = substr( plugin_basename( __FILE__ ),0,strrpos(plugin_basename( __FILE__ ),'/') );
+$plugindir   = dirname(plugin_basename(__FILE__));
 $cforms_root = get_settings('siteurl') . '/wp-content/plugins/'.$plugindir;
 
 

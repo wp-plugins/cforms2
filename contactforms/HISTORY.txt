@@ -2,6 +2,17 @@
 Copyright 2006-2007  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
+v3.5 (mostly maintenance)
+*) feature: attachments are now stored on the server and can be accessed via the
+    "Tracking" page
+*) feature: added optional ID tracking to forms
+*) bugfix: order of fields on the "Tracking" page fixed
+    (to make use of the absolute order, delete Tracking tables, then re-activate)
+*) bugfix: due to a WP bug (plugin_basename)
+*) bugfix: support for non-utf8 blogs (mb_)
+*) other: changed form counter (column 1) on the Tracking page to reflect unique 
+    form ID, that a visitor could reference.
+
 v3.4
 *) feature: multi-select fields
 *) feature: dynamic forms (on the fly form creation)

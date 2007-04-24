@@ -6,7 +6,7 @@ please see cforms.php for more information
 
 load_plugin_textdomain('cforms');
 
-$plugindir   = substr( plugin_basename( __FILE__ ),0,strrpos(plugin_basename( __FILE__ ),'/') );
+$plugindir   = dirname(plugin_basename(__FILE__));
 $cforms_root = get_settings('siteurl') . '/wp-content/plugins/'.$plugindir;
 
 ### db settings
@@ -121,8 +121,12 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 	update_option('cforms_subid', $_REQUEST['cforms_subid']?'1':'0');
 	update_option('cforms_subid_text', $_REQUEST['cforms_subid_text']);
 
-	update_option('cforms_upload_dir', $_REQUEST['cforms_upload_dir']);  //codecheck if exists
+	update_option('cforms_upload_dir', $_REQUEST['cforms_upload_dir']);
 	
+    if ( !file_exists(cforms_upload_dir) ) {
+        echo '<div id="message" class="updated fade"><p>' . __('Can\'t find the specified <strong>Upload Directory</strong> ! Please verify that it exists!', 'cforms' ) . '</p></div>';
+    }
+
 	update_option('cforms_upload_ext', $_REQUEST['cforms_upload_ext']);
 	update_option('cforms_upload_size', $_REQUEST['cforms_upload_size']);
 	update_option('cforms_upload_err1', $_REQUEST['cforms_upload_err1']);
@@ -135,8 +139,6 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 	if ( isset($_REQUEST['cforms_database']) && $_REQUEST['cforms_database_new']=='true' ) {
 	
 		if ( $wpdb->get_var("show tables like '$wpdb->cformssubmissions'") <> $wpdb->cformssubmissions ){
-
-			require_once(ABSPATH . 'wp-admin/upgrade-functions.php');
 			
 			$sql = "CREATE TABLE " . $wpdb->cformssubmissions . " (
 					  id int(11) unsigned auto_increment,
@@ -144,14 +146,18 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 					  date timestamp NOT NULL default CURRENT_TIMESTAMP,
 					  email varchar(40) default '', 
 					  ip varchar(15) default '', 
-					  PRIMARY KEY (id) )";
+					  PRIMARY KEY  (id) );";
+
+			require_once(ABSPATH . 'wp-admin/upgrade-functions.php');
 			dbDelta($sql);
 			
 			$sql = "CREATE TABLE " . $wpdb->cformsdata . " (
-					  f_id int(11) unsigned auto_increment,
-					  sub_id int(11) unsigned NOT NULL,
-					  field_name varchar(100) NOT NULL default '',
-					  field_val text)";
+					  f_id int(11) unsigned auto_increment primary key, 
+					  sub_id int(11) unsigned NOT NULL, 
+					  field_name varchar(100) NOT NULL default '', 
+					  field_val text);";
+
+			require_once(ABSPATH . 'wp-admin/upgrade-functions.php');
 			dbDelta($sql);
 
 			?>
@@ -297,7 +303,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 
 				<div class="optionsbox">
 					<div class="optionsboxL"><?php _e('Additional text for the <strong>subject line</strong>', 'cforms') ?></div>
-    				<div class="optionsboxR"><input type="text" id="cforms_subid_text" name="cforms_subid_text" value="<?php echo stripslashes(htmlspecialchars(get_option('cforms_subid_text'))); ?>"/><strong>{id}</strong> = <?php _e('placeholder for the actual ID', 'cforms') ?></div>
+    				<div class="optionsboxR"><input type="text" id="cforms_subid_text" name="cforms_subid_text" value="<?php echo stripslashes(htmlspecialchars(get_option('cforms_subid_text'))); ?>"/><strong>{id}</strong> = <?php _e('var. for submission ID', 'cforms') ?></div>
 				</div>
 				
 				<?php if ( $wpdb->get_var("show tables like '$wpdb->cformssubmissions'") == $wpdb->cformssubmissions ) :?>

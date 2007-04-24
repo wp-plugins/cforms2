@@ -12,7 +12,7 @@ Author URI: http://www.deliciousdays.com
 Copyright 2006  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
-v3.5 (maintenance)
+v3.5 (mostly maintenance)
 *) feature: attachments are now stored on the server and can be accessed via the
     "Tracking" page
 *) feature: added optional ID tracking to forms
@@ -167,9 +167,7 @@ v1.5
 load_plugin_textdomain('cforms');
 
 //http://trac.wordpress.org/ticket/3002
-//codecheck and add to all php files
 $plugindir   = dirname(plugin_basename(__FILE__));
-
 $cforms_root = get_settings('siteurl') . '/wp-content/plugins/'.$plugindir;
 
 ### db settings
@@ -278,7 +276,7 @@ function download_cforms() {
 if (isset($_GET['activate']) && $_GET['activate'] == 'true') {
 
 		/*file upload*/
-		add_option('cforms_upload_dir', ABSPATH . 'wp-content/plugins/' . dirname(plugin_basename(__FILE__)))); //codecheck root wpdir
+		add_option('cforms_upload_dir', ABSPATH . 'wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/attachments');
 		add_option('cforms_upload_ext', 'txt,zip,doc,rtf,xls');
 		add_option('cforms_upload_size', '1024');
 		add_option('cforms_upload_err1', 'Generic file upload error. Please try again.');
@@ -319,7 +317,27 @@ if (isset($_GET['activate']) && $_GET['activate'] == 'true') {
 		add_option('cforms_database', '0');
 
 		add_option('cforms_subid', '0');
-		add_option('cforms_subid_text', '(Submission ID#{id})' );		
+		add_option('cforms_subid_text', '(Submission ID#{id})' );
+		
+		/* updates existing tracking db */
+		if ( $wpdb->get_var("show tables like '$wpdb->cformsdata'") == $wpdb->cformsdata ) {
+
+			// Fetch the table column structure from the database
+			$tablefields = $wpdb->get_results("DESCRIBE {$wpdb->cformsdata};");
+
+            $afield = array();
+			foreach($tablefields as $field)
+                array_push ($afield,$field->Field); 
+            
+            if ( !in_array('f_id', $afield) ) {
+    			$sql = "ALTER TABLE " . $wpdb->cformsdata . " 
+    					  ADD f_id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    					  CHANGE field_name field_name varchar(100) NOT NULL default '';";
+    			$wpdb->query($sql);
+              	echo '<div id="message" class="updated fade"><p><strong>' . __('Existing cforms Tracking Tables updated.', 'cforms') . '</strong></p></div>';
+            }
+            
+        }
 }
 
 
@@ -451,7 +469,6 @@ function cforms_submitcomment($content) {
                 else
                     $value = $params ['field_' . $i];
             }
-            //codecheck
 
 			//for db tracking
 			$track[$field_name] = $value;
@@ -491,18 +508,17 @@ function cforms_submitcomment($content) {
 
 		$wpdb->query("INSERT INTO $wpdb->cformssubmissions (form_id,date,email,ip) VALUES ".
 					 "('" . $no . "', NOW(),'" . $field_email . "', '" . getip() . "');");
-//codecheck (last_ins...still working (cfdata has its own auto_inc_)?)
+
+		$subID = $wpdb->get_row("select LAST_INSERT_ID() as number from $wpdb->cformsdata;");
+		$subID = $subID->number;
+
 		$sql = "INSERT INTO $wpdb->cformsdata (sub_id,field_name,field_val) VALUES " .
 					 "(LAST_INSERT_ID(),'page','$page'),";
 
 		foreach ( array_keys($track) as $key )
 			$sql .= "(LAST_INSERT_ID(),'$key','$track[$key]'),";
 
-		
-		$wpdb->query(substr($sql,0,-1));
-		
-		$subID = $wpdb->get_row("select LAST_INSERT_ID() as number from $wpdb->cformsdata;");
-		$subID = $subID->number;
+		$wpdb->query(substr($sql,0,-1));		
 					 
 	}
 
@@ -528,7 +544,7 @@ function cforms_submitcomment($content) {
 				  $subject2 = get_option('cforms'.$no.'_csubject');
 					$message2 = get_option('cforms'.$no.'_cmsg');
                     
-                    // codecheck: include ifs for enabled to include , for tracking enabled '(Submission ID:'.$subID.')'
+                    //include a unique form sub ID? Only if tracking is enabled.
                     $uniqueID = ( get_option('cforms_subid') && get_option('cforms_database'))?str_replace('{id}',$subID,get_option('cforms_subid_text')):'';
 
 					if ( $ccme ) 
@@ -794,7 +810,6 @@ function cforms($args = '',$no = '') {
 
 	  		$uploadedfile = file($file['tmp_name']);
 
-            //codecheck : copy to user directory!
             $fp = fopen($file['tmp_name'], "rb"); //Open it
             $filedata = fread($fp, filesize($file['tmp_name'])); //Read it
             $filedata = chunk_split(base64_encode($filedata)); //Chunk it up and encode it as base64 so it can emailed
@@ -981,6 +996,9 @@ function cforms($args = '',$no = '') {
 			$wpdb->query("INSERT INTO $wpdb->cformssubmissions (form_id,date,email,ip) VALUES ".
 						 "('" . $no . "', NOW(),'" . $field_email . "', '" . getip() . "');");
 	
+    		$subID = $wpdb->get_row("select LAST_INSERT_ID() as number from $wpdb->cformsdata;");
+    		$subID = $subID->number;
+
 			$sql = "INSERT INTO $wpdb->cformsdata (sub_id,field_name,field_val) VALUES " .
 						 "(LAST_INSERT_ID(),'page','$page'),";
 						 
@@ -989,11 +1007,8 @@ function cforms($args = '',$no = '') {
 			
 			$wpdb->query(substr($sql,0,-1));
 
-    		$subID = $wpdb->get_row("select LAST_INSERT_ID() as number from $wpdb->cformsdata;");
-    		$subID = $subID->number;
-
-            //codecheck cp file
-            cp($file['tmp_name'],get_option('cforms_upload_dir').'/'.$subID.'-'.$file['name']);
+            //copy attachment to local server dir
+            copy($file['tmp_name'],get_option('cforms_upload_dir').'/'.$subID.'-'.$file['name']);
 						 
 		}
 
@@ -1076,7 +1091,7 @@ function cforms($args = '',$no = '') {
 					  $subject2 = get_option('cforms'.$no.'_csubject');
 						$message2 = get_option('cforms'.$no.'_cmsg');
 
-                        // codecheck: include ifs for enabled to include , for tracking enabled '(Submission ID:'.$subID.')'
+                        //include a unique form sub ID? Only if tracking is enabled.
                         $uniqueID = ( get_option('cforms_subid') && get_option('cforms_database'))?str_replace('{id}',$subID,get_option('cforms_subid_text')):'';
     
     					if ( $ccme ) 

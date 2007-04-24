@@ -7,7 +7,7 @@ if (defined('ABSPATH')) {
 	function cforms_info($show='') {
 		switch($show) {
 	    case 'localversion' :
-	    	$info = 340;
+	    	$info = 350;
 	    	break;
 	    case 'remoteversion':
 	    	$info = 'http://www.deliciousdays.com/download/cforms.txt';

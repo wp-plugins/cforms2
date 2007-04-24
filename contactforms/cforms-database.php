@@ -6,7 +6,7 @@ please see cforms.php for more information
 
 load_plugin_textdomain('cforms');
 
-$plugindir   = substr( plugin_basename( __FILE__ ),0,strrpos(plugin_basename( __FILE__ ),'/') );
+$plugindir   = dirname(plugin_basename(__FILE__));
 $cforms_root = get_settings('siteurl') . '/wp-content/plugins/'.$plugindir;
 
 ### db settings
@@ -108,12 +108,17 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']))
 			$name = $entry->field_name==''?'&nbsp;':$entry->field_name;
 			$val  = $entry->field_val ==''?'&nbsp;':$entry->field_val;
 
-			if (strpos($name,'[*]')!==false) { //codecheck: chow attachment when field is on and attachment is found!
+			if (strpos($name,'[*]')!==false) {  // attachments?
+
+                    $file = get_option('cforms_upload_dir').'/'.$entry->sub_id.'-'.strip_tags($val);
+                    $file = get_settings('siteurl') . substr( $file, strpos($file, '/wp-content/') );
+                    
 					echo '<div class="showformfield" style="margin-bottom:10px;color:#3C575B;"><div class="L">';
 					_e('Attached file:', 'cforms');
-					echo 	'</div><div class="R">' . str_replace("\n","<br/>", strip_tags($val) ) . '</div></div>' . "\n";  //codecheck: hyperlink to downlo
+					echo 	'</div><div class="R">' . '<a href="' . $file . '">' . str_replace("\n","<br/>", strip_tags($val) ) . '</a>' . '</div></div>' . "\n";
+
 			}
-			elseif ($name=='page') {
+			elseif ($name=='page') {  // special field: page 
 			
 					echo '<div class="showformfield" style="margin-bottom:10px;color:#3C575B;"><div class="L">';
 					_e('Submitted via page', 'cforms');

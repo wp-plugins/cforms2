@@ -124,6 +124,7 @@ input.go              { font-size:10px; width:23px; height:22px; }
 #cforms_cc1,
 #cforms_cc2,
 #cforms_confirm,
+#cforms_subid,
 #cforms_database       { width:16px; margin-top:4px; background:none; }
 * html .cforms_ajax ,
 * html #cforms_confirm,
