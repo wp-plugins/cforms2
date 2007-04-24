@@ -123,7 +123,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 
 	update_option('cforms_upload_dir', $_REQUEST['cforms_upload_dir']);
 	
-    if ( !file_exists(cforms_upload_dir) ) {
+    if ( !file_exists(get_option('cforms_upload_dir')) ) {
         echo '<div id="message" class="updated fade"><p>' . __('Can\'t find the specified <strong>Upload Directory</strong> ! Please verify that it exists!', 'cforms' ) . '</p></div>';
     }
 
