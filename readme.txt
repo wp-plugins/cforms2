@@ -24,7 +24,7 @@ management, you can even have multiple forms on the same page!
 * Role Manager support
 * Backup & Restore of individual forms
 * Cloning, duplication of forms
-* Tracking of submitted data per DB
+* Tracking of submitted data per DB (unique form submission IDs)
 * SPAM protection
 * Submission status (success/failure) optionally via Alert Box
 * Form validation & *regular expressions*
