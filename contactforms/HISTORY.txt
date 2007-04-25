@@ -3,6 +3,7 @@ Copyright 2006-2007  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
 v3.5 (mostly maintenance)
+*) feature: text fields can optionally be auto cleared on focus (if browser is JS enabled)
 *) feature: attachments (uploads) are now stored on the server and can be accessed 
     via the "Tracking" page
 *) feature: added optional ID tracking to forms (& emails sent out)
@@ -11,6 +12,10 @@ v3.5 (mostly maintenance)
     the existing Tracking tables, to make use of the new table structure)
 *) bugfix: due to a WP bug, the use of plugin_basename had to be adjusted
 *) bugfix: fixed support for non-utf8 blogs ( mb_convert_encoding etc.)
+*) other: code cleanup (big thanks to Sven!) to allow proper localization
+			current languages supported: 
+			English, default
+			German, provided by Sven Wappler
 *) other: changed data counter (column 1) on the Tracking page to reflect unique 
     form submission ID, that a visitor could possibly reference.
 

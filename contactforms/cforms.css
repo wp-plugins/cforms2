@@ -11,7 +11,7 @@ input.secinput 	{ width:40px!important; }
 /*                                                    */
 
 p.info 			{ margin:10px 0;	text-align:center; }
-p.textonly	{ clear:left; text-align:center; padding:5px; margin:0; }
+p.textonly		{ clear:left; text-align:center; padding:5px; margin:0; }
 
 /*                                                    */
 /*  div box enclosing the form                        */
@@ -35,11 +35,11 @@ p.textonly	{ clear:left; text-align:center; padding:5px; margin:0; }
 /*                                                    */
 span.cformchkboxlabel,
 span.cformradiolabel,
-.cform label 				{ width:90px; margin:5px 0 0 0; font:normal 11px 'Trebuchet MS',Arial;
-				 			 display:block; float:left;  padding-right:10px; clear:left; text-align:right; }
+.cform label 			{ width:90px; margin:5px 0 0 0; font:normal 11px 'Trebuchet MS',Arial;
+				 		 display:block; float:left;  padding-right:10px; clear:left; text-align:right; }
 
 /* just in case the label comes AFTER the field */
-label.cformlabelafter { clear:none; width:250px!important; text-align:left; padding:0 0 0 6px; }
+label.cformlabelafter 	{ clear:none; width:250px!important; text-align:left; padding:0 0 0 6px; }
 
 /*                                                    */
 /*  individual definition of field labels             */
@@ -116,7 +116,7 @@ span.cformradiotext 		{ margin:5px 0 0 0!important; }
 .cform textarea:focus,
 .cform select:focus		{ background:#F3F8F8; }
 
-.cform input 				{ width:170px; }
+.cform input 			{ width:170px; }
 .cform select 			{ width:178px; }  /* attempt to have equal length */
 .cform textarea			{ width:170px; }
 
@@ -142,8 +142,8 @@ input.cformchkbox 			{ margin:7px 0 6px 0; width:16px; border:none; }
 * html input.cformchkbox	{ margin:3px 0 4px 0; background:none; } /* hack:diff margins for IE */
 
 /* for incorrect input fields */
-.cform .error 				{  color:red!important; border:1px solid #FF0000!important; padding:1px 3px; }
-.cform .errortxt      {  color:red!important; }
+.cform .error 			{  color:red!important; border:1px solid #FF0000!important; padding:1px 3px; }
+.cform .errortxt    	{  color:red!important; }
 
 
 

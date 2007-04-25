@@ -16,21 +16,20 @@ $wpdb->cformsdata       	= $wpdb->prefix . 'cformsdata';
 
 ### Check Whether User Can Manage Database
 if(!current_user_can('manage_cforms')) {
-	die('Access Denied');
+	die(__('Access Denied','cforms'));
 }
 
 
 
 // if all data has been erased quit
 if ( get_option('cforms_formcount') == '' ){
-		?>
-		<div class="wrap">
-		<h2><?php _e('All cforms data has been erased!', 'cforms') ?></h2>
-		<p><?php _e('Please go to your <strong>Plugins</strong> tab and either disable the plugin,'.
-								'or toggle its status (disable/enable) to revive cforms!', 'cforms') ?></p>
-		</div>
-		<?php
-		die;
+	?>
+	<div class="wrap">
+	<h2><?php _e('All cforms data has been erased!', 'cforms') ?></h2>
+	<p><?php _e('Please go to your <strong>Plugins</strong> tab and either disable the plugin, or toggle its status (disable/enable) to revive cforms!', 'cforms') ?></p>
+	</div>
+	<?php
+	die;
 }
 
 
@@ -102,8 +101,7 @@ if( isset($_REQUEST['deleteall']) ) {  // erase all cforms data
 	update_option('cforms_database', '0');
 
 	?>
-	<div id="message" class="updated fade"><p><strong><?php _e('cforms tracking tables (<code>cformssubmissions</code>', 'cforms') ?> &
-		<?php _e('<code>cformsdata</code>) have been deleted.', 'cforms') ?></strong></p></div>
+	<div id="message" class="updated fade"><p><strong><?php _e('cforms tracking tables (<code>cformssubmissions</code> & <code>cformsdata</code>) have been deleted.', 'cforms') ?></strong></p></div>
 	<?php
 
 }
@@ -161,8 +159,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 			dbDelta($sql);
 
 			?>
-			<div id="message" class="updated fade"><p><strong><?php _e('cforms tracking tables (<code>cformssubmissions</code>', 'cforms') ?> &
-				<?php _e('<code>cformsdata</code>) have been created.', 'cforms') ?></strong></p></div>
+			<div id="message" class="updated fade"><p><strong><?php _e('cforms tracking tables (<code>cformssubmissions</code> & <code>cformsdata</code>) have been created.', 'cforms') ?></strong></p></div>
 			<?php
 		} else {
 
@@ -191,56 +188,53 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 		<fieldset class="cformsoptions">
 			<p class="cflegend" style="margin-top:10px;"><?php _e('File Upload Settings', 'cforms') ?></p>
 
-			<p><?php _e('Configure and double-check these settings in case you are adding a "<code style="background:#D8FFCC">'.
-										'File Upload Box</code>" to your form (also see the <a href="?page='.$plugindir.'/cforms-help.php#upload">'.
-										'Help!</a> for further information).', 'cforms') ?></p>
+			<p><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#upload',__('Configure and double-check these settings in case you are adding a "<code style="background:#D8FFCC">File Upload Box</code>" to your form (also see the <a href="[url]">Help!</a> for further information).', 'cforms')); ?></p>
 
-			<p class="ex"><?php _e('Also, note that by adding a <em>File Upload Box</em> to your form, the Ajax (if enabled) submission method '.
-								'will (automatically) <strong>gracefully degrade</strong> to the standard method, due to general HTML limitations.', 'cforms') ?></p>
+			<p class="ex"><?php _e('Also, note that by adding a <em>File Upload Box</em> to your form, the Ajax (if enabled) submission method will (automatically) <strong>gracefully degrade</strong> to the standard method, due to general HTML limitations.', 'cforms') ?></p>
 
 			<div class="optionsbox" style="margin-top:15px;">
-				<div class="optionsboxL"><?php _e('<strong>Upload directory</strong>', 'cforms') ?></div>
+				<div class="optionsboxL"><strong><?php _e('Upload directory', 'cforms') ?></strong></div>
 				<div class="optionsboxR"><input type="text" id="cforms_upload_dir" name="cforms_upload_dir" value="<?php echo stripslashes(htmlspecialchars(get_option('cforms_upload_dir'))); ?>"/> [make sure the dir exists!]</div>
 			</div>
 
 			<div class="optionsbox" style="margin-top:15px;">
-				<div class="optionsboxL"><?php _e('<strong>Allowed file extensions</strong>', 'cforms') ?></div>
+				<div class="optionsboxL"><strong><?php _e('Allowed file extensions', 'cforms') ?></strong></div>
 				<div class="optionsboxR"><input type="text" id="cforms_upload_ext" name="cforms_upload_ext" value="<?php echo stripslashes(htmlspecialchars(get_option('cforms_upload_ext'))); ?>"/> [empty=all files are allowed]</div>
 			</div>
 
 			<div class="optionsbox" style="margin-top:3px;">
-				<div class="optionsboxL"><?php _e('<strong>Maximum file size<br/>in kilobyte</strong>', 'cforms') ?></div>
+				<div class="optionsboxL"><strong><?php _e('Maximum file size<br/>in kilobyte', 'cforms') ?></strong></div>
 				<div class="optionsboxR"><input type="text" id="cforms_upload_size" name="cforms_upload_size" value="<?php echo stripslashes(htmlspecialchars(get_option('cforms_upload_size'))); ?>"/></div>
 			</div>
 
 			<p style="padding-top:15px;"><?php _e('Specify the error messages shown in case something goes awry.', 'cforms') ?></p>
 
 			<div class="optionsbox" style="margin-top:15px;">
-				<div class="optionsboxL"><?php _e('<strong>File type not allowed</strong>', 'cforms'); ?></div>
+				<div class="optionsboxL"><strong><?php _e('File type not allowed', 'cforms'); ?></strong></div>
 				<div class="optionsboxR"><textarea class="errmsgbox" name="cforms_upload_err5" id="cforms_upload_err5" ><?php echo stripslashes(htmlspecialchars(get_option('cforms_upload_err5'))); ?></textarea></div>
 			</div>
 
 			<div class="optionsbox" style="margin-top:3px;">
-				<div class="optionsboxL"><?php _e('<strong>Generic (unknown) error</strong>', 'cforms'); ?></div>
+				<div class="optionsboxL"><strong><?php _e('Generic (unknown) error', 'cforms'); ?></strong></div>
 				<div class="optionsboxR"><textarea class="errmsgbox" name="cforms_upload_err1" id="cforms_upload_err1" ><?php echo stripslashes(htmlspecialchars(get_option('cforms_upload_err1'))); ?></textarea></div>
 			</div>
 			
 			<div class="optionsbox" style="margin-top:3px;">
-				<div class="optionsboxL"><?php _e('<strong>File is empty</strong>', 'cforms'); ?></div>
+				<div class="optionsboxL"><strong><?php _e('File is empty', 'cforms'); ?></strong></div>
 				<div class="optionsboxR"><textarea class="errmsgbox" name="cforms_upload_err2" id="cforms_upload_err2" ><?php echo stripslashes(htmlspecialchars(get_option('cforms_upload_err2'))); ?></textarea></div>
 			</div>
 
 			<div class="optionsbox" style="margin-top:3px;">
-				<div class="optionsboxL"><?php _e('<strong>File size too big</strong>', 'cforms'); ?></div>
+				<div class="optionsboxL"><strong><?php _e('File size too big', 'cforms'); ?></strong></div>
 				<div class="optionsboxR"><textarea class="errmsgbox" name="cforms_upload_err3" id="cforms_upload_err3" ><?php echo stripslashes(htmlspecialchars(get_option('cforms_upload_err3'))); ?></textarea></div>
 			</div>
 
 			<div class="optionsbox" style="margin-top:3px;">
-				<div class="optionsboxL"><?php _e('<strong>Error during upload</strong>', 'cforms'); ?></div>
+				<div class="optionsboxL"><strong><?php _e('Error during upload', 'cforms'); ?></strong></div>
 				<div class="optionsboxR"><textarea class="errmsgbox" name="cforms_upload_err4" id="cforms_upload_err4" ><?php echo stripslashes(htmlspecialchars(get_option('cforms_upload_err4'))); ?></textarea></div>
 			</div>
 
-			<p class="updtsetting"><input type="submit" name="Submit3" class="allbuttons updbutton" value="Update Settings &raquo;" onclick="javascript:document.mainform.action='#';"/></p>
+			<p class="updtsetting"><input type="submit" name="Submit3" class="allbuttons updbutton" value="<?php _e('Update Settings &raquo;', 'cforms'); ?>" onclick="javascript:document.mainform.action='#';"/></p>
 
 		</fieldset>
 
@@ -262,10 +256,8 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 		<fieldset class="cformsoptions">
 			<p class="cflegend"><?php _e('Visitor Verification', 'cforms') ?></p>
 
-			<p><?php _e('Getting a lot of <strong>SPAM</strong>? Use these Q&A\'s to counteract spam and ensure it\'s a human submitting the form. '.
-						'To use in your form, add the corresponding input field "<code style="background:#D8FFCC">Visitor&nbsp;'.
-						'verification</code>" preferably in its own FIELDSET (<em>check cforms.css for styling options</em>)!', 'cforms') ?></p>
-	
+			<p><?php _e('Getting a lot of <strong>SPAM</strong>? Use these Q&A\'s to counteract spam and ensure it\'s a human submitting the form. To use in your form, add the corresponding input field "<code style="background:#D8FFCC">Visitor verification</code>" preferably in its own FIELDSET (<em>check cforms.css for styling options</em>)!', 'cforms') ?></p>
+
 			<div class="optionsbox" style="margin-top:25px;">
 				<div class="optionsboxL"><?php _e('<strong>Failure message</strong><br/>(for providing a wrong answer)', 'cforms'); ?></div>
 				<div class="optionsboxR"><textarea name="cforms_codeerr" id="cforms_codeerr" ><?php echo stripslashes(htmlspecialchars(get_option('cforms_codeerr'))); ?></textarea></div>
@@ -278,7 +270,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 				<div class="optionsboxR"><textarea name="cforms_sec_qa" id="cforms_sec_qa" ><?php echo $qa; ?></textarea></div>
 			</div>
 	
-			<p class="updtsetting"><input type="submit" name="Submit1" class="allbuttons updbutton" value="Update Settings &raquo;" onclick="javascript:document.mainform.action='#wpeditor';"/></p>
+			<p class="updtsetting"><input type="submit" name="Submit1" class="allbuttons updbutton" value="<?php _e('Update Settings &raquo;', 'cforms') ?>" onclick="javascript:document.mainform.action='#wpeditor';"/></p>
 		</fieldset>
 
 
@@ -286,9 +278,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 		<fieldset class="cformsoptions">
 			<p class="cflegend"><?php _e('Database Input Tracking', 'cforms') ?></p>
 
-				<p><?php _e('If you like to track your form submissions also via the database, please enable this feature below. '.
-								 'If required, this will create two new tables and you\'ll see a new sub tab "<strong>Tracking</strong>" under the cforms '.
-								 'menu.', 'cforms') ?></p>
+				<p><?php _e('If you like to track your form submissions also via the database, please enable this feature below. If required, this will create two new tables and you\'ll see a new sub tab "<strong>Tracking</strong>" under the cforms menu.', 'cforms') ?></p>
 		
 		
 				<div class="optionsbox">
@@ -309,11 +299,11 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 				<?php if ( $wpdb->get_var("show tables like '$wpdb->cformssubmissions'") == $wpdb->cformssubmissions ) :?>
 				<div class="optionsbox" style="margin-top:15px;">
 					<div class="optionsboxL"><?php _e('Wipe out all collected cforms submission data and drop tables.', 'cforms') ?></div>
-					<div class="optionsboxR"><input type="submit" name="deletetables" class="allbuttons delbutton" value="Delete cforms Tracking Tables" onclick="return confirm('Do you really want to erase all collected data?');"/></div>
+					<div class="optionsboxR"><input type="submit" name="deletetables" class="allbuttons delbutton" value="<?php _e('Delete cforms Tracking Tables', 'cforms') ?>" onclick="return confirm('<?php _e('Do you really want to erase all collected data?', 'cforms') ?>');"/></div>
 				</div>
 				<?php endif; ?>
 
-			<p class="updtsetting"><input type="submit" name="Submit2" class="allbuttons updbutton" value="Update Settings &raquo;" onclick="javascript:document.mainform.action='#';"/></p>
+			<p class="updtsetting"><input type="submit" name="Submit2" class="allbuttons updbutton" value="<?php _e('Update Settings &raquo;', 'cforms') ?>" onclick="javascript:document.mainform.action='#';"/></p>
 		</fieldset>
 
 		
@@ -321,12 +311,11 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 		<fieldset class="cformsoptions">
 			<p class="cflegend"><?php _e('Removing cforms', 'cforms') ?></p>
 
-				<p><?php _e('Generally, deactivating the plugin does <strong>not</strong> erase any of its data, if you\'d like to quit '.
-							'using cforms for good, please erase all data before and then deactive the plugin.', 'cforms') ?></p>
-		
-		
+				<p><?php _e('Generally, deactivating the plugin does <strong>not</strong> erase any of its data, if you\'d like to quit using cforms for good, please erase all data before and then deactive the plugin.', 'cforms') ?></p>
+
+
 				<p><?php _e('This erases <strong>all</strong> cforms data (form & plugin settings). <strong>This is irrevocable!</strong> Be careful.', 'cforms') ?>&nbsp;&nbsp;&nbsp;
-					 <input type="submit" name="deleteall" class="allbuttons deleteall" value="DELETE *ALL* CFORMS DATA" onclick="return confirm('Do you really want to erase all of the plugin config data?');"/>
+					 <input type="submit" name="deleteall" class="allbuttons deleteall" value="<?php _e('DELETE *ALL* CFORMS DATA', 'cforms') ?>" onclick="return confirm('<?php _e('Do you really want to erase all of the plugin config data?', 'cforms') ?>');"/>
 				</p>
 		</fieldset>
 

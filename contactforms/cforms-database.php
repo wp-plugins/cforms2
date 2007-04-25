@@ -16,20 +16,19 @@ $wpdb->cformsdata       	= $wpdb->prefix . 'cformsdata';
 
 ### Check Whether User Can Manage Database
 if(!current_user_can('manage_cforms')) {
-	die('Access Denied');
+	die(__('Access Denied','cforms'));
 }
 
 
 // if all data has been erased quit
 if ( get_option('cforms_formcount') == '' ){
-		?>
-		<div class="wrap">
-		<h2><?php _e('All cforms data has been erased!', 'cforms') ?></h2>
-		<p><?php _e('Please go to your <strong>Plugins</strong> tab and either disable the plugin, '.
-								'or toggle its status (disable/enable) to revive cforms!', 'cforms') ?></p>
-		</div>
-		<?php
-		die;
+	?>
+	<div class="wrap">
+	<h2><?php _e('All cforms data has been erased!', 'cforms') ?></h2>
+	<p><?php _e('Please go to your <strong>Plugins</strong> tab and either disable the plugin, or toggle its status (disable/enable) to revive cforms!', 'cforms') ?></p>
+	</div>
+	<?php
+	die;
 }
 
 
@@ -156,8 +155,7 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']))
 
 		<?php if ($entries) :?>
 
-		<p><?php _e('Keep track of all form submissions & data entered, view individual entries or a whole bunch and download '.
-								'as TAB or CSV formatted file.', 'cforms') ?></p>
+		<p><?php _e('Keep track of all form submissions & data entered, view individual entries or a whole bunch and download as TAB or CSV formatted file.', 'cforms') ?></p>
 
 		<form id="cformsdata" name="form" method="post" action="">
 				<input type="hidden" name="showid" value=""/>
@@ -179,10 +177,10 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']))
 				<ul class="dataheader">
 					<li class="col0">#</li>
 					<li class="col1"><?php _e('?') ?></li>
-					<li class="col2"><a href="javascript:void(0);" onclick="sort_entries('form_id');"><?php _e('Form') ?></a></li>
-					<li class="col3"><a href="javascript:void(0);" onclick="sort_entries('email');"><?php _e('Who') ?></a></li>
-					<li class="col4"><a href="javascript:void(0);" onclick="sort_entries('date');"><?php _e('When') ?></a><li></li>
-					<li class="col5"><a href="javascript:void(0);" onclick="sort_entries('ip');"><?php _e('IP') ?></a></li>
+					<li class="col2"><a href="javascript:void(0);" onclick="sort_entries('form_id');"><?php _e('Form','cforms') ?></a></li>
+					<li class="col3"><a href="javascript:void(0);" onclick="sort_entries('email');"><?php _e('Who','cforms') ?></a></li>
+					<li class="col4"><a href="javascript:void(0);" onclick="sort_entries('date');"><?php _e('When','cforms') ?></a><li></li>
+					<li class="col5"><a href="javascript:void(0);" onclick="sort_entries('ip');"><?php _e('IP','cforms') ?></a></li>
 				</ul>
 
 
@@ -226,7 +224,7 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']))
 
 		<?php else :?>
 
-		<p>No data available at this time.</p>
+		<p><?php _e('No data available at this time.','cforms'); ?></p>
 
 		<?php endif; 
 

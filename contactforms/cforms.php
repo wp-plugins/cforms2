@@ -13,6 +13,7 @@ Copyright 2006  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
 v3.5 (mostly maintenance)
+*) feature: text fields can optionally be auto cleared on focus (if browser is JS enabled)
 *) feature: attachments (uploads) are now stored on the server and can be accessed 
 	via the "Tracking" page
 *) feature: added optional ID tracking to forms (& emails sent out)
@@ -21,6 +22,10 @@ v3.5 (mostly maintenance)
     the existing Tracking tables, to make use of the new table structure)
 *) bugfix: due to a WP bug, the use of plugin_basename had to be adjusted
 *) bugfix: fixed support for non-utf8 blogs ( mb_convert_encoding etc.)
+*) other: code cleanup (big thanks to Sven!) to allow proper localization
+			current languages supported: 
+			English, default
+			German, provided by Sven Wappler
 *) other: changed data counter (column 1) on the Tracking page to reflect unique 
     form submission ID, that a visitor could possibly reference.
    
@@ -280,41 +285,41 @@ if (isset($_GET['activate']) && $_GET['activate'] == 'true') {
 		add_option('cforms_upload_dir', ABSPATH . 'wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/attachments');
 		add_option('cforms_upload_ext', 'txt,zip,doc,rtf,xls');
 		add_option('cforms_upload_size', '1024');
-		add_option('cforms_upload_err1', 'Generic file upload error. Please try again.');
-		add_option('cforms_upload_err2', 'File is empty. Please upload something more substantial.');
-		add_option('cforms_upload_err3', 'Sorry, file is too large. You may try to zip your file.');
-		add_option('cforms_upload_err4', 'File upload failed. Please try again or contact the blog admin.');
-		add_option('cforms_upload_err5', 'File not accepted, file type not allowed.');
+		add_option('cforms_upload_err1', __('Generic file upload error. Please try again', 'cforms'));
+		add_option('cforms_upload_err2', __('File is empty. Please upload something more substantial.', 'cforms'));
+		add_option('cforms_upload_err3', __('Sorry, file is too large. You may try to zip your file.', 'cforms'));
+		add_option('cforms_upload_err4', __('File upload failed. Please try again or contact the blog admin.', 'cforms'));
+		add_option('cforms_upload_err5', __('File not accepted, file type not allowed.', 'cforms'));
 
 		/*for default form*/
-		add_option('cforms_count_field_1', 'My Fieldset$#$fieldsetstart$#$0$#$0');
-		add_option('cforms_count_field_2', 'Your Name|Your Name$#$textfield$#$1$#$0');
-		add_option('cforms_count_field_3', 'Email$#$textfield$#$1$#$1');
-		add_option('cforms_count_field_4', 'Website|http://$#$textfield$#$0$#$0');
-		add_option('cforms_count_field_5', 'Message$#$textarea$#$0$#$0');
+		add_option('cforms_count_field_1', __('My Fieldset$#$fieldsetstart$#$0$#$0$#$0', 'cforms'));
+		add_option('cforms_count_field_2', __('Your Name|Your Name$#$textfield$#$1$#$0$#$1', 'cforms'));
+		add_option('cforms_count_field_3', __('Email$#$textfield$#$1$#$1$#$0', 'cforms'));
+		add_option('cforms_count_field_4', __('Website|http://$#$textfield$#$0$#$0$#$0', 'cforms'));
+		add_option('cforms_count_field_5', __('Message$#$textarea$#$0$#$0$#$0', 'cforms'));
 
 		/*form verification questions*/
-		add_option('cforms_sec_qa', "What color is snow?=white\r\nThe color of grass is=green\r\nTen minus five equals=five");
+		add_option('cforms_sec_qa', __('What color is snow?=white\r\nThe color of grass is=green\r\nTen minus five equals=five', 'cforms'));
 		add_option('cforms_formcount', '1');
 		add_option('cforms_show_quicktag', '1');
 		add_option('cforms_count_fields', '5');
-		add_option('cforms_required', '(required)');
-		add_option('cforms_emailrequired', '(valid email required)');
+		add_option('cforms_required', __('(required)', 'cforms'));
+		add_option('cforms_emailrequired', __('(valid email required)', 'cforms'));
 
 		add_option('cforms_confirm', '0');
 		add_option('cforms_ajax', '1');
-		add_option('cforms_fname', "Your default form");
-		add_option('cforms_csubject', 'Re: Your note');
-		add_option('cforms_cmsg', "Dear Sender, \nThank you for your note!\nWe will get back to you as soon as possible.\n\n");
+		add_option('cforms_fname', __('Your default form', 'cforms'));
+		add_option('cforms_csubject', __('Re: Your note', 'cforms'));
+		add_option('cforms_cmsg', __('Dear Sender, \nThank you for your note!\nWe will get back to you as soon as possible.\n\n', 'cforms'));
 		add_option('cforms_email', get_bloginfo('admin_email'));
 
-		add_option('cforms_subject', 'A comment from a site visitor');
-		add_option('cforms_submit_text', 'Send Comment');
-		add_option('cforms_success', 'Thank you for your comment!');
-		add_option('cforms_failure', 'Please fill in all the required fields.');
-		add_option('cforms_codeerr', 'Please double-check your verification code.');
-		add_option('cforms_working', 'One moment please...');
-		add_option('cforms_popup', 'nn');
+		add_option('cforms_subject', __('A comment from a site visitor', 'cforms'));
+		add_option('cforms_submit_text', __('Send Comment', 'cforms'));
+		add_option('cforms_success', __('Thank you for your comment!', 'cforms'));
+		add_option('cforms_failure', __('Please fill in all the required fields.', 'cforms'));
+		add_option('cforms_codeerr', __('Please double-check your verification code.', 'cforms'));
+		add_option('cforms_working', __('One moment please...', 'cforms'));
+		add_option('cforms_popup', __('nn', 'cforms'));
 		add_option('cforms_database', '0');
 
 		add_option('cforms_subid', '0');
@@ -383,10 +388,10 @@ function cforms_submitcomment($content) {
 
 
 	if ( get_option('cforms'.$no.'_fname') <> '' ){
-		  $title   = "\nA new submission (form: \"".get_option('cforms'.$no.'_fname') . "\")\n";
-			$page    = substr( $_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'],'?')-1);
-			$page    = (trim($page)=='')?'/':trim($page);
-		  $message = $title . str_repeat('=', strlen($title)-2 ) . "\n" .
+		$title   = "\nA new submission (form: \"".get_option('cforms'.$no.'_fname') . "\")\n";
+		$page    = substr( $_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'],'?')-1);
+		$page    = (trim($page)=='')?'/':trim($page);
+		$message = $title . str_repeat('=', strlen($title)-2 ) . "\n" .
 								 "Submitted on: " . mysql2date(get_option('date_format'), current_time('mysql')) . ' @ ' . gmdate(get_option('time_format'), current_time('timestamp')) . "\n" .
 								 "Via: " . $page . "\n" .
 								 "By " . getip() . " (visitor IP)\n\n";
@@ -1042,12 +1047,12 @@ function cforms($args = '',$no = '') {
 				// different header for attached files
 		 		//
 		 		$all_mime = array("txt"=>"text/plain", "htm"=>"text/html", "html"=>"text/html", "gif"=>"image/gif", "png"=>"image/x-png",
-				 						 "jpeg"=>"image/jpeg", "jpg"=>"image/jpeg", "tif"=>"image/tiff", "bmp"=>"image/x-ms-bmp", "wav"=>"audio/x-wav",
-				 						 "mpeg"=>"video/mpeg", "mpg"=>"video/mpeg", "mov"=>"video/quicktime", "avi"=>"video/x-msvideo",
-				 						 "rtf"=>"application/rtf", "pdf"=>"application/pdf", "zip"=>"application/zip", "hqx"=>"application/mac-binhex40",
-				 						 "sit"=>"application/x-stuffit", "exe"=>"application/octet-stream", "ppz"=>"application/mspowerpoint",
-										 "ppt"=>"application/vnd.ms-powerpoint", "ppj"=>"application/vnd.ms-project", "xls"=>"application/vnd.ms-excel",
-										 "doc"=>"application/msword");
+		 						 "jpeg"=>"image/jpeg", "jpg"=>"image/jpeg", "tif"=>"image/tiff", "bmp"=>"image/x-ms-bmp", "wav"=>"audio/x-wav",
+		 						 "mpeg"=>"video/mpeg", "mpg"=>"video/mpeg", "mov"=>"video/quicktime", "avi"=>"video/x-msvideo",
+		 						 "rtf"=>"application/rtf", "pdf"=>"application/pdf", "zip"=>"application/zip", "hqx"=>"application/mac-binhex40",
+		 						 "sit"=>"application/x-stuffit", "exe"=>"application/octet-stream", "ppz"=>"application/mspowerpoint",
+								 "ppt"=>"application/vnd.ms-powerpoint", "ppj"=>"application/vnd.ms-project", "xls"=>"application/vnd.ms-excel",
+								 "doc"=>"application/msword");
 
 				$mime = (!$all_mime[$fileext])?'application/octet-stream':$all_mime[$fileext];
 
@@ -1057,14 +1062,14 @@ function cforms($args = '',$no = '') {
 				$headers.= "Content-Type: multipart/mixed; boundary=\"----=MIME_BOUNDRY_main_message\"" . $eol;
 
 				$fullmsg .= "This is a multi-part message in MIME format." . $eol;
-		    $fullmsg .= $eol;
+			    $fullmsg .= $eol;
 				$fullmsg .= "------=MIME_BOUNDRY_main_message" . $eol;
 				$fullmsg .= "Content-Type: text/plain; charset=\"" . get_option('blog_charset') . "\"" . $eol;
-		    $fullmsg .= "Content-Transfer-Encoding: quoted-printable" . $eol;
-		    $fullmsg .= $eol;
-		    /* Add our message, in this case it's plain text.  You could also add HTML by changing the Content-Type to text/html */
-		    $fullmsg .= stripslashes($message);
-		    $fullmsg .= $eol;
+			    $fullmsg .= "Content-Transfer-Encoding: quoted-printable" . $eol;
+			    $fullmsg .= $eol;
+			    /* Add our message, in this case it's plain text.  You could also add HTML by changing the Content-Type to text/html */
+			    $fullmsg .= stripslashes($message);
+			    $fullmsg .= $eol;
 				$fullmsg .= "------=MIME_BOUNDRY_main_message" . $eol;
 				
 				$fullmsg .= "Content-Type: $mime;\n\tname=\"" . $file['name'] . "\"" . $eol;
@@ -1136,6 +1141,7 @@ function cforms($args = '',$no = '') {
 		$field_type = $field_stat[1];
 		$field_required = $field_stat[2];
 		$field_emailcheck = $field_stat[3];
+		$field_clear = $field_stat[4];
 
 
 		//special treatment for selectboxes  
@@ -1252,16 +1258,22 @@ function cforms($args = '',$no = '') {
 				break;
 
 			case "textfield":
-				$field = '<input type="text" name="cf'.$no.'_field_' . $i . '" id="cf'.$no.'_field_' . $i . '" class="' . $field_class . '" value="' . $field_value  . '"/>';
-			  if ( $reg_exp<>'' )
-            $field .= '<input type="hidden" name="cf'.$no.'_field_' . $i . '_regexp" id="cf'.$no.'_field_' . $i . '_regexp" value="'.$reg_exp.'"/>';
 
+			    $onfocus = $field_clear?' onfocus="clearField(this)" onblur="setField(this)"' : '';
+					
+				$field = '<input type="text" name="cf'.$no.'_field_' . $i . '" id="cf'.$no.'_field_' . $i . '" class="' . $field_class . '" value="' . $field_value  . '"'.$onfocus.'/>';
+				  if ( $reg_exp<>'' )
+	           		 $field .= '<input type="hidden" name="cf'.$no.'_field_' . $i . '_regexp" id="cf'.$no.'_field_' . $i . '_regexp" value="'.$reg_exp.'"/>';
+	
 				break;
 
 			case "textarea":
-				$field = '<textarea cols="30" rows="8" name="cf'.$no.'_field_' . $i . '" id="cf'.$no.'_field_' . $i . '" class="' . $field_class . '">' . $field_value  . '</textarea>';
-			  if ( $reg_exp<>'' )
-            $field .= '<input type="hidden" name="cf'.$no.'_field_' . $i . '_regexp" id="cf'.$no.'_field_' . $i . '_regexp" value="'.$reg_exp.'"/>';
+
+			    $onfocus = $field_clear?' onfocus="clearField(this)" onblur="setField(this)"' : '';
+
+				$field = '<textarea cols="30" rows="8" name="cf'.$no.'_field_' . $i . '" id="cf'.$no.'_field_' . $i . '" class="' . $field_class . '"'. $onfocus.'>' . $field_value  . '</textarea>';
+				  if ( $reg_exp<>'' )
+	           		 $field .= '<input type="hidden" name="cf'.$no.'_field_' . $i . '_regexp" id="cf'.$no.'_field_' . $i . '_regexp" value="'.$reg_exp.'"/>';
 				break;
 
 	    case "ccbox":
@@ -1335,8 +1347,7 @@ function cforms($args = '',$no = '') {
 
 			case "radiobuttons":
 				array_shift($options);
-				$field .= $indent . $tab . '<span class="cformradiolabel">' . (($field_name)) . '</span>' .
-																	 '<span class="cfradioblock">';
+				$field .= $indent . $tab . '<span class="cformradiolabel">' . (($field_name)) . '</span><span class="cfradioblock">';
 				$second = false; $id=1;
 				foreach( $options as $option  ) {
 				    $checked = '';
@@ -1465,15 +1476,14 @@ function cforms_options_page_style() {
 	global $cforms_root;
 	if (   strpos($_SERVER['REQUEST_URI'], $plugindir.'/cforms') !== false )
 		echo	'<link rel="stylesheet" type="text/css" href="' . $cforms_root . '/cforms-admin.css" />' . "\n" .
-					'<script type="text/javascript" src="' . $cforms_root . '/js/dbx.js"></script>' . "\n" .
-					'<script type="text/javascript" src="' . $cforms_root . '/js/cformsadmin.js"></script>' . "\n";
+				'<script type="text/javascript" src="' . $cforms_root . '/js/dbx.js"></script>' . "\n" .
+				'<script type="text/javascript" src="' . $cforms_root . '/js/cformsadmin.js"></script>' . "\n";
 }
 
 //footer unbder all options pages
 function cforms_footer() {
 ?>	<p style="padding-top:50px; font-size:10px; text-align:center;">
-		<em><?php _e('If you are new to using this plugin or have troubles understanding what these settings do, '.
-					 'please read the documentation at', 'cforms') ?>
+		<em><?php _e('If you are new to using this plugin or have troubles understanding what these settings do, please read the documentation at', 'cforms') ?>
 			<a href="http://www.deliciousdays.com/cforms-plugin/" title="delicous:days">www.deliciousdays.com/cforms-plugin</a>
 		</em>
 	</p>

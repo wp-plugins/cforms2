@@ -82,7 +82,7 @@ function insert_cforms_script() {
 								myValue = \'<!--cforms\' + myValue + \'-->\';
 								edInsertContent(edCanvas, myValue);
 							}
-							</script>';
+				</script>';
 		return;
 }
 
