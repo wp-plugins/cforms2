@@ -188,7 +188,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 		<fieldset class="cformsoptions">
 			<p class="cflegend" style="margin-top:10px;"><?php _e('File Upload Settings', 'cforms') ?></p>
 
-			<p><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#upload',__('Configure and double-check these settings in case you are adding a "<code style="background:#D8FFCC">File Upload Box</code>" to your form (also see the <a href="[url]">Help!</a> for further information).', 'cforms')); ?></p>
+			<p><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#upload',__('Configure and double-check these settings in case you are adding a "<code class="codehighlight">File Upload Box</code>" to your form (also see the <a href="[url]">Help!</a> for further information).', 'cforms')); ?></p>
 
 			<p class="ex"><?php _e('Also, note that by adding a <em>File Upload Box</em> to your form, the Ajax (if enabled) submission method will (automatically) <strong>gracefully degrade</strong> to the standard method, due to general HTML limitations.', 'cforms') ?></p>
 
@@ -256,7 +256,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 		<fieldset class="cformsoptions">
 			<p class="cflegend"><?php _e('Visitor Verification', 'cforms') ?></p>
 
-			<p><?php _e('Getting a lot of <strong>SPAM</strong>? Use these Q&A\'s to counteract spam and ensure it\'s a human submitting the form. To use in your form, add the corresponding input field "<code style="background:#D8FFCC">Visitor verification</code>" preferably in its own FIELDSET (<em>check cforms.css for styling options</em>)!', 'cforms') ?></p>
+			<p><?php _e('Getting a lot of <strong>SPAM</strong>? Use these Q&A\'s to counteract spam and ensure it\'s a human submitting the form. To use in your form, add the corresponding input field "<code class="codehighlight">Visitor verification</code>" preferably in its own FIELDSET (<em>check cforms.css for styling options</em>)!', 'cforms') ?></p>
 
 			<div class="optionsbox" style="margin-top:25px;">
 				<div class="optionsboxL"><?php _e('<strong>Failure message</strong><br/>(for providing a wrong answer)', 'cforms'); ?></div>

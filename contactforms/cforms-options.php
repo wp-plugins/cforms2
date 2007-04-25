@@ -533,13 +533,13 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 
 		<p><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#fields',__('Please see the help section for information on how to deploy the <a href="[url]">supported fields</a>.', 'cforms')); ?></p>
 
-		<p class="ex"><?php _e('For the <em>auto confirmation</em> feature to work, make sure to mark at least one field <code style="background:#D8FFCC">Is Email</code>, otherwise <strong>NO</strong> auto confirmation email will be sent out! If multiple fields are checked "Is Email", only the first in the list will receive a notification.', 'cforms') ?></p>
+		<p class="ex"><?php _e('For the <em>auto confirmation</em> feature to work, make sure to mark at least one field <code class="codehighlight">Is Email</code>, otherwise <strong>NO</strong> auto confirmation email will be sent out! If multiple fields are checked "Is Email", only the first in the list will receive a notification.', 'cforms') ?></p>
 
 		<p><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#hfieldsets',__('How to structure your form using <strong>FIELDSETS</strong>? Check out the <a href="[url]">help section</a> for a sample screenshot depicting proper setup.', 'cforms')); ?></p>
 
-		<p><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#single',__('<strong>Default values</strong> can be set for single & multi-line fields. <a href="[url]">See help</a>. In case you\'d like to <strong>auto clear</strong> a default value <em>on field focus</em>, set <code style="background:#D8FFCC">Auto Clear</code>.', 'cforms')); ?></p>
+		<p><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#single',__('<strong>Default values</strong> can be set for single & multi-line fields. <a href="[url]">See help</a>. In case you\'d like to <strong>auto clear</strong> a default value <em>on field focus</em>, set <code class="codehighlight">Auto Clear</code>.', 'cforms')); ?></p>
 
-		<p><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#regexp',__('Single & Multi line input fields support custom <strong>regular expressions</strong> for specific field validation! Check the <a href="[url]">help</a> section for examples and make sure to check <code style="background:#D8FFCC">Is Required</code>.', 'cforms')); ?></p>
+		<p><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#regexp',__('Single & Multi line input fields support custom <strong>regular expressions</strong> for specific field validation! Check the <a href="[url]">help</a> section for examples and make sure to check <code class="codehighlight">Is Required</code>.', 'cforms')); ?></p>
 
 		<p id="cformswarning"><?php echo $usermsg; ?></p>
 
@@ -740,7 +740,7 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 
 			<p><?php _e('These settings will be used for the email sent to you. Both "<strong>xx@yy.zz</strong>" and "<strong>abc &lt;xx@yy.zz&gt;</strong>" formats are valid, but check if your mailserver does accept the format of choice!"', 'cforms') ?></p>
 
-			<p class="ex"><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#multirecipients',__('More than one "<strong>form admin</strong>"? Simply add additional email addresses separated by a <strong style="color:red">comma</strong>. &nbsp; <em><u>Note:</u></em> &nbsp; If you want the visitor to choose from any of these per select box, you need to add a corresponding "<code style="background:#D8FFCC">Multiple Recipients</code>" input field <a href="#anchorfields">above</a> (see the HELP section for <a href="[url]">details</a> on the entry format expected!). If <strong>no</strong> "Multiple Recipients" input field is defined above, the submitted form data will go out to <strong>every email recipient</strong>!', 'cforms')); ?></p>
+			<p class="ex"><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#multirecipients',__('More than one "<strong>form admin</strong>"? Simply add additional email addresses separated by a <strong style="color:red">comma</strong>. &nbsp; <em><u>Note:</u></em> &nbsp; If you want the visitor to choose from any of these per select box, you need to add a corresponding "<code class="codehighlight">Multiple Recipients</code>" input field <a href="#anchorfields">above</a> (see the HELP section for <a href="[url]">details</a> on the entry format expected!). If <strong>no</strong> "Multiple Recipients" input field is defined above, the submitted form data will go out to <strong>every email recipient</strong>!', 'cforms')); ?></p>
 			<br/>
 			<div class="optionsbox">
 				<div class="optionsboxL"><?php _e('Email address(es)', 'cforms') ?></div>

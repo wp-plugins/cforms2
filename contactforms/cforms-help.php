@@ -23,8 +23,8 @@ if(!current_user_can('manage_cforms')) {
 		<a id="inserting"></a>
 	    <h3 style="margin-top:25px;"><?php _e('Inserting a form', 'cforms'); ?></h3>
 
-		<p><?php echo str_replace('[url]','?page=' . $plugindir . '/cforms-global-settings.php',__('Please use <code style="background:#D8FFCC">&lt;!--cforms--&gt;</code> for the first form and/or <code style="background:#D8FFCC">&lt;!--cforms<span style="color:red; font-weight:bold;">X</span>--&gt;</code> for your other forms to include them in your <em>Pages/Posts</em>. You can apply the aforementioned code either manually or via the editor button (if turned in the <a href="[url]">Plugin Settings</a>).', 'cforms')); ?></p>
-		<p><?php _e('Alternatively, you can specifically insert a form (into the sidebar for instance etc.) per the PHP function call <code style="background:#D8FFCC">insert_cform();</code> for the default/first form and/or <code style="background:#D8FFCC">insert_cform(\'<span style="color:red; font-weight:bold;">X</span>\');</code> for any other form. ', 'cforms'); ?></p>
+		<p><?php echo str_replace('[url]','?page=' . $plugindir . '/cforms-global-settings.php',__('Please use <code class="codehighlight">&lt;!--cforms--&gt;</code> for the first form and/or <code class="codehighlight">&lt;!--cforms<span style="color:red; font-weight:bold;">X</span>--&gt;</code> for your other forms to include them in your <em>Pages/Posts</em>. You can apply the aforementioned code either manually or via the editor button (if turned in the <a href="[url]">Plugin Settings</a>).', 'cforms')); ?></p>
+		<p><?php _e('Alternatively, you can specifically insert a form (into the sidebar for instance etc.) per the PHP function call <code class="codehighlight">insert_cform();</code> for the default/first form and/or <code class="codehighlight">insert_cform(\'<span style="color:red; font-weight:bold;">X</span>\');</code> for any other form. ', 'cforms'); ?></p>
 		<p><?php _e('Note: "<span style="color:red; font-weight:bold;">X</span>" represents the number of the form, starting with <span style="color:red; font-weight:bold;">2</span>, 3,4 ..and so forth.', 'cforms'); ?></p>
 
 
@@ -39,9 +39,9 @@ if(!current_user_can('manage_cforms')) {
 		<ul class="helpfields">
 		  <strong><?php _e('Text only (no input) field:', 'cforms'); ?></strong>
 			<li style="margin-top:5px;"><?php _e('Format: &nbsp;&nbsp;&nbsp; <em>text paragraph</em><span style="color:red; font-weight:bold;">|</span><em>css class</em><span style="color:red; font-weight:bold;">|</span><em>optional style</em>', 'cforms'); ?></li>
-			<li><?php _e('Example: &nbsp;&nbsp;&nbsp; <code style="background:#D8FFCC">Please make sure to provide all required information||padding:0 100px; font-style:italic; font-size:9x; font-weight:bold;</code>', 'cforms'); ?></li>
+			<li><?php _e('Example: &nbsp;&nbsp;&nbsp; <code class="codehighlight">Please make sure to provide all required information||padding:0 100px; font-style:italic; font-size:9x; font-weight:bold;</code>', 'cforms'); ?></li>
 			<img style="float:left; list-style:none;" src="<?php echo $cforms_root; ?>/images/example-text.png"  alt=""/>
-			<li style="margin-top:25px;"><?php _e('The above expression applies the custom class "<code style="background:#D8FFCC">mytextclass</code>" <strong>AND</strong> the specific styles "<code style="background:#D8FFCC">padding:0 100px; font-style:italic; font-size:9x; font-weight:bold;</code>" to the paragraph.', 'cforms'); ?></li>
+			<li style="margin-top:25px;"><?php _e('The above expression applies the custom class "<code class="codehighlight">mytextclass</code>" <strong>AND</strong> the specific styles "<code class="codehighlight">padding:0 100px; font-style:italic; font-size:9x; font-weight:bold;</code>" to the paragraph.', 'cforms'); ?></li>
 		</ul>
 
 
@@ -52,9 +52,9 @@ if(!current_user_can('manage_cforms')) {
 		<ul class="helpfields">
 		  <strong><?php _e('Single/Multi line input fields:', 'cforms'); ?></strong>
 			<li style="margin-top:5px;"><?php _e('Format: &nbsp;&nbsp;&nbsp; <em>field name</em><span style="color:red; font-weight:bold;">|</span><em>default value</em><span style="color:red; font-weight:bold;">|</span><em><a href="#regexp">regular expression</a></em>', 'cforms'); ?></li>
-			<li><?php _e('Example: &nbsp;&nbsp;&nbsp; <code style="background:#D8FFCC">Reference #|xxx-xx-xxx|^[0-9A-Z-]+$</code>', 'cforms');?></li>
+			<li><?php _e('Example: &nbsp;&nbsp;&nbsp; <code class="codehighlight">Reference #|xxx-xx-xxx|^[0-9A-Z-]+$</code>', 'cforms');?></li>
 			<img style="float:left; list-style:none;" src="<?php echo $cforms_root; ?>/images/example-single.png"  alt=""/>
-			<li style="margin-top:25px;"><?php _e('If you need to omit the <em>default value</em>, the syntax would be: <code style="background:#D8FFCC">Your name||^[a-zA-Z \.]+$</code>', 'cforms'); ?></li>
+			<li style="margin-top:25px;"><?php _e('If you need to omit the <em>default value</em>, the syntax would be: <code class="codehighlight">Your name||^[a-zA-Z \.]+$</code>', 'cforms'); ?></li>
 		</ul>
 		
 
@@ -64,16 +64,16 @@ if(!current_user_can('manage_cforms')) {
 		<ul class="helpfields">
 		  <strong><?php _e('Select boxes & Radio buttons:', 'cforms'); ?></strong>
 			<li style="margin-top:5px;"><?php _e('Format: &nbsp;&nbsp;&nbsp; <em>field name<span style="color:red; font-weight:bold;">#</span>option1<span style="color:red; font-weight:bold;">|</span>value1<span style="color:red; font-weight:bold;">#</span>option2<span style="color:red; font-weight:bold;">|</span>value2<span style="color:red; font-weight:bold;">#</span>option3</em>...', 'cforms'); ?></li>
-			<li><?php _e('Example: &nbsp;&nbsp;&nbsp; <code style="background:#D8FFCC">Your age#12-18|kiddo#19-30|young#31-45#45+|older</code>', 'cforms');?></li>
+			<li><?php _e('Example: &nbsp;&nbsp;&nbsp; <code class="codehighlight">Your age#12-18|kiddo#19-30|young#31-45#45+|older</code>', 'cforms');?></li>
 			<li><?php _e('Starting with a \'#\', e.g. #item1#item2#item3... will result in not showing a label to the left of the field', 'cforms'); ?></li>
 			<li><?php _e('The <b>option</b> placeholder determins the text displayed to the visitor, <strong>value</strong> what is being sent in the email.', 'cforms'); ?></li>
 			<li><?php _e('Is no <strong>value</strong> explicitly given, then the option text = the value sent in the email.', 'cforms');?></li>
-			<li><?php _e('<strong><u>Special case (Select box marked "Is Required"):</u></strong> Using a minus symbol <code style="background:#D8FFCC">-</code> as the value (after <code style="background:#D8FFCC">|</code>), will mark an option as "not valid"!', 'cforms'); ?>
+			<li><?php _e('<strong><u>Special case (Select box marked "Is Required"):</u></strong> Using a minus symbol <code class="codehighlight">-</code> as the value (after <code class="codehighlight">|</code>), will mark an option as "not valid"!', 'cforms'); ?>
 
      			<ul style="margin-top:25px; padding:0; ">
 						<img src="<?php echo $cforms_root; ?>/images/example-dropdown.png" style="float:left;" alt=""/>
-						<li><?php _e('<strong>Select box</strong>: <code style="background:#D8FFCC">Your age#Please pick your age group|-#12-18|kiddo#19-30|young#31-45#45+|older</code>', 'cforms'); ?></li>
-						<li><?php _e('The first parameter, "<strong>Please pick your age group</strong>" has a value of <code style="background:#D8FFCC">-</code>, hence it will not validate, forcing the visitor to make a valid selection.', 'cforms'); ?></li>
+						<li><?php _e('<strong>Select box</strong>: <code class="codehighlight">Your age#Please pick your age group|-#12-18|kiddo#19-30|young#31-45#45+|older</code>', 'cforms'); ?></li>
+						<li><?php _e('The first parameter, "<strong>Please pick your age group</strong>" has a value of <code class="codehighlight">-</code>, hence it will not validate, forcing the visitor to make a valid selection.', 'cforms'); ?></li>
 						<li><?php _e('Option "12-18 & 19-30" have both values set, which will be sent in the email instead of the displayed numbers.', 'cforms');?></li>
 						<li><?php _e('"45+" has NO value set, hence the value sent defaults to the text displayed ("45+").', 'cforms');?></li>
 				</ul>
@@ -87,11 +87,11 @@ if(!current_user_can('manage_cforms')) {
 		<ul class="helpfields">
 		  <strong><?php _e('Multi select boxes:', 'cforms'); ?></strong>
 			<li style="margin-top:5px;"><?php _e('Format: &nbsp;&nbsp;&nbsp; <em>field name<span style="color:red; font-weight:bold;">#</span>option1<span style="color:red; font-weight:bold;">|</span>value1<span style="color:red; font-weight:bold;">#</span>option2<span style="color:red; font-weight:bold;">|</span>value2<span style="color:red; font-weight:bold;">#</span>option3</em>...', 'cforms'); ?></li>
-			<li><?php _e('Example: &nbsp;&nbsp;&nbsp; <code style="background:#D8FFCC">Please choose#red#blue#green#yellow#orange#pink</code>', 'cforms');?></li>
+			<li><?php _e('Example: &nbsp;&nbsp;&nbsp; <code class="codehighlight">Please choose#red#blue#green#yellow#orange#pink</code>', 'cforms');?></li>
 			<img style="float:left; list-style:none;" src="<?php echo $cforms_root; ?>/images/example-ms.png"  alt=""/>
 			<li style="margin-top:25px;"><?php _e('Multi select fields can be set to <strong>Is Required</strong>. Unless at least one entry is selected the form won\'t validate.', 'cforms');?>
-			<li><?php _e('If <code style="background:#D8FFCC">value1,2,..</code> are not specfified, they default to <code style="background:#D8FFCC">option1,2,...</code>.', 'cforms'); ?></li>
-			<li><?php _e('Examples for specific values could be the matching color codes: e.g. <code style="background:#D8FFCC">red|#ff0000</code>', 'cforms');?></li>
+			<li><?php _e('If <code class="codehighlight">value1,2,..</code> are not specfified, they default to <code class="codehighlight">option1,2,...</code>.', 'cforms'); ?></li>
+			<li><?php _e('Examples for specific values could be the matching color codes: e.g. <code class="codehighlight">red|#ff0000</code>', 'cforms');?></li>
 		</ul>
 
 
@@ -101,8 +101,8 @@ if(!current_user_can('manage_cforms')) {
 		<ul class="helpfields" style="clear:both;">
 		  <strong><?php _e('Check boxes:', 'cforms'); ?></strong>
 			<li style="margin-top:10px;"><?php _e('Format: &nbsp;&nbsp;&nbsp; <em>field name <u>left</u></em><span style="color:red; font-weight:bold;">#</span><em>field name <u>right</em></u>', 'cforms'); ?></li>
-			<li><?php _e('Example: &nbsp;&nbsp;&nbsp; <code style="background:#D8FFCC">#please check if you\'d like more information</code>', 'cforms');?></li>
-			<li><?php _e('You can freely choose on which side of the check box the label appears (e.g. <code style="background:#D8FFCC">#label-right-only</code>).', 'cforms');?></li>
+			<li><?php _e('Example: &nbsp;&nbsp;&nbsp; <code class="codehighlight">#please check if you\'d like more information</code>', 'cforms');?></li>
+			<li><?php _e('You can freely choose on which side of the check box the label appears (e.g. <code class="codehighlight">#label-right-only</code>).', 'cforms');?></li>
 			<li><?php _e('If <strong>both</strong> left and right labels are provided, the form email (&DB tracking) will consider only the <strong>right one</strong>', 'cforms');?></li>
 			<img style="float:left; list-style:none;" src="<?php echo $cforms_root; ?>/images/example-checkbox.png"  alt=""/>
 			<li style="margin-top:25px;"><?php _e('Checkboxes can be flagged "<strong>Is Required</strong>" to support special requiremnts, e.g.: when you require the visitor to confirm that he/she has read term & conditions, before submitting the form.', 'cforms'); ?></li>
@@ -115,7 +115,7 @@ if(!current_user_can('manage_cforms')) {
 		<ul class="helpfields">
 		  <strong><?php _e('CC: option for user:', 'cforms'); ?></strong>
 			<li style="margin-top:10px;"><?php _e('Format: &nbsp;&nbsp;&nbsp; <em>field name<u>left</u></em><span style="color:red; font-weight:bold;">#</span><em>field name <u>right</em></u>', 'cforms'); ?></li>
-			<li><?php _e('Example: &nbsp;&nbsp;&nbsp; <code style="background:#D8FFCC">#please cc: me</code>', 'cforms');?></li>
+			<li><?php _e('Example: &nbsp;&nbsp;&nbsp; <code class="codehighlight">#please cc: me</code>', 'cforms');?></li>
 			<img style="float:left; list-style:none;" src="<?php echo $cforms_root; ?>/images/example-cc.png"  alt=""/>
 			<li style="margin-top:25px;"><?php echo str_replace('[url]','?page=' . $plugindir . '/cforms-options.php#autoconf',__('If the visitor chooses to be CC\'ed <strong>AND</strong> than no additional auto confirmation email (<a href="[url]">if configured</a>) is sent out!', 'cforms')); ?></li>
 			<li><?php _e('Please see also see <em>check boxes</em> above.', 'cforms');?></li>
@@ -132,7 +132,7 @@ if(!current_user_can('manage_cforms')) {
 
 			<li style="margin-top:5px;"><?php _e('Format: &nbsp;&nbsp;&nbsp; <em>field name</em><span style="color:red; font-weight:bold;">#</span><em>Name1</em><span style="color:red; font-weight:bold;">#</span><em>Name2</em><span style="color:red; font-weight:bold;">#</span><em>Name3</em>...', 'cforms'); ?></li>
 			<img style="float:left; list-style:none;" src="<?php echo $cforms_root; ?>/images/example-multi.png"  alt=""/>
-			<li style="margin-top:25px;"><?php _e('Example: &nbsp;&nbsp;&nbsp; <code style="background:#D8FFCC">Send to#Joe#Pete#Hillary</code>', 'cforms');?></li>
+			<li style="margin-top:25px;"><?php _e('Example: &nbsp;&nbsp;&nbsp; <code class="codehighlight">Send to#Joe#Pete#Hillary</code>', 'cforms');?></li>
 			<li><?php echo str_replace('[url]','?page=' . $plugindir . '/cforms-options.php#anchoremail',__('The order of the names (1,2,3...) provided in the input field <strong>directly</strong> corresponds with the order of email addresses configured <a href="[url]">here</a>.', 'cforms')); ?></li>
 		</ul>
 
@@ -144,12 +144,12 @@ if(!current_user_can('manage_cforms')) {
 		  <strong><?php _e('Visitor verification:', 'cforms'); ?></strong>
 			<li style="margin-top:10px;"><?php _e('Format: --', 'cforms');?></li>
 			<li><?php echo str_replace('[url]','?page=' . $plugindir . '/cforms-global-settings.php#visitorv',__('No format required, the field has no configurable label per se, as it is determined at run-time from the list of <strong>Question & Answers</strong> provided <a href="[url]">here</a>.', 'cforms')); ?></li>
-			<li><?php _e('It makes sense to encapsulate this field inside a FIELDSET, to do that simply add a <code style="background:#D8FFCC">New Fieldset</code> field in front of this one.', 'cforms'); ?></li>
+			<li><?php _e('It makes sense to encapsulate this field inside a FIELDSET, to do that simply add a <code class="codehighlight">New Fieldset</code> field in front of this one.', 'cforms'); ?></li>
 
 			<img style="float:left; list-style:none;" src="<?php echo $cforms_root; ?>/images/example-vv.png"  alt=""/>
 			<ul style="margin:15px 0 0 0; padding:0;">
 				  <li><?php _e('The example is made of 2 fields:', 'cforms');?></li>
-				  <li><?php _e('<strong>Fieldset</strong>: <code style="background:#D8FFCC">Visitor Verification Question</code>', 'cforms');?></li>
+				  <li><?php _e('<strong>Fieldset</strong>: <code class="codehighlight">Visitor Verification Question</code>', 'cforms');?></li>
 				  <li><?php _e('<strong>Visitor verification</strong>: --', 'cforms');?></li>
 			</ul>
 		</ul>
@@ -162,15 +162,15 @@ if(!current_user_can('manage_cforms')) {
 		<ul class="helpfields">
 		  <strong><?php _e('File Upload Box:', 'cforms'); ?></strong>
 			<li style="margin-top:5px;"><?php _e('Format: &nbsp;&nbsp;&nbsp; <em>form label</em>', 'cforms');?></li>
-			<li><?php _e('Example: &nbsp;&nbsp;&nbsp; <code style="background:#D8FFCC">Please select a file</code>', 'cforms');?></li>
-			<li><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-global-settings.php#upload',__('Please also double-check the <a href="[url]">general settings</a> for <code style="background:#D8FFCC">File Upload</code> fields.', 'cforms')); ?></li>
+			<li><?php _e('Example: &nbsp;&nbsp;&nbsp; <code class="codehighlight">Please select a file</code>', 'cforms');?></li>
+			<li><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-global-settings.php#upload',__('Please also double-check the <a href="[url]">general settings</a> for <code class="codehighlight">File Upload</code> fields.', 'cforms')); ?></li>
 
 			<img style="float:left; list-style:none;" src="<?php echo $cforms_root; ?>/images/example-upload.png"  alt=""/>
 			<ul style="margin:15px 0 0 0; padding:0;">
 				  <li><?php _e('The example is made of 3 fields:', 'cforms');?></li>
-				  <li><?php _e('<strong>Fieldset</strong>: <code style="background:#D8FFCC">Upload a file</code>', 'cforms');?></li>
-				  <li><?php _e('<b>Text only (no input)</b>: <code style="background:#D8FFCC">Note: only .txt and .doc files permitted & there is a file size limit of 200KB!||font-size:9px;</code>', 'cforms');?></li>
-				  <li><?php _e('<strong>File Upload Box</strong>: <code style="background:#D8FFCC">Choose a file</code>', 'cforms');?><br/><br/><a href="#top"><?php _e('Back to the top.', 'cforms') ?></a></li>
+				  <li><?php _e('<strong>Fieldset</strong>: <code class="codehighlight">Upload a file</code>', 'cforms');?></li>
+				  <li><?php _e('<b>Text only (no input)</b>: <code class="codehighlight">Note: only .txt and .doc files permitted & there is a file size limit of 200KB!||font-size:9px;</code>', 'cforms');?></li>
+				  <li><?php _e('<strong>File Upload Box</strong>: <code class="codehighlight">Choose a file</code>', 'cforms');?><br/><br/><a href="#top"><?php _e('Back to the top.', 'cforms') ?></a></li>
 			</ul>
 
 		</ul>
@@ -204,15 +204,15 @@ if(!current_user_can('manage_cforms')) {
 		<ul class="helpfields">
 		  <strong><?php _e('Single/Multi line input fields:', 'cforms'); ?></strong>
 			<li style="margin-top:5px;"><?php _e('Format: <em>field name</em><span style="color:red; font-weight:bold;">|</span><em>default value</em><span style="color:red; font-weight:bold;">|</span><em>regular expression</em>', 'cforms'); ?></li>
-			<li><?php _e('Example: &nbsp;&nbsp;&nbsp; <code style="background:#D8FFCC">Your name|your full name please|^[a-zA-Z \.]+$</code>', 'cforms');?></li>
+			<li><?php _e('Example: &nbsp;&nbsp;&nbsp; <code class="codehighlight">Your name|your full name please|^[a-zA-Z \.]+$</code>', 'cforms');?></li>
 			<li><?php _e('Other examples:', 'cforms');?>
 				<ul>
-					<li><?php _e('US zip code: <code style="background:#D8FFCC">^\d{5}$)|(^\d{5}-\d{4}$</code>', 'cforms');?></li>
-					<li><?php _e('US phone #: <code style="background:#D8FFCC">^[\(]?(\d{0,3})[\)]?[\s]?[\-]?(\d{3})[\s]?[\-]?(\d{4})[\s]?[x]?(\d*)$</code>', 'cforms');?></li>
-					<li><?php _e('<code style="background:#D8FFCC">^</code> and <code style="background:#D8FFCC">$</code> define the start and the end of the input', 'cforms');?></li>
-					<li><?php _e('"<code style="background:#D8FFCC">ab*</code>": matches a string that has an "a" followed by zero or more "b\'s" ("a", "ab", "abbb", etc.);', 'cforms');?></li>
-					<li><?php _e('"<code style="background:#D8FFCC">ab+</code>": same, but there\'s at least one b ("ab", "abbb", etc.);', 'cforms');?></li>
-					<li><?php _e('"<code style="background:#D8FFCC">[a-d]</code>": a string that has lowercase letters "a" through "d"', 'cforms');?></li>
+					<li><?php _e('US zip code: <code class="codehighlight">^\d{5}$)|(^\d{5}-\d{4}$</code>', 'cforms');?></li>
+					<li><?php _e('US phone #: <code class="codehighlight">^[\(]?(\d{0,3})[\)]?[\s]?[\-]?(\d{3})[\s]?[\-]?(\d{4})[\s]?[x]?(\d*)$</code>', 'cforms');?></li>
+					<li><?php _e('<code class="codehighlight">^</code> and <code class="codehighlight">$</code> define the start and the end of the input', 'cforms');?></li>
+					<li><?php _e('"<code class="codehighlight">ab*</code>": matches a string that has an "a" followed by zero or more "b\'s" ("a", "ab", "abbb", etc.);', 'cforms');?></li>
+					<li><?php _e('"<code class="codehighlight">ab+</code>": same, but there\'s at least one b ("ab", "abbb", etc.);', 'cforms');?></li>
+					<li><?php _e('"<code class="codehighlight">[a-d]</code>": a string that has lowercase letters "a" through "d"', 'cforms');?></li>
 				</ul>
 			</li>
 			<li><?php _e('More information can be found <a href="http://weblogtoolscollection.com/regex/regex.php">here</a>, a great regexp repository <a href="http://regexlib.com">here</a>.', 'cforms');?></li>
@@ -230,13 +230,13 @@ if(!current_user_can('manage_cforms')) {
 			<li><?php _e('Dynamic forms only work in <strong>non-Ajax</strong> mode.', 'cforms');?></li>
 			<li><?php _e('Each dynamic form references and thus requires <strong>a base form defined</strong> in the cforms form settings. All its settings will be used, except the form (&field) definition.', 'cforms');?></li>
 			<li><?php _e('Any of the form fields described in the plugins\' <strong>HELP!</strong> section can be dynamically generated.', 'cforms');?></li>
-			<li><?php _e('Function call to generate dynamic forms: <code style="background:#D8FFCC">insert_custom_cform($fields:array,$form-no:int);</code> with', 'cforms');?>
+			<li><?php _e('Function call to generate dynamic forms: <code class="codehighlight">insert_custom_cform($fields:array,$form-no:int);</code> with', 'cforms');?>
 
                 <br/><br/>
-                <code style="background:#D8FFCC">$form-no</code>: <?php _e('empty string for the first (default) form and <strong>2</strong>,3,4... for any subsequent form', 'cforms'); ?><br/>
-                <code style="background:#D8FFCC">$fields</code> :
+                <code class="codehighlight">$form-no</code>: <?php _e('empty string for the first (default) form and <strong>2</strong>,3,4... for any subsequent form', 'cforms'); ?><br/>
+                <code class="codehighlight">$fields</code> :
 
-                <code style="background:#D8FFCC"><pre>
+                <code class="codehighlight"><pre>
             $fields['label'][n]   = 'label';                <?php _e('no default value: expected format described in plugin HELP! section', 'cforms'); ?>
 
             $fields['type'][n]    = 'input field type';     default: 'textfield';
@@ -252,18 +252,18 @@ if(!current_user_can('manage_cforms')) {
         <ul style="list-style:none;">
         <li>
             <table>
-                <tr><td><?php _e('text paragraph:', 'cforms'); ?></td><td> <code style="background:#D8FFCC">textonly</code></td></tr>
-                <tr><td><?php _e('single input field:', 'cforms'); ?></td><td> <code style="background:#D8FFCC">textfield</code></td></tr>
-                <tr><td><?php _e('multi line field:', 'cforms'); ?></td><td> <code style="background:#D8FFCC">textarea</code></td></tr>
-                <tr><td><?php _e('check boxes:', 'cforms'); ?></td><td> <code style="background:#D8FFCC">checkbox</code></td></tr>
-                <tr><td><?php _e('drop down fields:', 'cforms'); ?></td><td> <code style="background:#D8FFCC">selectbox</code></td></tr>
-                <tr><td><?php _e('radio buttons:', 'cforms'); ?></td><td> <code style="background:#D8FFCC">radiobuttons</code></td></tr>
-                <tr><td><?php _e('\'CC\' check box', 'cforms'); ?> <sup>*)</sup>:</td><td> <code style="background:#D8FFCC">ccbox</code></td></tr>
-                <tr><td><?php _e('Multi-recipients field', 'cforms'); ?> <sup>*)</sup>:</td><td> <code style="background:#D8FFCC">emailtobox</code></td></tr>
-                <tr><td><?php _e('Spam/Visitor verification', 'cforms'); ?> <sup>*)</sup>:</td><td> <code style="background:#D8FFCC">verification</code></td></tr>
-                <tr><td><?php _e('File Upload fields', 'cforms'); ?> <sup>*)</sup>:</td><td> <code style="background:#D8FFCC">upload</code></td></tr>
-                <tr><td><?php _e('Begin of a fieldset:', 'cforms'); ?></td><td> <code style="background:#D8FFCC">fieldsetstart</code></td></tr>
-                <tr><td><?php _e('End of a fieldset:', 'cforms'); ?></td><td> <code style="background:#D8FFCC">fieldsetend</code></td></tr>
+                <tr><td><?php _e('text paragraph:', 'cforms'); ?></td><td> <code class="codehighlight">textonly</code></td></tr>
+                <tr><td><?php _e('single input field:', 'cforms'); ?></td><td> <code class="codehighlight">textfield</code></td></tr>
+                <tr><td><?php _e('multi line field:', 'cforms'); ?></td><td> <code class="codehighlight">textarea</code></td></tr>
+                <tr><td><?php _e('check boxes:', 'cforms'); ?></td><td> <code class="codehighlight">checkbox</code></td></tr>
+                <tr><td><?php _e('drop down fields:', 'cforms'); ?></td><td> <code class="codehighlight">selectbox</code></td></tr>
+                <tr><td><?php _e('radio buttons:', 'cforms'); ?></td><td> <code class="codehighlight">radiobuttons</code></td></tr>
+                <tr><td><?php _e('\'CC\' check box', 'cforms'); ?> <sup>*)</sup>:</td><td> <code class="codehighlight">ccbox</code></td></tr>
+                <tr><td><?php _e('Multi-recipients field', 'cforms'); ?> <sup>*)</sup>:</td><td> <code class="codehighlight">emailtobox</code></td></tr>
+                <tr><td><?php _e('Spam/Visitor verification', 'cforms'); ?> <sup>*)</sup>:</td><td> <code class="codehighlight">verification</code></td></tr>
+                <tr><td><?php _e('File Upload fields', 'cforms'); ?> <sup>*)</sup>:</td><td> <code class="codehighlight">upload</code></td></tr>
+                <tr><td><?php _e('Begin of a fieldset:', 'cforms'); ?></td><td> <code class="codehighlight">fieldsetstart</code></td></tr>
+                <tr><td><?php _e('End of a fieldset:', 'cforms'); ?></td><td> <code class="codehighlight">fieldsetend</code></td></tr>
             </table>
         </li>
         <li><sup>*)</sup> <?php _e('<em>should only be used <strong>once</strong> per generated form!</em>', 'cforms'); ?></li>
@@ -274,7 +274,7 @@ if(!current_user_can('manage_cforms')) {
         <strong><?php _e('Simple example:', 'cforms'); ?></strong>
         <ul style="list-style:none;">
         <li>
-        <code style="background:#D8FFCC"><pre>
+        <code class="codehighlight"><pre>
 $fields = array();
 
 $fields['label'][0]   ='<?php _e('Your Name|Your Name', 'cforms'); ?>';
@@ -297,7 +297,7 @@ insert_custom_cform($fields,'');    //<?php _e('call default form with new field
         <?php _e('<strong>More advanced example</strong> (file access)<strong>:</strong>', 'cforms'); ?>
         <ul style="list-style:none;">
         <li>
-        <code style="background:#D8FFCC"><pre>
+        <code class="codehighlight"><pre>
 $fields['label'][0]  ='<?php _e('Your Name|Your Name', 'cforms'); ?>';
 $fields['type'][0]   ='textfield';
 $fields['isreq'][0]  ='1';
@@ -328,10 +328,10 @@ insert_custom_cform($fields,5);    //<?php _e('call form #5 with new fields (4)'
         </li>
         </ul>
 
-        <?php _e('With <code style="background:#D8FFCC">month.txt</code> containing all 12 months of a year:', 'cforms'); ?>
+        <?php _e('With <code class="codehighlight">month.txt</code> containing all 12 months of a year:', 'cforms'); ?>
         <ul style="list-style:none;">
         <li>
-        <code style="background:#D8FFCC"><pre>
+        <code class="codehighlight"><pre>
 <?php _e('January', 'cforms'); ?>
 
 <?php _e('February', 'cforms'); ?>
@@ -349,7 +349,7 @@ insert_custom_cform($fields,5);    //<?php _e('call form #5 with new fields (4)'
 
 		<a id="CSS"></a>
 	    <h3><?php _e('Styling Your Forms (cforms.css)', 'cforms'); ?></h3>
-		<p><?php _e('Please see <code style="background:#D8FFCC">cforms.css</code> in your plugin directory for global settings as well as individual configuration on a form, fieldset and even input field level.', 'cforms'); ?></p>
+		<p><?php _e('Please see <code class="codehighlight">cforms.css</code> in your plugin directory for global settings as well as individual configuration on a form, fieldset and even input field level.', 'cforms'); ?></p>
 		<p><?php _e('I hope the <strong>CSS documentation & notes</strong> in this file are sufficient. The default configuration for all forms should be compliant with most browsers, however, there are little (if any) limitations to completely adjust the layout and branding of your forms, please see the plugin home page for examples and explanations.', 'cforms'); ?></p>
 		<a href="#top"><?php _e('Back to the top.', 'cforms') ?></a>
 
