@@ -106,7 +106,17 @@ function call_err(no,err,popFlag){
 }
 
 
+function clearField(thefield) {
+  if ( thefield.defaultValue == thefield.value ) 
+  		thefield.value = '';
+};
 
+function setField(thefield) {
+  if ( thefield.value == '' ) 
+  		thefield.value = thefield.defaultValue;
+};
+  
+  
 function cforms_validate(no, upload) {
 
 	if (!no) no='';
