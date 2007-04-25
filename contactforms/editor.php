@@ -13,7 +13,7 @@ function cforms_addbuttons() {
 		}
 		else {
 				// Do it in the old way with buttonsnap
-				$button_image_url = $cforms_root . '/js/images/buttonpic.gif';
+				$button_image_url = $cforms_root . '/images/buttonpic.gif';
 				buttonsnap_separator();
 				buttonsnap_jsbutton($button_image_url, __('cforms', 'cforms'), 'cforms_buttonscript();');
 
