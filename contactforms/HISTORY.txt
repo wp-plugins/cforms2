@@ -7,6 +7,7 @@ v3.5 (mostly maintenance)
 *) feature: attachments (uploads) are now stored on the server and can be accessed 
     via the "Tracking" page
 *) feature: added optional ID tracking to forms (& emails sent out)
+*) bugfix: editor button wouldn't show due to wrong image path
 *) bugfix: order of fields on the "Tracking" page fixed, to ensure an absolute order
     NOTE: as part of the install/update either deactivate/reactive the plugin or delete 
     the existing Tracking tables, to make use of the new table structure)
