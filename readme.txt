@@ -16,6 +16,7 @@ covering a variety of use cases and features from attachments to multi form
 management, you can even have multiple forms on the same page!
 
 # Plugin Features
+* Full localization support (currently: English, German)
 * File attachments (upload)
 * Multiple forms on one or many pages / posts
 * Ajax supported form submission (w/ graceful fall-back)
@@ -41,7 +42,7 @@ management, you can even have multiple forms on the same page!
 	* "CC me" check box for visitors
 	* multiple form recipient (drop down list)
 	* visitor verification
-* Default values for single/multi-line input fields
+* Default values for single/multi-line input fields (w/ auto clear,reset)
 * Fully integrated with TinyMCE & std editor (buttons)
 * Clean separation of CSS styling and form code
 * Validates
