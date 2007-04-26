@@ -356,7 +356,7 @@ insert_custom_cform($fields,5);    //<?php _e('call form #5 with new fields (4)'
 
 		<a id="troubles"></a>
 	    <h3><?php _e('Having Troubles?', 'cforms'); ?></h3>
-		<p><?php _e('For up-to-date information check the <a href="http://www.deliciousdays.com/cforms-plugin#faq">FAQs</a> and comment section on the plugin homepage.', 'cforms'); ?></p>
+		<p><?php _e('For up-to-date information check the <a href="http://www.deliciousdays.com/cforms-forum">cforms forum</a> and comment section on the plugin homepage.', 'cforms'); ?></p>
 
 
 	<?php cforms_footer(); ?>

@@ -57,8 +57,19 @@ if ( (isset($_POST['delete'])) ) {
 	$i=0;
 	foreach ($_POST['entries'] as $entry) :
 		$entry = (int) $entry;
+
+		$fileval = $wpdb->get_row("SELECT DISTINCT field_val FROM {$wpdb->cformsdata} WHERE sub_id = '$entry' AND field_name LIKE '%[*]%'");
+		$file = get_option('cforms_upload_dir').'/'.$entry.'-'.$fileval->field_val;
+		
+		$del='';
+		if ( $fileval->field_val <> '' ){
+			if ( file_exists( $file ) )
+				unlink ( $file );
+		}
+
 		$nuked = $wpdb->query("DELETE FROM {$wpdb->cformssubmissions} WHERE id = '$entry'");
 		$nuked = $wpdb->query("DELETE FROM {$wpdb->cformsdata} WHERE sub_id = '$entry'");
+
 		$i++;
 	endforeach;
 	
@@ -71,19 +82,50 @@ if ( (isset($_POST['delete'])) ) {
 
 
 
+// delete an entry?
+if ( isset($_POST['sqlwhere']) ){
+
+	foreach( array_keys($_POST) as $arg){
+		if ( ! (strpos($arg, 'xbutton') === false) )
+			$entry = substr( $arg,7 );
+	}
+
+	$fileval = $wpdb->get_row("SELECT DISTINCT field_val FROM {$wpdb->cformsdata} WHERE sub_id = '$entry' AND field_name LIKE '%[*]%'");
+	$file = get_option('cforms_upload_dir').'/'.$entry.'-'.$fileval->field_val;
+	
+	$del='';
+	if ( $fileval->field_val <> '' ){
+		if ( file_exists( $file ) ){
+			unlink ( $file );
+			$del = __('(including attachment)','cforms');
+		}
+		else
+			$del = __('(but associated attachment was not found!)','cforms');
+	}
+	
+	$nuked = $wpdb->query("DELETE FROM {$wpdb->cformssubmissions} WHERE id = '$entry'");
+	$nuked = $wpdb->query("DELETE FROM {$wpdb->cformsdata} WHERE sub_id = '$entry'");
+
+	?>
+	<div id="message" class="updated fade"><p><strong><?php echo $i; ?> <?php _e('entry succesfully removed', 'cforms'); echo ' '.$del; ?>.</strong></p></div>
+	<?php
+}
+
+
+
 //
 // load a specific entry
 //
-if ( ($_POST['showid']<>'' || isset($_POST['showselected'])) 
-		&& !isset($_POST['delete']) && !isset($_POST['downloadselectedcforms']) && !$reorder ) {
+if ( ($_POST['showid']<>'' || isset($_POST['showselected']) || isset($_POST['sqlwhere'])) && !isset($_POST['delete']) && !isset($_POST['downloadselectedcforms']) && !$reorder ) {
 
 	if ( isset($_POST['showselected']) && isset($_POST['entries']) )
 		$sub_id = implode(',', $_POST['entries']);
 	else if ( $_POST['showid']<>'' )
 		$sub_id = $_POST['showid'];
+	else if ( isset($_POST['sqlwhere']) )
+		$sub_id = $_POST['sqlwhere'];	
 	else
 		$sub_id = '-1';
-	
 	
 	$sql="SELECT *, form_id FROM {$wpdb->cformsdata},{$wpdb->cformssubmissions} WHERE sub_id in ($sub_id) AND sub_id=id ORDER BY sub_id, f_id";
 	$entries = $wpdb->get_results($sql);
@@ -94,14 +136,15 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']))
 
 	<?php if ($entries) :
 
-		_e('<p>Your results:</p>', 'cforms');
-
+		echo '<form name="datactrl" method="post" action="#"><input type="hidden" name="sqlwhere" value="'.$sub_id.'">';
+		
 		$sub_id='';
 		foreach ($entries as $entry){
 
 			if( $sub_id<>$entry->sub_id ){
 				$sub_id = $entry->sub_id;
-				echo '<div class="showform">Form: <span>'. get_option('cforms'.$entry->form_id.'_fname') . '</span></div>' . "\n";
+				echo '<div class="showform">Form: <span>'. get_option('cforms'.$entry->form_id.'_fname') . '</span> &nbsp; <em>(ID:' . $entry->sub_id . ')</em>' .
+						'<input class="allbuttons xbutton" type="submit" name="xbutton'.$entry->sub_id.'" title="'.__('delete this entry', 'cforms').'" value=""/></div>' . "\n";
 			}
 
 			$name = $entry->field_name==''?'&nbsp;':$entry->field_name;
@@ -114,7 +157,10 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']))
                     
 					echo '<div class="showformfield" style="margin-bottom:10px;color:#3C575B;"><div class="L">';
 					_e('Attached file:', 'cforms');
-					echo 	'</div><div class="R">' . '<a href="' . $file . '">' . str_replace("\n","<br/>", strip_tags($val) ) . '</a>' . '</div></div>' . "\n";
+					if ( $entry->field_val == '' )
+						echo 	'</div><div class="R">' . __('-','cforms') . '</div></div>' . "\n";					
+					else
+						echo 	'</div><div class="R">' . '<a href="' . $file . '">' . str_replace("\n","<br/>", strip_tags($val) ) . '</a>' . '</div></div>' . "\n";
 
 			}
 			elseif ($name=='page') {  // special field: page 
@@ -131,6 +177,8 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']))
 			}
 
 		}
+
+		echo '</form>';
 
 
 	else : ?>
@@ -155,7 +203,7 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']))
 
 		<?php if ($entries) :?>
 
-		<p><?php _e('Keep track of all form submissions & data entered, view individual entries or a whole bunch and download as TAB or CSV formatted file.', 'cforms') ?></p>
+		<p><?php _e('Keep track of all form submissions & data entered, view individual entries or a whole bunch and download as TAB or CSV formatted file. Attachments can be accessed in the details section. When deleting entries, associated attachments will be removed, too! ', 'cforms') ?></p>
 
 		<form id="cformsdata" name="form" method="post" action="">
 				<input type="hidden" name="showid" value=""/>

@@ -48,15 +48,11 @@ li.col6				{ width:30px; font-size:10px; }
 
 input.delete,
 input.downloadselectedcforms,
-input.showselected			{ font-size:10px; padding: 1px 10px; margin:20px 0; }
+input.showselected			{ font-size:10px; padding: 1px 10px; margin:20px 0; overflow:visible; }
 
 select.downloadformat		{ font-size:10px; width:6em; padding:1px; margin:20px 0;}
 select.downloadformat,
 input.downloadselectedcforms{ background:#DDFFEF; }
-
-input.delete				{ width:160px;}
-input.showselected			{ width:160px;}
-input.downloadselectedcforms{ width:180px; }
 
 * html .col1 input		{ background:none!important; border:0!important;}/*ie hack*/
 * html .datarow input 	{ padding:0; margin:0;} /*ie hack*/
@@ -72,6 +68,7 @@ input.downloadselectedcforms{ width:180px; }
 
 .showform			{width:680px; margin:30px auto 5px; padding:5px 0; background-color:#F4F4F4; border-bottom:2px solid #999999; }
 .showform span 		{ font-size:11px; font-weight:bold; margin-left:30px; }
+.showform em 		{ font-style:normal; font-size:10px; color:#888888; }
 .showformfield		{width:680px; margin:0; font-size:11px; }
 .showformfield .R,
 .showformfield .L	{ float:left; width:330px; }
@@ -98,8 +95,8 @@ FORM NAME etc
 /* End hide from IE-mac */
 
 #pickform 			{ font-size:10px; width:55%; }
-input.go			{ font-size:10px; width:23px; height:22px; }
-* html input.go 	{ padding:0; width:23px; height:18px; }
+input.go			{ font-size:10px; height:22px; }
+* html input.go 	{ padding:0; width:23px; height:18px; overflow:visible; }
 
 .mainoptions		{ padding:15px 5px; background:#fafafa; margin:4px 0 0 0; }
 .cforms_fname 		{ margin: 0 20px; position:relative; top:-3px; font-weight:bold; background:white; }
@@ -142,7 +139,9 @@ BUTTONS
 	font-weight:bold;
 	font-size:9px;
 	padding-top:2px; 
+	overflow:visible;
 }
+* html .allbuttons	{ padding:2px 5px; }
 
 .allbuttons:focus	{ background: url( images/fade-butt.png ) repeat-x; }
 
@@ -171,16 +170,16 @@ BUTTONS
 .delbutton:active,
 .chgbuttonhi:active		{ background: #f4f4f4; border: 1px single #ccc; border-left-color: #999; border-top-color: #999; }
 
-* html .addbutton 		{ width:60px!important; }
-* html .dupbutton 		{ width:90px!important; }
+* html .addbutton 		{ }
+* html .dupbutton 		{ }
 * html .delbutton		{ }
-* html .backupbutton	{ width:125px!important; }
-* html .restorebutton 	{ width:145px!important; }
+* html .backupbutton	{ }
+* html .restorebutton 	{ }
 
 .addfieldbox			{ width:810px; margin:0 auto; text-align:right;}
 
-.addfield 				{ width:130px; font-size:10px; font-weight: bold; }
-.updbutton				{ width:130px; }
+.addfield 				{ font-size:10px; font-weight: bold; }
+.updbutton				{  }
 
 /****************************************************************
 Docking Boxes core CSS: YOU MUST NOT CHANGE OR OVERRIDE THESE
@@ -233,7 +232,7 @@ otherwise, do what you like :)
 .field3th,
 .field4th,
 .field5th,
-.field6th 		{display:block; float:left; margin-right:5px; }
+.field6th 		{display:block; float:left; margin-right:5px; text-align:center; }
 
 /* all fields container */
  

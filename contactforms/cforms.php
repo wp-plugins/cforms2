@@ -311,7 +311,7 @@ if (isset($_GET['activate']) && $_GET['activate'] == 'true') {
 		add_option('cforms_ajax', '1');
 		add_option('cforms_fname', __('Your default form', 'cforms'));
 		add_option('cforms_csubject', __('Re: Your note', 'cforms'));
-		add_option('cforms_cmsg', __('Dear Sender, \nThank you for your note!\nWe will get back to you as soon as possible.\n\n', 'cforms'));
+		add_option('cforms_cmsg', __('Dear Sender,', 'cforms') . "\n". __('Thank you for your note!', 'cforms') . "\n". __('We will get back to you as soon as possible.', 'cforms') . "\n\n");
 		add_option('cforms_email', get_bloginfo('admin_email'));
 
 		add_option('cforms_subject', __('A comment from a site visitor', 'cforms'));
