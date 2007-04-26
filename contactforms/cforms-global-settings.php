@@ -101,7 +101,7 @@ if( isset($_REQUEST['deleteall']) ) {  // erase all cforms data
 	update_option('cforms_database', '0');
 
 	?>
-	<div id="message" class="updated fade"><p><strong><?php _e('cforms tracking tables (<code>cformssubmissions</code> & <code>cformsdata</code>) have been deleted.', 'cforms') ?></strong></p></div>
+	<div id="message" class="updated fade"><p><strong><?php _e('cforms tracking tables (<code>cformssubmissions</code> & <code>cformsdata</code>) have been deleted.<br/>Please backup/clean-up your upload directory, chances are that when you turn tracking back on, existing (older) attachments may be <u>overwritten</u>!', 'cforms') ?></strong></p></div>
 	<?php
 
 }
@@ -194,12 +194,12 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 
 			<div class="optionsbox" style="margin-top:15px;">
 				<div class="optionsboxL"><strong><?php _e('Upload directory', 'cforms') ?></strong></div>
-				<div class="optionsboxR"><input type="text" id="cforms_upload_dir" name="cforms_upload_dir" value="<?php echo stripslashes(htmlspecialchars(get_option('cforms_upload_dir'))); ?>"/> [make sure the dir exists!]</div>
+				<div class="optionsboxR"><input type="text" id="cforms_upload_dir" name="cforms_upload_dir" value="<?php echo stripslashes(htmlspecialchars(get_option('cforms_upload_dir'))); ?>"/> <?php _e('[make sure the dir exists!]', 'cforms') ?></div>
 			</div>
 
 			<div class="optionsbox" style="margin-top:15px;">
 				<div class="optionsboxL"><strong><?php _e('Allowed file extensions', 'cforms') ?></strong></div>
-				<div class="optionsboxR"><input type="text" id="cforms_upload_ext" name="cforms_upload_ext" value="<?php echo stripslashes(htmlspecialchars(get_option('cforms_upload_ext'))); ?>"/> [empty=all files are allowed]</div>
+				<div class="optionsboxR"><input type="text" id="cforms_upload_ext" name="cforms_upload_ext" value="<?php echo stripslashes(htmlspecialchars(get_option('cforms_upload_ext'))); ?>"/> <?php _e('[empty=all files are allowed]', 'cforms') ?></div>
 			</div>
 
 			<div class="optionsbox" style="margin-top:3px;">

@@ -300,7 +300,7 @@ if (isset($_GET['activate']) && $_GET['activate'] == 'true') {
 		add_option('cforms_count_field_5', __('Message$#$textarea$#$0$#$0$#$0', 'cforms'));
 
 		/*form verification questions*/
-		add_option('cforms_sec_qa', __('What color is snow?=white\r\nThe color of grass is=green\r\nTen minus five equals=five', 'cforms'));
+		add_option('cforms_sec_qa', __('What color is snow?=white', 'cforms'). "\r\n" . __('The color of grass is=green', 'cforms'). "\r\n" . __('Ten minus five equals=five', 'cforms'));
 		add_option('cforms_formcount', '1');
 		add_option('cforms_show_quicktag', '1');
 		add_option('cforms_count_fields', '5');
@@ -389,13 +389,13 @@ function cforms_submitcomment($content) {
 
 
 	if ( get_option('cforms'.$no.'_fname') <> '' ){
-		$title   = "\nA new submission (form: \"".get_option('cforms'.$no.'_fname') . "\")\n";
+		$title   = "\n" . __('A new submission (form: ','cforms'). '"' . get_option('cforms'.$no.'_fname') . "\")\n";
 		$page    = substr( $_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'],'?')-1);
 		$page    = (trim($page)=='')?'/':trim($page);
 		$message = $title . str_repeat('=', strlen($title)-2 ) . "\n" .
-								 "Submitted on: " . mysql2date(get_option('date_format'), current_time('mysql')) . ' @ ' . gmdate(get_option('time_format'), current_time('timestamp')) . "\n" .
-								 "Via: " . $page . "\n" .
-								 "By " . getip() . " (visitor IP)\n\n";
+								 __('Submitted on: ','cforms') . mysql2date(get_option('date_format'), current_time('mysql')) . ' @ ' . gmdate(get_option('time_format'), current_time('timestamp')) . "\n" .
+								 __('Via: ','cforms') . $page . "\n" .
+								 __('By ','cforms') . getip() . __(" (visitor IP)",'cforms') . "\n\n";
 	} else
 		$message='';
 
@@ -517,7 +517,7 @@ function cforms_submitcomment($content) {
 					 "('" . $no . "', NOW(),'" . $field_email . "', '" . getip() . "');");
 
 		$subID = $wpdb->get_row("select LAST_INSERT_ID() as number from $wpdb->cformsdata;");
-		$subID = $subID->number;
+   		$subID = ($subID->number=='')?'1':$subID->number;
 
 		$sql = "INSERT INTO $wpdb->cformsdata (sub_id,field_name,field_val) VALUES " .
 					 "(LAST_INSERT_ID(),'page','$page'),";
@@ -859,14 +859,14 @@ function cforms($args = '',$no = '') {
 
 			$usermessage_text = preg_replace ( '|\r\n|', '<br/>', stripslashes(get_option('cforms'.$no.'_success')) );
 
-			if ( get_option('cforms'.$no.'_fname') <> '' ) {
-			  $title   = "\nA new submission (form: \"".get_option('cforms'.$no.'_fname') . "\")\n";
-				$page    = $_SERVER['REQUEST_URI'];
-				$page    = (trim($page)=='')?'/':trim($page);
-			  $message = $title . str_repeat('=', strlen($title)-2 ) . "\n" .
-									 "Submitted on: " . mysql2date(get_option('date_format'), current_time('mysql')) . ' @ ' . gmdate(get_option('time_format'), current_time('timestamp')) . "\n" .
-									 "Via: " . $page . "\n" .
-									 "By " . getip() . " (visitor IP)" . $message . "\n\n";
+			if ( get_option('cforms'.$no.'_fname') <> '' ) { //\nA new submission (form: \"','cforms')
+					$title   = "\n" . __('A new submission (form: ','cforms'). '"' . get_option('cforms'.$no.'_fname') . "\")\n";
+					$page    = $_SERVER['REQUEST_URI'];
+					$page    = (trim($page)=='')?'/':trim($page);
+					$message = $title . str_repeat('=', strlen($title)-2 ) . "\n" .
+									 __('Submitted on: ','cforms') . mysql2date(get_option('date_format'), current_time('mysql')) . ' @ ' . gmdate(get_option('time_format'), current_time('timestamp')) . "\n" .
+									 __('Via: ','cforms') . $page . "\n" .
+									 __('By ','cforms') . getip() . __(' (visitor IP)','cforms') . $message . "\n\n";
 		 		} else
 	 		  $message='';
 
@@ -1004,7 +1004,7 @@ function cforms($args = '',$no = '') {
 						 "('" . $no . "', NOW(),'" . $field_email . "', '" . getip() . "');");
 	
     		$subID = $wpdb->get_row("select LAST_INSERT_ID() as number from $wpdb->cformsdata;");
-    		$subID = $subID->number;
+    		$subID = ($subID->number=='')?'1':$subID->number;
 
 			$sql = "INSERT INTO $wpdb->cformsdata (sub_id,field_name,field_val) VALUES " .
 						 "(LAST_INSERT_ID(),'page','$page'),";
