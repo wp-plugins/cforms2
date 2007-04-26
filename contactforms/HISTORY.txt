@@ -3,6 +3,8 @@ Copyright 2006-2007  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
 v3.5 (mostly maintenance)
+*) feature: slightly enhanced Tracking page ("delete" now also removes attachments)
+    tracking data view now permits selective deletion of submission entries
 *) feature: text fields can optionally be auto cleared on focus (if browser is JS enabled)
 *) feature: attachments (uploads) are now stored on the server and can be accessed 
     via the "Tracking" page
