@@ -3,81 +3,81 @@ tinyMCE.importPluginLanguagePack('cforms', 'en');
 
 var TinyMCE_cformsscript = {
 
-
-		getInfo : function() {
-											return {
-																longname : 'cforms',
-																author : 'Oliver Seidel',
-																authorurl : 'http://www.deliciousdays.com',
-																infourl : 'http://www.deliciousdays.com',
-																version : "2.2"
-																};
-		},
+	getInfo : function() {
+			return {
+				longname : 'cforms',
+				author : 'Oliver Seidel',
+				authorurl : 'http://www.deliciousdays.com',
+				infourl : 'http://www.deliciousdays.com',
+				version : "3.5"
+			};
+	},
 		
 		
 		
-		getControlHTML : function(cn) {
+	getControlHTML : function(cn) {
 				switch (cn) {
 							case "cforms":
 								return tinyMCE.getButtonHTML(cn, 'lang_cforms_desc', '{$pluginurl}/../images/button.gif', 'mcecforms');
 							}
 				return "";
-		},
+	},
 		
 		
 		
-		execCommand : function(editor_id, element, command, user_interface, value) {
+	execCommand : function(editor_id, element, command, user_interface, value) {
 		
-							var inst = tinyMCE.getInstanceById(editor_id);
-							var focusElm = inst.getFocusElement();
-							var doc = inst.getDoc();
+		var inst = tinyMCE.getInstanceById(editor_id);
+		var focusElm = inst.getFocusElement();
+		var doc = inst.getDoc();
 
-							function getAttrib(elm, name) {
-									return elm.getAttribute(name) ? elm.getAttribute(name) : "";
-							}
+		function getAttrib(elm, name) {
+				return elm.getAttribute(name) ? elm.getAttribute(name) : "";
+		}
 
-							switch (command) {
-							
-							case "mcecforms":
-								// ???
-								var flag = "";
-								var template = new Array();
-								// Is selection a image
-								if (focusElm != null && focusElm.nodeName.toLowerCase() == "img") {
-										flag = getAttrib(focusElm, 'class');
-										flagIE = getAttrib(focusElm, 'className');
+		switch (command) {
+		
+		case "mcecforms":
 
-										if ( flag == 'mce_plugin_cforms_img' || flagIE == 'mce_plugin_cforms_img' ) // Not a wordpress
-												alert("Placeholder for: " + getAttrib(focusElm,'moretext') );
-										
-										return true;
-								}
-								
-								var myValue = prompt('Please enter form # or leave blank for form #1', '');
-								if (myValue == null) return false;
+			var flag = "";
+			var template = new Array();
 
-								if (myValue=='1') myValue='';
+			// Is selection a image?
+			if (focusElm != null && focusElm.nodeName.toLowerCase() == "img") {
+					flag = getAttrib(focusElm, 'class');
+					flagIE = getAttrib(focusElm, 'className');
 
-								altMore = "Placeholder for: cforms"+myValue;
-								cssstyle = 'background:url('+globalPURL+'/images/cformsmce.gif) no-repeat 5px 5px; border-top: 1px dotted #cccccc; border-bottom: 1px dotted #cccccc;';
+					if ( flag == 'mce_plugin_cforms_img' || flagIE == 'mce_plugin_cforms_img' ) // Not a wordpress
+							alert("Placeholder for: " + getAttrib(focusElm,'moretext') );
+					
+					return true;
+			}
+			
+			var myValue = prompt('Please enter form # or leave blank for form #1', '');
+			if (myValue == null) return false;
 
-								html = ''
-									+ '<img src="'+globalPURL+'/images/spacer.gif" '
-								  + 'width="100%" height="30px" moretext="cforms'+myValue+'" '
-								  + 'alt="'+altMore+'" title="'+altMore+'" style="'+cssstyle+'" class="mce_plugin_cforms_img" />';
+			if (myValue=='1') myValue='';
 
-								tinyMCE.execInstanceCommand(editor_id, 'mceInsertContent', false, html);
-								tinyMCE.selectedInstance.repaint();
+			altMore = "Placeholder for: cforms"+myValue;
+			cssstyle = 'background:url('+globalPURL+'/images/cformsmce.gif) no-repeat 5px 5px; border-top: 1px dotted #cccccc; border-bottom: 1px dotted #cccccc;';
+
+			html = ''
+				+ '<img src="'+globalPURL+'/images/spacer.gif" '
+				+ 'width="100%" height="30px" moretext="cforms'+myValue+'" '
+				+ 'alt="'+altMore+'" title="'+altMore+'" style="'+cssstyle+'" class="mce_plugin_cforms_img" />';
+
+			tinyMCE.execInstanceCommand(editor_id, 'mceInsertContent', false, html);
+			tinyMCE.selectedInstance.repaint();
 
 //								tinyMCE.triggerNodeChange(true);
-								return true;
-					}
-		return false;
-		},
+			return true;
+	}
+	return false;
+	},
 		
 		
 		
-		cleanup : function(type, content) {
+	cleanup : function(type, content) {
 		switch (type) {
 
 			case "insert_to_editor":
@@ -144,7 +144,6 @@ var TinyMCE_cformsscript = {
 
 		return true;
 	},
-	
 	
 	
 	
