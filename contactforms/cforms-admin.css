@@ -48,11 +48,11 @@ li.col6				{ width:30px; font-size:10px; }
 
 input.delete,
 input.downloadselectedcforms,
-input.showselected			{ font-size:10px; padding: 1px 10px; margin:20px 0; overflow:visible; }
-
+input.showselected			{ font-size:10px; padding: 1px 5px; margin:20px 0; overflow:visible; }
+input.delete				{ background: url( images/fade-butt-red.png ); }
 select.downloadformat		{ font-size:10px; width:6em; padding:1px; margin:20px 0;}
 select.downloadformat,
-input.downloadselectedcforms{ background:#DDFFEF; }
+input.downloadselectedcforms{ background: url( images/fade-butt-lightgreen.png );  }
 
 * html .col1 input		{ background:none!important; border:0!important;}/*ie hack*/
 * html .datarow input 	{ padding:0; margin:0;} /*ie hack*/
@@ -169,12 +169,6 @@ BUTTONS
 .addbutton:active,
 .delbutton:active,
 .chgbuttonhi:active		{ background: #f4f4f4; border: 1px single #ccc; border-left-color: #999; border-top-color: #999; }
-
-* html .addbutton 		{ }
-* html .dupbutton 		{ }
-* html .delbutton		{ }
-* html .backupbutton	{ }
-* html .restorebutton 	{ }
 
 .addfieldbox			{ width:810px; margin:0 auto; text-align:right;}
 

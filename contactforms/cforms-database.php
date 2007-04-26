@@ -213,9 +213,9 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']) || isset($_POST['sql
 
 
 				<div class="dataheader">
-					<input type="submit" class="delete" name="delete" value="<?php _e('delete selected entries', 'cforms') ?>" onclick="return confirm('Do you really want to erase the selected records?');"/>
-					<input type="submit" class="showselected" name="showselected" value="<?php _e('show selected entries', 'cforms') ?>" />&nbsp;&nbsp;
-					<input type="submit" class="downloadselectedcforms" name="downloadselectedcforms" value="<?php _e('download selected entries', 'cforms') ?>" />
+					<input type="submit" class="allbuttons delete" name="delete" value="<?php _e('delete selected entries', 'cforms') ?>" onclick="return confirm('Do you really want to erase the selected records?');"/>
+					<input type="submit" class="allbuttons showselected" name="showselected" value="<?php _e('show selected entries', 'cforms') ?>" />&nbsp;&nbsp;
+					<input type="submit" class="allbuttons downloadselectedcforms" name="downloadselectedcforms" value="<?php _e('download selected entries', 'cforms') ?>" />
 					<select name="downloadformat" class="downloadformat">
 						<option value="csv"><?php _e('CSV', 'cforms') ?></option>
 						<option value="txt"><?php _e('TXT (tab delimited)', 'cforms') ?></option>
@@ -263,9 +263,9 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']) || isset($_POST['sql
 				</ul>
 
 				<div class="dataheader">
-					<input type="submit" class="delete" name="delete" value="<?php _e('delete selected entries', 'cforms') ?>" onclick="return confirm('Do you really want to erase the selected records?');" />
-					<input type="submit" class="showselected" name="showselected" value="<?php _e('show selected entries', 'cforms') ?>" />&nbsp;&nbsp;
-					<input type="submit" class="downloadselectedcforms" name="downloadselectedcforms" value="<?php _e('download selected entries', 'cforms') ?>" />
+					<input type="submit" class="allbuttons delete" name="delete" value="<?php _e('delete selected entries', 'cforms') ?>" onclick="return confirm('Do you really want to erase the selected records?');" />
+					<input type="submit" class="allbuttons showselected" name="showselected" value="<?php _e('show selected entries', 'cforms') ?>" />&nbsp;&nbsp;
+					<input type="submit" class="allbuttons downloadselectedcforms" name="downloadselectedcforms" value="<?php _e('download selected entries', 'cforms') ?>" />
 				</div>
 
 			</form>
