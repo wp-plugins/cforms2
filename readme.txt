@@ -15,7 +15,7 @@ cforms is a highly customizable, flexible and powerful contact form plugin,
 covering a variety of use cases and features from attachments to multi form 
 management, you can even have multiple forms on the same page!
 
-# Plugin Features
+= Plugin Features =
 * Full localization support (currently: English, German)
 * File attachments (upload)
 * Multiple forms on one or many pages / posts
@@ -47,7 +47,7 @@ management, you can even have multiple forms on the same page!
 * Clean separation of CSS styling and form code
 * Validates
 
-# Localization
+= Localization =
 cforms has been revised to fully support WP localization. If you’d like to contribute a language translation, please get in touch.
 If you have suggestions or would like to point out typos etc, please contact the actual author (see list below) of the respective localization.
 
