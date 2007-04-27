@@ -48,11 +48,11 @@ management, you can even have multiple forms on the same page!
 * Validates
 
 = Localization =
-cforms has been revised to fully support WP localization. If you’d like to contribute a language translation, please get in touch.
+cforms has been revised to fully support WP localization. If you'd like to contribute a language translation, please get in touch.
 If you have suggestions or would like to point out typos etc, please contact the actual author (see list below) of the respective localization.
 
 * Currently, cforms include the following language packs (besides English):
-	* --German-- \* Author: [Sven Wappler](http://www.wappler.eu)
+	* **German** \* Author: [Sven Wappler](http://www.wappler.eu)
 
 == Installation ==
 
