@@ -63,7 +63,7 @@ span.cformradiotext 		{ margin:5px 0 0 0!important; }
 /*                                                    */
 /*              FORM FIELDSETS (global defs)          */
 /*                                                    */
-.cformfieldsets			{ margin:10px 0; padding:8px 0 11px 0; border:1px solid #adadad; border-left-color:#ececec; border-top-color:#ececec; }
+.cformfieldsets			{ margin:10px 0!important; padding:8px 0 11px 0; border:1px solid #adadad; border-left-color:#ececec; border-top-color:#ececec; }
 
 /*may want to remove the below line if this causes layout issues with your WP Theme*/
 * html .cformfieldsets	{ position: relative; margin-top:20px; padding-top:15px; } /*ie6 hack*/
