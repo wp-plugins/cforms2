@@ -656,7 +656,7 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 												</select>
 						            <?php
 						              if($field_count > 1)
-									          echo '<input class="xbutton" type="submit" name="'.__('Delete field', 'cforms').$i.'" value="" />';
+									          echo '<input class="xbutton" type="submit" name="DeleteField'.$i.'" value="" />';
 						            ?>
 										</li>
 										<li class="fieldisreq">
