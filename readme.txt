@@ -142,40 +142,7 @@ See the "**Other Notes**" section for another example.
 
 == Frequently Asked Questions ==
 
-= The Submit Button is being pushed to the bottom of the page? =
-
-Try changing the CSS style for the *send button* `.cform input.sendbutton {...` in this way:
-Remove these attributes: `clear:both; float:right;`
-And add these instead: `margin: 0 0 0 310px; float:none!important;`
-
-= The form is being pushed to the bottom on my blog?! =
-
-Check your blog template. 99% it's due to a *div container* (holding the post data) that's **not floated properly**! This often happens to 3-column layouts but could also happen to 2-column blog templates.
-
-*Update*: Check your `cforms.css` files for the following line
-`
-.cformfieldsets { margin:10px 0; padding:8px 0 11px 0; border:1px solid #adadad; border-left-color:#ececec; border-top-color:#ececec; **clear:left;** }
-`
-and remove the last attribute: `clear:left;`. This should help fix many of the issues seen especially with 3 column WP themes that come with a non-floated middle column. 
-
-If it still looks funny (and/or your sendbutton seems displaced) try also to remove the following two lines:
-
-1. `* html .cformfieldsets { position: relative; margin-top:20px; padding-top:15px; } /*ie6 hack*/`
-2. `* html .cform legend   { position:absolute; top: -10px; left: 10px; margin-left:0; } /*ie hack*/`
-
-*The above 2 lines were meant to make **IE fieldsets** look like FF (nicer), but if they cause you headaches, simply remove them.* 
-
-= My browser shows a TinyMCE error ("realtinyMCE" is undefined) ?! =
-
-This might be a known Wordpress issue, check [here](http://trac.wordpress.org/ticket/3882) for more info and possible work-arounds, fixes until the next release of WP takes care of it.
-
-= The general layout of my form doesn't look right!? =
-
-Please check and tweak your cforms.css stylesheet for proper configuration. The default classes should provide reasonable formatting of the form & fields, but every WP theme / layout behaves a little different.
-
-= The 2nd form I created has a different layout!? =
-
-In previous plugin releases, the CSS information for the 2nd form had been customized for demo purposes, this has been removed as of release 3.3. In any event, feel free to edit `cforms.css` and remove the top block (indicated as demo).
+**Quick Note, April 29th:** Due to a new bug that was unfortunately introduced as part of the recent effort to make cforms 100% -localizable- v3.5 was just patched to allow form input fields to **be deleted again**.
 
 [Please visit the cforms plugin forum for more help](http://www.deliciousdays.com/cforms-forum)
 
