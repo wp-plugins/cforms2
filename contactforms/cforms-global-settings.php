@@ -269,6 +269,8 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 				<div class="optionsboxL"><?php _e('<strong>Questions & Answers</strong><br/>format: Q=A', 'cforms') ?></div>
 				<div class="optionsboxR"><textarea name="cforms_sec_qa" id="cforms_sec_qa" ><?php echo $qa; ?></textarea></div>
 			</div>
+
+			<p><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#captcha',__('<strong><u>Please note</u></strong>, depending on your personal preferences and level of SPAM security you\'d like to put in place, you can also use <a href="[url]">cforms\' CAPTCHA feature</a>!', 'cforms')); ?></p>
 	
 			<p class="updtsetting"><input type="submit" name="Submit1" class="allbuttons updbutton" value="<?php _e('Update Settings &raquo;', 'cforms') ?>" onclick="javascript:document.mainform.action='#wpeditor';"/></p>
 		</fieldset>

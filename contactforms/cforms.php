@@ -12,6 +12,14 @@ Author URI: http://www.deliciousdays.com
 Copyright 2006  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
+v3.6 (feature & bugfix)
+*) feature: captcha support for additional SPAM protection
+*) bugfix: IE margin-bottom hover bug
+*) bugfix: deleting form fields (on the general form config page) was broken due a 
+     new bug that was introduced as part of the localization effort
+*) other: change the INSERT queries using LAST_INSERT_ID() due to overly sensitive
+     SQL servers.
+
 v3.5 (mostly maintenance)
 *) feature: slightly enhanced Tracking page ("delete" now also removes attachments)
 	tracking data view now permits selective deletion of submission entries
@@ -172,7 +180,6 @@ v1.5
 
 */
 
-
 load_plugin_textdomain('cforms');
 
 //http://trac.wordpress.org/ticket/3002
@@ -183,10 +190,12 @@ $cforms_root = get_settings('siteurl') . '/wp-content/plugins/'.$plugindir;
 $wpdb->cformssubmissions	= $wpdb->prefix . 'cformssubmissions';
 $wpdb->cformsdata       	= $wpdb->prefix . 'cformsdata';
 
-require(dirname(__FILE__) . 	 '/buttonsnap.php');
+require		(dirname(__FILE__) . '/buttonsnap.php');
 require_once(dirname(__FILE__) . '/editor.php');
 include_once(dirname(__FILE__) . '/wp.php');
 
+//need this for captchas
+session_start();
 
 ### download form settings or tracked form data ??
 add_action('init', 'download_cforms');
@@ -493,7 +502,7 @@ function cforms_submitcomment($content) {
 				  $space = str_repeat(" ",30-strlen(stripslashes($field_name)));
 
 			//for email
-			if ( $field_stat[1] <> 'verification' )
+			if ( $field_stat[1] <> 'verification' && $field_stat[1] <> 'captcha' )
 				$message .= $field_name . ': '. $space . $value . "\n";
 					
 	} // for
@@ -522,10 +531,10 @@ function cforms_submitcomment($content) {
    		$subID = ($subID->number=='')?'1':$subID->number;
 
 		$sql = "INSERT INTO $wpdb->cformsdata (sub_id,field_name,field_val) VALUES " .
-					 "(LAST_INSERT_ID(),'page','$page'),";
+					 "('$subID','page','$page'),";
 
 		foreach ( array_keys($track) as $key )
-			$sql .= "(LAST_INSERT_ID(),'$key','$track[$key]'),";
+			$sql .= "('$subID','$key','$track[$key]'),";
 
 		$wpdb->query(substr($sql,0,-1));		
 					 
@@ -649,6 +658,7 @@ function cf_sajax_export() {
 
 function cforms($args = '',$no = '') {
 
+	global $cforms_root;
 	global $wpdb;
 	parse_str($args, $r);	// parse all args, and if not specified, initialize to defaults
 
@@ -758,12 +768,21 @@ function cforms($args = '',$no = '') {
 				}
 				else if( $field_type == 'verification' ){  // visitor verification code
 				
-	            $validations[$i+$off] = 1;
-							if ( $_POST['cforms_a'.$no] <> md5(strtolower($_POST['cforms_q'.$no])) ) {
-									$validations[$i+$off] = 0;
-									$err = !($err)?2:$err;
-									}
+	            		$validations[$i+$off] = 1;
+						if ( $_POST['cforms_a'.$no] <> md5(strtolower($_POST['cforms_q'.$no])) ) {
+								$validations[$i+$off] = 0;
+								$err = !($err)?2:$err;
+								}
 								
+				}
+				else if( $field_type == 'captcha' ){  // captcha verification
+				
+	            		$validations[$i+$off] = 1;
+						if ( $_POST['cforms_cap'.$no] <> md5(strtolower($_POST['cforms_captcha'.$no])) ) {
+								$validations[$i+$off] = 0;
+								$err = !($err)?2:$err;
+								}
+						
 				}
 				else
 					$validations[$i+$off] = 1;
@@ -991,7 +1010,7 @@ function cforms($args = '',$no = '') {
 			$trackname = ($field_type == "upload")?$field_name.'[*]':$field_name; 
 			$track[$trackname] = $value;
 
-			if ( $field_stat[1] <> 'verification' && $field_stat[1] <> 'textonly' )
+			if ( $field_stat[1] <> 'verification' && $field_stat[1] <> 'captcha' && $field_stat[1] <> 'textonly' )
 					$message .= $field_name . $value . "\n";
 
 
@@ -1009,10 +1028,10 @@ function cforms($args = '',$no = '') {
     		$subID = ($subID->number=='')?'1':$subID->number;
 
 			$sql = "INSERT INTO $wpdb->cformsdata (sub_id,field_name,field_val) VALUES " .
-						 "(LAST_INSERT_ID(),'page','$page'),";
+						 "('$subID','page','$page'),";
 						 
 			foreach ( array_keys($track) as $key )
-				$sql .= "(LAST_INSERT_ID(),'$key','$track[$key]'),";
+				$sql .= "('$subID','$key','$track[$key]'),";
 			
 			$wpdb->query(substr($sql,0,-1));
 
@@ -1130,6 +1149,7 @@ function cforms($args = '',$no = '') {
 	// start with no fieldset
 	$fieldsetopen = false;
 	$verification = false;
+	$captcha = false;
 	$upload = false;
 	$fscount = 1;
 	
@@ -1183,6 +1203,9 @@ function cforms($args = '',$no = '') {
 				switch ($field_type){
 				  case 'verification':
 					  $label = 'cforms_q'.$no;
+				  break;
+				  case 'captcha':
+					  $label = 'cforms_captcha'.$no;
 				  break;
 				  case 'upload':
 					  $label = 'cf_uploadfile'.$no;
@@ -1260,8 +1283,14 @@ function cforms($args = '',$no = '') {
 		    	$verification=true;
 				break;
 
-			case "textfield":
+			case "captcha":
+				$_SESSION['turing_string'] = rc(4,5);
+				$field = '<input type="text" name="cforms_captcha'.$no.'" id="cforms_captcha'.$no.'" class="secinput ' . $field_class . '" value="" />'.
+						 '<img class="captcha" src="'.$cforms_root.'/cforms-captcha.php" alt=""/>';
+		    	$captcha=true;
+				break;
 
+			case "textfield":
 			    $onfocus = $field_clear?' onfocus="clearField(this)" onblur="setField(this)"' : '';
 					
 				$field = '<input type="text" name="cf'.$no.'_field_' . $i . '" id="cf'.$no.'_field_' . $i . '" class="' . $field_class . '" value="' . $field_value  . '"'.$onfocus.'/>';
@@ -1414,6 +1443,9 @@ function cforms($args = '',$no = '') {
 	if ( $verification )
 		$content .= $indent . $tab . $tab . '<input type="hidden" name="cforms_a'.$no.'" id="cforms_a'.$no.'" value="' . md5(strtolower($q[1])) . '"/>' . $nl;
 
+	if ( $captcha )
+		$content .= $indent . $tab . $tab . '<input type="hidden" name="cforms_cap'.$no.'" id="cforms_cap'.$no.'" value="' . md5(strtolower($_SESSION['turing_string'])) . '"/>' . $nl;
+
 	$content .= $indent . $tab . $tab . '<input type="hidden" name="_working'.$no.'" id="_working'.$no.'" value="'.rawurlencode(get_option('cforms'.$no.'_working')).'"/>'. $nl .
 				$indent . $tab . $tab . '<input type="hidden" name="_failure'.$no.'" id="_failure'.$no.'" value="'.rawurlencode(get_option('cforms'.$no.'_failure')).'"/>'. $nl .
 				$indent . $tab . $tab . '<input type="hidden" name="_codeerr'.$no.'" id="_codeerr'.$no.'" value="'.rawurlencode(get_option('cforms_codeerr')).'"/>'. $nl .
@@ -1444,6 +1476,23 @@ function cforms_insert( $content ) {
 	}
 
 	return $content;
+}
+
+// captcha random code
+function rc($min,$max) 
+{
+	$src = 'abcdefghijkmnpqrstuvwxyz';   
+	$src .= '23456789';         
+	$srclen = strlen($src)-1;
+	
+	$length = mt_rand($min,$max);
+	$Code = '';
+	
+	for($i=0; $i<$length; $i++) 
+		$Code .= substr($src, mt_rand(0, $srclen), 1);
+	
+	return $Code;
+
 }
 
 function cforms_is_email($string)

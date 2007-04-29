@@ -331,9 +331,9 @@ $usermsg='&nbsp;';
 if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUEST['Submit3']) || isset($_REQUEST['Submit4']) || isset($_REQUEST['AddField']) || array_search("X", $_REQUEST) ) {
 
 	$verification=false;
+	$captcha=false;
 	$ccbox=false;
 	$emailtobox=false;
-	$verification=false;
 	$upload=false;
 
 	for($i = 1; $i <= $field_count; $i++) {
@@ -347,11 +347,15 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 				$emailcheck = 0;
 				$clear = 0;
 
-
 				if( $type=='verification' ){
 					$allgood = $verification?false:true;
 					$usermsg .= $verification?__('Only one <em>Visitor verification</em> field is permitted!', 'cforms').'<br/>':'';
 					$verification=true;
+				}
+				if( $type=='captcha' ){
+					$allgood = $captcha?false:true;
+					$usermsg .= $captcha?__('Only one <em>captcha</em> field is permitted!', 'cforms').'<br/>':'';
+					$captcha=true;
 				}
 				if( $type=='ccbox' ){
 					$allgood = $ccbox?false:true;
@@ -560,6 +564,7 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 						$ccboxused=false;
 						$emailtoboxused=false;
 						$verificationused=false;
+						$captchaused=false;
 						$uploadused=false;
 						for($i = 1; $i <= $field_count; $i++) {
 
@@ -567,6 +572,8 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 								
 								if ( strpos($allfields[$i],'verification') )
 										$verificationused = true;
+								if ( strpos($allfields[$i],'captcha') )
+										$captchaused = true;
 								if ( strpos($allfields[$i],'emailtobox') )
 										$emailtoboxused = true;
 								if ( strpos($allfields[$i],'ccbox') )
@@ -605,6 +612,7 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 										$specialclass = 'style="background:#D8FFCA"';
 										break;
 							case 'verification':
+							case 'captcha':
 										$specialclass = 'style="background:#FFCDCA"';
 										break;
 							case 'textonly':
@@ -648,6 +656,9 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 													<?php if ( !$verificationused || $field_type=="verification" ) : ?>
 														<option value="verification" <?php echo($field_type == 'verification'?' selected="selected"':''); ?> ><?php _e('Visitor verification', 'cforms'); ?></option>
 													<?php	endif; ?>
+													<?php if ( !$captchaused || $field_type=="captcha" ) : ?>
+														<option value="captcha" <?php echo($field_type == 'captcha'?' selected="selected"':''); ?> ><?php _e('Captcha verification', 'cforms'); ?></option>
+													<?php	endif; ?>
 													<?php if ( !$uploadused || $field_type=="upload" ) : ?>
 														<option value="upload" <?php echo($field_type == 'upload'?' selected="selected"':''); ?> ><?php _e('File Upload Box', 'cforms'); ?></option>
 													<?php	endif; ?>
@@ -656,16 +667,16 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 												</select>
 						            <?php
 						              if($field_count > 1)
-									          echo '<input class="xbutton" type="submit" name="'.__('Delete field', 'cforms').$i.'" value="" />';
+									          echo '<input class="xbutton" type="submit" name="DeleteField'.$i.'" value="" />';
 						            ?>
 										</li>
 										<li class="fieldisreq">
-											<?php if( !in_array($field_type,array('radiobuttons','fieldsetstart','fieldsetend','ccbox','verification','textonly')) ) {
+											<?php if( !in_array($field_type,array('radiobuttons','fieldsetstart','fieldsetend','ccbox','captcha','verification','textonly')) ) {
 													?><input class="chkfld" type="checkbox" name="field_<?php echo($i); ?>_required" value="required"  <?php echo($field_required == '1'?' checked="checked"':''); ?> /><?php
-														} else if ( !in_array($field_type,array('checkbox','multiselectbox','selectbox','radiobuttons','fieldsetstart','fieldsetend','ccbox','verification','textonly')) ) { echo('Required <input type="hidden" name="field_' . $i . '_required" value="required" />'); } ?>
+														} else if ( !in_array($field_type,array('checkbox','multiselectbox','selectbox','radiobuttons','fieldsetstart','fieldsetend','ccbox','captcha','verification','textonly')) ) { echo('Required <input type="hidden" name="field_' . $i . '_required" value="required" />'); } ?>
 										&nbsp;</li>
 										<li class="fieldisemail">
-											<?php if( in_array($field_type,array('upload','textarea','checkbox','multiselectbox','selectbox','radiobuttons','fieldsetstart','fieldsetend','ccbox','emailtobox','verification','textonly')) ) echo '&nbsp;'; else { ?>
+											<?php if( in_array($field_type,array('upload','textarea','checkbox','multiselectbox','selectbox','radiobuttons','fieldsetstart','fieldsetend','ccbox','emailtobox','captcha','verification','textonly')) ) echo '&nbsp;'; else { ?>
 														<input class="chkfld" type="checkbox" name="field_<?php echo($i); ?>_emailcheck" value="required"  <?php echo($field_emailcheck == '1'?' checked="checked"':''); ?> /><?php }?>
 										&nbsp;</li>
 										<li class="fieldclear">

@@ -158,6 +158,24 @@ if(!current_user_can('manage_cforms')) {
 		<br style="clear:both;"/>
 
 
+		<a id="captcha"></a>
+		<ul class="helpfields">
+		  <strong><?php _e('Captcha:', 'cforms'); ?></strong>
+			<li style="margin-top:10px;"><?php _e('Format: &nbsp;&nbsp;&nbsp; <em>field name</em>', 'cforms');?></li>
+			<li><?php _e('Alternatively or in addition to the above <strong>Visitor verification</strong> feature, you can have the visitor provide a captcha response.', 'cforms'); ?></li>
+
+			<img style="float:left; list-style:none;" src="<?php echo $cforms_root; ?>/images/example-cap.png"  alt=""/>
+			<ul style="margin:15px 0 0 0; padding:0;">
+				  <li><?php _e('The example is made of 2 fields:', 'cforms');?></li>
+				  <li><?php _e('<strong>Fieldset</strong>: <code class="codehighlight">Visitor Verification Question</code>', 'cforms');?></li>
+				  <li><?php _e('<strong>Captcha verification</strong>: <code class="codehighlight">Enter code</code>', 'cforms');?></li>
+			</ul>
+		</ul>
+
+
+		<br style="clear:both;"/>
+
+
 		<a id="upload"></a>
 		<ul class="helpfields">
 		  <strong><?php _e('File Upload Box:', 'cforms'); ?></strong>

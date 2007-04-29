@@ -2,6 +2,14 @@
 Copyright 2006-2007  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
+v3.6 (feature & bugfix)
+*) feature: captcha support for additional SPAM protection
+*) bugfix: IE margin-bottom hover bug
+*) bugfix: deleting form fields (on the general form config page) was broken due a 
+     new bug that was introduced as part of the localization effort
+*) other: change the INSERT queries using LAST_INSERT_ID() due to overly sensitive
+     SQL servers.
+
 v3.5 (mostly maintenance)
 *) feature: slightly enhanced Tracking page ("delete" now also removes attachments)
     tracking data view now permits selective deletion of submission entries

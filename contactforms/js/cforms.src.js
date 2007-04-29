@@ -227,7 +227,7 @@ function cforms_validate(no, upload) {
 		} // for
 
 
-		//visito verification turned on?
+		//normal visitor verification turned on?
 		if ( document.getElementById('cforms_q'+no) && (document.getElementById('cforms_a'+no).value != hex_md5(document.getElementById('cforms_q'+no).value.toLowerCase() )) ) {
 			document.getElementById('cforms_q'+no).className = "secinput error";
 			if ( all_valid ) {
@@ -236,6 +236,14 @@ function cforms_validate(no, upload) {
 			}
 		}
 
+		//captcha verification turned on?
+		if ( document.getElementById('cforms_captcha'+no) && (document.getElementById('cforms_cap'+no).value != hex_md5(document.getElementById('cforms_captcha'+no).value.toLowerCase() )) ) {
+			document.getElementById('cforms_captcha'+no).className = "secinput error";
+			if ( all_valid ) {
+				all_valid = false;
+				code_err = true;
+			}
+		}
 
 		//all good?  if "upload file" field included, don't do ajax
 		if ( all_valid && upload ){
