@@ -144,7 +144,7 @@ See the "**Other Notes**" section for another example.
 
 **Quick Note, April 29th:** Due to a new bug that was unfortunately introduced as part of the recent effort to make cforms 100% -localizable- v3.5 was just patched to allow form input fields to **be deleted again**.
 
-[Please visit the cforms plugin forum for more help](http://www.deliciousdays.com/cforms-forum)
+Please visit the [cforms plugin forum](http://www.deliciousdays.com/cforms-forum) for a up-to-date [FAQ](http://www.deliciousdays.com/cforms-forum?forum=3&page=1) and more help.
 
 == Screenshots ==
 
