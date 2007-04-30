@@ -1,122 +1,108 @@
 /*                                                    */
-/* PLEASE ADJUST to match your layout                 */
+/*  the entire form                                   */
 /*                                                    */
 
-label.secq 		{ width:200px!important; }
-input.secinput 	{ width:40px!important; }
-
-img.captcha		{ float:left; margin-left:10px; }
+.cform		{ margin:10px auto 50px auto; width: 410px; }
 
 
 /*                                                    */
-/* text paragraph & message box right above the form  */
+/* text paragraph & message box above the form        */
 /*                                                    */
 
-p.info 			{ margin:10px 0;	text-align:center; }
-p.textonly		{ clear:left; text-align:center; padding:5px; margin:0; }
+p.info 		{ margin:10px 0; text-align:center; }
+p.textonly	{ clear:left; text-align:center; padding:5px; margin:0; }
 
-/*                                                    */
-/*  div box enclosing the form                        */
-/*                                                    */
-.cform			{ margin:10px auto 50px auto; width: 410px; }
 
 /*                                                    */
 /* change formatting of response msgs here            */
 /*                                                    */
-.success 		{ color:green; }
-.failure 		{ color:red; }
+
+.success 	{ color:green; }
+.failure 	{ color:red; }
 
 /*                                                    */
 /* upload box styling                                 */
 /*                                                    */
+
 .cform input.cf_upload  { background: #f9f9f9; border:1px solid #888888; }
+
 
 /*                                                    */
 /* global definitions for field labels                */
 /*                                                    */
+
 span.cformchkboxlabel,
 span.cformradiolabel,
-.cform label 			{ width:90px; margin:5px 0 0 0; font:normal 11px 'Trebuchet MS',Arial;
-				 		 display:block; float:left;  padding-right:10px; clear:left; text-align:right; }
+.cform label 		{ width:90px; margin:5px 0 0 0; font:normal 11px 'Trebuchet MS',Arial;
+			 display:block; float:left;  padding-right:10px; clear:left; text-align:right; }
 
-/* just in case the label comes AFTER the field */
+
+/* just in case the label comes AFTER the field: */
 label.cformlabelafter 	{ clear:none; width:250px!important; text-align:left; padding:0 0 0 6px; }
 
-/*                                                    */
-/*  individual definition of field labels             */
-/*                                                    */
-
-/* #cforms2form label	{ color:green; } */
-
 
 /*                                                    */
-/* formating for text:  "(required)"  & other         */
+/* formatting for text:  "(required)"  & other        */
 /*                                                    */
+
 span.chckboxtxt,
 span.cformradiotext,
 span.reqtxt,
-span.emailreqtxt 			{ float:left;	margin:5px 0; padding-left:3px; font:normal 11px 'Trebuchet MS',Arial; }
+span.emailreqtxt 	{ float:left;	margin:5px 0; padding-left:3px; font:normal 11px 'Trebuchet MS',Arial; }
 
 span.cformradiotext 		{ margin:5px 0 0 0!important; }
-* html span.cformradiotext  { margin:4px 0 0 0!important; } /* hack:diff margins for IE */
+* html span.cformradiotext	{ margin-top:4px!important; } /* hack: different margin for IE */
 
 
 /*                                                    */
-/*              FORM FIELDSETS (global defs)          */
+/*              FORM FIELDSETS                        */
 /*                                                    */
-.cformfieldsets			{ margin-top:10px; padding:8px 0 11px 0; border:1px solid #adadad; border-left-color:#ececec; border-top-color:#ececec; }
 
-/*may want to remove the below line if this causes layout issues with your WP Theme*/
-* html .cformfieldsets	{ position: relative; margin-top:10px; padding-top:15px; } /*ie6 hack*/
+.cformfieldsets		{ margin-top:10px; padding:8px 0 11px 0; 
+			border:1px solid #adadad; border-left-color:#ececec; border-top-color:#ececec; }
+
+/* you may want to remove the below line if this causes layout issues with your WP Theme (ie6 fieldset hack) */
+* html .cformfieldsets	{ position: relative; margin-top:10px; padding-top:15px; }
 
 
-/*etc..*/
+/*etc..add more, if you have more fieldsets*/
 .cformfieldset6,
 .cformfieldset5,
 .cformfieldset4,
 .cformfieldset3,
 .cformfieldset2,
-.cformfieldset1    	{ background:#f7f7f7; } /* use to access fieldsets no. 3 for ALL forms */
+.cformfieldset1		{ background:#f7f7f7; }
 
 /*etc..add more, if you have more forms using captcha*/
 #cforms_captcha5,
 #cforms_captcha4,
 #cforms_captcha3,
 #cforms_captcha2,
-#cforms_captcha	{ height:15px; margin-top:0; padding: 4px 4px; width:50px;  }
-
-/*                                                    */
-/*   FORM FIELDSETS for a specific form               */
-/*                                                    */
-/* #cforms2form .cformfieldset1	{ background:#DFE9FF; } /* specifically address fieldsets #1 on form #2 */
+#cforms_captcha		{ height:15px; margin-top:0; padding: 4px 4px; width:50px;  }
 
 
 /*                                                    */
-/*   FIELDSET legends (global defs)                   */
+/*   FIELDSET legends                                 */
 /*                                                    */
-.cform legend         { margin-left:10px; font:normal 20px Times; }
 
-/*may want to remove the below line if this causes layout issues with your WP Theme*/
-* html .cform legend  { position:absolute; top: -10px; left: 10px; margin-left:0; } /*ie hack*/
+.cform legend		{ margin-left:10px; font:normal 20px Times; }
 
-
-
-/*                                                    */
-/*   FIELDSET legends (specific defs)                 */
-/*                                                    */
-/*#cforms2form legend   { font:normal 20px Arial; color:gray; } */
-
+/* you may want to remove the below line if this causes layout issues with your WP Theme (ie6 fieldset hack) */
+* html .cform legend	{ position:absolute; top: -10px; left: 10px; margin-left:0; }
 
 
 /*                                                    */
 /*   FORM FIELDS general formatting                   */
 /*                                                    */
+
 .cform input,
 .cform textarea,
-.cform select 			{ font:normal 11px 'Trebuchet MS', Arial; margin:3px 0; padding:1px 3px; float: left; background: #f9f9f9; border: 1px solid #888888; }
+.cform select 			{ font:normal 11px 'Trebuchet MS', Arial; margin:3px 0; padding:1px 3px; 
+				float: left; background: #f9f9f9; border: 1px solid #888888; }
 .cform input:hover,
 .cform textarea:hover,
 .cform select:hover		{ background:#CEDDDF; }
+
 .cform input:focus,
 .cform textarea:focus,
 .cform select:focus		{ background:#F3F8F8; }
@@ -127,43 +113,82 @@ span.cformradiotext 		{ margin:5px 0 0 0!important; }
 
 .cform select.cformselectmulti	{ height:84px; }
 
-/* text after radio buttons */
-.cfradioblock           { float:left; }
-.cfradioblock label     { clear:none; text-align:left; padding-left:5px;}  /*radio button labels are special!*/
-input.cformradio		{ margin:6px 0 0 0; width:16px; border:none; clear:left; }
-* html input.cformradio	{ margin:3px 0 0 0; background:none; } /* hack:diff margins for IE */
 
-/* Form submit button */
-.cform input.sendbutton { width:100px;  padding:2px; margin: 10px 0 0 310px; float:none!important;
-						  background:url(images/button-bg.gif) repeat-x; border:1px solid #adadad!important; border-left-color:#ececec!important; border-top-color:#ececec!important;}
+/*                                                    */
+/*   radio buttons                                    */
+/*                                                    */
 
-/* optional input fields formatting for ('required' & 'email') */
-.fldemail 	 { }
-.fldrequired { }
+.cfradioblock		{ float:left; }
+.cfradioblock label	{ clear:none; text-align:left; padding-left:5px;}   /*radio button labels are special!*/
+input.cformradio	{ margin:6px 0 0 0; width:16px; border:none; clear:left; }
 
-/* checkboxes:override general default layout for input fields */
-input.cformchkbox 			{ margin:7px 0 6px 0; width:16px; border:none; }
-* html input.cformchkbox	{ margin:3px 0 4px 0; background:none; } /* hack:diff margins for IE */
+* html input.cformradio	{ margin-top:3px; background:none; } /* hack: different margins for IE */
 
-/* for incorrect input fields */
-.cform .error 			{  color:red!important; border:1px solid #FF0000!important; padding:1px 3px; }
-.cform .errortxt    	{  color:red!important; }
 
+/*                                                    */
+/*   check boxes                                      */
+/*                                                    */
+
+input.cformchkbox 		{ margin:7px 0 6px 0; width:16px; border:none; }
+* html input.cformchkbox	{ margin:3px 0 4px 0; background:none; } /* hack:different margins for IE */
+
+
+/*                                                    */
+/*   FORM submit button                               */
+/*                                                    */
+
+.cform input.sendbutton	{ width:100px;  padding:2px; margin: 10px 0 0 310px; float:none!important;
+			background:url(../images/button-bg.gif) repeat-x; border:1px solid #adadad!important;
+		 	border-left-color:#ececec!important; border-top-color:#ececec!important;}
+
+
+/*                                                    */
+/*   formatting for ('required' & 'email'), optional  */
+/*                                                    */
+
+.fldemail	{ }
+.fldrequired	{ }
+
+
+/*                                                    */
+/*   formatting for invalid user inputs               */
+/*                                                    */
+
+.cform .error 		{ color:red!important; border:1px solid #FF0000!important; padding:1px 3px; }
+.cform .errortxt    	{ color:red!important; }
+
+
+
+/*                                                    */
+/*    chances are, you don't have to edit anything    */
+/*    below these lines                               */
+
+
+
+/*                                                    */
+/* 'visitor verification' related styles              */
+/*                                                    */
+
+label.secq 	{ width:200px!important; }
+input.secinput 	{ width:40px!important; }
+
+img.captcha	{ float:left; margin-left:10px; }
 
 
 /*                                                    */
 /*                    PROPER BREAKS                   */
 /*                                                    */
-.cformfieldsets 			{ display:inline-block; }
+.cformfieldsets 		{ display:inline-block; }
 .cformfieldsets:after 		{ content:".";	display:block;	height:0; clear:left;	visibility:hidden; }
 /* Hides from IE-mac \*/
 * html .cformfieldsets		{ height:1%; }
-.cformfieldsets				{ display:block; }
+.cformfieldsets			{ display:block; }
 /* End hide from IE-mac */
 
-.cform 						{ display:inline-block; }
-.cform:after 				{ content:".";	display:block;	height:0;	clear:left;	visibility:hidden; }
+.cform 				{ display:inline-block; }
+.cform:after 			{ content:".";	display:block;	height:0;	clear:left;	visibility:hidden; }
 /* Hides from IE-mac \*/
-* html .cform				{ height:1%; }
-.cform						{ display:block; }
+* html .cform			{ height:1%; }
+.cform				{ display:block; }
 /* End hide from IE-mac */
+
