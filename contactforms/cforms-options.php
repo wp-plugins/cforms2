@@ -654,10 +654,10 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 													<option value="emailtobox" <?php echo($field_type == 'emailtobox'?' selected="selected"':''); ?> ><?php _e('Multiple Recipients', 'cforms'); ?></option>
 													<?php	endif; ?>
 													<?php if ( !$verificationused || $field_type=="verification" ) : ?>
-														<option value="verification" <?php echo($field_type == 'verification'?' selected="selected"':''); ?> ><?php _e('Visitor verification', 'cforms'); ?></option>
+														<option value="verification" <?php echo($field_type == 'verification'?' selected="selected"':''); ?> ><?php _e('Visitor verification (Q&A)', 'cforms'); ?></option>
 													<?php	endif; ?>
 													<?php if ( !$captchaused || $field_type=="captcha" ) : ?>
-														<option value="captcha" <?php echo($field_type == 'captcha'?' selected="selected"':''); ?> ><?php _e('Captcha verification', 'cforms'); ?></option>
+														<option value="captcha" <?php echo($field_type == 'captcha'?' selected="selected"':''); ?> ><?php _e('Captcha verification (image)', 'cforms'); ?></option>
 													<?php	endif; ?>
 													<?php if ( !$uploadused || $field_type=="upload" ) : ?>
 														<option value="upload" <?php echo($field_type == 'upload'?' selected="selected"':''); ?> ><?php _e('File Upload Box', 'cforms'); ?></option>

@@ -1,36 +1,42 @@
 <?
-$img_sz_type = 0; 
-$img_sz_width = 115; 
+//
+// config
+//
+$img_sz_type   = 0; 
+$img_sz_width  = 115; 
 $img_sz_height = 25; 
 
-$image_background = 0; 
-$image_background_type = 1; 
-$image_background_url = 'captchabg/4.gif'; 
+$im_bg      = 0; 
+$im_bg_type = 1; 
+$im_bg_url  = 'captchabg/1.gif'; 
 
-$FontUsed = 0; 
-$Font_Url = 'captchafonts/font4.ttf';   // 1,16,31
+$fontUsed  = 0; 
+$font_url  = 'captchafonts/font4.ttf';   // 1,16,31
 $fonts_dir = 'captchafonts';
-
-$col_txt_type = 4;  $col_txt_r = 206; $col_txt_g = 227; $col_txt_b = 253; 
 
 $min_font_size = 13; $max_font_size = 19;
 
 $min_angle = -15; $max_angle = 15;
+
+$col_txt_type = 4;  $col_txt_r = 206; $col_txt_g = 227; $col_txt_b = 253; 
 
 $char_padding = 2;
 
 # $output_type='jpeg';
 $output_type='png';
 
+//
+// dont't change anything below this comment
+//
 session_start();
 
 $turing = $_SESSION['turing_string'];
  
-if ($FontUsed == 1 ) {
+if ($fontUsed == 1 ) {
 	$fontno = mt_rand(1,34);
 	$font = $fonts_dir . '/font' . $fontno . '.ttf';
 	}
-	else $font = $Font_Url;
+	else $font = $font_url;
                  
 /* initialize variables */
 
@@ -85,7 +91,7 @@ $im = ImageCreate($image_width, $image_height);
 $cs = mt_rand(1,3);
 
 $d1 = $d2 = $d3 = 0;
-while ( ($d1<50) AND ($d2<50) AND (d3<50) )
+while ( ($d1<50) AND ($d2<50) AND ($d3<50) )
 	{
 	$r = mt_rand(200,255);	$g = mt_rand(200,255);	$b = mt_rand(200,255);
 	$d1 = abs($r-$g);	$d2 = abs($r-$b);	$d3 = abs($g-$b);
@@ -102,7 +108,7 @@ $d1 = mt_rand(0,50); $d2 = mt_rand(0,50); $d3 = mt_rand(0,50);
 $color_line1  = ImageColorAllocate($im, $r-$d1, $g-$d2, $b-$d3 );
 
 $d1 = $d2 = $d3 = 0;
-while ( ($d1<100) AND ($d2<100) AND (d3<100) )
+while ( ($d1<100) AND ($d2<100) AND ($d3<100) )
 	{
 	$r = mt_rand(0,150); $g = mt_rand(0,150); $b = mt_rand(0,150);
 	$d1 = abs($r-$g); $d2 = abs($r-$b); $d3 = abs($g-$b);
@@ -118,7 +124,7 @@ switch ( $col_txt_type )
 
 $noiset = mt_rand(1,2);
 
-if ( $image_background == 1 )
+if ( $im_bg == 1 )
 	{
 		switch ($noiset) {
 			case '1' :
@@ -149,17 +155,17 @@ if ( $image_background == 1 )
 			} 
 	}
 
-if ( $image_background == 0 )
+if ( $im_bg == 0 )
 	{
-	  	$image_data=getimagesize($image_background_url);
+	  	$image_data=getimagesize($im_bg_url);
 	
 	  	$image_type=$image_data[2];
 	
-	  	if($image_type==1) $img_src=imagecreatefromgif($image_background_url);
-	  	elseif($image_type==2) $img_src=imagecreatefromjpeg($image_background_url);
-	  	elseif($image_type==3) $img_src=imagecreatefrompng($image_background_url);
+	  	if($image_type==1) $img_src=imagecreatefromgif($im_bg_url);
+	  	elseif($image_type==2) $img_src=imagecreatefromjpeg($im_bg_url);
+	  	elseif($image_type==3) $img_src=imagecreatefrompng($im_bg_url);
 	
-			if ( $image_background_type == 1 ) {
+			if ( $im_bg_type == 1 ) {
 						  imagesettile($im,$img_src);
 						  imagefill($im,0,0,IMG_COLOR_TILED);
 						}

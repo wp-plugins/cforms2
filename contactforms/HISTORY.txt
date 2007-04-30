@@ -2,8 +2,9 @@
 Copyright 2006-2007  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
-v3.6 (feature & bugfix)
+v4 (feature & bugfix)
 *) feature: captcha support for additional SPAM protection
+*) feature: select & configure stylesheets via admin UI
 *) bugfix: IE margin-bottom hover bug
 *) bugfix: deleting form fields (on the general form config page) was broken due a 
      new bug that was introduced as part of the localization effort

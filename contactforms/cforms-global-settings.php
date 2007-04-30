@@ -254,12 +254,13 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 
 		<a name="visitorv" id="visitorv"></a>
 		<fieldset class="cformsoptions">
-			<p class="cflegend"><?php _e('Visitor Verification', 'cforms') ?></p>
+			<p class="cflegend"><?php _e('Visitor Verification (Q&A)', 'cforms') ?></p>
 
 			<p><?php _e('Getting a lot of <strong>SPAM</strong>? Use these Q&A\'s to counteract spam and ensure it\'s a human submitting the form. To use in your form, add the corresponding input field "<code class="codehighlight">Visitor verification</code>" preferably in its own FIELDSET (<em>check cforms.css for styling options</em>)!', 'cforms') ?></p>
+			<p><?php _e('<strong><u>Note:</u></strong> The below error or failure message is also used for <strong>captcha</strong> verification!', 'cforms') ?></p>
 
 			<div class="optionsbox" style="margin-top:25px;">
-				<div class="optionsboxL"><?php _e('<strong>Failure message</strong><br/>(for providing a wrong answer)', 'cforms'); ?></div>
+				<div class="optionsboxL"><?php _e('<strong>Failure message</strong><br/>(for a wrong answer)', 'cforms'); ?></div>
 				<div class="optionsboxR"><textarea name="cforms_codeerr" id="cforms_codeerr" ><?php echo stripslashes(htmlspecialchars(get_option('cforms_codeerr'))); ?></textarea></div>
 			</div>
 
@@ -277,11 +278,13 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 
 
 		
+		<a id="tracking"></a>
 		<fieldset class="cformsoptions">
 			<p class="cflegend"><?php _e('Database Input Tracking', 'cforms') ?></p>
 
 				<p><?php _e('If you like to track your form submissions also via the database, please enable this feature below. If required, this will create two new tables and you\'ll see a new sub tab "<strong>Tracking</strong>" under the cforms menu.', 'cforms') ?></p>
 		
+				<p><?php echo str_replace('[url]','?page=' . $plugindir . '/cforms-options.php#autoconf',__('If you\'ve enabled the <a href="[url]">auto confirmation message</a> feature or have included a <strong>CC: me</strong> input field, you can optionally configure the subject line of the email to include the form tracking ID.', 'cforms')); ?></p>
 		
 				<div class="optionsbox">
 					<div class="optionsboxL"><?php _e('Enable Database Tracking', 'cforms') ?></div>
@@ -289,17 +292,17 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 				</div>
 
 				<div class="optionsbox">
-					<div class="optionsboxL"><?php _e('Include Tracking ID in <br/>form submissions?', 'cforms') ?></div>
+					<div class="optionsboxL"><?php _e('Include Tracking ID in <br/>emails?', 'cforms') ?></div>
 					<div class="optionsboxR"><input type="checkbox" id="cforms_subid" name="cforms_subid" <?php if(get_option('cforms_subid')=="1") echo "checked=\"checked\""; ?>/></div>
 				</div>
 
 				<div class="optionsbox">
-					<div class="optionsboxL"><?php _e('Additional text for the <strong>subject line</strong>', 'cforms') ?></div>
+					<div class="optionsboxL"><?php _e('added <strong>subject line</strong> text', 'cforms') ?></div>
     				<div class="optionsboxR"><input type="text" id="cforms_subid_text" name="cforms_subid_text" value="<?php echo stripslashes(htmlspecialchars(get_option('cforms_subid_text'))); ?>"/><strong>{id}</strong> = <?php _e('var. for submission ID', 'cforms') ?></div>
 				</div>
 				
 				<?php if ( $wpdb->get_var("show tables like '$wpdb->cformssubmissions'") == $wpdb->cformssubmissions ) :?>
-				<div class="optionsbox" style="margin-top:15px;">
+				<div class="optionsbox" style="margin-top:25px;">
 					<div class="optionsboxL"><?php _e('Wipe out all collected cforms submission data and drop tables.', 'cforms') ?></div>
 					<div class="optionsboxR"><input type="submit" name="deletetables" class="allbuttons delbutton" value="<?php _e('Delete cforms Tracking Tables', 'cforms') ?>" onclick="return confirm('<?php _e('Do you really want to erase all collected data?', 'cforms') ?>');"/></div>
 				</div>
