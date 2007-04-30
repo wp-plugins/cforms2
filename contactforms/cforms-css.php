@@ -41,7 +41,7 @@ if ( get_option('cforms_formcount') == '' ){
 // Select new CSS?
 //
 
-if(!empty($_POST['saveFile'])){
+if(!empty($_POST['save_css'])){
 
 	    $newcss = stripslashes($_POST['csseditor']);
 		   	
