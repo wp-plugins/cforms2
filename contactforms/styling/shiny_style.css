@@ -2,7 +2,7 @@
 /*  custom code on top the default style sheet        */
 /*                                                    */
 /*  ** if you want this to apply to a different       */
-/*  ** form than you default form, change the form #  */
+/*  ** form than to just the 2nd form change the '2'  */
 /*  ** (or remove for your 1st, default form)         */
 
 #cforms2form p.subtitle	{ font-size:12px;text-align:left; padding:10px 0 0 10px; }
