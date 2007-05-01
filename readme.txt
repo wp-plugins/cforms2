@@ -149,7 +149,9 @@ See the "**Other Notes**" section for another example.
 
 == Frequently Asked Questions ==
 
-Please visit the [cforms plugin forum](http://www.deliciousdays.com/cforms-forum) for a up-to-date [FAQ](http://www.deliciousdays.com/cforms-forum?forum=3&page=1) and more help.
+Please visit the [cforms plugin forum](http://www.deliciousdays.com/cforms-forum)
+for up-to-date [FAQs](http://www.deliciousdays.com/cforms-forum?forum=3&page=1) 
+and more help.
 
 == Screenshots ==
 
