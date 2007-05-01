@@ -2,30 +2,30 @@
 /*  custom code on top the default style sheet        */
 /*                                                    */
 /*  ** if you want this to apply to a different       */
-/*  ** form than to just the 2nd form change the '2'  */
+/*  ** form than you default form, change the form #  */
 /*  ** (or remove for your 1st, default form)         */
 
-#cforms2form 		 			{ width:185px; }
-#cforms2form fieldset 			{ padding:0px 6px 12px; margin:0; }
+#cforms2form 		 	{ width:185px; }
+#cforms2form fieldset 		{ padding:0px 6px 12px; margin:0; }
 * html #cforms2form fieldset 	{ padding:12px 6px; }
 
-#cforms2form legend 			{ font: bold 1.2em 'Lucida Grande',Verdana,Sans-Serif; color:#333; }
+#cforms2form legend 		{ font: bold 1.2em 'Lucida Grande',Verdana,Sans-Serif; color:#333; }
 
 #cforms2form span.reqtxt,
 #cforms2form span.emailreqtxt 	{ display:none; }
 
 #cforms2form span.cformradiolabel,
-#cforms2form label 				{ text-align:left; float:none; position:relative; top:3px; font-weight:bold; }	
+#cforms2form label 			{ text-align:left; float:none; position:relative; top:3px; font-weight:bold; }	
 #cforms2form label.cformlabelafter 	{ float:left; width:100px!important; font-weight:normal; }
-#cforms2form input 				{ width:160px; border-color:#aaaaaa; }	
-#cforms2form input.cformradio	{ width:16px; }
+#cforms2form input 			{ width:160px; border-color:#aaaaaa; }	
+#cforms2form input.cformradio		{ width:16px; }
 
 #cforms2form textarea			{ height:5em; }
 
 #cforms2form .cfradioblock 		{ margin-left:20px; }
-#cforms2form input.sendbutton	{ margin:10px 0 0 113px; width:80px; height:22px; font-size:9px; }
+#cforms2form input.sendbutton		{ margin:10px 0 0 113px; width:80px; height:22px; font-size:9px; }
 
-#usermessage2 					{ margin:0; padding:0; }
+#usermessage2 				{ margin:0; padding:0; }
 
 
 /*                                                    */
@@ -221,4 +221,5 @@ img.captcha	{ float:left; margin-left:10px; }
 * html .cform			{ height:1%; }
 .cform				{ display:block; }
 /* End hide from IE-mac */
+
 
