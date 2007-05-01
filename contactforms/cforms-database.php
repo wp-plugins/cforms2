@@ -74,7 +74,7 @@ if ( (isset($_POST['delete'])) ) {
 	endforeach;
 	
 	?>
-	<div id="message" class="updated fade"><p><strong><?php echo $i; ?> <?php _e('entries succesfully removed from the tables!', 'cforms') ?></strong><br/>
+	<div id="message" class="updated fade"><p><strong><?php echo $i; ?> <?php _e('entries succesfully removed from the tables!', 'cforms') ?></strong><br />
 		<em><?php _e('Note: If you erroneously deleted an entry, no worries, you should still have an email copy.', 'cforms') ?></em></p></div>
 	<?php
 
@@ -132,7 +132,7 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']) || isset($_POST['sql
 	
 	?>
 
-	<div class="wrap"><a id="top"></a><img src="<?php echo $cforms_root; ?>/images/p3-title.jpg">
+	<div class="wrap"><a id="top"></a><img src="<?php echo $cforms_root; ?>/images/p3-title.jpg" alt=""/>
 
 	<?php if ($entries) :
 
@@ -160,19 +160,19 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']) || isset($_POST['sql
 					if ( $entry->field_val == '' )
 						echo 	'</div><div class="R">' . __('-','cforms') . '</div></div>' . "\n";					
 					else
-						echo 	'</div><div class="R">' . '<a href="' . $file . '">' . str_replace("\n","<br/>", strip_tags($val) ) . '</a>' . '</div></div>' . "\n";
+						echo 	'</div><div class="R">' . '<a href="' . $file . '">' . str_replace("\n","<br />", strip_tags($val) ) . '</a>' . '</div></div>' . "\n";
 
 			}
 			elseif ($name=='page') {  // special field: page 
 			
 					echo '<div class="showformfield" style="margin-bottom:10px;color:#3C575B;"><div class="L">';
 					_e('Submitted via page', 'cforms');
-					echo 	'</div><div class="R">' . str_replace("\n","<br/>", strip_tags($val) ) . '</div></div>' . "\n";
+					echo 	'</div><div class="R">' . str_replace("\n","<br />", strip_tags($val) ) . '</div></div>' . "\n";
 
 			} else {
 
 					echo '<div class="showformfield"><div class="L">' . $name . '</div>' .
-							'<div class="R">' . str_replace("\n","<br/>", strip_tags($val) ) . '</div></div>' . "\n";
+							'<div class="R">' . str_replace("\n","<br />", strip_tags($val) ) . '</div></div>' . "\n";
 
 			}
 
@@ -199,7 +199,7 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']) || isset($_POST['sql
 
 	?>
 
-	<div class="wrap"><a id="top"></a><img src="<?php echo $cforms_root; ?>/images/p3-title.jpg">
+	<div class="wrap"><a id="top"></a><img src="<?php echo $cforms_root; ?>/images/p3-title.jpg" alt=""/>
 
 		<?php if ($entries) :?>
 

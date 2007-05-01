@@ -102,7 +102,7 @@ if( isset($_REQUEST['deleteall']) ) {  // erase all cforms data
 	update_option('cforms_database', '0');
 
 	?>
-	<div id="message" class="updated fade"><p><strong><?php _e('cforms tracking tables (<code>cformssubmissions</code> & <code>cformsdata</code>) have been deleted.<br/>Please backup/clean-up your upload directory, chances are that when you turn tracking back on, existing (older) attachments may be <u>overwritten</u>!', 'cforms') ?></strong></p></div>
+	<div id="message" class="updated fade"><p><strong><?php _e('cforms tracking tables (<code>cformssubmissions</code> & <code>cformsdata</code>) have been deleted.<br />Please backup/clean-up your upload directory, chances are that when you turn tracking back on, existing (older) attachments may be <u>overwritten</u>!', 'cforms') ?></strong></p></div>
 	<?php
 
 }
@@ -177,7 +177,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 
 ?>
 
-<div class="wrap"><a id="top"></a><img src="<?php echo $cforms_root; ?>/images/p2-title.jpg">
+<div class="wrap"><a id="top"></a><img src="<?php echo $cforms_root; ?>/images/p2-title.jpg" alt=""/>
 
 	<p><?php _e('All settings and configuration options on this page apply to all forms.', 'cforms') ?></p>
 
@@ -204,7 +204,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 			</div>
 
 			<div class="optionsbox" style="margin-top:3px;">
-				<div class="optionsboxL"><strong><?php _e('Maximum file size<br/>in kilobyte', 'cforms') ?></strong></div>
+				<div class="optionsboxL"><strong><?php _e('Maximum file size<br />in kilobyte', 'cforms') ?></strong></div>
 				<div class="optionsboxR"><input type="text" id="cforms_upload_size" name="cforms_upload_size" value="<?php echo stripslashes(htmlspecialchars(get_option('cforms_upload_size'))); ?>"/></div>
 			</div>
 
@@ -261,14 +261,14 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 			<p><?php _e('<strong><u>Note:</u></strong> The below error/failure message is also used for <strong>captcha</strong> verification!', 'cforms') ?></p>
 
 			<div class="optionsbox" style="margin-top:25px;">
-				<div class="optionsboxL"><?php _e('<strong>Failure message</strong><br/>(for a wrong answer)', 'cforms'); ?></div>
+				<div class="optionsboxL"><?php _e('<strong>Failure message</strong><br />(for a wrong answer)', 'cforms'); ?></div>
 				<div class="optionsboxR"><textarea name="cforms_codeerr" id="cforms_codeerr" ><?php echo stripslashes(htmlspecialchars(get_option('cforms_codeerr'))); ?></textarea></div>
 			</div>
 
 			<?php $qa = stripslashes(htmlspecialchars(get_option('cforms_sec_qa'))); ?>
 	
 			<div class="optionsbox">
-				<div class="optionsboxL"><?php _e('<strong>Questions & Answers</strong><br/>format: Q=A', 'cforms') ?></div>
+				<div class="optionsboxL"><?php _e('<strong>Questions & Answers</strong><br />format: Q=A', 'cforms') ?></div>
 				<div class="optionsboxR"><textarea name="cforms_sec_qa" id="cforms_sec_qa" ><?php echo $qa; ?></textarea></div>
 			</div>
 
@@ -293,7 +293,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 				</div>
 
 				<div class="optionsbox">
-					<div class="optionsboxL"><?php _e('Include Tracking ID in <br/>emails?', 'cforms') ?></div>
+					<div class="optionsboxL"><?php _e('Include Tracking ID in <br />emails?', 'cforms') ?></div>
 					<div class="optionsboxR"><input type="checkbox" id="cforms_subid" name="cforms_subid" <?php if(get_option('cforms_subid')=="1") echo "checked=\"checked\""; ?>/></div>
 				</div>
 

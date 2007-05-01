@@ -349,27 +349,27 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 
 				if( $type=='verification' ){
 					$allgood = $verification?false:true;
-					$usermsg .= $verification?__('Only one <em>Visitor verification</em> field is permitted!', 'cforms').'<br/>':'';
+					$usermsg .= $verification?__('Only one <em>Visitor verification</em> field is permitted!', 'cforms').'<br />':'';
 					$verification=true;
 				}
 				if( $type=='captcha' ){
 					$allgood = $captcha?false:true;
-					$usermsg .= $captcha?__('Only one <em>captcha</em> field is permitted!', 'cforms').'<br/>':'';
+					$usermsg .= $captcha?__('Only one <em>captcha</em> field is permitted!', 'cforms').'<br />':'';
 					$captcha=true;
 				}
 				if( $type=='ccbox' ){
 					$allgood = $ccbox?false:true;
-					$usermsg .= $ccbox?__('Only one <em>CC:</em> field is permitted!', 'cforms').'<br/>':'';
+					$usermsg .= $ccbox?__('Only one <em>CC:</em> field is permitted!', 'cforms').'<br />':'';
 					$ccbox=true;
 				}
 				if( $type=='emailtobox' ){
 					$allgood = $emailtobox?false:true;
-					$usermsg .= $emailtobox?__('Only one <em>Multiple Recipients</em> field is permitted!'.'<br/>', 'cforms'):'';
+					$usermsg .= $emailtobox?__('Only one <em>Multiple Recipients</em> field is permitted!'.'<br />', 'cforms'):'';
 					$emailtobox=true;
 				}
 				if( $type=='upload' ){
 					$allgood = $upload?false:true;
-					$usermsg .= $upload?__('Only one <em>File UPload</em> field is permitted!', 'cforms').'<br/>':'';
+					$usermsg .= $upload?__('Only one <em>File UPload</em> field is permitted!', 'cforms').'<br />':'';
 					$upload=true;
 				}
 
@@ -425,7 +425,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 	      $new_f = substr($order[$j],0,-1);
 				if ( $j <> $new_f )
 						update_option('cforms'.$no.'_count_field_'.($j+1),$all_fields[$new_f]);
-					  //echo "$j=$new_f :: ".$all_fields[$j]." == ".$all_fields[$new_f]."<br/>";  //debug
+					  //echo "$j=$new_f :: ".$all_fields[$j]." == ".$all_fields[$new_f]."<br />";  //debug
 		$j++;
 		}
 
@@ -477,7 +477,7 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 
 ?>
 
-<div class="wrap"><a id="top"></a><img src="<?php echo $cforms_root; ?>/images/p1-title.jpg">
+<div class="wrap"><a id="top"></a><img src="<?php echo $cforms_root; ?>/images/p1-title.jpg" alt=""/>
 
 	<p><?php echo str_replace('[url]','?page='. $plugindir.'/cforms-help.php#inserting',__('This plugin allows you <a href="[url]">to insert</a> one or more custom designed contact forms, which on submission (preferably via ajax) will send the visitor info via email and optionally store the feedback in the database, too.', 'cforms')); ?></p>
 
@@ -709,7 +709,7 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 
 			<p class="ex"><?php _e('Please <strong>do not use HTML code</strong> in these fields instead, adjust the (cforms.css) stylesheet to your needs. Line breaks and quotes are fine. The actual success & failure message can in addition be shown in a popup <strong>alert box</strong>. This may come handy in case your forms are extremely long and the user can\'t see the submission status at the top anymore.', 'cforms') ?></p>
 
-			<br/>
+			<br />
 			<div class="optionsbox">
 				<div class="optionsboxL"><?php _e('Waiting message', 'cforms'); ?></div>
 				<div class="optionsboxR"><input name="cforms_working" id="cforms_working" value="<?php echo stripslashes(htmlspecialchars(get_option('cforms'.$no.'_working')));  ?>" /></div>
@@ -723,14 +723,14 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 				<div class="optionsboxR"><input type="text" name="cforms_emailrequired" id="cforms_emailrequired" value="<?php echo stripslashes(htmlspecialchars(get_option('cforms'.$no.'_emailrequired'))); ?>"/></div>
 			</div>
 			<div class="optionsbox" style="margin-top:10px;">
-				<div class="optionsboxL"><?php _e('<strong>Success message</strong><br/>form filled out correctly', 'cforms'); ?></div>
+				<div class="optionsboxL"><?php _e('<strong>Success message</strong><br />form filled out correctly', 'cforms'); ?></div>
 				<div class="optionsboxR">
 					<textarea style="float:left" name="cforms_success" id="cforms_success"><?php echo stripslashes(htmlspecialchars(get_option('cforms'.$no.'_success'))); ?></textarea>
 					<div style="float:left"><input type="checkbox" id="cforms_popup1" name="cforms_popup1" <?php if(substr(get_option('cforms'.$no.'_popup'),0,1)=="y") echo "checked=\"checked\""; ?>/><label for="cforms_popup1"><?php _e('Opt. Popup Msg', 'cforms'); ?></label></div>
 				</div>
 			</div>
 			<div class="optionsbox">
-				<div class="optionsboxL"><?php _e('<strong>Failure message</strong><br/>missing fields or wrong field formats<br/>(regular expr.)', 'cforms'); ?></div>
+				<div class="optionsboxL"><?php _e('<strong>Failure message</strong><br />missing fields or wrong field formats<br />(regular expr.)', 'cforms'); ?></div>
 					<div class="optionsboxR"><textarea style="float:left" name="cforms_failure" id="cforms_failure" ><?php echo stripslashes(htmlspecialchars(get_option('cforms'.$no.'_failure'))); ?></textarea>
 					<div style="float:left"><input type="checkbox" id="cforms_popup2" name="cforms_popup2" <?php if(substr(get_option('cforms'.$no.'_popup'),1,1)=="y") echo "checked=\"checked\""; ?>/><label for="cforms_popup2"><?php _e('Opt. Popup Msg', 'cforms'); ?></label></div>
 				</div>
@@ -752,7 +752,7 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 			<p><?php _e('These settings will be used for the email sent to you. Both "<strong>xx@yy.zz</strong>" and "<strong>abc &lt;xx@yy.zz&gt;</strong>" formats are valid, but check if your mailserver does accept the format of choice!"', 'cforms') ?></p>
 
 			<p class="ex"><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#multirecipients',__('More than one "<strong>form admin</strong>"? Simply add additional email addresses separated by a <strong style="color:red">comma</strong>. &nbsp; <em><u>Note:</u></em> &nbsp; If you want the visitor to choose from any of these per select box, you need to add a corresponding "<code class="codehighlight">Multiple Recipients</code>" input field <a href="#anchorfields">above</a> (see the HELP section for <a href="[url]">details</a> on the <em>field name</em> format expected!). If <strong>no</strong> "Multiple Recipients" input field is defined above, the submitted form data will go out to <strong>every email recipient</strong>!', 'cforms')); ?></p>
-			<br/>
+			<br />
 			<div class="optionsbox">
 				<div class="optionsboxL"><?php _e('Email address(es)', 'cforms') ?></div>
 				<div class="optionsboxR"><input type="text" name="cforms_email" id="cforms_email" value="<?php echo stripslashes(htmlspecialchars(get_option('cforms'.$no.'_email'))); ?>" /></div>

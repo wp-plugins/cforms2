@@ -53,8 +53,11 @@ management, you can even have multiple forms on the same page!
 cforms has been revised to fully support WP localization. If you'd like to contribute a language translation, please get in touch.
 If you have suggestions or would like to point out typos etc, please contact the actual author (see list below) of the respective localization.
 
-* Currently, cforms include the following language packs (besides English):
+* Currently, cforms includes the following language packs (besides English):
 	* **German** \* Author: [Sven Wappler](http://www.wordpressbox.de/plugins/cforms/)
+	* **Spanish** \* Author: Samuel Aguilera (pending)
+	* **Italian** \* Author: webbite.it (pending)
+	* **Hebrew** \* Author: Vahid (pending)
 
 == Installation ==
 

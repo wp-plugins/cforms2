@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-01 09:07+0200\n"
+"POT-Creation-Date: 2007-05-01 14:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,21 +61,21 @@ msgstr ""
 msgid "Select a form style"
 msgstr ""
 
-#: cforms-css.php:89
-msgid "Please choose a theme file <br/>to style your forms"
+#: cforms-css.php:92
+msgid "Please choose a theme file <br />to style your forms"
 msgstr ""
 
-#: cforms-css.php:96
+#: cforms-css.php:99
 msgid ""
 "Please make sure that the <code class=\"codehighlight\">/styling</code> "
 "folder exists in the cforms plugin directory!"
 msgstr ""
 
-#: cforms-css.php:118
+#: cforms-css.php:120
 msgid "Select Style &raquo;"
 msgstr ""
 
-#: cforms-css.php:123
+#: cforms-css.php:125
 msgid ""
 "<strong><u>Please note:</u></strong> Once you activate a new style/theme, "
 "<strong>check the below CSS</strong> to see if it's a general theme applying "
@@ -83,33 +83,33 @@ msgid ""
 "latter is the case, you may have to edit the below CSS to match your form #."
 msgstr ""
 
-#: cforms-css.php:132
+#: cforms-css.php:136
 msgid "PREVIEW:"
 msgstr ""
 
-#: cforms-css.php:132
+#: cforms-css.php:136
 msgid "Theme Preview"
 msgstr ""
 
-#: cforms-css.php:132
+#: cforms-css.php:136
 msgid "Theme Preview: "
 msgstr ""
 
-#: cforms-css.php:150
+#: cforms-css.php:155
 msgid "Basic CSS editor. Current style file: "
 msgstr ""
 
-#: cforms-css.php:152
+#: cforms-css.php:157
 msgid ""
 "Use this simple editor to further tailor your forms' style to meet your "
 "requirements. Currently you're editing: "
 msgstr ""
 
-#: cforms-css.php:165
+#: cforms-css.php:170
 msgid "Sorry. The file you are looking for doesn't exist."
 msgstr ""
 
-#: cforms-css.php:170
+#: cforms-css.php:175
 msgid "Update Changes &raquo;"
 msgstr ""
 
@@ -232,7 +232,7 @@ msgstr ""
 #: cforms-global-settings.php:105
 msgid ""
 "cforms tracking tables (<code>cformssubmissions</code> & <code>cformsdata</"
-"code>) have been deleted.<br/>Please backup/clean-up your upload directory, "
+"code>) have been deleted.<br />Please backup/clean-up your upload directory, "
 "chances are that when you turn tracking back on, existing (older) "
 "attachments may be <u>overwritten</u>!"
 msgstr ""
@@ -296,7 +296,7 @@ msgid "[empty=all files are allowed]"
 msgstr ""
 
 #: cforms-global-settings.php:207
-msgid "Maximum file size<br/>in kilobyte"
+msgid "Maximum file size<br />in kilobyte"
 msgstr ""
 
 #: cforms-global-settings.php:211
@@ -362,11 +362,11 @@ msgid ""
 msgstr ""
 
 #: cforms-global-settings.php:264
-msgid "<strong>Failure message</strong><br/>(for a wrong answer)"
+msgid "<strong>Failure message</strong><br />(for a wrong answer)"
 msgstr ""
 
 #: cforms-global-settings.php:271
-msgid "<strong>Questions & Answers</strong><br/>format: Q=A"
+msgid "<strong>Questions & Answers</strong><br />format: Q=A"
 msgstr ""
 
 #: cforms-global-settings.php:275
@@ -404,7 +404,7 @@ msgid "Enable Database Tracking"
 msgstr ""
 
 #: cforms-global-settings.php:296
-msgid "Include Tracking ID in <br/>emails?"
+msgid "Include Tracking ID in <br />emails?"
 msgstr ""
 
 #: cforms-global-settings.php:301
@@ -1390,7 +1390,7 @@ msgid "Only one <em>Multiple Recipients</em> field is permitted!"
 msgstr ""
 
 #: cforms-options.php:367
-msgid "<br/>"
+msgid "<br />"
 msgstr ""
 
 #: cforms-options.php:372
@@ -1658,7 +1658,7 @@ msgid "\"valid email required\" label"
 msgstr ""
 
 #: cforms-options.php:726
-msgid "<strong>Success message</strong><br/>form filled out correctly"
+msgid "<strong>Success message</strong><br />form filled out correctly"
 msgstr ""
 
 #: cforms-options.php:729 cforms-options.php:735
@@ -1667,8 +1667,8 @@ msgstr ""
 
 #: cforms-options.php:733
 msgid ""
-"<strong>Failure message</strong><br/>missing fields or wrong field "
-"formats<br/>(regular expr.)"
+"<strong>Failure message</strong><br />missing fields or wrong field "
+"formats<br />(regular expr.)"
 msgstr ""
 
 #: cforms-options.php:739

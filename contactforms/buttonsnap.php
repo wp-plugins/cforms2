@@ -421,7 +421,7 @@ MORESCRIPT;
 		echo "<pre style=\"background-color:#ffeeee;border:1px solid red;\">";
 		foreach($args as $arg1)
 		{
-			echo htmlentities(print_r($arg1, 1)) . "<br/>";
+			echo htmlentities(print_r($arg1, 1)) . "<br />";
 		}
 		echo "</pre>";
 	}

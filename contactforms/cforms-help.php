@@ -17,7 +17,7 @@ if(!current_user_can('manage_cforms')) {
 
 ?>
 
-<div class="wrap"><a id="top"></a><img src="<?php echo $cforms_root; ?>/images/p4-title.jpg">
+<div class="wrap"><a id="top"></a><img src="<?php echo $cforms_root; ?>/images/p4-title.jpg" alt=""/>
 
 		<p><?php _e('Here you\'ll find plenty of examples and documentation that should help you configure cforms.', 'cforms'); ?></p>
 
@@ -229,7 +229,7 @@ if(!current_user_can('manage_cforms')) {
 				  <li><?php _e('The example is made of 3 fields:', 'cforms');?></li>
 				  <li><?php _e('<strong>Fieldset</strong>: <code class="codehighlight">Upload a file</code>', 'cforms');?></li>
 				  <li><?php _e('<b>Text only (no input)</b>: <code class="codehighlight">Note: only .txt and .doc files permitted & there is a file size limit of 200KB!||font-size:9px;</code>', 'cforms');?></li>
-				  <li><?php _e('<strong>File Upload Box</strong>: <code class="codehighlight">Choose a file</code>', 'cforms');?><br/><br/><a href="#top"><?php _e('Back to the top.', 'cforms') ?></a></li>
+				  <li><?php _e('<strong>File Upload Box</strong>: <code class="codehighlight">Choose a file</code>', 'cforms');?><br /><br /><a href="#top"><?php _e('Back to the top.', 'cforms') ?></a></li>
 			</ul>
 
 		</ul>
@@ -292,8 +292,8 @@ if(!current_user_can('manage_cforms')) {
 			<li><?php _e('Any of the form fields described in the plugins\' <strong>HELP!</strong> section can be dynamically generated.', 'cforms');?></li>
 			<li><?php _e('Function call to generate dynamic forms: <code class="codehighlight">insert_custom_cform($fields:array,$form-no:int);</code> with', 'cforms');?>
 
-                <br/><br/>
-                <code class="codehighlight">$form-no</code>: <?php _e('empty string for the first (default) form and <strong>2</strong>,3,4... for any subsequent form', 'cforms'); ?><br/>
+                <br /><br />
+                <code class="codehighlight">$form-no</code>: <?php _e('empty string for the first (default) form and <strong>2</strong>,3,4... for any subsequent form', 'cforms'); ?><br />
                 <code class="codehighlight">$fields</code> :
 
                 <code class="codehighlight"><pre>
@@ -332,7 +332,7 @@ if(!current_user_can('manage_cforms')) {
         </ul>
 
 
-        <br/>
+        <br />
 
 
 		<a id="ex1"></a>
@@ -359,7 +359,7 @@ insert_custom_cform($fields,'');    //<?php _e('call default form with new field
         </ul>
 
 
-        <br/>
+        <br />
 
 
 		<a id="ex2"></a>

@@ -73,7 +73,7 @@ if(!empty($_POST['save_css'])){
 
 ?>
 
-<div class="wrap"><a id="top"></a><img src="<?php echo $cforms_root; ?>/images/p5-title.jpg">
+<div class="wrap"><img src="<?php echo $cforms_root; ?>/images/p5-title.jpg" alt=""/>
 
 	<p><?php _e('Please select a theme file that comes closest to what you\'re looking for and apply your own custom changes via the editor below.', 'cforms') ?></p>
 	<p class="ex" style="padding-bottom:10px;"><?php _e('This is optional of course, if you\'re happy with the default look and feel, no need to do anything here.', 'cforms') ?></p>
@@ -84,56 +84,61 @@ if(!empty($_POST['save_css'])){
 				<p class="cflegend" style="margin:10px 0 20px;"><?php _e('Select a form style', 'cforms') ?></p>
 
 				<table>
-				<tr valign="top"><td>
+				<tr valign="top">
+				
+					<td>
 						<table>
-							<tr height="70" valign="middle"><td width="300" align="right" style="font-size:10px;"><?php _e('Please choose a theme file <br/>to style your forms' , 'cforms') ?></td>
-							<td align="center">				
-								<?php // include all css files
-								$d   = $fullplugindir.'/styling';
-				
-								$exists = file_exists($d);
-								if ( $exists == false )
-									echo '<p><strong>' . __('Please make sure that the <code class="codehighlight">/styling</code> folder exists in the cforms plugin directory!', 'cforms') . '</strong></p>';
-				
-								else {
-									?>
-									   
-									<select style="cursor:pointer;" name="style"><?php
-					
-										$dir = opendir($d);
-										while ( $dir && ($f = readdir($dir)) ) {
-										
-											if( eregi("\.css$",$f) ){
+							<tr valign="middle">
+								<td width="300" align="right" style="font-size:10px;"><?php _e('Please choose a theme file <br />to style your forms' , 'cforms') ?></td>
+								<td align="center">				
+									<?php // include all css files
+										$d   = $fullplugindir.'/styling';
+						
+										$exists = file_exists($d);
+										if ( $exists == false )
+											echo '<p><strong>' . __('Please make sure that the <code class="codehighlight">/styling</code> folder exists in the cforms plugin directory!', 'cforms') . '</strong></p>';
+						
+										else {
+											?>
+											<select style="cursor:pointer;" name="style"><?php
 							
+												$dir = opendir($d);
+												while ( $dir && ($f = readdir($dir)) ) {
+												
+													if( eregi("\.css$",$f) ){
 															if( $f==$style )
 															    	echo '<option selected="selected">'.$f.'</option>'."\n";
 															else
-																	echo '<option>'.$f.'</option>';
-																	
-											}
-										}
-								
-									?></select>
-									</td><td>
+																	echo '<option>'.$f.'</option>';																		
+													}
+												}
+												
+											?></select>
+									<?php } ?>																				
+								</td>
+								<td>
 									<input type="submit" name="chg_css" class="allbuttons stylebutton" value="<?php _e('Select Style &raquo;', 'cforms'); ?>"/>
-									</td>
-								<?php } ?>			
-							</td></tr>
-							<tr><td colspan="3">
-								<p class="ex" style="padding-bottom:10px;"><?php _e('<strong><u>Please note:</u></strong> Once you activate a new style/theme, <strong>check the below CSS</strong> to see if it\'s a general theme applying to all your forms or if the style applies to a specfic form number. If the latter is the case, you may have to edit the below CSS to match your form #.', 'cforms') ?></p>
-							</td></tr>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="3">
+									<p class="ex" style="padding-bottom:10px;"><?php _e('<strong><u>Please note:</u></strong> Once you activate a new style/theme, <strong>check the below CSS</strong> to see if it\'s a general theme applying to all your forms or if the style applies to a specfic form number. If the latter is the case, you may have to edit the below CSS to match your form #.', 'cforms') ?></p>
+								</td>
+							</tr>
 						</table>
 					</td>
+					
 					<td>					
 						<?php if ( $exists ) {
 
 								$existsjpg = file_exists($d.'/'.$style.'.jpg');
 								if ( $existsjpg )
-									echo __('PREVIEW:', 'cforms').'<br/><img height="228px" width="300px" src="' . $cforms_root.'/styling/'.$style.'.jpg' . '" alt="' . __('Theme Preview', 'cforms') . '" title="' . __('Theme Preview: ', 'cforms') . $style .'"/>';
+									echo __('PREVIEW:', 'cforms').'<br /><img height="228px" width="300px" src="' . $cforms_root.'/styling/'.$style.'.jpg' . '" alt="' . __('Theme Preview', 'cforms') . '" title="' . __('Theme Preview: ', 'cforms') . $style .'"/>';
 					
 						}?>
+					</td>
 					
-					</td></tr>
+				</tr>
 				</table>
 				
 			</fieldset>
@@ -144,7 +149,7 @@ if(!empty($_POST['save_css'])){
 // Edit current style
 //
 ?>
-	<form id="editcss" name="mainform" method="post" action="" name="editcss">
+	<form id="editcss" method="post" action="" name="editcss">
 	
 			 <fieldset class="cformsoptions">
 				<p class="cflegend" style="margin-top:10px;"><?php _e('Basic CSS editor. Current style file: ', 'cforms'); echo '<span style="color:blue;">'.$style.'</span>' ?></p>

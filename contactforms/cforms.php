@@ -581,7 +581,7 @@ function cforms_submitcomment($content) {
 			// return success msg
 	    $pre = $segments[0].substr(get_option('cforms'.$no.'_popup'),0,1);
 	    return $pre.
-						 preg_replace ( '|\r\n|', '<br/>', stripslashes(get_option('cforms'.$no.'_success'))).'|'.
+						 preg_replace ( '|\r\n|', '<br />', stripslashes(get_option('cforms'.$no.'_success'))).'|'.
 						 '<root>'.preg_replace ( '/(.*)(\r\n|$)/', '<text>\1</text>', stripslashes(get_option('cforms'.$no.'_success'))).'</root>';
 	}
 	else
@@ -863,13 +863,13 @@ function cforms($args = '',$no = '') {
 				$usermessage_text = '';
 				break;
 		case 1:
-				$usermessage_text = preg_replace ( array("|\\\'|",'/\\\"/','|\r\n|'),array('&#039;','&quot;','<br/>'), get_option('cforms'.$no.'_failure') );
+				$usermessage_text = preg_replace ( array("|\\\'|",'/\\\"/','|\r\n|'),array('&#039;','&quot;','<br />'), get_option('cforms'.$no.'_failure') );
 				break;
 		case 2:
-				$usermessage_text = preg_replace ( array("|\\\'|",'/\\\"/','|\r\n|'),array('&#039;','&quot;','<br/>'), get_option('cforms_codeerr') );
+				$usermessage_text = preg_replace ( array("|\\\'|",'/\\\"/','|\r\n|'),array('&#039;','&quot;','<br />'), get_option('cforms_codeerr') );
 				break;
 		case 3:
-				$usermessage_text = preg_replace ( array("|\\\'|",'/\\\"/','|\r\n|'),array('&#039;','&quot;','<br/>'), $fileerr);
+				$usermessage_text = preg_replace ( array("|\\\'|",'/\\\"/','|\r\n|'),array('&#039;','&quot;','<br />'), $fileerr);
 				break;
 	}
 
@@ -882,7 +882,7 @@ function cforms($args = '',$no = '') {
 	//
 	if( (isset($_POST['sendbutton'.$no]) ) && $all_valid ) {
 
-			$usermessage_text = preg_replace ( '|\r\n|', '<br/>', stripslashes(get_option('cforms'.$no.'_success')) );
+			$usermessage_text = preg_replace ( '|\r\n|', '<br />', stripslashes(get_option('cforms'.$no.'_success')) );
 
 			if ( get_option('cforms'.$no.'_fname') <> '' ) { //\nA new submission (form: \"','cforms')
 					$title   = "\n" . __('A new submission (form: ','cforms'). '"' . get_option('cforms'.$no.'_fname') . "\")\n";
@@ -1143,7 +1143,7 @@ function cforms($args = '',$no = '') {
 	// paint form
 	//
 
-	$break='<br/>';
+	$break='<br />';
 	$nl="\n";
 	$tab="\t";
 
@@ -1408,7 +1408,7 @@ function cforms($args = '',$no = '') {
 				
 		}
 		
-		// if textonly field, then we don't want a <br/> before!
+		// if textonly field, then we don't want a <br /> before!
 		if ($field_type == 'textonly')
 			$content = preg_replace("/(.*)(<br\/>\\n)?$/","$1",$content) . $tab . $tab . $tab . $field;
 		else
@@ -1421,7 +1421,7 @@ function cforms($args = '',$no = '') {
 		else if($field_required == 1 && $field_type <> 'checkbox' && $field_type <> 'multiselectbox' && $field_type <> 'selectbox' && $field_type <> 'upload' )
 			$content .= '<span class="reqtxt">&nbsp;'.stripslashes(get_option('cforms'.$no.'_required')).'</span>';
 		
-		// no <br/> after fieldsets or text paragraphs
+		// no <br /> after fieldsets or text paragraphs
 		if ( !($field_type == 'fieldsetstart' || $field_type == 'fieldsetend' || $field_type == 'textonly') )
       		$content .= $break . $nl;
 		else
