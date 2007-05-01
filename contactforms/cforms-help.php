@@ -40,17 +40,17 @@ if(!current_user_can('manage_cforms')) {
 
 		<p><?php _e('Admittedly, <strong>cforms</strong> is not the easiest form mailer plugin but it may be the most flexible. The below outline should help you get started with the default form.', 'cforms'); ?></p>
 		<ol style="margin:10px 0 0 100px;">
-			<li><?php echo str_replace('[url]','?page=' . $plugindir . '/cforms-options.php#anchorfields',__('First take a look at the <a href="[url]">defaut form</a>', 'cforms')); ?>
+			<li><?php echo str_replace('[url]','?page=' . $plugindir . '/cforms-options.php#anchorfields',__('First take a look at the <a href="[url]">default form</a>', 'cforms')); ?>
 				<ul style="margin:10px 0 0 30px;">
 					<li><?php echo __('Verify that it contains all the fields you need, are they in the right order?', 'cforms'); ?></li>
 					<li><?php echo __('Check the field labels (field names).', 'cforms'); ?></li>
-					<li><?php echo __('Check "Is Required", "Is Email" (<em>if an email is expected for input</em>) and/or "Auto Clear" (<em>if the field default value need to be cleared upon focus</em>).', 'cforms'); ?></li>
+					<li><?php echo __('Check "Is Required", "Is Email" (<em>if an email is expected for input</em>) and/or "Auto Clear" (<em>if the field default value needs to be cleared upon focus</em>).', 'cforms'); ?></li>
 					<li><?php echo str_replace(array('[url1]','[url2]','[url3]'),array('#qa','#captcha','?page=' . $plugindir . '/cforms-global-settings.php#visitorv'),__('Want to include SPAM protection? Choose between <a href="[url1]">Q&A</a>, <a href="[url2]">captcha</a> add an input field accordingly and configure <a href="[url3]">here</a>.', 'cforms')); ?></li>
 				</ul>
 			</li>
 			<li><?php echo str_replace('[url]','?page=' . $plugindir . '/cforms-options.php#anchoremail',__('Check if the <a href="[url]">email admin</a> for your form is configured correctly.', 'cforms')); ?></li>
 			<li><?php echo str_replace('[url]','?page=' . $plugindir . '/cforms-options.php#autoconf',__('Decide if you want the visitor to receive an <a href="[url]">auto confirmation message</a> upon form submission.', 'cforms')); ?></li>
-			<li><?php echo str_replace('[url]','?page=' . $plugindir . '/cforms-global-settings.php#tracking',__('Would you like <a href="[url]">to track</a> form submission via the database.', 'cforms')); ?></li>
+			<li><?php echo str_replace('[url]','?page=' . $plugindir . '/cforms-global-settings.php#tracking',__('Would you like <a href="[url]">to track</a> form submission via the database?', 'cforms')); ?></li>
 			<li><?php echo str_replace('[url]','#inserting',__('<a href="[url]">Add the default form</a> to a post or page.', 'cforms')); ?></li>
 			<li><?php echo __('Give it a whirl.', 'cforms'); ?></li>
 		</ol>

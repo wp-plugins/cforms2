@@ -1,9 +1,23 @@
-/*                                                    */
-/*  the entire form                                   */
-/*                                                    */
+/*                                                     */
+/*  PLEASE NOTE:                                       */
+/*                                                     */
+/*  (1) this style applies to all forms                */
+/*                                                     */
+/*  (2) to MAKE IT WORK, you need to add an additional */
+/*      'text-only' field as a first field!            */
+/*      field name (pipe symbol!): |customdarkbgtop    */
+/*                                                     */
+/*  OR use the 'dark_rounded_form_backup.txt'          */
+/*  file (in /contactforms/styling/ directory) & the   */
+/*  RESTORE form feature                               */
+/*                                                     */
 
-.cform		{ margin:10px auto 50px auto; width: 410px; }
 
+.cform		{ margin:10px auto 50px auto; padding-bottom:8px; width: 410px; 
+		background: url(../images/customform_dark_bg_bottom.jpg) no-repeat bottom left;}
+
+.customdarkbgtop	{ display:block; margin:0!important; height:11px; padding:0!important; 
+			background: url(../images/customform_dark_bg_top.jpg) no-repeat bottom left; font-size:1px; }
 
 /*                                                    */
 /* text paragraph & message box above the form        */
@@ -33,7 +47,7 @@ p.textonly	{ clear:left; text-align:center; padding:5px; margin:0; }
 
 span.cformchkboxlabel,
 span.cformradiolabel,
-.cform label 		{ width:90px; margin:5px 0 0 0; font:normal 11px 'Trebuchet MS',Arial;
+.cform label 		{ width:90px; margin:5px 0 0 0; font:normal 11px 'Trebuchet MS',Arial; color:white;
 			 display:block; float:left;  padding-right:10px; clear:left; text-align:right; }
 
 
@@ -48,7 +62,7 @@ label.cformlabelafter 	{ clear:none; width:250px!important; text-align:left; pad
 span.chckboxtxt,
 span.cformradiotext,
 span.reqtxt,
-span.emailreqtxt 	{ float:left;	margin:5px 0; padding-left:3px; font:normal 11px 'Trebuchet MS',Arial; }
+span.emailreqtxt 	{ float:left;	margin:5px 0; padding-left:3px; font:normal 11px 'Trebuchet MS',Arial; color:#bbbbbb;}
 
 span.cformradiotext 		{ margin:5px 0 0 0!important; }
 * html span.cformradiotext	{ margin-top:4px!important; } /* hack: different margin for IE */
@@ -58,20 +72,11 @@ span.cformradiotext 		{ margin:5px 0 0 0!important; }
 /*              FORM FIELDSETS                        */
 /*                                                    */
 
-.cformfieldsets		{ margin-top:10px; padding:8px 0 11px 0; 
-			border:1px solid #adadad; border-left-color:#ececec; border-top-color:#ececec; }
+.cformfieldsets		{ margin:0; padding:8px 0 11px 0; background: url(../images/customform_dark_bg.jpg) repeat-y; border:none; }
 
 /* you may want to remove the below line if this causes layout issues with your WP Theme (ie6 fieldset hack) */
-* html .cformfieldsets	{ position: relative; margin-top:10px; padding-top:15px; }
+* html .cformfieldsets	{ position: relative; margin-top:0px; padding-top:15px; }
 
-
-/*etc..add more, if you have more fieldsets*/
-.cformfieldset6,
-.cformfieldset5,
-.cformfieldset4,
-.cformfieldset3,
-.cformfieldset2,
-.cformfieldset1		{ background:#f7f7f7; }
 
 /*etc..add more, if you have more forms using captcha*/
 #cforms_captcha5,
@@ -85,7 +90,7 @@ span.cformradiotext 		{ margin:5px 0 0 0!important; }
 /*   FIELDSET legends                                 */
 /*                                                    */
 
-.cform legend		{ margin-left:10px; font:normal 20px Times; }
+.cform legend		{ display:none; margin-left:10px; font:normal 20px Times; }
 
 /* you may want to remove the below line if this causes layout issues with your WP Theme (ie6 fieldset hack) */
 * html .cform legend	{ position:absolute; top: -10px; left: 10px; margin-left:0; }
@@ -137,9 +142,8 @@ input.cformchkbox 		{ margin:7px 0 6px 0; width:16px; border:none; }
 /*   FORM submit button                               */
 /*                                                    */
 
-.cform input.sendbutton	{ width:100px;  padding:2px; margin: 10px 0 0 310px; float:none!important;
-			background:url(../images/button-bg.gif) repeat-x; border:1px solid #adadad!important;
-		 	border-left-color:#ececec!important; border-top-color:#ececec!important;}
+.cform input.sendbutton	{ width:410px; height:26px; padding:0; margin:0; float:none!important; border:none!important;
+			background:url(../images/customform_dark_submit.jpg) no-repeat; }
 
 
 /*                                                    */
@@ -191,4 +195,5 @@ img.captcha	{ float:left; margin-left:10px; }
 * html .cform			{ height:1%; }
 .cform				{ display:block; }
 /* End hide from IE-mac */
+
 

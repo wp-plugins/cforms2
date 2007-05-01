@@ -257,8 +257,8 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 		<fieldset class="cformsoptions">
 			<p class="cflegend"><?php _e('Visitor Verification (Q&A)', 'cforms') ?></p>
 
-			<p><?php _e('Getting a lot of <strong>SPAM</strong>? Use these Q&A\'s to counteract spam and ensure it\'s a human submitting the form. To use in your form, add the corresponding input field "<code class="codehighlight">Visitor verification</code>" preferably in its own FIELDSET (<em>check cforms.css for styling options</em>)!', 'cforms') ?></p>
-			<p><?php _e('<strong><u>Note:</u></strong> The below error or failure message is also used for <strong>captcha</strong> verification!', 'cforms') ?></p>
+			<p><?php _e('Getting a lot of <strong>SPAM</strong>? Use these Q&A\'s to counteract spam and ensure it\'s a human submitting the form. To use in your form, add the corresponding input field "<code class="codehighlight">Visitor verification</code>" preferably in its own FIELDSET!', 'cforms') ?></p>
+			<p><?php _e('<strong><u>Note:</u></strong> The below error/failure message is also used for <strong>captcha</strong> verification!', 'cforms') ?></p>
 
 			<div class="optionsbox" style="margin-top:25px;">
 				<div class="optionsboxL"><?php _e('<strong>Failure message</strong><br/>(for a wrong answer)', 'cforms'); ?></div>
@@ -272,7 +272,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 				<div class="optionsboxR"><textarea name="cforms_sec_qa" id="cforms_sec_qa" ><?php echo $qa; ?></textarea></div>
 			</div>
 
-			<p><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#captcha',__('<strong><u>Please note</u></strong>, depending on your personal preferences and level of SPAM security you\'d like to put in place, you can also use <a href="[url]">cforms\' CAPTCHA feature</a>!', 'cforms')); ?></p>
+			<p><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#captcha',__('Depending on your personal preferences and level of SPAM security you\'d like to put in place, you can also use <a href="[url]">cforms\' CAPTCHA feature</a>!', 'cforms')); ?></p>
 	
 			<p class="updtsetting"><input type="submit" name="Submit1" class="allbuttons updbutton" value="<?php _e('Update Settings &raquo;', 'cforms') ?>" onclick="javascript:document.mainform.action='#wpeditor';"/></p>
 		</fieldset>
@@ -285,10 +285,10 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 
 				<p><?php _e('If you like to track your form submissions also via the database, please enable this feature below. If required, this will create two new tables and you\'ll see a new sub tab "<strong>Tracking</strong>" under the cforms menu.', 'cforms') ?></p>
 		
-				<p><?php echo str_replace('[url]','?page=' . $plugindir . '/cforms-options.php#autoconf',__('If you\'ve enabled the <a href="[url]">auto confirmation message</a> feature or have included a <strong>CC: me</strong> input field, you can optionally configure the subject line of the email to include the form tracking ID.', 'cforms')); ?></p>
+				<p><?php echo str_replace('[url]','?page=' . $plugindir . '/cforms-options.php#autoconf',__('If you\'ve enabled the <a href="[url]">auto confirmation message</a> feature or have included a <code class="codehighlight">CC: me</code> input field, you can optionally configure the subject line of the email to include the form tracking ID.', 'cforms')); ?></p>
 		
 				<div class="optionsbox">
-					<div class="optionsboxL"><?php _e('Enable Database Tracking', 'cforms') ?></div>
+					<div class="optionsboxL"><span class="abbr" title="<?php _e('Will create two new tables in your WP database.', 'cforms') ?>"><?php _e('Enable Database Tracking', 'cforms') ?></span></div>
 					<div class="optionsboxR"><input type="checkbox" id="cforms_database" name="cforms_database" <?php if(get_option('cforms_database')=="1") echo "checked=\"checked\""; ?>/></div>
 				</div>
 
@@ -305,7 +305,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 				<?php if ( $wpdb->get_var("show tables like '$wpdb->cformssubmissions'") == $wpdb->cformssubmissions ) :?>
 				<div class="optionsbox" style="margin-top:25px;">
 					<div class="optionsboxL"><?php _e('Wipe out all collected cforms submission data and drop tables.', 'cforms') ?></div>
-					<div class="optionsboxR"><input type="submit" name="deletetables" class="allbuttons delbutton" value="<?php _e('Delete cforms Tracking Tables', 'cforms') ?>" onclick="return confirm('<?php _e('Do you really want to erase all collected data?', 'cforms') ?>');"/></div>
+					<div class="optionsboxR"><input type="submit" title="<?php _e('Be careful with this one!', 'cforms') ?>" name="deletetables" class="allbuttons delbutton" value="<?php _e('Delete cforms Tracking Tables', 'cforms') ?>" onclick="return confirm('<?php _e('Do you really want to erase all collected data?', 'cforms') ?>');"/></div>
 				</div>
 				<?php endif; ?>
 
@@ -321,7 +321,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 
 
 				<p><?php _e('This erases <strong>all</strong> cforms data (form & plugin settings). <strong>This is irrevocable!</strong> Be careful.', 'cforms') ?>&nbsp;&nbsp;&nbsp;
-					 <input type="submit" name="deleteall" class="allbuttons deleteall" value="<?php _e('DELETE *ALL* CFORMS DATA', 'cforms') ?>" onclick="return confirm('<?php _e('Do you really want to erase all of the plugin config data?', 'cforms') ?>');"/>
+					 <input type="submit" name="deleteall" title="<?php _e('Are you sure you want to do this?!', 'cforms') ?>" class="allbuttons deleteall" value="<?php _e('DELETE *ALL* CFORMS DATA', 'cforms') ?>" onclick="return confirm('<?php _e('Do you really want to erase all of the plugin config data?', 'cforms') ?>');"/>
 				</p>
 		</fieldset>
 

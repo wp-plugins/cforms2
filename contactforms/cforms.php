@@ -2,7 +2,7 @@
 /*
 Plugin Name: cforms
 Plugin URI: http://www.deliciousdays.com/cforms-plugin
-Description: cforms offers convenient deployment of multiple contact forms throughout your blog or even on the same page. The form submission utilizes AJAX, however, falls back to a standard method in case AJAX/Javascript is not supported. <strong>Help</strong> and <strong>Configuration options</strong> can be found under 'Options' in wp-admin.
+Description: cforms offers convenient deployment of multiple contact forms throughout your blog or even on the same page. The form submission utilizes AJAX, however, falls back to a standard method in case AJAX/Javascript is not supported.
 Author: Oliver Seidel
 Version: 4.0
 Author URI: http://www.deliciousdays.com
@@ -20,6 +20,7 @@ v4 (features & bugfix)
      new bug that was introduced as part of the localization effort
 *) other: change the INSERT queries using LAST_INSERT_ID() due to overly sensitive
      SQL servers.
+*) other: more house keeping
 
 v3.5 (mostly maintenance)
 *) feature: slightly enhanced Tracking page ("delete" now also removes attachments)

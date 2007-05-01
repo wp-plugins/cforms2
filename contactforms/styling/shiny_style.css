@@ -1,4 +1,35 @@
 /*                                                    */
+/*  custom code on top the default style sheet        */
+/*                                                    */
+/*  ** if you want this to apply to a different       */
+/*  ** form than you default form, change the form #  */
+/*  ** (or remove for your 1st, default form)         */
+
+#cforms2form p.subtitle	{ font-size:12px;text-align:left; padding:10px 0 0 10px; }
+#cforms2form p.subtext	{ font-size:9px; padding:0 0 0 10px;margin-bottom:10px; background:white; }
+
+#cforms2form p.textonly	{ text-align:left; padding-top:10px; }
+#cforms2form textarea	{ height:70px; }
+
+#cforms2form .cformfieldsets 	{ margin:10px 0 0 0; padding:40px 0 10px 0; border:0; }
+#cforms2form .cformfieldset1	{ background: url(../images/customform_bg.jpg) no-repeat!important; }
+
+#cforms2form .cformfieldsets legend		{ display:none; }
+
+#cforms2form label,
+#cforms2form .cformradiolabel	{color:#666666;}
+
+#cforms2form input,
+#cforms2form select,
+#cforms2form textarea 		{ background:white; border-color:#bbbbbb; color:#666666;}
+
+#cforms2form span.reqtxt,
+#cforms2form span.emailreqtxt	{ color:#a2a2a2; font-size:9px; }
+
+#cforms2form input.sendbutton	{ background: white url(../images/customform_submit.jpg) no-repeat!important;
+				border:0!important; height:24px; width:120px; padding-bottom:4px; margin:10px 0 0 290px;}
+
+/*                                                    */
 /*  the entire form                                   */
 /*                                                    */
 

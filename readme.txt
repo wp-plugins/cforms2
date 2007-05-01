@@ -4,7 +4,7 @@ Donate link: http://www.deliciousdays.com/
 Tags: email, secure, custom, contact, form, visitor, input, order
 Requires at least: 1.6+
 Tested up to: 2.1.3
-Stable tag: 3.5
+Stable tag: 4.0
 
 cforms is a highly customizable, flexible and powerful contact form plugin, 
 covering a variety of features from attachments to multi form management.
@@ -17,6 +17,7 @@ management, you can even have multiple forms on the same page!
 
 = Plugin Features =
 * Full localization support (currently: English, German)
+* Built-in CSS editor & theme chooser
 * File attachments (upload)
 * Multiple forms on one or many pages / posts
 * Ajax supported form submission (w/ graceful fall-back)
@@ -26,7 +27,7 @@ management, you can even have multiple forms on the same page!
 * Backup & Restore of individual forms
 * Cloning, duplication of forms
 * Tracking of submitted data per DB (unique form submission IDs)
-* SPAM protection
+* SPAM protection (Q & A + Captcha)
 * Submission status (success/failure) optionally via Alert Box
 * Form validation & *regular expressions*
 * Configurable text elements
@@ -41,7 +42,8 @@ management, you can even have multiple forms on the same page!
 * ...and a few special ones:
 	* "CC me" check box for visitors
 	* multiple form recipient (drop down list)
-	* visitor verification
+	* visitor verification Q&A
+	* Captcha
 * Default values for single/multi-line input fields (w/ auto clear,reset)
 * Fully integrated with TinyMCE & std editor (buttons)
 * Clean separation of CSS styling and form code
@@ -110,10 +112,12 @@ _**Note**: "**X**" represents the number of the form, starting with **2**, 3,4 .
     multi line field: `textarea`  
     check boxes: `checkbox`  
     drop down fields: `selectbox`  
+    multi-select boxes: `multiselect`  
     radio buttons: `radiobuttons`  
     'CC' check box: `ccbox` \*)  
     Multi-recipients field: `emailtobox` \*)  
-    Spam/Visitor verification: `verification` \*)  
+    Spam/Visitor verification (Q&A): `verification` \*)  
+    Spam/Captcha: `captcha` \*)  
     File Upload fields: `upload` \*)  
     Begin of a fieldset: `fieldsetstart`  
     End of a fieldset: `fieldsetend`  

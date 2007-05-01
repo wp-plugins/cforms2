@@ -486,11 +486,11 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 			<div class="chgformbox">
 				<div class="chgL"><?php _e('Your forms:', 'cforms'); echo $formlistbox; ?></div>
 				<div class="chgR">
-					<input class="allbuttons addbutton" type="submit" name="addbutton" value="<?php _e('add form', 'cforms'); ?>"/>&nbsp;&nbsp;
-			    	<input class="allbuttons dupbutton" type="submit" name="dupbutton" value="<?php _e('duplicate form', 'cforms'); ?>"/>&nbsp;&nbsp;
+					<input class="allbuttons addbutton" type="submit" name="addbutton" title="<?php _e('adds a new form with default values', 'cforms'); ?>" value="<?php _e('add form', 'cforms'); ?>"/>&nbsp;&nbsp;
+			    	<input class="allbuttons dupbutton" type="submit" name="dupbutton" title="<?php _e('clones the current form', 'cforms'); ?>" value="<?php _e('duplicate form', 'cforms'); ?>"/>&nbsp;&nbsp;
 			    	<?php
 			      if ( (int)$noDISP > 1)
-			        echo '<input class="allbuttons delbutton" type="submit" name="delbutton" value="'.__('delete THIS form(!)', 'cforms').'"/>';
+			        echo '<input class="allbuttons delbutton" title="'.__('This will delete the current form - no warning!', 'cforms').'" type="submit" name="delbutton" value="'.__('delete THIS form(!)', 'cforms').'"/>';
 			      ?>
 				</div>
 				<div class="chgM">
@@ -547,14 +547,14 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 
 		<p id="cformswarning"><?php echo $usermsg; ?></p>
 
-		<div class="tableheader">
-			<span class="field1th"><?php _e('No.', 'cforms'); ?></span>
-			<span class="field2th"><?php _e('Field Name', 'cforms'); ?></span>
-			<span class="field3th"><?php _e('Type', 'cforms'); ?></span>
-			<span class="field4th"><?php _e('Is Required', 'cforms'); ?></span>
-			<span class="field5th"><?php _e('Is E-Mail', 'cforms'); ?></span>
-			<span class="field6th"><?php _e('Auto Clear', 'cforms'); ?></span>
-		</div>
+		<ul class="tableheader">
+			<li class="field1th"><?php _e('No.', 'cforms'); ?></span>
+			<li class="field2th" title="<?php _e('Can be a simple label or a more complex expression. See Help!', 'cforms'); ?>"><span class="abbr"><?php _e('Field Name', 'cforms'); ?></span></li>
+			<li class="field3th" title="<?php _e('Pick one of the supported input field types.', 'cforms'); ?>"><span class="abbr"><?php _e('Type', 'cforms'); ?></span></li>
+			<li class="field4th" title="<?php _e('Makes an input field required for proper form validation.', 'cforms'); ?>"><span class="abbr"><?php _e('Is Required', 'cforms'); ?></span></li>
+			<li class="field5th" title="<?php _e('Makes the field required and verifies the email address.', 'cforms'); ?>"><span class="abbr"><?php _e('Is E-Mail', 'cforms'); ?></span></li>
+			<li class="field6th" title="<?php _e('Clears the field (default value if provided) upon focus.', 'cforms'); ?>"><span class="abbr"><?php _e('Auto Clear', 'cforms'); ?></span></li>
+		</ul>
 			
 			<div id="cformsfieldsbox">
 					<div class="dbx-group" id="cformsfields">
@@ -751,7 +751,7 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 
 			<p><?php _e('These settings will be used for the email sent to you. Both "<strong>xx@yy.zz</strong>" and "<strong>abc &lt;xx@yy.zz&gt;</strong>" formats are valid, but check if your mailserver does accept the format of choice!"', 'cforms') ?></p>
 
-			<p class="ex"><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#multirecipients',__('More than one "<strong>form admin</strong>"? Simply add additional email addresses separated by a <strong style="color:red">comma</strong>. &nbsp; <em><u>Note:</u></em> &nbsp; If you want the visitor to choose from any of these per select box, you need to add a corresponding "<code class="codehighlight">Multiple Recipients</code>" input field <a href="#anchorfields">above</a> (see the HELP section for <a href="[url]">details</a> on the entry format expected!). If <strong>no</strong> "Multiple Recipients" input field is defined above, the submitted form data will go out to <strong>every email recipient</strong>!', 'cforms')); ?></p>
+			<p class="ex"><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#multirecipients',__('More than one "<strong>form admin</strong>"? Simply add additional email addresses separated by a <strong style="color:red">comma</strong>. &nbsp; <em><u>Note:</u></em> &nbsp; If you want the visitor to choose from any of these per select box, you need to add a corresponding "<code class="codehighlight">Multiple Recipients</code>" input field <a href="#anchorfields">above</a> (see the HELP section for <a href="[url]">details</a> on the <em>field name</em> format expected!). If <strong>no</strong> "Multiple Recipients" input field is defined above, the submitted form data will go out to <strong>every email recipient</strong>!', 'cforms')); ?></p>
 			<br/>
 			<div class="optionsbox">
 				<div class="optionsboxL"><?php _e('Email address(es)', 'cforms') ?></div>
@@ -767,7 +767,7 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 		<fieldset class="cformsoptions">
 			<p class="cflegend"><?php _e('Auto Confirmation Options', 'cforms') ?></p>
 
-			<p><?php _e('These settings apply to an auto response/confirmation sent to the visitor. If your form includes a "CC me" field <strong>AND</strong> the visitor checked it, no confirmation email is sent!', 'cforms') ?></p>
+			<p><?php _e('These settings apply to an auto response/confirmation sent to the visitor. If your form includes a "<code class="codehighlight">CC me</code>" field <strong>AND</strong> the visitor checked it, no confirmation email is sent!', 'cforms') ?></p>
 
 			<div class="optionsbox">
 				<div class="optionsboxL"><?php _e('Enable', 'cforms') ?></div>

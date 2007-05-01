@@ -12,6 +12,9 @@ h3,
 				background: #fafafa; margin:45px 0 0 0; padding: 4px 15px; }
 h3			{ margin-top:50px; }
 
+abbr, 
+span.abbr	{ border-bottom: 1px dashed #000080; cursor: help; }
+
 .tabletxt 	{ padding-top:5px; }
 .ex			{ background: url(images/attn.gif) no-repeat; padding: 2px 35px 7px 41px; }
 
@@ -168,18 +171,19 @@ BUTTONS
 .backupbutton,
 .restorebutton 	{ font-weight:normal!important; }
 
+.stylebutton:active,
 .restorebutton:active,
 .backupbutton:active,
 .updbutton:active,
 .chgbutton:active,
 .addbutton:active,
 .delbutton:active,
-.chgbuttonhi:active		{ background: #f4f4f4; border: 1px single #ccc; border-left-color: #999; border-top-color: #999; }
+.chgbuttonhi:active		{ background: #f4f4f4; border: 1px solid #ccc; border-left-color: #999; border-top-color: #999; }
 
 .addfieldbox			{ width:810px; margin:0 auto; text-align:right;}
 
 .addfield 				{ font-size:10px; font-weight: bold; }
-.updbutton				{  }
+.stylebutton			{ width:158px; }
 
 /****************************************************************
 Docking Boxes core CSS: YOU MUST NOT CHANGE OR OVERRIDE THESE
@@ -221,7 +225,7 @@ otherwise, do what you like :)
 #cformswarning { color:red; text-align:center; padding:0 200px; margin:30px 0;}
 
 /* table header */
-.tableheader	{margin:0 auto; padding-left:32px; width:810px;}
+.tableheader	{margin:5px auto; padding-left:32px; width:810px;}
 .field1th 		{width:35px;}
 .field2th 		{width:280px;}
 .field3th 		{width:190px;}
@@ -236,7 +240,7 @@ otherwise, do what you like :)
 
 /* all fields container */
  
-#cformsfieldsbox		{ margin:0 auto; width:810px; position:relative; }
+#cformsfieldsbox		{ margin:0 auto; width:810px; position:relative; clear:both; }
 #cformsfieldsbox 		{ display:inline-block; }
 #cformsfieldsbox:after 	{ content:"."; display:block; height:0; clear:both; visibility:hidden; }
 /* Hides from IE-mac \*/
