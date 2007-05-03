@@ -1,7 +1,7 @@
 === cforms ===
 Contributors: olivers
 Donate link: http://www.deliciousdays.com/
-Tags: contact, email, secure, custom, form, visitor, input, order
+Tags: ajax, email, secure, visitor, input, order, form, contact
 Requires at least: 1.6+
 Tested up to: 2.1.3
 Stable tag: 4.0
