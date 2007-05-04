@@ -976,6 +976,7 @@ function cforms($args = '',$no = '') {
 	 		}	 		
 	 		else if ( $field_type == "multiselectbox" ){
 	 		    
+                $all_options = $_POST['cf'.$no.'_field_' . $i];
 	 		    if ( count($all_options) > 0)
                     $value = implode(',', $all_options);
                 else

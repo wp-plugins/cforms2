@@ -348,9 +348,10 @@ function cforms_submitcomment(no) {
 					 	} else
 						if ( typ == "select-multiple" ) {
         						all_child_obj='';
-						        for (j=0;j<objColl[i].length; j++) {
-						              if (objColl[i].childNodes[j].selected)
-            						        all_child_obj = all_child_obj + objColl[i].childNodes[j].value.replace(regexp, '$') + ','
+						        for (z=0;z<objColl[i].length; z++) {
+						              if (objColl[i].childNodes[z].selected) {
+            						        all_child_obj = all_child_obj + objColl[i].childNodes[z].value.replace(regexp, '$') + ','
+            						  }
 								}
 						        params = params + prefix + all_child_obj.substring(0,all_child_obj.length-1);
 								
