@@ -11,13 +11,14 @@ covering a variety of features from attachments to multi form management.
 
 == Description ==
 
+= Please Note (May,4th) =
+If you're using multiple "**multi-select**" input fields, you 
+may want to re-download v4.0. There has been a small patch applied that fixes the
+issue with receiving the same values for all deployed *multi-select* fields.
+
 cforms is a highly customizable, flexible and powerful contact form plugin, 
 covering a variety of use cases and features from attachments to multi form 
 management, you can even have multiple forms on the same page!
-
-** Please Note ** (May,4th): If you're using multiple **"multi-select" boxes**, you 
-may want to re-download v4.0. There has been a small patch applied that fixes the
-issue with receiveing the same values for all deployed fields.
 
 = Plugin Features =
 * Full localization support (currently: English, German)
@@ -152,6 +153,11 @@ _**Note**: "**X**" represents the number of the form, starting with **2**, 3,4 .
 See the "**Other Notes**" section for another example.
 
 == Frequently Asked Questions ==
+
+= Please Note (May,4th) =
+If you're using multiple "**multi-select**" input fields, you 
+may want to re-download v4.0. There has been a small patch applied that fixes the
+issue with receiving the same values for all deployed *multi-select* fields.
 
 Please visit the [cforms plugin forum](http://www.deliciousdays.com/cforms-forum)
 for up-to-date [FAQs](http://www.deliciousdays.com/cforms-forum?forum=3&page=1) 
