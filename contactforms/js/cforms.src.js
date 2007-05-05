@@ -95,7 +95,11 @@ function call_err(no,err,popFlag){
 		stringDOM = '<root>' + err.replace(/(.*)(\r\n|$)/g, '<text>$1</text>') + '</root>';
 		stringXHTML = err.replace(/(\r\n)/g, '<br/>');
 
-		document.getElementById(msgbox).className = "info failure";
+		msgbox = 'usermessage'+no;
+		if( document.getElementById(msgbox+'a') )
+			document.getElementById(msgbox+'a').className = "info failure";
+		if( document.getElementById(msgbox+'b') )
+			document.getElementById(msgbox+'b').className = "info failure";
 
 		doInnerXHTML(msgbox, stringXHTML.replace(/\\/g,""), stringDOM.replace(/\\/g,""));
 
@@ -122,8 +126,11 @@ function cforms_validate(no, upload) {
 	if (!no) no='';
 
 	msgbox = 'usermessage'+no;
-	document.getElementById(msgbox).className = "info";
-
+	if( document.getElementById(msgbox+'a') )
+		document.getElementById(msgbox+'a').className = "info";
+	if( document.getElementById(msgbox+'b') )
+		document.getElementById(msgbox+'b').className = "info";
+		
 	waiting = decodeURI(document.getElementById('_working'+no).value);
 	waiting = waiting.replace(/\\/g,"");
 
@@ -277,44 +284,80 @@ function cforms_validate(no, upload) {
 
 function doInnerXHTML(elementId, stringXHTML, stringDOM) {
 	try {
-		//var elem = document.getElementById(123);  //test manual error
+		var elem = document.getElementById(123);  //test manual error
 		if ( !stringDOM )
 		    stringDOM = '<root><text>'+stringXHTML+'</text></root>';
 
 
-  	stringDOM = html_escape(stringDOM);
+  		stringDOM = html_escape(stringDOM);
 
-		var elem = document.getElementById(elementId);
-		var children =  elem.childNodes;
+	  	if ( document.getElementById(elementId+'a') ) {
+			var elem = document.getElementById(elementId+'a');
 
-		for (var i = 0; i < children.length; i++) {
-			elem.removeChild(children[i]);
+			var children =  elem.childNodes;
+	
+			for (var i = 0; i < children.length; i++) {
+				elem.removeChild(children[i]);
+			}
+	
+			if (window.ActiveXObject) {
+					var nodes = new ActiveXObject("Microsoft.XMLDOM");
+					nodes.loadXML(stringDOM);
+			} else {
+					var nodes = new DOMParser().parseFromString(stringDOM, 'text/xml');
+			}
+	
+			var ergebnisse = nodes.getElementsByTagName("text");
+			var span = document.createElement("span");
+			// alert("made it"); //debug
+	
+			elem.appendChild(span);
+	
+			for (var i = 0; i < ergebnisse.length; i++) {
+				span.appendChild(document.createTextNode(ergebnisse[i].firstChild.nodeValue));
+				if (i < ergebnisse.length) span.appendChild(document.createElement("br"));
+			}
 		}
+		
 
-		if (window.ActiveXObject) {
-				var nodes = new ActiveXObject("Microsoft.XMLDOM");
-				nodes.loadXML(stringDOM);
-		} else {
-				var nodes = new DOMParser().parseFromString(stringDOM, 'text/xml');
+	  	if ( document.getElementById(elementId+'b') ) {
+			var elem = document.getElementById(elementId+'b');
+
+			var children =  elem.childNodes;
+	
+			for (var i = 0; i < children.length; i++) {
+				elem.removeChild(children[i]);
+			}
+	
+			if (window.ActiveXObject) {
+					var nodes = new ActiveXObject("Microsoft.XMLDOM");
+					nodes.loadXML(stringDOM);
+			} else {
+					var nodes = new DOMParser().parseFromString(stringDOM, 'text/xml');
+			}
+	
+			var ergebnisse = nodes.getElementsByTagName("text");
+			var span = document.createElement("span");
+			// alert("made it"); //debug
+	
+			elem.appendChild(span);
+	
+			for (var i = 0; i < ergebnisse.length; i++) {
+				span.appendChild(document.createTextNode(ergebnisse[i].firstChild.nodeValue));
+				if (i < ergebnisse.length) span.appendChild(document.createElement("br"));
+			}
 		}
-
-		var ergebnisse = nodes.getElementsByTagName("text");
-		var span = document.createElement("span");
-		// alert("made it"); //debug
-
-		elem.appendChild(span);
-
-		for (var i = 0; i < ergebnisse.length; i++) {
-			span.appendChild(document.createTextNode(ergebnisse[i].firstChild.nodeValue));
-			if (i < ergebnisse.length) span.appendChild(document.createElement("br"));
-		}
+					
 		return true;
 
 	} catch (e) {
 
 		try {
-		  //alert("debug");  //debug
-			document.getElementById(elementId).innerHTML = stringXHTML;
+		 	 //alert("debug");  //debug
+		  	if ( document.getElementById(elementId+'a') )
+				document.getElementById(elementId+'a').innerHTML = stringXHTML;
+		  	if ( document.getElementById(elementId+'b') )
+				document.getElementById(elementId+'b').innerHTML = stringXHTML;
 			return true;
 		}
 		catch(ee) {
@@ -341,7 +384,24 @@ function cforms_submitcomment(no) {
 				if ( fld == "input" || fld == "textarea" || fld == "select" ) {
 
 						if ( typ == "checkbox" ) {
+
+							if ( objColl[i].name.match(/\[\]/) ){
+								group='';
+								
+								while ( objColl[i].type == 'checkbox' && objColl[i].name.match(/\[\]/) && i < j){
+
+									if ( objColl[i].checked ) 
+										group = group + objColl[i].nextSibling.innerHTML + ',';
+
+									i=i+2;
+								}
+									
+								params = params + prefix + group.substring(0,group.length-1);
+								i=i-2;
+							}
+							else
 								params = params + prefix + (objColl[i].checked?"X":"-");
+								
 				 		} else
 						if ( typ == "radio" && objColl[i].checked ) {
 								params = params + prefix + objColl[i].value;
@@ -379,7 +439,13 @@ function cforms_setsuccessmessage(message) {
 
 		stringXHTML = message.substring(2,message.indexOf('|'));
 		stringDOM = message.substring(message.indexOf('|')+1);
-		document.getElementById('usermessage'+no).className = "info success";
+
+		// for both message boxes		
+	  	if ( document.getElementById('usermessage'+no+'a') )
+			document.getElementById('usermessage'+no+'a').className = "info success";
+	  	if ( document.getElementById('usermessage'+no+'b') )
+			document.getElementById('usermessage'+no+'b').className = "info success";
+
 		doInnerXHTML('usermessage'+no, stringXHTML, stringDOM);
 
 		if (pop == 'y')

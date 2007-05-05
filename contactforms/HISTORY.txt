@@ -2,6 +2,12 @@
 Copyright 2006-2007  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
+v4.1 (features)
+*) feature: support for shown but disabled form element
+*) feature: "user message" positioning, now optionally at the bottom of the form
+*) feature: "multi-select", grouped check boxes
+*) feature: new special field: subject field
+
 v4 (feature & bugfix)
 *) feature: captcha support for additional SPAM protection
 *) feature: select & configure stylesheets via admin UI

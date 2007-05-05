@@ -134,10 +134,19 @@ input.go			{ font-size:10px; height:22px; }
 #cforms_confirm,
 #cforms_subid,
 #cforms_database 		{ width:16px; margin-top:4px; background:none; }
+
+#cforms_showposa,
+#cforms_showposb		{ width:16px; margin-top:4px; background:none; }
+
 * html .cforms_ajax ,
 * html #cforms_confirm,
 * html #cforms_popup1,
-* html #cforms_popup2	{ border:0; background:none; }
+* html #cforms_popup2,
+* html #cforms_showposa,
+* html #cforms_showposb	{ border:0; background:none; }
+
+* html #cforms_showposa,
+* html #cforms_showposb	{ position:relative; top:2px; }
 /****************************************************************
 BUTTONS
 *****************************************************************/
@@ -180,7 +189,7 @@ BUTTONS
 .delbutton:active,
 .chgbuttonhi:active		{ background: #f4f4f4; border: 1px solid #ccc; border-left-color: #999; border-top-color: #999; }
 
-.addfieldbox			{ width:810px; margin:0 auto; text-align:right;}
+.addfieldbox			{ width:880px; margin:0 auto; text-align:right;}
 
 .addfield 				{ font-size:10px; font-weight: bold; }
 .stylebutton			{ width:158px; }
@@ -214,7 +223,7 @@ otherwise, do what you like :)
 
 .dbx-group {
 	clear:both;
-	width:810px;
+	width:880px;
 	padding:0 10px 10px 10px;
 	}
 
@@ -225,22 +234,26 @@ otherwise, do what you like :)
 #cformswarning { color:red; text-align:center; padding:0 200px; margin:30px 0;}
 
 /* table header */
-.tableheader	{margin:5px auto; padding-left:32px; width:810px;}
+.tableheader	{margin:5px auto; padding-left:32px; width:880px;}
 .field1th 		{width:35px;}
 .field2th 		{width:280px;}
 .field3th 		{width:190px;}
 .field4th,
-.field5th 		{width:80px;}
+.field5th,
+.field6th,
+.field7th 		{width:80px;}
+
 .field1th,
 .field2th,
 .field3th,
 .field4th,
 .field5th,
-.field6th 		{display:block; float:left; margin-right:5px; text-align:center; }
+.field6th,
+.field7th 		{display:block; float:left; margin-right:5px; text-align:center; }
 
 /* all fields container */
  
-#cformsfieldsbox		{ margin:0 auto; width:810px; position:relative; clear:both; }
+#cformsfieldsbox		{ margin:0 auto; width:880px; position:relative; clear:both; }
 #cformsfieldsbox 		{ display:inline-block; }
 #cformsfieldsbox:after 	{ content:"."; display:block; height:0; clear:both; visibility:hidden; }
 /* Hides from IE-mac \*/
@@ -266,7 +279,8 @@ otherwise, do what you like :)
 .dbx-cforms .fieldtype	 	{ width:190px; }
 .dbx-cforms .fieldisreq,
 .dbx-cforms .fieldisemail,
-.dbx-cforms .fieldclear 	{ width:80px; text-align:center; }
+.dbx-cforms .fieldclear,
+.dbx-cforms .fielddisabled 	{ width:80px; text-align:center; }
 
 .dbx-cforms .inpfld 	 	{ padding:4px 3px 0 3px; width:270px; height:16px; font-size:11px; background:#f8f8f8; }
 * html .dbx-cforms .inpfld 	{ margin-top:0px; padding-top:1px; padding-bottom:1px; } /* ie render bug */

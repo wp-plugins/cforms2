@@ -4,13 +4,19 @@ Plugin Name: cforms
 Plugin URI: http://www.deliciousdays.com/cforms-plugin
 Description: cforms offers convenient deployment of multiple contact forms throughout your blog or even on the same page. The form submission utilizes AJAX, however, falls back to a standard method in case AJAX/Javascript is not supported.
 Author: Oliver Seidel
-Version: 4.0
+Version: 4.1
 Author URI: http://www.deliciousdays.com
 */
 
 /*
 Copyright 2006  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
+
+v4.1 (features)
+*) feature: support for shown but disabled form element
+*) feature: "user message" positioning, now optionally at the bottom of the form
+*) feature: "multi-select", grouped check boxes
+*) feature: new special field: subject field
 
 v4 (features & bugfix)
 *) feature: captcha support for additional SPAM protection
@@ -237,6 +243,7 @@ function download_cforms() {
 			$buffer .= 'fl:'.preg_replace ( '|\r\n|', '$n$',get_option('cforms'.$no.'_failure')) . $br;
 			$buffer .= 'wo:'.get_option('cforms'.$no.'_working') . $br;
 			$buffer .= 'pp:'.get_option('cforms'.$no.'_popup') . $br;
+			$buffer .= 'sp:'.get_option('cforms'.$no.'_showpos') . $br;
 			
 			header("Pragma: public");
 			header("Expires: 0");
@@ -306,11 +313,11 @@ if (isset($_GET['activate']) && $_GET['activate'] == 'true') {
 		add_option('cforms_upload_err5', __('File not accepted, file type not allowed.', 'cforms'));
 
 		/*for default form*/
-		add_option('cforms_count_field_1', __('My Fieldset$#$fieldsetstart$#$0$#$0$#$0', 'cforms'));
-		add_option('cforms_count_field_2', __('Your Name|Your Name$#$textfield$#$1$#$0$#$1', 'cforms'));
-		add_option('cforms_count_field_3', __('Email$#$textfield$#$1$#$1$#$0', 'cforms'));
-		add_option('cforms_count_field_4', __('Website|http://$#$textfield$#$0$#$0$#$0', 'cforms'));
-		add_option('cforms_count_field_5', __('Message$#$textarea$#$0$#$0$#$0', 'cforms'));
+		add_option('cforms_count_field_1', __('My Fieldset$#$fieldsetstart$#$0$#$0$#$0$#$0', 'cforms'));
+		add_option('cforms_count_field_2', __('Your Name|Your Name$#$textfield$#$1$#$0$#$1$#$0', 'cforms'));
+		add_option('cforms_count_field_3', __('Email$#$textfield$#$1$#$1$#$0$#$0', 'cforms'));
+		add_option('cforms_count_field_4', __('Website|http://$#$textfield$#$0$#$0$#$0$#$0', 'cforms'));
+		add_option('cforms_count_field_5', __('Message$#$textarea$#$0$#$0$#$0$#$0', 'cforms'));
 
 		/*form verification questions*/
 		add_option('cforms_sec_qa', __('What color is snow?=white', 'cforms'). "\r\n" . __('The color of grass is=green', 'cforms'). "\r\n" . __('Ten minus five equals=five', 'cforms'));
@@ -333,7 +340,8 @@ if (isset($_GET['activate']) && $_GET['activate'] == 'true') {
 		add_option('cforms_failure', __('Please fill in all the required fields.', 'cforms'));
 		add_option('cforms_codeerr', __('Please double-check your verification code.', 'cforms'));
 		add_option('cforms_working', __('One moment please...', 'cforms'));
-		add_option('cforms_popup', __('nn', 'cforms'));
+		add_option('cforms_popup', 'nn');
+		add_option('cforms_showpos', 'yn');
 		add_option('cforms_database', '0');
 
 		add_option('cforms_css', 'cforms.css');
@@ -418,6 +426,7 @@ function cforms_submitcomment($content) {
  	$to_one = "-1";
   	$ccme = false;
 	$field_email='';
+	$vsubject='';
 	$off=0;
 
 	for($i = 1; $i <= sizeof($params)-1; $i++) {
@@ -426,7 +435,11 @@ function cforms_submitcomment($content) {
 
 
 			// filter non input fields
-			while ( $field_stat[1] == 'fieldsetstart' || $field_stat[1] == 'fieldsetend' || $field_stat[1] == 'textonly' ) {
+			while ( $field_stat[1] == 'fieldsetstart' || $field_stat[1] == 'fieldsetend' || $field_stat[1] == 'textonly' || $field_stat[1] == 'vsubject') {
+																				
+					// set subject for later if subject field found
+					if ( $field_stat[1] == 'vsubject' )
+						$vsubject = $params ['field_' . $i];
 										
 					// include and make only fieldsets pretty!
 					if ( $field_stat[1] <> 'textonly' ){
@@ -459,7 +472,7 @@ function cforms_submitcomment($content) {
 			}
 
 			// special case: select & radio
-			if ( $field_type == "multiselectbox" || $field_type == "selectbox" || $field_type == "radiobuttons" ) {
+			if ( $field_type == "multiselectbox" || $field_type == "selectbox" || $field_type == "radiobuttons" || $field_type == "checkboxgroup") {
 			  $field_name = explode('#',$field_name);
 			  $field_name = $field_name[0];
 			}
@@ -553,7 +566,10 @@ function cforms_submitcomment($content) {
 	$headers.= "MIME-Version: 1.0"  .$eol;
 	$headers.= "Content-Type: text/plain; charset=\"" . get_option('blog_charset') . "\"" . $eol;
 
-	if( @mail($to, get_option('cforms'.$no.'_subject'), stripslashes($message), $headers) )
+	//either use configured subject or user determined
+	$vsubject = ($vsubject=='')?get_option('cforms'.$no.'_subject'):$vsubject;
+		
+	if( @mail($to, $vsubject, stripslashes($message), $headers) )
 	{
 		  // send copy or notification?
 	    if ( (get_option('cforms'.$no.'_confirm')=='1' && $field_email<>'') || $ccme )  // not if no email & already CC'ed
@@ -563,7 +579,7 @@ function cforms_submitcomment($content) {
 					$headers2.= "MIME-Version: 1.0"  .$eol;
 					$headers2.= "Content-Type: text/plain; charset=\"" . get_option('blog_charset') . "\"" . $eol;
 
-				  $subject2 = get_option('cforms'.$no.'_csubject');
+				    $subject2 = get_option('cforms'.$no.'_csubject');
 					$message2 = get_option('cforms'.$no.'_cmsg');
                     
                     //include a unique form sub ID? Only if tracking is enabled.
@@ -897,8 +913,9 @@ function cforms($args = '',$no = '') {
 
 
 			$track = array(); 
-  		$to_one = "-1";
+	  		$to_one = "-1";
 			$ccme = false;
+			$vsubject = '';
 			$field_email = '';
 
 			for($i = 1; $i <= $field_count; $i++) {
@@ -910,7 +927,11 @@ function cforms($args = '',$no = '') {
 
 
 				// filter non input fields
-				while ( $field_stat[1] == 'fieldsetstart' || $field_stat[1] == 'fieldsetend' ) {
+				while ( $field_stat[1] == 'fieldsetstart' || $field_stat[1] == 'fieldsetend' || $field_stat[1] == 'vsubject' ) {
+
+						// set subject for later if subject field found
+						if ( $field_stat[1] == 'vsubject' )
+							$vsubject = $_POST['cf'.$no.'_field_' . $i];
 
 						//just for email looks
 						$space='-'; $n = (62 - strlen($field_stat[0])) / 2;
@@ -944,7 +965,7 @@ function cforms($args = '',$no = '') {
 
 
 				// special case: select box & radio box
-				if ( $field_type == "multiselectbox" || $field_type == "selectbox" || $field_type == "radiobuttons" ) { //only needed for field name
+				if ( $field_type == "checkboxgroup" || $field_type == "multiselectbox" || $field_type == "selectbox" || $field_type == "radiobuttons" ) { //only needed for field name
 				  $field_name = explode('#',$field_name);
 				  $field_name = $field_name[0];
 				}
@@ -974,7 +995,7 @@ function cforms($args = '',$no = '') {
 	 		
 	 			$value = $file['name'];
 	 		}	 		
-	 		else if ( $field_type == "multiselectbox" ){
+	 		else if ( $field_type == "multiselectbox" || $field_type == "checkboxgroup"){
 	 		    
                 $all_options = $_POST['cf'.$no.'_field_' . $i];
 	 		    if ( count($all_options) > 0)
@@ -1111,7 +1132,11 @@ function cforms($args = '',$no = '') {
 		//
 		// finally send mails
 		//
-		if( @mail($to, get_option('cforms'.$no.'_subject'), $fullmsg, $headers) )
+		
+		//either use configured subject or user determined
+		$vsubject = ($vsubject=='')?get_option('cforms'.$no.'_subject'):$vsubject;
+
+		if( @mail($to, $vsubject, $fullmsg, $headers) )
 		{
 			  // send copy or notification?
 		    if ( (get_option('cforms'.$no.'_confirm')=='1' && $field_email<>'') || $ccme )  // not if no email & already CC'ed
@@ -1121,7 +1146,7 @@ function cforms($args = '',$no = '') {
 						$headers2.= "MIME-Version: 1.0"  .$eol;
 						$headers2.= "Content-Type: text/plain; charset=\"" . get_option('blog_charset') . "\"" . $eol;
 
-					  $subject2 = get_option('cforms'.$no.'_csubject');
+					 	$subject2 = get_option('cforms'.$no.'_csubject');
 						$message2 = get_option('cforms'.$no.'_cmsg');
 
                         //include a unique form sub ID? Only if tracking is enabled.
@@ -1148,8 +1173,14 @@ function cforms($args = '',$no = '') {
 	$nl="\n";
 	$tab="\t";
 
-	$content .= '<p id="usermessage'.$no.'" class="info ' . $usermessage_class . '" >' . $usermessage_text . '&nbsp;</p>' . $nl;
-	$content .= $indent . $tab . '<form enctype="multipart/form-data" action="' . get_permalink() . '#usermessage'.$no.'" method="post" class="cform" id="cforms'.$no.'form">' . $nl;
+	//either show message above or below
+	if( substr(get_option('cforms'.$no.'_showpos'),0,1)=='y' ) {
+		$content .= '<p id="usermessage'.$no.'a" class="info ' . $usermessage_class . '" >' . $usermessage_text . '&nbsp;</p>' . $nl;
+		$actiontarget = 'a';
+ 	} else if ( substr(get_option('cforms'.$no.'_showpos'),1,1)=='y' )
+		$actiontarget = 'b';
+ 	
+	$content .= $indent . $tab . '<form enctype="multipart/form-data" action="' . get_permalink() . '#usermessage'.$no.$actiontarget.'" method="post" class="cform" id="cforms'.$no.'form">' . $nl;
 
 	// start with no fieldset
 	$fieldsetopen = false;
@@ -1170,10 +1201,11 @@ function cforms($args = '',$no = '') {
 		$field_required = $field_stat[2];
 		$field_emailcheck = $field_stat[3];
 		$field_clear = $field_stat[4];
+		$field_disabled = $field_stat[5];
 
 
 		//special treatment for selectboxes  
-		if (  in_array($field_type,array('multiselectbox','selectbox','radiobuttons','checkbox','ccbox','emailtobox'))  ){
+		if (  in_array($field_type,array('multiselectbox','selectbox','radiobuttons','checkbox','checkboxgroup','ccbox','emailtobox'))  ){
 			$options = explode('#', stripslashes(htmlspecialchars($field_name)) );
             $field_name = $options[0];
 		}
@@ -1194,7 +1226,7 @@ function cforms($args = '',$no = '') {
 
 		$defaultvalue = '';
 		// no labels and other goodies for fieldsets, radio- & checkboxes !
-		if ( ! ($field_type == 'fieldsetstart' || $field_type == 'fieldsetend') && $field_type <> "radiobuttons" && $field_type <> "checkbox" && $field_type <> "ccbox" ) {
+		if ( ! ($field_type == 'fieldsetstart' || $field_type == 'fieldsetend') && $field_type <> "radiobuttons" && $field_type <> "checkbox" && $field_type <> "checkboxgroup" && $field_type <> "ccbox" ) {
 		
 		    // check if default val & regexp are set
 		    $obj = explode('|', $field_name,3);
@@ -1230,8 +1262,9 @@ function cforms($args = '',$no = '') {
 		// field classes
 		$field_class = 'default';
 		
-		if ( $field_emailcheck )	$field_class .= ' fldemail';
-		else if ( $field_required ) $field_class .= ' fldrequired';
+		if ( $field_disabled )			$field_class .= ' disabled';
+		else if ( $field_emailcheck )	$field_class .= ' fldemail';
+		else if ( $field_required ) 	$field_class .= ' fldrequired';
 
 		
 		$field_value = ''; 
@@ -1241,7 +1274,7 @@ function cforms($args = '',$no = '') {
 		// an error ocurred:
 		if(! $all_valid){
 			$field_class .= ($validations[$i]==1)?'':' error';  //error ?
-			if ( $field_type == 'multiselectbox' ){
+			if ( $field_type == 'multiselectbox' || $field_type == 'checkboxgroup' ){
 			     $field_value = $_POST['cf'.$no.'_field_' . $i];  // in this case it's an array! will do the stripping later
 			}
 			else
@@ -1251,12 +1284,15 @@ function cforms($args = '',$no = '') {
 		if ( $field_value=='' && $defaultvalue<>'' ) // if not reloaded (due to err) then use default values
 					$field_value=$defaultvalue;    
 
+		// field disabled, greyed out?
+		$disabled = $field_disabled?'disabled="disabled"':'';
+
 		$field = '';
 		switch($field_type) {
 
 			case "upload":
-			  $upload=true;  // set upload flag for ajax suppression!
-						$field = '<input type="file" name="cf_uploadfile'.$no.'" id="cf_uploadfile'.$no.'" class="cf_upload ' . $field_class . '"/>';
+	  			$upload=true;  // set upload flag for ajax suppression!
+				$field = '<input ' . $disabled . ' type="file" name="cf_uploadfile'.$no.'" id="cf_uploadfile'.$no.'" class="cf_upload ' . $field_class . '"/>';
 				break;
 
 			case "textonly":
@@ -1278,7 +1314,6 @@ function cforms($args = '',$no = '') {
 			case "fieldsetend":
 				if ($fieldsetopen) {
 						$field = $indent . $tab . '</fieldset>';
-//						$indent = substr($indent,0,-2);
 						$fieldsetopen = false;
 				} else $field='';
 				break;
@@ -1295,10 +1330,11 @@ function cforms($args = '',$no = '') {
 		    	$captcha=true;
 				break;
 
+			case "vsubject":
 			case "textfield":
 			    $onfocus = $field_clear?' onfocus="clearField(this)" onblur="setField(this)"' : '';
 					
-				$field = '<input type="text" name="cf'.$no.'_field_' . $i . '" id="cf'.$no.'_field_' . $i . '" class="' . $field_class . '" value="' . $field_value  . '"'.$onfocus.'/>';
+				$field = '<input ' . $disabled . ' type="text" name="cf'.$no.'_field_' . $i . '" id="cf'.$no.'_field_' . $i . '" class="' . $field_class . '" value="' . $field_value  . '"'.$onfocus.'/>';
 				  if ( $reg_exp<>'' )
 	           		 $field .= '<input type="hidden" name="cf'.$no.'_field_' . $i . '_regexp" id="cf'.$no.'_field_' . $i . '_regexp" value="'.$reg_exp.'"/>';
 	
@@ -1308,31 +1344,57 @@ function cforms($args = '',$no = '') {
 
 			    $onfocus = $field_clear?' onfocus="clearField(this)" onblur="setField(this)"' : '';
 
-				$field = '<textarea cols="30" rows="8" name="cf'.$no.'_field_' . $i . '" id="cf'.$no.'_field_' . $i . '" class="' . $field_class . '"'. $onfocus.'>' . $field_value  . '</textarea>';
+				$field = '<textarea ' . $disabled . ' cols="30" rows="8" name="cf'.$no.'_field_' . $i . '" id="cf'.$no.'_field_' . $i . '" class="' . $field_class . '"'. $onfocus.'>' . $field_value  . '</textarea>';
 				  if ( $reg_exp<>'' )
 	           		 $field .= '<input type="hidden" name="cf'.$no.'_field_' . $i . '_regexp" id="cf'.$no.'_field_' . $i . '_regexp" value="'.$reg_exp.'"/>';
 				break;
 
-	    case "ccbox":
+	   		case "ccbox":
 			case "checkbox":
 				$err='';
 				if(! $all_valid)
 						$err = ($validations[$i]==1)?'':' errortxt';  //error ?
 
 			  if ( $options[1]<>'' ) {
-				 		$before = $indent . $tab . $tab . '<span class="cformchkboxlabel'.$err.'">&nbsp;'.($field_name).'</span>';
-						$after  = '<label for="cf'.$no.'_field_' . $i . '" class="cformlabelafter'.$err.'">' . ($options[1]) . '</label>';
+				 		$before = $indent . $tab . $tab . '<span class="cfchkboxlabel'.$err.'">&nbsp;'.($field_name).'</span>';
+						$after  = '<label ' . $disabled . ' for="cf'.$no.'_field_' . $i . '" class="cflabelafter'.$err.'">' . ($options[1]) . '</label>';
 				}
 				else {
-						$before = $indent . $tab . $tab . '<label for="cf'.$no.'_field_' . $i . '" class="'. $err .'">' . ($field_name) . '</label>';
+						$before = $indent . $tab . $tab . '<label ' . $disabled . ' for="cf'.$no.'_field_' . $i . '" class="'. $err .'">' . ($field_name) . '</label>';
 				 		$after  = '<span class="chckboxtxt'.$err.'">&nbsp;' . ($options[1]) . '</span>';
 				}
-				$field = $before . '<input type="checkbox" name="cf'.$no.'_field_' . $i . '" id="cf'.$no.'_field_' . $i . '" class="cformchkbox ' . $field_class . '" '.($field_value?'checked="checked"':'').' />' . $after;
+				$field = $before . '<input ' . $disabled . ' type="checkbox" name="cf'.$no.'_field_' . $i . '" id="cf'.$no.'_field_' . $i . '" class="cformchkbox ' . $field_class . '" '.($field_value?'checked="checked"':'').' />' . $after;
 
 				break;
 
+
+			case "checkboxgroup":
+				array_shift($options);
+				$field .= $indent . $tab . '<span class="cfchkboxlabelgrp">' . (($field_name)) . '</span><span class="cfchkboxblock">';
+				$id=1; $j=0;
+				foreach( $options as $option  ) {
+
+						//supporting names & values
+					    $opt = explode('|', $option,2);
+
+						if ( $opt[1]=='' ) $opt[1] = $opt[0];
+
+	                    $checked = '';
+	                    if ( $opt[1]==stripslashes(htmlspecialchars($field_value[$j])) )  {
+	                        $checked = 'checked="checked"';
+	                        $j++;
+	                    }
+						
+						$field .= '<input ' . $disabled . ' type="checkbox" id="cf'.$no.'_field_'.$i. $id . '" name="cf'.$no.'_field_' . $i . '[]" value="'.$opt[1].'" '.$checked.' class="cformchkbox"/>'.
+											'<label ' . $disabled . ' for="cf'.$no.'_field_'. $i . ($id++) . '" class="cflabelafter">'.$opt[0] . "</label>";
+											
+					}
+				$field .= '</span>';
+				break;
+				
+				
 			case "multiselectbox":
-				$field = '<select multiple="multiple" name="cf'.$no.'_field_' . $i . '[]" id="cf'.$no.'_field_' . $i . '" class="cformselectmulti ' . $field_class . '">';
+				$field = '<select ' . $disabled . ' multiple="multiple" name="cf'.$no.'_field_' . $i . '[]" id="cf'.$no.'_field_' . $i . '" class="cfselectmulti ' . $field_class . '">';
 				array_shift($options);
 				$second = false;
 				$j=0;
@@ -1356,7 +1418,7 @@ function cforms($args = '',$no = '') {
 
 			case "emailtobox":
 			case "selectbox":
-				$field = '<select name="cf'.$no.'_field_' . $i . '" id="cf'.$no.'_field_' . $i . '" class="cformselect ' . $field_class . '">';
+				$field = '<select ' . $disabled . ' name="cf'.$no.'_field_' . $i . '" id="cf'.$no.'_field_' . $i . '" class="cformselect ' . $field_class . '">';
 				array_shift($options); $jj=$j=0;
 				$second = false;
 				foreach( $options as $option  ) {
@@ -1384,7 +1446,7 @@ function cforms($args = '',$no = '') {
 
 			case "radiobuttons":
 				array_shift($options);
-				$field .= $indent . $tab . '<span class="cformradiolabel">' . (($field_name)) . '</span><span class="cfradioblock">';
+				$field .= $indent . $tab . '<span class="cfradiolabel">' . (($field_name)) . '</span><span class="cfradioblock">';
 				$second = false; $id=1;
 				foreach( $options as $option  ) {
 				    $checked = '';
@@ -1399,8 +1461,8 @@ function cforms($args = '',$no = '') {
 						}	else
 								if ( $opt[1]==$field_value ) $checked = 'checked="checked"';
 						
-						$field .= '<input type="radio" id="cf'.$no.'_field_'.$i. $id . '" name="cf'.$no.'_field_' . $i . '" value="'.$opt[1].'" '.$checked.' class="cformradio'.(($second)?' cformradioplus':'').'"/>'.
-											'<label for="cf'.$no.'_field_'. $i . ($id++) . '"'. $cformradiotext . ' class="cformlabelafter">'.$opt[0] . "</label>$break";
+						$field .= '<input ' . $disabled . ' type="radio" id="cf'.$no.'_field_'.$i. $id . '" name="cf'.$no.'_field_' . $i . '" value="'.$opt[1].'" '.$checked.' class="cformradio'.(($second)?' cformradioplus':'').'"/>'.
+											'<label ' . $disabled . ' for="cf'.$no.'_field_'. $i . ($id++) . '" class="cflabelafter">'.$opt[0] . "</label>$break";
 											
 						$second = true;
 					}
@@ -1460,6 +1522,10 @@ function cforms($args = '',$no = '') {
 										$ajaxenabled.'/>' . $nl;
 
 	$content .= $indent . $tab . '</form>' . $nl;
+
+	//either show message above or below
+	if( substr(get_option('cforms'.$no.'_showpos'),1,1)=='y' )
+		$content .= '<p id="usermessage'.$no.'b" class="info ' . $usermessage_class . '" >' . $usermessage_text . '&nbsp;</p>' . $nl;
 
 	return $content;
 }

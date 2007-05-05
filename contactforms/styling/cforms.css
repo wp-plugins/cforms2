@@ -20,6 +20,14 @@ p.textonly	{ clear:left; text-align:center; padding:5px; margin:0; }
 .success 	{ color:green; }
 .failure 	{ color:red; }
 
+
+/*                                                    */
+/* disabled fields [disabled] does not work on IE!    */
+/*                                                    */
+
+[disabled]	{ color:#dddddd; border-color:#dddddd!important; background:none!important; }
+.disabled 	{ border-color:#dddddd!important; }
+
 /*                                                    */
 /* upload box styling                                 */
 /*                                                    */
@@ -31,14 +39,15 @@ p.textonly	{ clear:left; text-align:center; padding:5px; margin:0; }
 /* global definitions for field labels                */
 /*                                                    */
 
-span.cformchkboxlabel,
-span.cformradiolabel,
+span.cfchkboxlabelgrp,
+span.cfchkboxlabel,
+span.cfradiolabel,
 .cform label 		{ width:90px; margin:5px 0 0 0; font:normal 11px 'Trebuchet MS',Arial;
 			 display:block; float:left;  padding-right:10px; clear:left; text-align:right; }
 
 
 /* just in case the label comes AFTER the field: */
-label.cformlabelafter 	{ clear:none; width:250px!important; text-align:left; padding:0 0 0 6px; }
+label.cflabelafter 	{ clear:none; width:250px; text-align:left; padding:0 0 0 6px; }
 
 
 /*                                                    */
@@ -111,7 +120,7 @@ span.cformradiotext 		{ margin:5px 0 0 0!important; }
 .cform select 			{ width:178px; }  /* attempt to have equal length */
 .cform textarea			{ width:170px; }
 
-.cform select.cformselectmulti	{ height:84px; }
+.cform select.cfselectmulti	{ height:84px; }
 
 
 /*                                                    */
@@ -132,6 +141,19 @@ input.cformradio	{ margin:6px 0 0 0; width:16px; border:none; clear:left; }
 input.cformchkbox 		{ margin:7px 0 6px 0; width:16px; border:none; }
 * html input.cformchkbox	{ margin:3px 0 4px 0; background:none; } /* hack:different margins for IE */
 
+
+/*                                                    */
+/* check box groups                                   */
+/*                                                    */
+
+span.cfchkboxblock		{ float:left; width:190px; margin:4px 0 6px; }
+span.cfchkboxlabelgrp	{ margin:9px 0 0 0; }
+span.cfchkboxblock label	{ clear:none; text-align:left; padding:0 0 0 5px; width:70px; }   /*check box groups are special!*/
+span.cfchkboxblock input.cformchkbox	{ margin:6px 0 0 0; }
+
+* html .cfchkboxblock label	{ margin:2px 0 0 0; height:22px; }
+* html .cfchkboxblock input.cformchkbox	{ margin:0; }
+* html span.cfchkboxlabelgrp	{ margin:6px 0 0 0; }
 
 /*                                                    */
 /*   FORM submit button                               */

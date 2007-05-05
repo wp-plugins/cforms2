@@ -42,11 +42,11 @@ if(isset($_REQUEST['addbutton'])) {
 	update_option('cforms_formcount', (string)($FORMCOUNT));
 	
 	add_option('cforms'.$no.'_count_fields', '5');
-	add_option('cforms'.$no.'_count_field_1', __('My Fieldset$#$fieldsetstart$#$0$#$0$#$0', 'cforms'));
-	add_option('cforms'.$no.'_count_field_2', __('Your Name|Your Name$#$textfield$#$1$#$0$#$1', 'cforms'));
-	add_option('cforms'.$no.'_count_field_3', __('Email$#$textfield$#$1$#$1$#$0', 'cforms'));
-	add_option('cforms'.$no.'_count_field_4', __('Website|http://$#$textfield$#$0$#$0$#$0', 'cforms'));
-	add_option('cforms'.$no.'_count_field_5', __('Message$#$textarea$#$0$#$0$#$0', 'cforms'));
+	add_option('cforms'.$no.'_count_field_1', __('My Fieldset$#$fieldsetstart$#$0$#$0$#$0$#$0', 'cforms'));
+	add_option('cforms'.$no.'_count_field_2', __('Your Name|Your Name$#$textfield$#$1$#$0$#$1$#$0', 'cforms'));
+	add_option('cforms'.$no.'_count_field_3', __('Email$#$textfield$#$1$#$1$#$0$#$0', 'cforms'));
+	add_option('cforms'.$no.'_count_field_4', __('Website|http://$#$textfield$#$0$#$0$#$0$#$0', 'cforms'));
+	add_option('cforms'.$no.'_count_field_5', __('Message$#$textarea$#$0$#$0$#$0$#$0', 'cforms'));
 	
 	add_option('cforms'.$no.'_required', __('(required)', 'cforms'));
 	add_option('cforms'.$no.'_emailrequired', __('(valid email required)', 'cforms'));
@@ -63,7 +63,8 @@ if(isset($_REQUEST['addbutton'])) {
 	add_option('cforms'.$no.'_success', __('Thank you for your comment!', 'cforms'));
 	add_option('cforms'.$no.'_failure', __('Please fill in all the required fields.', 'cforms'));
 	add_option('cforms'.$no.'_working', __('One moment please...', 'cforms'));
-	add_option('cforms'.$no.'_popup', __('nn', 'cforms'));
+	add_option('cforms'.$no.'_popup', 'nn');
+	add_option('cforms'.$no.'_showpos', 'yn');
 	
 	echo '<div class="updated"><p>'.__('New form added.', 'cforms').'</p></div>';
 
@@ -102,6 +103,7 @@ if(isset($_REQUEST['addbutton'])) {
 	add_option('cforms'.$FORMCOUNT.'_failure', get_option('cforms'.$no.'_failure'));
 	add_option('cforms'.$FORMCOUNT.'_working', get_option('cforms'.$no.'_working'));
 	add_option('cforms'.$FORMCOUNT.'_popup', get_option('cforms'.$no.'_popup'));
+	add_option('cforms'.$FORMCOUNT.'_showpos', get_option('cforms'.$no.'_showpos'));
 	
 	echo '<div class="updated"><p>'.__('New form added.', 'cforms').'</p></div>';
 	
@@ -198,6 +200,9 @@ if(isset($_REQUEST['addbutton'])) {
 		if ( !(strpos($importdata[15], 'pp:')===false) )
 					update_option('cforms'.$no.'_popup',substr( trim($importdata[15]), 3) );
 
+		if ( !(strpos($importdata[16], 'sp:')===false) )
+					update_option('cforms'.$no.'_showpos',substr( trim($importdata[16]), 3) );
+
 	}
 	
 	
@@ -251,6 +256,8 @@ if(isset($_REQUEST['addbutton'])) {
     update_option('cforms'.$i.'_working',$tempo);
     $tempo = get_option('cforms'.($i+1).'_popup');
     update_option('cforms'.$i.'_popup',$tempo);
+    $tempo = get_option('cforms'.($i+1).'_showpos');
+    update_option('cforms'.$i.'_showpos',$tempo);
   }
   
   for ( $i=1; $i<=get_option('cforms'.$FORMCOUNT.'_count_fields'); $i++)  //now delete all fields from last form
@@ -273,6 +280,7 @@ if(isset($_REQUEST['addbutton'])) {
   delete_option('cforms'.$FORMCOUNT.'_failure');
   delete_option('cforms'.$FORMCOUNT.'_working');
   delete_option('cforms'.$FORMCOUNT.'_popup');
+  delete_option('cforms'.$FORMCOUNT.'_showpos');
 
   $FORMCOUNT=$FORMCOUNT-1;
   
@@ -335,6 +343,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 	$ccbox=false;
 	$emailtobox=false;
 	$upload=false;
+	$vsubject=false;
 
 	for($i = 1; $i <= $field_count; $i++) {
 
@@ -346,6 +355,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 				$required = 0;
 				$emailcheck = 0;
 				$clear = 0;
+				$disabled = 0;
 
 				if( $type=='verification' ){
 					$allgood = $verification?false:true;
@@ -361,6 +371,11 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 					$allgood = $ccbox?false:true;
 					$usermsg .= $ccbox?__('Only one <em>CC:</em> field is permitted!', 'cforms').'<br />':'';
 					$ccbox=true;
+				}
+				if( $type=='vsubject' ){
+					$allgood = $vsubject?false:true;
+					$usermsg .= $vsubject?__('Only one <em>subject</em> field is permitted!', 'cforms').'<br />':'';
+					$vsubject=true;
 				}
 				if( $type=='emailtobox' ){
 					$allgood = $emailtobox?false:true;
@@ -385,11 +400,15 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 				if(isset($_REQUEST['field_' . $i . '_clear']) && in_array($type,array('textfield','textarea')) ) {
 					$clear = 1;
 				}
+
+				if(isset($_REQUEST['field_' . $i . '_disabled']) && in_array($type,array('textarea','textfield','checkbox','checkboxgroup','multiselectbox','selectbox','radiobuttons','upload')) ) {
+					$disabled = 1;
+				}
 				
 				if ($allgood)
-						update_option('cforms'.$no.'_count_field_' . $i, $name . '$#$' . $type . '$#$' . $required. '$#$'. $emailcheck . '$#$'. $clear);
+						update_option('cforms'.$no.'_count_field_' . $i, $name . '$#$' . $type . '$#$' . $required. '$#$'. $emailcheck . '$#$'. $clear . '$#$'. $disabled);
 
-				$all_fields[$i-1]=$name . '$#$' . $type . '$#$' . $required. '$#$' . $emailcheck . '$#$'. $clear;
+				$all_fields[$i-1]=$name . '$#$' . $type . '$#$' . $required. '$#$' . $emailcheck . '$#$'. $clear . '$#$' . $disabled;
 				
 		}
 	}
@@ -397,6 +416,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 	update_option('cforms'.$no.'_confirm', $_REQUEST['cforms_confirm']?'1':'0');
 	update_option('cforms'.$no.'_ajax', $_REQUEST['cforms_ajax']?'1':'0');
 	update_option('cforms'.$no.'_popup', ($_REQUEST['cforms_popup1']?'y':'n').($_REQUEST['cforms_popup2']?'y':'n') );
+	update_option('cforms'.$no.'_showpos', ($_REQUEST['cforms_showposa']?'y':'n').($_REQUEST['cforms_showposb']?'y':'n') );
 
 	update_option('cforms'.$no.'_fname', preg_replace("/\\\+/", "\\",$_REQUEST['cforms_fname']));
 	update_option('cforms'.$no.'_csubject', preg_replace("/\\\+/", "\\",$_REQUEST['cforms_csubject']));
@@ -554,6 +574,7 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 			<li class="field4th" title="<?php _e('Makes an input field required for proper form validation.', 'cforms'); ?>"><span class="abbr"><?php _e('Is Required', 'cforms'); ?></span></li>
 			<li class="field5th" title="<?php _e('Makes the field required and verifies the email address.', 'cforms'); ?>"><span class="abbr"><?php _e('Is E-Mail', 'cforms'); ?></span></li>
 			<li class="field6th" title="<?php _e('Clears the field (default value if provided) upon focus.', 'cforms'); ?>"><span class="abbr"><?php _e('Auto Clear', 'cforms'); ?></span></li>
+			<li class="field7th" title="<?php _e('Grey\'s out a form field (field will be disabled).', 'cforms'); ?>"><span class="abbr"><?php _e('Disabled', 'cforms'); ?></span></li>
 		</ul>
 			
 			<div id="cformsfieldsbox">
@@ -566,6 +587,8 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 						$verificationused=false;
 						$captchaused=false;
 						$uploadused=false;
+						$vsubjectused=false;
+						
 						for($i = 1; $i <= $field_count; $i++) {
 
 								$allfields[$i] = get_option('cforms'.$no.'_count_field_' . $i);
@@ -580,6 +603,8 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 										$ccboxused = true;
 								if ( strpos($allfields[$i],'upload') )
 										$uploadused = true;
+								if ( strpos($allfields[$i],'vsubject') )
+										$vsubjectused = true;
 
 						}
 
@@ -592,6 +617,7 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 								$field_required = '0';
 								$field_emailcheck = '0';
 								$field_clear = '0';
+								$field_disabled = '0';
 
 								if(sizeof($field_stat) >= 3) {
 									$field_name = stripslashes(htmlspecialchars($field_stat[0]));
@@ -599,9 +625,10 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 									$field_required = $field_stat[2];
 									$field_emailcheck = $field_stat[3];
 									$field_clear = $field_stat[4];
+									$field_disabled = $field_stat[5];
 								}
 								else if(sizeof($field_stat) == 1){
-									add_option('cforms'.$no.'_count_field_' . $i, __('New Field$#$textfield$#$0$#$0$#$0', 'cforms'));
+									add_option('cforms'.$no.'_count_field_' . $i, __('New Field$#$textfield$#$0$#$0$#$0$#$0', 'cforms'));
 								}
 
             switch ( $field_type ) {
@@ -610,6 +637,9 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 										break;
 							case 'ccbox':
 										$specialclass = 'style="background:#D8FFCA"';
+										break;
+							case 'vsubject':
+										$specialclass = 'style="background:#fcff77"';
 										break;
 							case 'verification':
 							case 'captcha':
@@ -644,9 +674,13 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 													<option value="textfield" <?php echo($field_type == 'textfield'?' selected="selected"':''); ?> ><?php _e('Single line of text', 'cforms'); ?></option>
 													<option value="textarea" <?php echo($field_type == 'textarea'?' selected="selected"':''); ?> ><?php _e('Multiple lines of text', 'cforms'); ?></option>
 													<option value="checkbox" <?php echo($field_type == 'checkbox'?' selected="selected"':''); ?> ><?php _e('Check Box', 'cforms'); ?></option>
+													<option value="checkboxgroup" <?php echo($field_type == 'checkboxgroup'?' selected="selected"':''); ?> ><?php _e('Check Box Group', 'cforms'); ?></option>
 													<option value="selectbox" <?php echo($field_type == 'selectbox'?' selected="selected"':''); ?> ><?php _e('Select Box', 'cforms'); ?></option>
 													<option value="multiselectbox" <?php echo($field_type == 'multiselectbox'?' selected="selected"':''); ?> ><?php _e('Multi Select Box', 'cforms'); ?></option>
 													<option value="radiobuttons" <?php echo($field_type == 'radiobuttons'?' selected="selected"':''); ?> ><?php _e('Radio Buttons', 'cforms'); ?></option>
+													<?php if ( !$vsubjectused || $field_type=="vsubject" ) : ?>
+													<option value="vsubject" <?php echo($field_type == 'vsubject'?' selected="selected"':''); ?> ><?php _e('Subject for Emails', 'cforms'); ?></option>
+													<?php	endif; ?>
 													<?php if ( !$ccboxused || $field_type=="ccbox" ) : ?>
 													<option value="ccbox" <?php echo($field_type == 'ccbox'?' selected="selected"':''); ?> ><?php _e('CC: option for user', 'cforms'); ?></option>
 													<?php	endif; ?>
@@ -671,17 +705,20 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 						            ?>
 										</li>
 										<li class="fieldisreq">
-											<?php if( !in_array($field_type,array('radiobuttons','fieldsetstart','fieldsetend','ccbox','captcha','verification','textonly')) ) {
-													?><input class="chkfld" type="checkbox" name="field_<?php echo($i); ?>_required" value="required"  <?php echo($field_required == '1'?' checked="checked"':''); ?> /><?php
-														} else if ( !in_array($field_type,array('checkbox','multiselectbox','selectbox','radiobuttons','fieldsetstart','fieldsetend','ccbox','captcha','verification','textonly')) ) { echo('Required <input type="hidden" name="field_' . $i . '_required" value="required" />'); } ?>
+											<?php if( in_array($field_type,array('checkboxgroup', 'radiobuttons','fieldsetstart','fieldsetend','ccbox','captcha','verification','textonly')) ) echo '&nbsp;'; else {
+													?><input class="chkfld" type="checkbox" name="field_<?php echo($i); ?>_required" value="required"  <?php echo($field_required == '1'?' checked="checked"':''); ?> /><?php }?>
 										&nbsp;</li>
 										<li class="fieldisemail">
-											<?php if( in_array($field_type,array('upload','textarea','checkbox','multiselectbox','selectbox','radiobuttons','fieldsetstart','fieldsetend','ccbox','emailtobox','captcha','verification','textonly')) ) echo '&nbsp;'; else { ?>
+											<?php if( ! in_array($field_type,array('textfield')) ) echo '&nbsp;'; else { ?>
 														<input class="chkfld" type="checkbox" name="field_<?php echo($i); ?>_emailcheck" value="required"  <?php echo($field_emailcheck == '1'?' checked="checked"':''); ?> /><?php }?>
 										&nbsp;</li>
 										<li class="fieldclear">
 											<?php if( ! in_array($field_type,array('textarea','textfield')) ) echo '&nbsp;'; else { ?>
 														<input class="chkfld" type="checkbox" name="field_<?php echo($i); ?>_clear" value="required"  <?php echo($field_clear == '1'?' checked="checked"':''); ?> /><?php }?>
+										&nbsp;</li>
+										<li class="fielddisabled">
+											<?php if( ! in_array($field_type,array('textarea','textfield','checkbox','selectbox','multiselectbox','radiobuttons','upload')) ) echo '&nbsp;'; else { ?>
+														<input class="chkfld" type="checkbox" name="field_<?php echo($i); ?>_disabled" value="required"  <?php echo($field_disabled == '1'?' checked="checked"':''); ?> /><?php }?>
 										&nbsp;</li>
 									</ul>
 						</div> <!--box-->
@@ -733,6 +770,13 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 				<div class="optionsboxL"><?php _e('<strong>Failure message</strong><br />missing fields or wrong field formats<br />(regular expr.)', 'cforms'); ?></div>
 					<div class="optionsboxR"><textarea style="float:left" name="cforms_failure" id="cforms_failure" ><?php echo stripslashes(htmlspecialchars(get_option('cforms'.$no.'_failure'))); ?></textarea>
 					<div style="float:left"><input type="checkbox" id="cforms_popup2" name="cforms_popup2" <?php if(substr(get_option('cforms'.$no.'_popup'),1,1)=="y") echo "checked=\"checked\""; ?>/><label for="cforms_popup2"><?php _e('Opt. Popup Msg', 'cforms'); ?></label></div>
+				</div>
+			</div>
+			<div class="optionsbox" style="margin-top:10px;">
+				<div class="optionsboxL"><?php _e('Show messages', 'cforms'); ?></div>
+				<div class="optionsboxR">
+					<input type="checkbox" id="cforms_showposa" name="cforms_showposa" <?php if(substr(get_option('cforms'.$no.'_showpos'),0,1)=="y") echo "checked=\"checked\""; ?>/><label for="cforms_showposa"><?php _e('Above form', 'cforms'); ?></label><br />
+					<input type="checkbox" id="cforms_showposb" name="cforms_showposb" <?php if(substr(get_option('cforms'.$no.'_showpos'),1,1)=="y") echo "checked=\"checked\""; ?>/><label for="cforms_showposb"><?php _e('Below form', 'cforms'); ?></label>
 				</div>
 			</div>
 			<div class="optionsbox" style="margin-top:10px;">
