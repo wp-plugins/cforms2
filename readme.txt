@@ -21,7 +21,7 @@ covering a variety of use cases and features from attachments to multi form
 management, you can even have multiple forms on the same page!
 
 = Plugin Features =
-* Full localization support (currently: English, German)
+* Full localization support (currently: English, German, Spanish)
 * Built-in CSS editor & theme chooser
 * File attachments (upload)
 * Multiple forms on one or many pages / posts
@@ -60,7 +60,7 @@ If you have suggestions or would like to point out typos etc, please contact the
 
 * Currently, cforms includes the following language packs (besides English):
 	* **German** \* Author: [Sven Wappler](http://www.wordpressbox.de/plugins/cforms/)
-	* **Spanish** \* Author: Samuel Aguilera (pending)
+	* **Spanish** \* Author: [Samuel Aguilera](http://agamum.net/blog/archivo/plugin-cforms-en-espanol-formularios-para-tu-wordpress.xhtml)
 	* **Italian** \* Author: webbite.it (pending)
 	* **Hebrew** \* Author: Vahid (pending)
 
