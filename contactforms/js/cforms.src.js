@@ -391,7 +391,7 @@ function cforms_submitcomment(no) {
 								while ( objColl[i].type == 'checkbox' && objColl[i].name.match(/\[\]/) && i < j){
 
 									if ( objColl[i].checked ) 
-										group = group + objColl[i].nextSibling.innerHTML + ',';
+										group = group + objColl[i].value + ',';
 
 									i=i+2;
 								}

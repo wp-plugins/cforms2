@@ -4,7 +4,7 @@ Donate link: http://www.deliciousdays.com/
 Tags: ajax, email, secure, visitor, input, order, form, contact
 Requires at least: 1.6+
 Tested up to: 2.1.3
-Stable tag: 4.0
+Stable tag: 4.1
 
 cforms is a highly customizable, flexible and powerful contact form plugin, 
 covering a variety of features from attachments to multi form management.
@@ -21,7 +21,7 @@ covering a variety of use cases and features from attachments to multi form
 management, you can even have multiple forms on the same page!
 
 = Plugin Features =
-* Full localization support (currently: English, German)
+* Full localization support (currently: English, German, Spanish)
 * Built-in CSS editor & theme chooser
 * File attachments (upload)
 * Multiple forms on one or many pages / posts
@@ -37,14 +37,17 @@ management, you can even have multiple forms on the same page!
 * Form validation & *regular expressions*
 * Configurable text elements
 * Convenient handling of input field order, via drag and drop
+* Supporting DISABLED form fields for better usability
 * Various standard form building blocks:
 	* fieldsets
 	* single and multi-line fields
 	* select boxes (drop down)
 	* multi select boxes
 	* check boxes
+	* grouped check boxes
 	* radio buttons
 * ...and a few special ones:
+	* subject input field (determins the subject of the form email)
 	* "CC me" check box for visitors
 	* multiple form recipient (drop down list)
 	* visitor verification Q&A
@@ -60,7 +63,7 @@ If you have suggestions or would like to point out typos etc, please contact the
 
 * Currently, cforms includes the following language packs (besides English):
 	* **German** \* Author: [Sven Wappler](http://www.wordpressbox.de/plugins/cforms/)
-	* **Spanish** \* Author: Samuel Aguilera (pending)
+	* **Spanish** \* Author: [Samuel Aguilera](http://agamum.net/blog/archivo/plugin-cforms-en-espanol-formularios-para-tu-wordpress.xhtml)
 	* **Italian** \* Author: webbite.it (pending)
 	* **Hebrew** \* Author: Vahid (pending)
 

@@ -81,7 +81,7 @@ if(!empty($_POST['save_css'])){
 	<form id="selectcss" method="post" action="" name="selectcss">
 
 			 <fieldset class="cformsoptions">
-				<p class="cflegend" style="margin:10px 0 20px;"><?php _e('Select a form style', 'cforms') ?></p>
+				<p class="cflegend" style="margin:10px 0 20px;"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('Select a form style', 'cforms') ?></p>
 
 				<table>
 				<tr valign="top">
@@ -152,7 +152,7 @@ if(!empty($_POST['save_css'])){
 	<form id="editcss" method="post" action="" name="editcss">
 	
 			 <fieldset class="cformsoptions">
-				<p class="cflegend" style="margin-top:10px;"><?php _e('Basic CSS editor. Current style file: ', 'cforms'); echo '<span style="color:blue;">'.$style.'</span>' ?></p>
+				<p class="cflegend" style="margin-top:10px;"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('Basic CSS editor. Current style file: ', 'cforms'); echo '<span style="color:blue;">'.$style.'</span>' ?></p>
 
 				<p><?php _e('Use this simple editor to further tailor your forms\' style to meet your requirements. Currently you\'re editing: ', 'cforms'); echo '<span style="color:blue;">'.$style.'</span>' ?></p>
 

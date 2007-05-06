@@ -15,8 +15,9 @@ Copyright 2006  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 v4.1 (features)
 *) feature: support for shown but disabled form element
 *) feature: "user message" positioning, now optionally at the bottom of the form
-*) feature: "multi-select", grouped check boxes
+*) feature: "multi-select" via check boxes, grouped check boxes
 *) feature: new special field: subject field
+*) other: revised and cleaned up Help! section
 
 v4 (features & bugfix)
 *) feature: captcha support for additional SPAM protection
@@ -438,16 +439,20 @@ function cforms_submitcomment($content) {
 			while ( $field_stat[1] == 'fieldsetstart' || $field_stat[1] == 'fieldsetend' || $field_stat[1] == 'textonly' || $field_stat[1] == 'vsubject') {
 																				
 					// set subject for later if subject field found
-					if ( $field_stat[1] == 'vsubject' )
-						$vsubject = $params ['field_' . $i];
-										
-					// include and make only fieldsets pretty!
-					if ( $field_stat[1] <> 'textonly' ){
+					if ( $field_stat[1] == 'vsubject' ) {
+					
+						$vsubject = $params ['field_' . $i++]; 
+						$off--;  // need to upfront correct it
+
+					}
+					else if ( $field_stat[1] <> 'textonly' ){ // include and make only fieldsets pretty!
+
 							//just for email looks
 							$space='-'; $n = (62 - strlen($field_stat[0])) / 2;
 							if ( strlen($field_name) < 58 )
 								$space = str_repeat("-", $n );
 							$message .= substr("\n$space$field_stat[0]$space",0,60) . "\n\n";
+
 					}
 					
 		   			//get next in line...
@@ -488,14 +493,14 @@ function cforms_submitcomment($content) {
 
 			if ( $field_type == "emailtobox" ){  						//special case where the value needs to bet get from the DB!
 
-			  $field_name = explode('#',$field_stat[0]);  //can't use field_name, since '|' check earlier
-			  $to_one 		= $params ['field_' . $i];
+				$field_name = explode('#',$field_stat[0]);  //can't use field_name, since '|' check earlier
+				$to_one = $params ['field_' . $i];
 
 				$off = (strpos($field_name[1],'|')===false) ? 1 : 2; // names come usually right after the label
 
 
-				$value 			= $field_name[(int)$to_one+$off];  // values start from 0 or after!
-			  $field_name = $field_name[0];
+				$value = $field_name[(int)$to_one+$off];  // values start from 0 or after!
+				$field_name = $field_name[0];
 
 	 		}
 			else {
@@ -932,13 +937,14 @@ function cforms($args = '',$no = '') {
 						// set subject for later if subject field found
 						if ( $field_stat[1] == 'vsubject' )
 							$vsubject = $_POST['cf'.$no.'_field_' . $i];
-
-						//just for email looks
-						$space='-'; $n = (62 - strlen($field_stat[0])) / 2;
-						if ( strlen($field_name) < 58 )
-							$space = str_repeat("-", $n );
-						$message .= substr("\n$space$field_stat[0]$space",0,60) . "\n\n";
-
+						else {
+							//just for email looks
+							$space='-'; $n = (62 - strlen($field_stat[0])) / 2;
+							if ( strlen($field_name) < 58 )
+								$space = str_repeat("-", $n );
+							$message .= substr("\n$space$field_stat[0]$space",0,60) . "\n\n";
+						}
+						
 						//get next in line...
 						$i++;
 

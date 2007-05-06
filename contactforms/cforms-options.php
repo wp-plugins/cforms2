@@ -553,7 +553,7 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 
 	<a id="anchorfields"></a>
 	<fieldset class="cformsoptions">
-		<p class="cflegend"><?php _e('Form Fields', 'cforms') ?></p>
+		<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('Form Fields', 'cforms') ?></p>
 
 		<p><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#fields',__('Please see the help section for information on how to deploy the <a href="[url]">supported fields</a>.', 'cforms')); ?></p>
 
@@ -740,7 +740,7 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 
 		<a id="anchormessage"></a>
 		<fieldset class="cformsoptions">
-			<p class="cflegend"><?php _e('Messages, Text and Button Label', 'cforms') ?></p>
+			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('Messages, Text and Button Label', 'cforms') ?></p>
 
 			<p><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-global-settings.php#visitorv',__('These are the messages displayed to the user on successful (or failed) form submission. These messages are form specific, a general message for entering a wrong <strong>visitor verification code</strong> can be found <a href="[url]">here</a>.', 'cforms')); ?></p>
 
@@ -791,7 +791,7 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 
 		<a id="anchoremail"></a>
 		<fieldset class="cformsoptions">
-			<p class="cflegend"><?php _e('Form Admin / Email Options', 'cforms') ?></p>
+			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('Form Admin / Email Options', 'cforms') ?></p>
 
 			<p><?php _e('These settings will be used for the email sent to you. Both "<strong>xx@yy.zz</strong>" and "<strong>abc &lt;xx@yy.zz&gt;</strong>" formats are valid, but check if your mailserver does accept the format of choice!"', 'cforms') ?></p>
 
@@ -809,7 +809,7 @@ $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  
 
 		<a name="autoconf" id="autoconf"></a>
 		<fieldset class="cformsoptions">
-			<p class="cflegend"><?php _e('Auto Confirmation Options', 'cforms') ?></p>
+			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('Auto Confirmation Options', 'cforms') ?></p>
 
 			<p><?php _e('These settings apply to an auto response/confirmation sent to the visitor. If your form includes a "<code class="codehighlight">CC me</code>" field <strong>AND</strong> the visitor checked it, no confirmation email is sent!', 'cforms') ?></p>
 

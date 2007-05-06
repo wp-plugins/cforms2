@@ -187,7 +187,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 
 		<a name="upload" id="upload"></a>
 		<fieldset class="cformsoptions">
-			<p class="cflegend" style="margin-top:10px;"><?php _e('File Upload Settings', 'cforms') ?></p>
+			<p class="cflegend" style="margin-top:10px;"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('File Upload Settings', 'cforms') ?></p>
 
 			<p><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#upload',__('Configure and double-check these settings in case you are adding a "<code class="codehighlight">File Upload Box</code>" to your form (also see the <a href="[url]">Help!</a> for further information).', 'cforms')); ?></p>
 
@@ -242,7 +242,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 
 		<a name="wpeditor" id="wpeditor"></a>
 		<fieldset class="cformsoptions">
-			<p class="cflegend"><?php _e('WP Editor Button support', 'cforms') ?></p>
+			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('WP Editor Button support', 'cforms') ?></p>
 
 			<p><?php _e('If you would like to use editor buttons to insert your cforms please enable them below.', 'cforms') ?></p>
 	
@@ -255,7 +255,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 
 		<a name="visitorv" id="visitorv"></a>
 		<fieldset class="cformsoptions">
-			<p class="cflegend"><?php _e('Visitor Verification (Q&A)', 'cforms') ?></p>
+			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('Visitor Verification (Q&A)', 'cforms') ?></p>
 
 			<p><?php _e('Getting a lot of <strong>SPAM</strong>? Use these Q&A\'s to counteract spam and ensure it\'s a human submitting the form. To use in your form, add the corresponding input field "<code class="codehighlight">Visitor verification</code>" preferably in its own FIELDSET!', 'cforms') ?></p>
 			<p><?php _e('<strong><u>Note:</u></strong> The below error/failure message is also used for <strong>captcha</strong> verification!', 'cforms') ?></p>
@@ -281,7 +281,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 		
 		<a id="tracking"></a>
 		<fieldset class="cformsoptions">
-			<p class="cflegend"><?php _e('Database Input Tracking', 'cforms') ?></p>
+			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('Database Input Tracking', 'cforms') ?></p>
 
 				<p><?php _e('If you like to track your form submissions also via the database, please enable this feature below. If required, this will create two new tables and you\'ll see a new sub tab "<strong>Tracking</strong>" under the cforms menu.', 'cforms') ?></p>
 		
@@ -315,7 +315,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 		
 
 		<fieldset class="cformsoptions">
-			<p class="cflegend"><?php _e('Removing cforms', 'cforms') ?></p>
+			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('Removing cforms', 'cforms') ?></p>
 
 				<p><?php _e('Generally, deactivating the plugin does <strong>not</strong> erase any of its data, if you\'d like to quit using cforms for good, please erase all data before and then deactive the plugin.', 'cforms') ?></p>
 

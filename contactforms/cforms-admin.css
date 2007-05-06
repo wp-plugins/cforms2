@@ -12,6 +12,16 @@ h3,
 				background: #fafafa; margin:45px 0 0 0; padding: 4px 15px; }
 h3			{ margin-top:50px; }
 
+h4			{ background: #888888; color:white; padding:5px 0 5px 5px; font-size:18px; }
+.h4ff		{ float:left; padding-right:20px; font-family:arial; font-size:9px; line-height:12px; font-weight:normal; }
+
+a.helptop 	{ font-size:8px; float:right; margin:3px 10px 0 0; color:white!important; text-decoration:none; border-bottom:1px solid white;}
+
+.cflegend a.helptop, 
+h3 a.helptop { color:#666666!important; border-bottom:1px solid #666666; margin:8px 10px 0 0; }
+
+.helpimg 	{ float:right; border:1px solid #e0e0e0; margin-left:20px; }
+
 abbr, 
 span.abbr	{ border-bottom: 1px dashed #000080; cursor: help; }
 
@@ -20,15 +30,14 @@ span.abbr	{ border-bottom: 1px dashed #000080; cursor: help; }
 
 code.codehighlight 	{ background:#D8FFCC; }
 
-.helpfields 	{ margin:10px 0 40px 0!important; margin-right:60px; }
-.helpfields li	{ margin-left:20px; font-size:11px; }
+/* info tables */
+.hf 			{ margin-left:30px; padding:1px; font-size:11px; background:white; border-style:solid; border-color:#C9D6ED; }
+.hf tr			{ vertical-align:middle; }
+.bleft			{ width:80px; background:#DFE8FF; padding-right:5px; font-size:10px; font-weight:bold; text-align:right; border-style:solid; border-color:white; }
+.bright			{ padding:3px 3px 3px 15px; background:#DFE8FF; padding-left:15px; border-style:solid; border-color:white;}
+.ball			{ padding:3px 10px; background:#F2DFFF; border-style:solid; border-color:white;} 
 
-.helpfields 		{ display:inline-block; }
-.helpfields:after 	{ content:"."; display:block; height:0; clear:both; visibility:hidden; }
-/* Hides from IE-mac \*/
-* html .helpfields	{ height:1%; }
-.helpfields			{ display:block; }
-/* End hide from IE-mac */
+.hf code.codehighlight 	{ font-size:11px; background:none; }
 
 /****************************************************************
 Options Page: Tracking
