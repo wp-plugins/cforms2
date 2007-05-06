@@ -559,8 +559,7 @@ if(!current_user_can('manage_cforms')) {
             $fields['isreq'][n]   = true|false;             default: false;
             $fields['isemail'][n] = true|false;             default: false;
 
-            n = 0,1,2...
-                </pre></code></li>
+            n = 0,1,2...</pre></code></li>
     		</ol>
 
 
@@ -609,8 +608,7 @@ $fields['type'][1]    ='textfield';
 $fields['isreq'][1]   ='0';
 $fields['isemail'][1] ='1';
 
-insert_custom_cform($fields,'');    //<?php _e('call default form with new fields (2)', 'cforms'); ?>
-        </pre></code>
+insert_custom_cform($fields,'');    //<?php _e('call default form with new fields (2)', 'cforms'); ?></pre></code>
         </li>
         </ul>
 
@@ -648,8 +646,7 @@ $fields['type'][3]   ='selectbox';
 $fields['isreq'][3]  ='1';
 $fields['isemail'][3]='0';
 
-insert_custom_cform($fields,5);    //<?php _e('call form #5 with new fields (4)', 'cforms'); ?>
-</pre></code>
+insert_custom_cform($fields,5);    //<?php _e('call form #5 with new fields (4)', 'cforms'); ?></pre></code>
         </li>
         </ul>
 
@@ -663,8 +660,7 @@ insert_custom_cform($fields,5);    //<?php _e('call form #5 with new fields (4)'
 
 <?php _e('March', 'cforms'); ?>
 
-...
-        </pre></code>
+...</pre></code>
         </li>
         </ul>        
 

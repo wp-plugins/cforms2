@@ -12,7 +12,7 @@ h3,
 				background: #fafafa; margin:45px 0 0 0; padding: 4px 15px; }
 h3			{ margin-top:50px; }
 
-h4			{ background: #888888; color:white; padding:5px 0 5px 5px; font-size:18px; }
+h4			{ background: #888888; color:white; padding:5px 0 5px 5px; font-size:18px; margin-top:30px; }
 .h4ff		{ float:left; padding-right:20px; font-family:arial; font-size:9px; line-height:12px; font-weight:normal; }
 
 a.helptop 	{ font-size:8px; float:right; margin:3px 10px 0 0; color:white!important; text-decoration:none; border-bottom:1px solid white;}

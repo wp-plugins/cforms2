@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-05-06 12:06+0200\n"
+"POT-Creation-Date: 2007-05-06 14:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,7 +65,7 @@ msgstr ""
 #: cforms-help.php:226 cforms-help.php:262 cforms-help.php:298
 #: cforms-help.php:329 cforms-help.php:358 cforms-help.php:389
 #: cforms-help.php:416 cforms-help.php:442 cforms-help.php:486
-#: cforms-help.php:540 cforms-help.php:673 cforms-help.php:678
+#: cforms-help.php:540 cforms-help.php:669 cforms-help.php:674
 #: cforms-options.php:556 cforms-options.php:743 cforms-options.php:794
 #: cforms-options.php:812
 msgid "top"
@@ -1195,147 +1195,147 @@ msgstr ""
 msgid "no default value: expected format described in plugin HELP! section"
 msgstr ""
 
-#: cforms-help.php:567
+#: cforms-help.php:566
 msgid "Form input field types ('type'):"
 msgstr ""
 
-#: cforms-help.php:571
+#: cforms-help.php:570
 msgid "text paragraph:"
 msgstr ""
 
-#: cforms-help.php:572
+#: cforms-help.php:571
 msgid "single input field:"
 msgstr ""
 
-#: cforms-help.php:573
+#: cforms-help.php:572
 msgid "multi line field:"
 msgstr ""
 
-#: cforms-help.php:574
+#: cforms-help.php:573
 msgid "check boxes:"
 msgstr ""
 
-#: cforms-help.php:575
+#: cforms-help.php:574
 msgid "check boxes groups:"
 msgstr ""
 
-#: cforms-help.php:576
+#: cforms-help.php:575
 msgid "drop down fields:"
 msgstr ""
 
-#: cforms-help.php:577
+#: cforms-help.php:576
 msgid "multi select boxes:"
 msgstr ""
 
-#: cforms-help.php:578
+#: cforms-help.php:577
 msgid "radio buttons:"
 msgstr ""
 
-#: cforms-help.php:579
+#: cforms-help.php:578
 msgid "'CC' check box"
 msgstr ""
 
-#: cforms-help.php:580
+#: cforms-help.php:579
 msgid "multi-recipients field"
 msgstr ""
 
-#: cforms-help.php:581
+#: cforms-help.php:580
 msgid "spam/Q&A verification"
 msgstr ""
 
-#: cforms-help.php:582
+#: cforms-help.php:581
 msgid "spam/captcha verification"
 msgstr ""
 
-#: cforms-help.php:583
+#: cforms-help.php:582
 msgid "file upload fields"
 msgstr ""
 
-#: cforms-help.php:584
+#: cforms-help.php:583
 msgid "begin of a fieldset:"
 msgstr ""
 
-#: cforms-help.php:585
+#: cforms-help.php:584
 msgid "end of a fieldset:"
 msgstr ""
 
-#: cforms-help.php:588
+#: cforms-help.php:587
 msgid "<em>should only be used <strong>once</strong> per generated form!</em>"
 msgstr ""
 
-#: cforms-help.php:596
+#: cforms-help.php:595
 msgid "Simple example:"
 msgstr ""
 
-#: cforms-help.php:602 cforms-help.php:626
+#: cforms-help.php:601 cforms-help.php:624
 msgid "Your Name|Your Name"
 msgstr ""
 
-#: cforms-help.php:607
+#: cforms-help.php:606
 msgid "Your Email"
 msgstr ""
 
-#: cforms-help.php:612
+#: cforms-help.php:611
 msgid "call default form with new fields (2)"
 msgstr ""
 
-#: cforms-help.php:622
+#: cforms-help.php:620
 msgid "<strong>More advanced example</strong> (file access)<strong>:</strong>"
 msgstr ""
 
-#: cforms-help.php:630
+#: cforms-help.php:628
 msgid "Email"
 msgstr ""
 
-#: cforms-help.php:634
+#: cforms-help.php:632
 msgid "Please pick a month for delivery:"
 msgstr ""
 
-#: cforms-help.php:637
+#: cforms-help.php:635
 msgid "Deliver on#Please pick a month"
 msgstr ""
 
-#: cforms-help.php:639
+#: cforms-help.php:637
 msgid "need to put this file into your themes dir!"
 msgstr ""
 
-#: cforms-help.php:646
+#: cforms-help.php:644
 msgid "remove the last '#'"
 msgstr ""
 
-#: cforms-help.php:651
+#: cforms-help.php:649
 msgid "call form #5 with new fields (4)"
 msgstr ""
 
-#: cforms-help.php:656
+#: cforms-help.php:653
 msgid ""
 "With <code class=\"codehighlight\">month.txt</code> containing all 12 months "
 "of a year:"
 msgstr ""
 
-#: cforms-help.php:660
+#: cforms-help.php:657
 msgid "January"
 msgstr ""
 
-#: cforms-help.php:662
+#: cforms-help.php:659
 msgid "February"
 msgstr ""
 
-#: cforms-help.php:664
+#: cforms-help.php:661
 msgid "March"
 msgstr ""
 
-#: cforms-help.php:673
+#: cforms-help.php:669
 msgid "Styling Your Forms (cforms.css)"
 msgstr ""
 
-#: cforms-help.php:674
+#: cforms-help.php:670
 msgid ""
 "Please see the <a href=\"[url]\">Styling page</a> for theme selection and "
 "editing options."
 msgstr ""
 
-#: cforms-help.php:675
+#: cforms-help.php:671
 msgid ""
 "cforms comes with a few theme examples (some of the may require adjustments "
 "to work with <strong>your</strong> forms!) but you can of course create your "
@@ -1343,11 +1343,11 @@ msgid ""
 "put it in the <code class=\"codehighlight\">/styling</code> directory."
 msgstr ""
 
-#: cforms-help.php:678
+#: cforms-help.php:674
 msgid "Having Troubles?"
 msgstr ""
 
-#: cforms-help.php:679
+#: cforms-help.php:675
 msgid ""
 "For up-to-date information check the <a href=\"http://www.deliciousdays.com/"
 "cforms-forum\">cforms forum</a> and comment section on the plugin homepage."

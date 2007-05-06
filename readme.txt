@@ -122,6 +122,7 @@ _**Note**: "**X**" represents the number of the form, starting with **2**, 3,4 .
     single input field: `textfield`  
     multi line field: `textarea`  
     check boxes: `checkbox`  
+    check boxes groups: `checkboxgroup`  
     drop down fields: `selectbox`  
     multi-select boxes: `multiselect`  
     radio buttons: `radiobuttons`  
