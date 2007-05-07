@@ -60,7 +60,6 @@ If you have suggestions or would like to point out typos etc, please contact the
 	* **German** \* Author: [Sven Wappler](http://www.wordpressbox.de/plugins/cforms/)
 	* **Spanish** \* Author: [Samuel Aguilera](http://agamum.net/blog/archivo/plugin-cforms-en-espanol-formularios-para-tu-wordpress.xhtml)
 	* **Italian** \* Author: webbite.it (pending)
-	* **Hebrew** \* Author: Vahid (pending)
 
 == Installation ==
 
