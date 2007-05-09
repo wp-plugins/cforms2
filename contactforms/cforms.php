@@ -1525,9 +1525,10 @@ function cforms($args = '',$no = '') {
 	} //all fields
 
 
+	if ( $ol )
+		$content .= $nl . $indent . $tab . '</ol>';
 	if ( $fieldsetopen )
-		$content .= $nl . $indent . $tab . '</ol>' . 
-					$nl . $indent . $tab . '</fieldset>' . $nl;
+		$content .= $nl . $indent . $tab . '</fieldset>' . $nl;
 
 
 	// rest of the form
@@ -1541,12 +1542,12 @@ function cforms($args = '',$no = '') {
 
 	// if visitor verification turned on:
 	if ( $verification )
-		$content .= $indent . $tab . '<input type="hidden" name="cforms_a'.$no.'" id="cforms_a'.$no.'" value="' . md5(strtolower($q[1])) . '"/>' . $nl;
+		$content .= $nl . $indent . $tab . '<input type="hidden" name="cforms_a'.$no.'" id="cforms_a'.$no.'" value="' . md5(strtolower($q[1])) . '"/>';
 
 	if ( $captcha )
-		$content .= $indent . $tab . '<input type="hidden" name="cforms_cap'.$no.'" id="cforms_cap'.$no.'" value="' . md5(strtolower($_SESSION['turing_string'])) . '"/>' . $nl;
+		$content .= $nl . $indent . $tab . '<input type="hidden" name="cforms_cap'.$no.'" id="cforms_cap'.$no.'" value="' . md5(strtolower($_SESSION['turing_string'])) . '"/>';
 
-	$content .= $indent . $tab . '<input type="hidden" name="_working'.$no.'" id="_working'.$no.'" value="'.rawurlencode(get_option('cforms'.$no.'_working')).'"/>'. $nl .
+	$content .= $nl . $indent . $tab . '<input type="hidden" name="_working'.$no.'" id="_working'.$no.'" value="'.rawurlencode(get_option('cforms'.$no.'_working')).'"/>'. $nl .
 				$indent . $tab . '<input type="hidden" name="_failure'.$no.'" id="_failure'.$no.'" value="'.rawurlencode(get_option('cforms'.$no.'_failure')).'"/>'. $nl .
 				$indent . $tab . '<input type="hidden" name="_codeerr'.$no.'" id="_codeerr'.$no.'" value="'.rawurlencode(get_option('cforms_codeerr')).'"/>'. $nl .
 				$indent . $tab . '<input type="hidden" name="_popup'.$no.'"   id="_popup'.$no.'"   value="'.get_option('cforms'.$no.'_popup').'"/>' . $nl;

@@ -1,108 +1,105 @@
 /*                                                     */
 /*  PLEASE NOTE:                                       */
 /*                                                     */
-/*  (1) this style applies to all forms                */
-/*                                                     */
-/*  (2) to MAKE IT WORK, you need to add an additional */
-/*      'text-only' field as a first field!            */
-/*      field name (pipe symbol!): |customdarkbgtop    */
-/*                                                     */
-/*  OR use the 'dark_rounded_form_backup.txt'          */
-/*  file (in /contactforms/styling/ directory) & the   */
-/*  RESTORE form feature                               */
+/*  if you have multiple fieldsets, you need to edit   */
+/*  line 39 & 40 (search for "multiple fieldsets") &   */
+/*  add a new TEXT-ONLY field BEFORE EACH              */
+/*  'NEW FIELDSET'!!   field name:  |fieldsetclose     */
 /*                                                     */
 
 
-.cform		{ margin:10px auto 50px auto; padding-bottom:8px; width: 410px; 
-		background: url(../images/customform_dark_bg_bottom.jpg) no-repeat bottom left;}
-
-.customdarkbgtop	{ display:block; margin:0!important; height:11px; padding:0!important; 
-			background: url(../images/customform_dark_bg_top.jpg) no-repeat bottom left; font-size:1px; }
-
 /*                                                    */
-/* text paragraph & message box above the form        */
+/*  main 'top-level' form elements                    */
 /*                                                    */
 
-p.info 		{ margin:10px 0; text-align:center; }
-p.textonly	{ clear:left; text-align:center; padding:5px; margin:0; }
+.fieldsetclose {
+	background: url(../images/customform_dark_bg_bottom.jpg) no-repeat bottom left;
+}
+
+.cform { 
+	width: 410px; 
+	padding-bottom:8px;
+	margin:10px auto 50px auto;
+	background: url(../images/customform_dark_bg_bottom.jpg) no-repeat bottom left;
+}
+
+.cform fieldset	{ 
+	margin:10px 0 0 0; 
+	padding:9px 0 0 0; 
+	border:none;
+	background: url(../images/customform_dark_bg_top.jpg) no-repeat top left;
+	}
+
+.cform legend { 
+	display:none;
+}
+
+ol.cf-ol { 
+	margin:0; 
+	padding:0 0 10px 0; 
+/*	padding:0 0 0 0; 	/*  use this one if you have multiple fieldsets support !!!  */ 
+	background: url(../images/customform_dark_bg.jpg) repeat-y; 
+}
+ol.cf-ol li	{ 
+	margin:0!important; /*some themes may interfere otherwise*/
+	padding:5px 0; 
+	list-style:none; 
+	text-align:left;
+}
 
 
 /*                                                    */
-/* change formatting of response msgs here            */
+/* just for text-only fields (no input)               */
 /*                                                    */
 
-.success 	{ color:green; }
-.failure 	{ color:red; }
-
-/*                                                    */
-/* upload box styling                                 */
-/*                                                    */
-
-.cform input.cf_upload  { background: #f9f9f9; border:1px solid #888888; }
-
-
-/*                                                    */
-/* disabled fields [disabled] does not work on IE!    */
-/*                                                    */
-
-[disabled]	{ color:#dddddd; border-color:#dddddd!important; background:none!important; }
-.disabled 	{ border-color:#dddddd!important; }
+ol.cf-ol li.textonly {
+	color: white;
+	padding:3px 0; 
+	text-align:center;
+}
 
 
 /*                                                    */
 /* global definitions for field labels                */
 /*                                                    */
 
-span.cfchkboxlabel,
-span.cfradiolabel,
-.cform label 		{ width:90px; margin:5px 0 0 0; font:normal 11px 'Trebuchet MS',Arial; color:white;
-			 display:block; float:left;  padding-right:10px; clear:left; text-align:right; }
+.cform label {
+	color: white;
+	width:90px; 
+	margin:2px 10px 0 0; 
+	display: -moz-inline-box; 
+	text-align:right;
+	vertical-align:top;
+}
+.cform label span {
+	width:90px; /* must be the same as above!*/
+	display:block;
+}
 
+label.cf-before {
+	margin:0 10px 0 0; 
+}
 
-/* just in case the label comes AFTER the field: */
-label.cflabelafter 	{ clear:none; width:250px; text-align:left; padding:0 0 0 6px; }
+label.cf-after 	{
+	margin:0 0 0 6px;
+	width:200px;
+	text-align:left;
+}
 
+label.cf-after span {
+	width:200px;
+	display:block;
+}
 
-/*                                                    */
-/* formatting for text:  "(required)"  & other        */
-/*                                                    */
-
-span.chckboxtxt,
-span.cformradiotext,
-span.reqtxt,
-span.emailreqtxt 	{ float:left;	margin:5px 0; padding-left:3px; font:normal 11px 'Trebuchet MS',Arial; color:#bbbbbb;}
-
-span.cformradiotext 		{ margin:5px 0 0 0!important; }
-* html span.cformradiotext	{ margin-top:4px!important; } /* hack: different margin for IE */
-
-
-/*                                                    */
-/*              FORM FIELDSETS                        */
-/*                                                    */
-
-.cformfieldsets		{ margin:0; padding:8px 0 11px 0; background: url(../images/customform_dark_bg.jpg) repeat-y; border:none; }
-
-/* you may want to remove the below line if this causes layout issues with your WP Theme (ie6 fieldset hack) */
-* html .cformfieldsets	{ position: relative; margin-top:0px; padding-top:15px; }
-
-
-/*etc..add more, if you have more forms using captcha*/
-#cforms_captcha5,
-#cforms_captcha4,
-#cforms_captcha3,
-#cforms_captcha2,
-#cforms_captcha		{ height:15px; margin-top:0; padding: 4px 4px; width:50px;  }
-
-
-/*                                                    */
-/*   FIELDSET legends                                 */
-/*                                                    */
-
-.cform legend		{ display:none; margin-left:10px; font:normal 20px Times; }
-
-/* you may want to remove the below line if this causes layout issues with your WP Theme (ie6 fieldset hack) */
-* html .cform legend	{ position:absolute; top: -10px; left: 10px; margin-left:0; }
-
+label.cf-group-after {
+	margin:0 0 0 2px;
+	width:60px;
+	text-align:left;
+}
+label.cf-group-after span {
+	width:60px;
+	display:block;
+}
 
 /*                                                    */
 /*   FORM FIELDS general formatting                   */
@@ -110,70 +107,102 @@ span.cformradiotext 		{ margin:5px 0 0 0!important; }
 
 .cform input,
 .cform textarea,
-.cform select 			{ font:normal 11px 'Trebuchet MS', Arial; margin:3px 0; padding:1px 3px; 
-				float: left; background: #f9f9f9; border: 1px solid #888888; }
+.cform select { 
+	padding:1px 3px;
+	background: #f9f9f9; 
+	border: 1px solid #888888; 
+}
 .cform input:hover,
 .cform textarea:hover,
-.cform select:hover		{ background:#CEDDDF; }
+.cform select:hover	{
+	background:#CEDDDF; 
+}
 
 .cform input:focus,
 .cform textarea:focus,
-.cform select:focus		{ background:#F3F8F8; }
+.cform select:focus	{ 
+	background:#F3F8F8; 
+}
 
-.cform input 			{ width:170px; }
-.cform select 			{ width:178px; }  /* attempt to have equal length */
-.cform textarea			{ width:170px; }
+.cform textarea,
+.cform input {
+	width:150px; 
+}
+.cform select {
+	width:158px; /* attempt to have equal length */
+}  
 
-.cform select.cfselectmulti	{ height:84px; }
+.cform select.cfselectmulti	{ 
+	height:7.5em; 
+}
+
+.cform textarea {
+	overflow:auto;
+}
+
+/*                                                    */
+/* formatting for text:  "(required)"  & other        */
+/*                                                    */
+
+span.reqtxt,
+span.emailreqtxt { 
+	color:#bbbbbb;
+	margin:3px 5px 0 0;
+	font-size:0.9em;
+	display: -moz-inline-box; 
+	vertical-align:top;
+}
 
 
 /*                                                    */
-/*   radio buttons                                    */
+/*   radio button title                               */
 /*                                                    */
 
-.cfradioblock		{ float:left; }
-.cfradioblock label	{ clear:none; text-align:left; padding-left:5px;}   /*radio button labels are special!*/
-input.cformradio	{ margin:6px 0 0 0; width:16px; border:none; clear:left; }
-
-* html input.cformradio	{ margin-top:3px; background:none; } /* hack: different margins for IE */
-
+ol.cf-ol li.cf-box-title {
+	color: white;
+	padding-left:100px; /* check with label 'width' incl. */
+}
 
 /*                                                    */
 /*   check boxes                                      */
 /*                                                    */
 
-input.cformchkbox 		{ margin:7px 0 6px 0; width:16px; border:none; }
-* html input.cformchkbox	{ margin:3px 0 4px 0; background:none; } /* hack:different margins for IE */
+input.cf-box-a,
+input.cf-box-b 	{ 
+	margin:2px 0 0 0; 
+	width:16px; 
+	border:none; 
+}
+
+input.cf-box-a 	{ 
+	margin-left:100px; /* check with label 'width' incl. */
+} 
 
 
 /*                                                    */
 /* check box groups                                   */
 /*                                                    */
 
-span.cfchkboxblock		{ float:left; width:190px; margin:4px 0 6px; }
-span.cfchkboxlabelgrp	{ margin:9px 0 0 0; }
-span.cfchkboxblock label	{ clear:none; text-align:left; padding:0 0 0 5px; width:70px; }   /*check box groups are special!*/
-span.cfchkboxblock input.cformchkbox	{ margin:6px 0 0 0; }
-
-* html .cfchkboxblock label	{ margin:2px 0 0 0; height:22px; }
-* html .cfchkboxblock input.cformchkbox	{ margin:0; }
-* html span.cfchkboxlabelgrp	{ margin:6px 0 0 0; }
+ol.cf-ol li.cf-box-group {
+	padding: 0 0 5px 100px; 
+} 
 
 
 /*                                                    */
 /*   FORM submit button                               */
 /*                                                    */
 
-.cform input.sendbutton	{ width:410px; height:26px; padding:0; margin:0; float:none!important; border:none!important;
-			background:url(../images/customform_dark_submit.jpg) no-repeat; }
-
-
-/*                                                    */
-/*   formatting for ('required' & 'email'), optional  */
-/*                                                    */
-
-.fldemail	{ }
-.fldrequired	{ }
+p.cf-sb {
+	margin: 0;
+}
+.cform input.sendbutton	{ 
+	width:410px; 
+	height:26px; 
+	padding:0; 
+	margin:0;
+	border:none!important;
+	background:url(../images/customform_dark_submit.jpg) no-repeat; 
+}
 
 
 /*                                                    */
@@ -184,38 +213,109 @@ span.cfchkboxblock input.cformchkbox	{ margin:6px 0 0 0; }
 .cform .errortxt    	{ color:red!important; }
 
 
-
-/*                                                    */
-/*    chances are, you don't have to edit anything    */
-/*    below these lines                               */
-
-
-
 /*                                                    */
 /* 'visitor verification' related styles              */
 /*                                                    */
 
-label.secq 	{ width:200px!important; }
-input.secinput 	{ width:40px!important; }
+label.seccap {
+	margin-top: 6px;
+}
+label.secq,
+label.secq span {
+	margin-top: 2px;
+	width:194px;
+}
+input.secinput {
+	width:45px;
+	margin: 3px 0 0 0;
+	vertical-align:top;
+}
 
-img.captcha	{ float:left; margin:0 0 0 10px; padding:0; border:none; }
+#cforms_captcha5,
+#cforms_captcha4,
+#cforms_captcha3,
+#cforms_captcha2,
+#cforms_captcha {
+	height:15px;
+	width:50px;
+	padding: 4px 4px;
+	margin: 0;
+}
+
+img.captcha	{
+	margin:0 0 0 10px;
+	padding:0;
+	border:none;
+}
 
 
 /*                                                    */
-/*                    PROPER BREAKS                   */
+/* change formatting of response msgs here            */
 /*                                                    */
-.cformfieldsets 		{ display:inline-block; }
-.cformfieldsets:after 		{ content:".";	display:block;	height:0; clear:left;	visibility:hidden; }
-/* Hides from IE-mac \*/
-* html .cformfieldsets		{ height:1%; }
-.cformfieldsets			{ display:block; }
-/* End hide from IE-mac */
 
-.cform 				{ display:inline-block; }
-.cform:after 			{ content:".";	display:block;	height:0;	clear:left;	visibility:hidden; }
-/* Hides from IE-mac \*/
-* html .cform			{ height:1%; }
-.cform				{ display:block; }
-/* End hide from IE-mac */
+p.info 		{
+	margin:10px 0;
+	text-align:center;
+}
+p.success 	{
+	color:green;
+}
+p.failure 	{
+	color:red;
+}
 
+/*                                                    */
+/* disabled fields [disabled] does not work on IE!    */
+/*                                                    */
 
+[disabled] {
+	color:#dddddd;
+	border-color:#dddddd!important;
+	background:none!important;
+}
+.disabled {
+	border-color:#dddddd!important;
+}
+
+/*                                                    */
+/* upload box styling                                 */
+/*                                                    */
+
+.cform input.cf_upload  {
+	background: #f9f9f9;
+	border:1px solid #888888;
+}
+
+/*                                                    */
+/*  Other: browser hacks                              */
+/*                                                    */
+* html .cform label,
+* html span.reqtxt,
+* html span.emailreqtxt { 
+	display: inline-block;  /*for ie6*/
+}
+*+html .cform label,
+*+html span.reqtxt,
+*+html span.emailreqtxt {
+	display: inline-block; /*for ie7*/
+}
+* html .cform legend { 
+	position:absolute; 
+	top: -10px; 
+	left: 10px; 
+	margin-left:0;
+}
+* html .cform fieldset {
+/*	position: relative;
+	margin-top:15px;
+	padding-top:25px; */
+}
+* html img.captcha	{
+	margin-top:1px;
+}
+*+html input.cf-box-a,
+*+html input.cf-box-b,
+* html input.cf-box-a,
+* html input.cf-box-b { 
+	margin-top:0;
+}

@@ -1,5 +1,5 @@
 cf:6
-ff:** is not shown anyway...$#$fieldsetstart$#$0$#$0$#$0+++Message &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;$#$textarea$#$0$#$0$#$0+++Your Name|Your Name$#$textfield$#$1$#$0$#$1+++Email$#$textfield$#$1$#$1$#$0+++Website|http://$#$textfield$#$0$#$0$#$0+++* Please fill in all required fields|infotext$#$textonly$#$0$#$0$#$0+++
+ff:** is not shown anyway...$#$fieldsetstart$#$0$#$0$#$0$#$0+++Message$#$textarea$#$0$#$0$#$0$#$0+++Your Name|Your Name$#$textfield$#$1$#$0$#$1$#$0+++Email$#$textfield$#$1$#$1$#$0$#$0+++Website|http://$#$textfield$#$0$#$0$#$0$#$0+++* Please fill in all required fields|infotext$#$textonly$#$0$#$0$#$0$#$0+++
 rq:*
 er:*
 ac:0
@@ -14,3 +14,4 @@ sc:Thank you for your comment!
 fl:Please fill in all the required fields.
 wo:One moment please...
 pp:nn
+sp:yn
