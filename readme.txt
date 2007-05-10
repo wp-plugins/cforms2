@@ -4,18 +4,28 @@ Donate link: http://www.deliciousdays.com/
 Tags: ajax, email, secure, visitor, input, order, form, contact
 Requires at least: 1.6+
 Tested up to: 2.1.3
-Stable tag: 4.1
+Stable tag: 4.2
 
 cforms is a highly customizable, flexible and powerful contact form plugin, 
 covering a variety of features from attachments to multi form management.
 
 == Description ==
 
+= Please Note, May 10th =
+When updating from any earlier version to v4.2 make backup copies of your 
+own customized theme files (.css). The form structure and CSS has changed,
+in favour of much cleaner code base.
+
+If you'd like to customize the default CSS theme and are not a CSS expert,
+you may find [this document](http://www.deliciousdays.com/download/cforms-css-guide.pdf) helpful.	
+
+= Description =
 cforms is a highly customizable, flexible and powerful contact form plugin, 
 covering a variety of use cases and features from attachments to multi form 
 management, you can even have multiple forms on the same page!
 
 = Plugin Features =
+* Creates robust XHTML form code (no floats)
 * Full localization support (currently: English, German, Spanish)
 * Built-in CSS editor & theme chooser
 * File attachments (upload)
@@ -102,10 +112,12 @@ _**Note**: "**X**" represents the number of the form, starting with **2**, 3,4 .
     `$form-no`: '' for the first (default) form and **2**,3,4... for any subsequent form  
     `$fields` : 
     `
-	$fields['label'][n]   = 'label';                no default value: expected format described in plugin HELP! section 
-	$fields['type'][n]    = 'input field type';     default: 'textfield';
-	$fields['isreq'][n]   = true|false;             default: false;
-	$fields['isemail'][n] = true|false;             default: false;
+	$fields['label'][n]      = 'label';                expected format described in plugin HELP! section 
+	$fields['type'][n]       = 'input field type';     default: 'textfield';
+	$fields['isreq'][n]      = true|false;             default: false;
+	$fields['isemail'][n]    = true|false;             default: false;
+	$fields['isclear'][n]    = true|false;             default: false;
+	$fields['isdisabled'][n] = true|false;             default: false;
 
     n = 0,1,2...
     `
@@ -139,6 +151,7 @@ _**Note**: "**X**" represents the number of the form, starting with **2**, 3,4 .
 	`$fields['type'][0]    ='textfield';`
 	`$fields['isreq'][0]   ='1';`
 	`$fields['isemail'][0] ='0';`
+	`$fields['isclear'][0] ='0';`
 	
 	`$fields['label'][1]   ='Your Email';`
 	`$fields['type'][1]    ='textfield';`
@@ -199,6 +212,7 @@ $fields['label'][0]  ='Your Name|Your Name';
 $fields['type'][0]   ='textfield';
 $fields['isreq'][0]  ='1';
 $fields['isemail'][0]='0';
+$fields['isclear'][0]='1';
 $fields['label'][1]  ='Email';
 $fields['type'][1]   ='textfield';
 $fields['isreq'][1]  ='0';

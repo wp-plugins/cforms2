@@ -2,6 +2,16 @@
 Copyright 2006-2007  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
+v4.2 (maintenance & bug fixes)
+*) NOTE: the format for check box groups has been enhanced, see HELP!
+*) feature: (optional) ID's for labels for even greater level of customization!
+*) bugfix: "Subject for Email" could not be saved "Is Required"
+*) other: "Subject for Email", user definable subject is now appended
+*) other: "Subject for Email" is now part of the email form submission body
+*) other: form structure re-done! XHTML'fied; much more robust now
+*) other: streamlined CSS
+*) other: added a warning msg re: "Show messages" settings
+
 v4.1 (features)
 *) feature: support for shown but disabled form element
 *) feature: "user message" positioning, now optionally at the bottom of the form

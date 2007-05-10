@@ -36,6 +36,14 @@ if ( get_option('cforms_formcount') == '' ){
 	die;
 }
 
+//
+// Enable/Disable LabelIDs ?
+//
+
+if(isset($_POST['LabelIDs'])){
+	update_option( 'cforms_labelID', get_option('cforms_labelID')?'0':'1' );
+}
+
 
 //
 // Select new CSS?
@@ -123,6 +131,12 @@ if(!empty($_POST['save_css'])){
 							<tr>
 								<td colspan="3">
 									<p class="ex" style="padding-bottom:10px;"><?php _e('<strong><u>Please note:</u></strong> Once you activate a new style/theme, <strong>check the below CSS</strong> to see if it\'s a general theme applying to all your forms or if the style applies to a specfic form number. If the latter is the case, you may have to edit the below CSS to match your form #.', 'cforms') ?></p>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="3">
+									<p style="padding-bottom:10px;"><?php _e('For comprehensive customization support you may choose to turn on <strong>label ID\'s</strong>. This way each input field label can be specifically addressed via CSS styles.', 'cforms') ?> </p>
+									<input type="submit" name="LabelIDs" class="allbuttons addfield" value="<?php if ( get_option('cforms_labelID')=='' || get_option('cforms_labelID')=='0' ) _e('Activate Label IDs', 'cforms'); else  _e('Deactivate Label IDs', 'cforms'); ?>" /> 
 								</td>
 							</tr>
 						</table>

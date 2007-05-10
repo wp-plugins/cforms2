@@ -13,14 +13,15 @@ Copyright 2006  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
 v4.2 (maintenance & bug fixes)
-
-*) NOTE: the format for check box groups has been enhanced, check HELP!
+*) NOTE: the format for check box groups has been enhanced, see HELP!
+*) feature: (optional) ID's for labels for even greater level of customization!
 *) bugfix: "Subject for Email" could not be saved "Is Required"
 *) other: "Subject for Email", user definable subject is now appended
 *) other: "Subject for Email" is now part of the email form submission body
 *) other: form structure re-done! XHTML'fied
 *) other: streamlined CSS
 *) other: added a warning msg re: "Show messages" settings
+*) other: updated dynamic forms (support. Auto Clear/Disabled field attributes)
 
 v4.1 (features)
 *) feature: support for shown but disabled form element
@@ -356,6 +357,7 @@ if (isset($_GET['activate']) && $_GET['activate'] == 'true') {
 		add_option('cforms_database', '0');
 
 		add_option('cforms_css', 'cforms.css');
+		add_option('cforms_labelID', '0');
 
 		add_option('cforms_subid', '0');
 		add_option('cforms_subid_text', '(Submission ID#{id})' );
@@ -1238,6 +1240,11 @@ function cforms($args = '',$no = '') {
 		else if ( $field_type == 'captcha' )
 			$labelclass = ' class="seccap"';
 
+
+		//Label ID's
+		$labelID = (get_option('cforms_labelID')=='1')?' id="label-'.$no.'-'.$i.'"':'';
+		
+
 		$defaultvalue = '';
 		// no labels and other goodies for fieldsets, radio- & checkboxes !
 		if ( ! in_array($field_type,array('fieldsetstart','fieldsetend','radiobuttons','checkbox','checkboxgroup','ccbox')) ) {
@@ -1275,7 +1282,7 @@ function cforms($args = '',$no = '') {
 
 				//print label only for non "textonly" fields! Skip some others too, and handle them below indiv.
 				if( $field_type <> 'textonly' )
-					$content .= $nl . $indent . $tab . $tab . '<li><label for="'.$label.'"'. $labelclass . '><span>' . stripslashes(($field_name)) . '</span></label>';
+					$content .= $nl . $indent . $tab . $tab . '<li><label ' . $labelID . ' for="'.$label.'"'. $labelclass . '><span>' . stripslashes(($field_name)) . '</span></label>';
 
 		}
 
@@ -1388,11 +1395,11 @@ function cforms($args = '',$no = '') {
 
 			  if ( $options[1]<>'' ) {
 				 		$before = $nl . $indent . $tab . $tab . '<li>';
-						$after  = '<label ' . $disabled . ' for="cf'.$no.'_field_' . $i . '" class="cf-after'.$err.'"><span>' . ($options[1]) . '</span></label></li>';
+						$after  = '<label ' . $disabled . $labelID . ' for="cf'.$no.'_field_' . $i . '" class="cf-after'.$err.'"><span>' . ($options[1]) . '</span></label></li>';
 				 		$ba = 'a ';
 				}
 				else {
-						$before = $nl . $indent . $tab . $tab . '<li><label ' . $disabled . ' for="cf'.$no.'_field_' . $i . '" class="cf-before'. $err .'"><span>' . ($field_name) . '</span></label>';
+						$before = $nl . $indent . $tab . $tab . '<li><label ' . $disabled . $labelID . ' for="cf'.$no.'_field_' . $i . '" class="cf-before'. $err .'"><span>' . ($field_name) . '</span></label>';
 				 		$after  = '</li>';
 				 		$ba = 'b ';
 				}
@@ -1423,7 +1430,7 @@ function cforms($args = '',$no = '') {
 							$field .= $indent . $tab . $tab . $tab . '<br />' . $nl;
 						else
 							$field .= $indent . $tab . $tab . $tab . '<input ' . $disabled . ' type="checkbox" id="cf'.$no.'_field_'.$i. $id . '" name="cf'.$no.'_field_' . $i . '[]" value="'.$opt[1].'" '.$checked.' class="cf-box-b"/>'.
-											'<label ' . $disabled . ' for="cf'.$no.'_field_'. $i . ($id++) . '" class="cf-group-after"><span>'.$opt[0] . "</span></label>" . $nl;
+											'<label ' . $disabled . $labelID . ' for="cf'.$no.'_field_'. $i . ($id++) . '" class="cf-group-after"><span>'.$opt[0] . "</span></label>" . $nl;
 											
 					}
 				$field .= $indent . $tab . $tab . '</li>';
@@ -1500,7 +1507,7 @@ function cforms($args = '',$no = '') {
 								if ( $opt[1]==$field_value ) $checked = 'checked="checked"';
 						
 						$field .= '<input ' . $disabled . ' type="radio" id="cf'.$no.'_field_'.$i. $id . '" name="cf'.$no.'_field_' . $i . '" value="'.$opt[1].'" '.$checked.' class="cf-box-a'.(($second)?' cformradioplus':'').'"/>'.
-											'<label ' . $disabled . ' for="cf'.$no.'_field_'. $i . ($id++) . '" class="cf-after"><span>'.$opt[0] . "</span></label>$break";
+											'<label ' . $disabled . $labelID . ' for="cf'.$no.'_field_'. $i . ($id++) . '" class="cf-after"><span>'.$opt[0] . "</span></label>$break";
 											
 						$second = true;
 					}
@@ -1657,7 +1664,9 @@ function build_fstat($fields) {
         if ( $fields['type'][$i] == '') $fields['type'][$i] = 'textfield';
         if ( $fields['isreq'][$i] == '') $fields['isreq'][$i] = '0';
         if ( $fields['isemail'][$i] == '') $fields['isemail'][$i] = '0';
-        $cfarray[$i]=$fields['label'][$i].'$#$'.$fields['type'][$i].'$#$'.$fields['isreq'][$i].'$#$'.$fields['isemail'][$i];
+        if ( $fields['isclear'][$i] == '') $fields['isclear'][$i] = '0';
+        if ( $fields['isdisabled'][$i] == '') $fields['isdisabled'][$i] = '0';
+        $cfarray[$i]=$fields['label'][$i].'$#$'.$fields['type'][$i].'$#$'.$fields['isreq'][$i].'$#$'.$fields['isemail'][$i].'$#$'.$fields['isclear'][$i].'$#$'.$fields['isdisabled'][$i];
     }
     return $cfarray;
 }

@@ -64,6 +64,7 @@ if( isset($_REQUEST['deleteall']) ) {  // erase all cforms data
 	
 		delete_option('cforms_subid');
 		delete_option('cforms_css');
+		delete_option('cforms_labelID');
 		delete_option('cforms_subid_text');		
 
 		delete_option('cforms_sec_qa');

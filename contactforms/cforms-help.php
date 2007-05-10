@@ -266,11 +266,16 @@ if(!current_user_can('manage_cforms')) {
 		<table class="hf" cellspacing="2" border="4">
 			<tr>
 				<td class="bleft"><span class="abbr" title="<?php _e('Entry format for Field Name', 'cforms'); ?>"><?php _e('Format:', 'cforms'); ?></span></td>
-				<td class="bright"><?php _e('field name<span style="color:red; font-weight:bold;"> # </span>chk box1 label<span style="color:red; font-weight:bold;">|</span>chk box1 value<span style="color:red; font-weight:bold;"> # </span>chk box2 label<span style="color:red; font-weight:bold;"> # </span>chk box3...', 'cforms'); ?></td>
+				<td class="bright"><?php _e('field name<span style="color:red; font-weight:bold;"> # </span>chk box1 label<span style="color:red; font-weight:bold;">|</span>chk box1 value<span style="color:red; font-weight:bold;"> # </span>chk box2 label<span style="color:red; font-weight:bold;"> ## </span>chk box3...', 'cforms'); ?></td>
 			</tr>
 			<tr>
 				<td class="bleft"><?php _e('Example:', 'cforms'); ?></td><td class="bright">
 					<code class="codehighlight"><?php _e('Select Color#green|00ff00#red|ff0000#purple|8726ac#yellow|fff90f', 'cforms'); ?></code></td>
+			</tr>
+			<tr>
+				<td class="ball" colspan="2">
+					<?php _e('Two # (<code class="codehighlight">##</code>) in a row will force a new line! This helps to better structure your check box group.', 'cforms'); ?>
+				</td>
 			</tr>
 			<tr>
 				<td class="ball" colspan="2">
@@ -553,11 +558,13 @@ if(!current_user_can('manage_cforms')) {
                 <code class="codehighlight">$fields</code> :
 
                 <code class="codehighlight"><pre>
-            $fields['label'][n]   = 'label';                <?php _e('no default value: expected format described in plugin HELP! section', 'cforms'); ?>
+            $fields['label'][n]      = 'label';                <?php _e('no default value: expected format described in plugin HELP! section', 'cforms'); ?>
 
-            $fields['type'][n]    = 'input field type';     default: 'textfield';
-            $fields['isreq'][n]   = true|false;             default: false;
-            $fields['isemail'][n] = true|false;             default: false;
+            $fields['type'][n]       = 'input field type';     default: 'textfield';
+            $fields['isreq'][n]      = true|false;             default: false;
+            $fields['isemail'][n]    = true|false;             default: false;
+            $fields['isclear'][n]    = true|false;             default: false;
+            $fields['isdisabled'][n] = true|false;          default: false;
 
             n = 0,1,2...</pre></code></li>
     		</ol>
@@ -602,6 +609,7 @@ $fields['label'][0]   ='<?php _e('Your Name|Your Name', 'cforms'); ?>';
 $fields['type'][0]    ='textfield';
 $fields['isreq'][0]   ='1';
 $fields['isemail'][0] ='0';
+$fields['isclear'][0] ='1';
 
 $fields['label'][1]   ='<?php _e('Your Email', 'cforms'); ?>';
 $fields['type'][1]    ='textfield';
@@ -625,6 +633,7 @@ $fields['label'][0]  ='<?php _e('Your Name|Your Name', 'cforms'); ?>';
 $fields['type'][0]   ='textfield';
 $fields['isreq'][0]  ='1';
 $fields['isemail'][0]='0';
+$fields['isclear'][0]='1';
 $fields['label'][1]  ='<?php _e('Email', 'cforms'); ?>';
 $fields['type'][1]   ='textfield';
 $fields['isreq'][1]  ='0';
