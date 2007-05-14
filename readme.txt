@@ -17,7 +17,7 @@ own customized theme files (.css). The form structure and CSS has changed,
 in favour of much cleaner and more robust code base.
 
 If you'd like to customize the default **cforms** CSS theme and are not a CSS expert,
-you may find [this document](http://www.deliciousdays.com/download/cforms-css-guide.pdf) helpful.	
+you may find [this document](http://www.deliciousdays.com/download/cforms-css-guide.pdf) helpful!	
 
 = Description =
 cforms is a highly customizable, flexible and powerful contact form plugin, 
