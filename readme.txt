@@ -3,7 +3,7 @@ Contributors: olivers
 Donate link: http://www.deliciousdays.com/
 Tags: ajax, email, secure, visitor, input, order, form, contact
 Requires at least: 1.6+
-Tested up to: 2.1.3
+Tested up to: 2.2
 Stable tag: 4.5
 
 cforms is a highly customizable, flexible and powerful contact form plugin, 
@@ -14,7 +14,7 @@ covering a variety of features from attachments to multi form management!
 = Please Note, May 10th =
 When updating from any version prior to v4.5, please make backup copies of your 
 own customized theme files (.css). The form structure and CSS has changed,
-in favour of much cleaner and more robust code base.
+in favour of much cleaner and more robust code base!
 
 If you'd like to customize the default **cforms** CSS theme and are not a CSS expert,
 you may find [this document](http://www.deliciousdays.com/download/cforms-css-guide.pdf) helpful!	
