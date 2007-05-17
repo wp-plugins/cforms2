@@ -12,7 +12,7 @@ Author URI: http://www.deliciousdays.com
 Copyright 2006  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
-v4.2 (maintenance & bug fixes)
+v4.5 (maintenance & bug fixes)
 *) NOTE: the format for check box groups has been enhanced, see HELP!
 *) feature: (optional) ID's for labels for even greater level of customization!
 *) bugfix: "Subject for Email" could not be saved "Is Required"
