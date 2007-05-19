@@ -173,32 +173,6 @@ and more help.
 
 [Please visit the cforms plugin page for screenshots & samples](http://www.deliciousdays.com/cforms-plugin)
 
-== A custom form example ==
-
-Please download [this zip](http://www.deliciousdays.com/download/custom-cform-example.zip) which includes the following files:
-
-* cforms-extra.css
-* fieldset_bg_sample2.jpg
-* fieldset_bg_sample2b.jpg
-* fieldset_bg_sample2c.jpg
-* submitbtn2.jpg
-* form_tshirt_order.txt
-
-1. All images go into your `contactforms/images/` directory
-2. The CSS code in `cforms-extra.css` has to be copy/pasted into your `cforms.css` file
-3. Create form #4 and 'upload' using the **Restore** feature `form_tshirt_order.txt`
-4. Done
-
-**Note:** *If you'd like to use the above styling for any other form(s), change the ID's accordingly. E.g. change*
-
-`#cforms4form p.subtitle`
-
-*to for instance (form #2)*
-
-`#cforms2form p.subtitle`
-
-**Screenshot** [custom form](http://www.deliciousdays.com/wp-content/themes/dd/images/cforms/form_tshirt_order.jpg)
-
 == A more advanced dynamic form example ==
 
 This example shows you how to store certain input field (select/drop-down box) information in a file and load it dynamically at run-time.
