@@ -147,7 +147,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 			$sql = "CREATE TABLE " . $wpdb->cformssubmissions . " (
 					  id int(11) unsigned auto_increment,
 					  form_id varchar(3) default '',
-					  date timestamp NOT NULL default CURRENT_TIMESTAMP,
+					  date timestamp,
 					  email varchar(40) default '', 
 					  ip varchar(15) default '', 
 					  PRIMARY KEY  (id) );";
