@@ -11,13 +11,8 @@ covering a variety of features from attachments to multi form management!
 
 == Description ==
 
-= Please Note, May 10th =
-When updating from any version prior to v4.5, please make backup copies of your 
-own customized theme files (.css). The form structure and CSS has changed,
-in favour of much cleaner and more robust code base!
-
-If you'd like to customize the default **cforms** CSS theme and are not a CSS expert,
-you may find [this document](http://www.deliciousdays.com/download/cforms-css-guide.pdf) helpful!	
+= May 23rd =
+**Please Note:** When upgrading to v4.6, please properly deactivate the running version before installing the new files.
 
 = Description =
 cforms is a highly customizable, flexible and powerful contact form plugin, 
@@ -25,6 +20,9 @@ covering a variety of use cases and features from attachments to multi form
 management, you can even have multiple forms on the same page!
 
 = Plugin Features =
+* New: Customizable auto confirmation message & form email
+* New: Page redirection on successful form submission
+
 * Creates robust XHTML form code (no floats)
 * Full localization support (currently: English, German, Spanish)
 * Built-in CSS editor & theme chooser
@@ -83,6 +81,9 @@ If you have suggestions or would like to point out typos etc, please contact the
 = Usage =
 Of course you could just use the cforms button in either TinyMCE or the std editor to insert your forms,
 or disregard the possibility and do it manually.
+
+If you'd like to customize the default **cforms** CSS theme and are not a CSS expert,
+you may find [this document](http://www.deliciousdays.com/download/cforms-css-guide.pdf) helpful!	
 
 ---
 

@@ -13,7 +13,7 @@ $cforms_root = get_settings('siteurl') . '/wp-content/plugins/'.$plugindir;
 $wpdb->cformssubmissions	= $wpdb->prefix . 'cformssubmissions';
 $wpdb->cformsdata       	= $wpdb->prefix . 'cformsdata';
 
-
+	
 ### Check Whether User Can Manage Database
 if(!current_user_can('manage_cforms')) {
 	die(__('Access Denied','cforms'));
@@ -43,7 +43,7 @@ if ( isset($_POST['order']) ) {
 } else { 
 
 	$orderdir = 'DESC';
-	$order = 'date';	
+	$order = 'sub_date';	
 
 }
 
@@ -144,7 +144,7 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']) || isset($_POST['sql
 			if( $sub_id<>$entry->sub_id ){
 				$sub_id = $entry->sub_id;
 				echo '<div class="showform">Form: <span>'. get_option('cforms'.$entry->form_id.'_fname') . '</span> &nbsp; <em>(ID:' . $entry->sub_id . ')</em>' .
-						'<input class="allbuttons xbutton" type="submit" name="xbutton'.$entry->sub_id.'" title="'.__('delete this entry', 'cforms').'" value=""/></div>' . "\n";
+						'&nbsp; <input class="allbuttons xbutton" type="submit" name="xbutton'.$entry->sub_id.'" title="'.__('delete this entry', 'cforms').'" value=""/></div>' . "\n";
 			}
 
 			$name = $entry->field_name==''?'&nbsp;':$entry->field_name;
@@ -227,7 +227,7 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']) || isset($_POST['sql
 					<li class="col1"><?php _e('?') ?></li>
 					<li class="col2"><a href="javascript:void(0);" onclick="sort_entries('form_id');"><?php _e('Form','cforms') ?></a></li>
 					<li class="col3"><a href="javascript:void(0);" onclick="sort_entries('email');"><?php _e('Who','cforms') ?></a></li>
-					<li class="col4"><a href="javascript:void(0);" onclick="sort_entries('date');"><?php _e('When','cforms') ?></a><li></li>
+					<li class="col4"><a href="javascript:void(0);" onclick="sort_entries('sub_date');"><?php _e('When','cforms') ?></a><li></li>
 					<li class="col5"><a href="javascript:void(0);" onclick="sort_entries('ip');"><?php _e('IP','cforms') ?></a></li>
 				</ul>
 
@@ -248,7 +248,7 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']) || isset($_POST['sql
 						<li class="col1"><input type="checkbox" name="entries[]" value="<?php echo $entry->id; ?>" /></li>
 						<li class="col2"><?php echo get_option('cforms'.$entry->form_id.'_fname'); ?></li>
 						<li class="col3"><?php echo $entry->email; ?></li>
-						<li class="col4"><?php echo $entry->date; ?></li>
+						<li class="col4"><?php echo $entry->sub_date; ?></li>
 						<li class="col5"><?php echo $entry->ip; ?></li>
 						<li class="col6"><?php echo '<a href="#" onclick="document.form.showid.value=\''.$entry->id.'\';document.form.submit();">'; ?><?php _e('view', 'cforms') ?></a></li>
 					</ul>

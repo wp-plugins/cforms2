@@ -84,7 +84,7 @@ if(!empty($_POST['save_css'])){
 <div class="wrap"><img src="<?php echo $cforms_root; ?>/images/p5-title.jpg" alt=""/>
 
 	<p><?php _e('Please select a theme file that comes closest to what you\'re looking for and apply your own custom changes via the editor below.', 'cforms') ?></p>
-	<p class="ex"><?php _e('This is optional of course, if you\'re happy with the default look and feel, no need to do anything here.', 'cforms') ?></p>
+	<p><?php _e('This is <strong>optional</strong> of course, if you\'re happy with the default look and feel, no need to do anything here.', 'cforms') ?></p>
 
 	<form id="selectcss" method="post" action="" name="selectcss">
 
@@ -128,14 +128,9 @@ if(!empty($_POST['save_css'])){
 									<input type="submit" name="chg_css" class="allbuttons stylebutton" value="<?php _e('Select Style &raquo;', 'cforms'); ?>"/>
 								</td>
 							</tr>
-							<tr>
+							<tr height="200">
 								<td colspan="3">
-									<p class="ex"><?php _e('<strong><u>Please note:</u></strong> Once you activate a new style/theme, <strong>check the below CSS</strong> to see if it\'s a general theme applying to all your forms or if the style applies to a specfic form number. If the latter is the case, you may have to edit the below CSS to match your form #.', 'cforms') ?></p>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="3">
-									<p style="padding-bottom:10px;"><?php _e('For comprehensive customization support you may choose to turn on <strong>label ID\'s</strong>. This way each input field label can be specifically addressed via CSS styles.', 'cforms') ?> </p>
+									<p class="ex"><?php _e('For comprehensive customization support you may choose to turn on <strong>label ID\'s</strong>. This way each input field label can be specifically addressed via CSS styles.', 'cforms') ?> </p>
 									<input type="submit" name="LabelIDs" class="allbuttons addfield" value="<?php if ( get_option('cforms_labelID')=='' || get_option('cforms_labelID')=='0' ) _e('Activate Label IDs', 'cforms'); else  _e('Deactivate Label IDs', 'cforms'); ?>" /> 
 								</td>
 							</tr>

@@ -61,7 +61,7 @@ if(isset($_REQUEST['addbutton'])) {
 	add_option('cforms'.$no.'_csubject', __('Re: Your note', 'cforms'));
 	add_option('cforms'.$no.'_cmsg', __('Dear {Your Name},', 'cforms') . "\n". __('Thank you for your note!', 'cforms') . "\n". __('We will get back to you as soon as possible.', 'cforms') . "\n\n");
 	add_option('cforms'.$no.'_email', get_bloginfo('admin_email', 'cforms'));
-	add_option('cforms'.$no.'_header', __('A new submission (form: "{Form Name}")', 'cforms') . "\r\n======================================\r\n" . __('Submitted on: {Date}', 'cforms') . "\r\n" . __('Via: {Page}', 'cforms') . "\r\n" . __('By {IP} (visitor IP)', 'cforms') . ".\r\n" . ".\r\n" );		
+	add_option('cforms'.$no.'_header', __('A new submission (form: "{Form Name}")', 'cforms') . "\r\n============================================\r\n" . __('Submitted on: {Date}', 'cforms') . "\r\n" . __('Via: {Page}', 'cforms') . "\r\n" . __('By {IP} (visitor IP)', 'cforms') . ".\r\n" . ".\r\n" );		
 	
 	add_option('cforms'.$no.'_subject', __('A comment from {Your Name}', 'cforms'));
 	add_option('cforms'.$no.'_submit_text', __('Send Comment', 'cforms'));
@@ -74,7 +74,7 @@ if(isset($_REQUEST['addbutton'])) {
 	add_option('cforms'.$no.'_redirect', '0');
 	add_option('cforms'.$no.'_redirect_page', 'http://redirect.to.this.page');		
 	
-	echo '<div class="updated"><p>'.__('New form added.', 'cforms').'</p></div>';
+	echo '<div id="message" class="updated fade"><p>'.__('A new form with default fields has been added.', 'cforms').'</p></div>';
 	
 	//sorry, but WP2.2 doesn quickly enough flush the cache!
 	if ( function_exists (wp_cache_init) ) 
@@ -125,7 +125,7 @@ if(isset($_REQUEST['addbutton'])) {
 	add_option('cforms'.$FORMCOUNT.'_redirect', get_option('cforms'.$no.'_redirect'));
 	add_option('cforms'.$FORMCOUNT.'_redirect_page', get_option('cforms'.$no.'_redirect_page'));		
 	
-	echo '<div class="updated"><p>'.__('New form added.', 'cforms').'</p></div>';
+	echo '<div id="message" class="updated fade"><p>'.__('The form has been duplicated, you\'re now working on the copy.', 'cforms').'</p></div>';
 
 	//sorry, but WP2.2 doesn quickly enough flush the cache!
 	if ( function_exists (wp_cache_init) ) 
@@ -155,7 +155,7 @@ if(isset($_REQUEST['addbutton'])) {
 
 	if ( $err <> '' ){
 
-	  echo '<div class="updated"><p>'.__('Error:', 'cforms').' '.$err.'</p></div>';
+	  echo '<div id="message" class="updated fade"><p>'.__('Error:', 'cforms').' '.$err.'</p></div>';
 
 	} else {
 
@@ -235,8 +235,9 @@ if(isset($_REQUEST['addbutton'])) {
 		if ( !(strpos($importdata[19], 'hd:')===false) )
 					update_option('cforms'.$no.'_header',str_replace ('$n$', "\r\n",substr( trim($importdata[19]), 3) ));
 					
+	echo '<div id="message" class="updated fade"><p>'.__('All form specific settings have been restored from the backup file.', 'cforms').'</p></div>';
 	}
-	
+
 	
 } elseif(isset($_REQUEST['delbutton']) && $FORMCOUNT>1 && $_REQUEST['no']<>'1') {  // 1..4d...5..6
 
@@ -338,7 +339,7 @@ if(isset($_REQUEST['addbutton'])) {
     }
     
   update_option('cforms_formcount', (string)($FORMCOUNT));
-  echo '<div class="updated"><p>'. __('Form deleted', 'cforms').'.</p></div>';
+  echo '<div id="message" class="updated fade"><p>'. __('Form deleted', 'cforms').'.</p></div>';
 
 
 } else {
@@ -497,6 +498,8 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 		}
 
 	} //if order changed
+
+	echo '<div id="message" class="updated fade"><p>'.__('Form settings updated.', 'cforms').'</p></div>';
 }
 
 
@@ -531,7 +534,7 @@ if(strlen(get_option('cforms'.$no.'_count_field_' . $field_count)) > 0) {
 // prep drop down box for form selection
 //
 
-$formlistbox = '<select id="pickform" name="pickform">';
+$formlistbox = ' <select id="pickform" name="pickform">';
 
 for ($i=1; $i<=$FORMCOUNT; $i++){
 
@@ -576,7 +579,10 @@ if ( get_option('cforms'.$no.'_header')=='' ) {
 
 <div class="wrap"><a id="top"></a><img src="<?php echo $cforms_root; ?>/images/p1-title.jpg" alt=""/>
 
-	<p><?php echo str_replace('[url]','?page='. $plugindir.'/cforms-help.php#inserting',__('This plugin allows you <a href="[url]">to insert</a> one or more custom designed contact forms, which on submission (preferably via ajax) will send the visitor info via email and optionally store the feedback in the database, too.', 'cforms')); ?></p>
+	<p>
+		<?php echo str_replace('[url]','?page='. $plugindir.'/cforms-help.php#inserting',__('This plugin allows you <a href="[url]">to insert</a> one or more custom designed contact forms, which on submission (preferably via Ajax) will send the visitor info via email and optionally stores the feedback in the database.', 'cforms')); ?>
+		<?php echo str_replace('[url]','?page='. $plugindir.'/cforms-help.php#guide',__('<a href="[url]">Here</a> is a quick step by step quide to get you up and running quickly.', 'cforms')); ?>
+	</p>
 
 	<form name="chgform" method="post" action="#">
 			<!-- <span class="bignumber">#'.$noDISP.'</span> -->
@@ -629,9 +635,9 @@ if ( get_option('cforms'.$no.'_header')=='' ) {
 
 
 	<fieldset class="cformsoptions" id="anchorfields">
-		<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('Form Fields', 'cforms') ?></p>
+		<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('Form Input Fields', 'cforms') ?></p>
 
-		<p><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#fields',__('Please see the help section for information on how to deploy the <a href="[url]">supported fields</a>.', 'cforms')); ?></p>
+		<p><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#fields',__('Please see the help section for information on how to deploy the various <a href="[url]">supported fields</a>.', 'cforms')); ?></p>
 
 		<p class="ex"><?php _e('For the <em>auto confirmation</em> feature to work, make sure to mark at least one field <code class="codehighlight">Is Email</code>, otherwise <strong>NO</strong> auto confirmation email will be sent out! If multiple fields are checked "Is Email", only the first in the list will receive a notification.', 'cforms') ?></p>
 

@@ -7,10 +7,12 @@ v4.6 (bugfixes & features)
 *) new feature: customizable admin form email (header, subject)
 *) new feature: customizable auto confirmation message 
 	(input field reference) & pre-defined variables
-*) bugifx: multiple, sequentially arranged check box groups would "collapse"
+*) bugfix: multiple, sequentially arranged check box groups would "collapse"
 *) bugfix: fixed adding/duplicating new forms with WP2.2 (WP caching issue)
 *) bugfix: db tracking in non-Ajax mode showed inconsistent input field names
-
+*) other: made the DB tracking tables creation process more flexible, hopefully
+	avoiding "CURRENT_TIMESTAMP" err msgs in the future!
+	
 v4.5 (maintenance, bug fixes and enhancements)
 *) NOTE: the format for check box groups has been enhanced, see HELP!
 *) feature: (optional) ID's for labels for even greater level of customization!

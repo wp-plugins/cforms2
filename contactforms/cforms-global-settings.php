@@ -86,6 +86,9 @@ if( isset($_REQUEST['deleteall']) ) {  // erase all cforms data
 		delete_option('cforms_upload_err5');
 
 		delete_option('cforms_formcount');
+		
+		$wpdb->query("DROP TABLE IF EXISTS $wpdb->cformssubmissions");
+		$wpdb->query("DROP TABLE IF EXISTS $wpdb->cformsdata");
 
 	?>
 	<div id="message" class="updated fade"><p><strong><?php _e('All cforms related data has been deleted.', 'cforms') ?></strong></p></div>
@@ -147,7 +150,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 			$sql = "CREATE TABLE " . $wpdb->cformssubmissions . " (
 					  id int(11) unsigned auto_increment,
 					  form_id varchar(3) default '',
-					  date timestamp,
+					  sub_date timestamp,
 					  email varchar(40) default '', 
 					  ip varchar(15) default '', 
 					  PRIMARY KEY  (id) );";
@@ -303,8 +306,8 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 				</div>
 
 				<div class="optionsbox">
-					<div class="optionsboxL"><?php _e('added <strong>subject line</strong> text', 'cforms') ?></div>
-    				<div class="optionsboxR"><input type="text" id="cforms_subid_text" name="cforms_subid_text" value="<?php echo stripslashes(htmlspecialchars(get_option('cforms_subid_text'))); ?>"/><strong>{id}</strong> = <?php _e('var. for submission ID', 'cforms') ?></div>
+					<div class="optionsboxL"><?php _e('text added to <strong>subject line</strong>', 'cforms') ?></div>
+    				<div class="optionsboxR"><input type="text" id="cforms_subid_text" name="cforms_subid_text" value="<?php echo stripslashes(htmlspecialchars(get_option('cforms_subid_text'))); ?>"/><strong>{id}</strong> = <?php _e('submission ID', 'cforms') ?></div>
 				</div>
 				
 				<?php if ( $wpdb->get_var("show tables like '$wpdb->cformssubmissions'") == $wpdb->cformssubmissions ) :?>
@@ -320,9 +323,9 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 		
 
 		<fieldset class="cformsoptions">
-			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('Removing cforms', 'cforms') ?></p>
+			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('Uninstalling / Removing cforms', 'cforms') ?></p>
 
-				<p><?php _e('Generally, deactivating the plugin does <strong>not</strong> erase any of its data, if you\'d like to quit using cforms for good, please erase all data before and then deactive the plugin.', 'cforms') ?></p>
+				<p><?php _e('Generally, deactivating the plugin does <strong>not</strong> erase any of its data, if you\'d like to quit using cforms for good, please erase all data before deactivating the plugin.', 'cforms') ?></p>
 
 
 				<p><?php _e('This erases <strong>all</strong> cforms data (form & plugin settings). <strong>This is irrevocable!</strong> Be careful.', 'cforms') ?>&nbsp;&nbsp;&nbsp;

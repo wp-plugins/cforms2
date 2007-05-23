@@ -20,7 +20,9 @@ v4.6 (bugfixes & features)
 *) bugfix: multiple, sequentially arranged check box groups would "collapse"
 *) bugfix: fixed adding/duplicating new forms with WP2.2 (WP caching issue)
 *) bugfix: db tracking in non-Ajax mode showed inconsistent input field names
-
+*) other: made the DB tracking tables creation process more flexible, hopefully
+	avoiding "CURRENT_TIMESTAMP" err msgs in the future!
+	
 */
 
 load_plugin_textdomain('cforms');
@@ -113,7 +115,7 @@ function download_cforms() {
 
 					$format = ($_REQUEST['downloadformat']=="csv")?",":"\t";
 					
-					$buffer .= '"Form: ' . get_option('cforms'.$entry->form_id.'_fname'). '"'. $format .'"'. $entry->date .'"' . $format;
+					$buffer .= '"Form: ' . get_option('cforms'.$entry->form_id.'_fname'). '"'. $format .'"'. $entry->sub_date .'"' . $format;
 				}
 
 				$buffer .= '"' . str_replace('"','""', utf8_decode($entry->field_val)) . '"' . $format;
@@ -172,7 +174,7 @@ if (isset($_GET['activate']) && $_GET['activate'] == 'true') {
 		add_option('cforms_cmsg', __('Dear {Your Name},', 'cforms') . "\n". __('Thank you for your note!', 'cforms') . "\n". __('We will get back to you as soon as possible.', 'cforms') . "\n\n");
 		add_option('cforms_email', get_bloginfo('admin_email'));
 
-		add_option('cforms_header', __('A new submission (form: "{Form Name}")', 'cforms') . "\r\n======================================\r\n" . __('Submitted on: {Date}', 'cforms') . "\r\n" . __('Via: {Page}', 'cforms') . "\r\n" . __('By {IP} (visitor IP)', 'cforms') . ".\r\n" . ".\r\n" );		
+		add_option('cforms_header', __('A new submission (form: "{Form Name}")', 'cforms') . "\r\n============================================\r\n" . __('Submitted on: {Date}', 'cforms') . "\r\n" . __('Via: {Page}', 'cforms') . "\r\n" . __('By {IP} (visitor IP)', 'cforms') . ".\r\n" . ".\r\n" );		
 
 		add_option('cforms_subject', __('A comment from {Your Name}', 'cforms'));
 		add_option('cforms_submit_text', __('Send Comment', 'cforms'));
@@ -405,8 +407,8 @@ function cforms_submitcomment($content) {
 	// FIRST into the database is required!
 	if ( get_option('cforms_database') == '1'  ) {
 
-		$wpdb->query("INSERT INTO $wpdb->cformssubmissions (form_id,date,email,ip) VALUES ".
-					 "('" . $no . "', NOW(),'" . $field_email . "', '" . cf_getip() . "');");
+		$wpdb->query("INSERT INTO $wpdb->cformssubmissions (form_id,email,ip) VALUES ".
+					 "('" . $no . "','" . $field_email . "', '" . cf_getip() . "');");
 
 		$subID = $wpdb->get_row("select LAST_INSERT_ID() as number from $wpdb->cformsdata;");
    		$subID = ($subID->number=='')?'1':$subID->number;
@@ -963,8 +965,8 @@ function cforms($args = '',$no = '') {
 		// FIRST into the database is required!
 		if ( get_option('cforms_database') == '1'  ) {
 	
-			$wpdb->query("INSERT INTO $wpdb->cformssubmissions (form_id,date,email,ip) VALUES ".
-						 "('" . $no . "', NOW(),'" . $field_email . "', '" . cf_getip() . "');");
+			$wpdb->query("INSERT INTO $wpdb->cformssubmissions (form_id,email,ip) VALUES ".
+						 "('" . $no . "', '" . $field_email . "', '" . cf_getip() . "');");
 	
     		$subID = $wpdb->get_row("select LAST_INSERT_ID() as number from $wpdb->cformsdata;");
     		$subID = ($subID->number=='')?'1':$subID->number;
@@ -1619,10 +1621,22 @@ function insert_custom_cform($fields='',$no='') { echo cforms($fields,$no.'+'); 
 // Set 'manage_database' Capabilities To Administrator
 add_action('activate_'.$plugindir.'/cforms.php', 'cforms_init');
 function cforms_init() {
+	global $wpdb;
+	
 	$role = get_role('administrator');
 	if(!$role->has_cap('manage_cforms')) {
 		$role->add_cap('manage_cforms');
 	}
+	
+	//alter tracking tables if needed
+	if( get_option('cforms_database') ) {
+
+		$columns = $wpdb->get_results("SHOW COLUMNS FROM {$wpdb->cformssubmissions}");
+		if ( $columns[2]->Field == 'date' )
+			$result = $wpdb->query("ALTER TABLE `{$wpdb->cformssubmissions}` CHANGE `date` `sub_date` TIMESTAMP");
+	
+	}
+	
 }
 
 
