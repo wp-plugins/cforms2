@@ -84,7 +84,7 @@ if(!empty($_POST['save_css'])){
 <div class="wrap"><img src="<?php echo $cforms_root; ?>/images/p5-title.jpg" alt=""/>
 
 	<p><?php _e('Please select a theme file that comes closest to what you\'re looking for and apply your own custom changes via the editor below.', 'cforms') ?></p>
-	<p class="ex" style="padding-bottom:10px;"><?php _e('This is optional of course, if you\'re happy with the default look and feel, no need to do anything here.', 'cforms') ?></p>
+	<p class="ex"><?php _e('This is optional of course, if you\'re happy with the default look and feel, no need to do anything here.', 'cforms') ?></p>
 
 	<form id="selectcss" method="post" action="" name="selectcss">
 
@@ -130,7 +130,7 @@ if(!empty($_POST['save_css'])){
 							</tr>
 							<tr>
 								<td colspan="3">
-									<p class="ex" style="padding-bottom:10px;"><?php _e('<strong><u>Please note:</u></strong> Once you activate a new style/theme, <strong>check the below CSS</strong> to see if it\'s a general theme applying to all your forms or if the style applies to a specfic form number. If the latter is the case, you may have to edit the below CSS to match your form #.', 'cforms') ?></p>
+									<p class="ex"><?php _e('<strong><u>Please note:</u></strong> Once you activate a new style/theme, <strong>check the below CSS</strong> to see if it\'s a general theme applying to all your forms or if the style applies to a specfic form number. If the latter is the case, you may have to edit the below CSS to match your form #.', 'cforms') ?></p>
 								</td>
 							</tr>
 							<tr>

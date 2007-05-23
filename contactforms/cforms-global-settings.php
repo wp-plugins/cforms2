@@ -107,7 +107,7 @@ if( isset($_REQUEST['deleteall']) ) {  // erase all cforms data
 	update_option('cforms_database', '0');
 
 	?>
-	<div id="message" class="updated fade"><p><strong><?php _e('cforms tracking tables (<code>cformssubmissions</code> & <code>cformsdata</code>) have been deleted.<br />Please backup/clean-up your upload directory, chances are that when you turn tracking back on, existing (older) attachments may be <u>overwritten</u>!', 'cforms') ?></strong></p></div>
+	<div id="message" class="updated fade"><p><strong><?php _e('cforms tracking tables (<code>cformssubmissions</code> & <code>cformsdata</code>) have been deleted.<br />Please backup/clean-up your upload directory, chances are that when you turn tracking back on, existing (older) attachments may be <u>overwritten</u>!<br /><small>(provided your form includes a file upload field)</small>', 'cforms') ?></strong></p></div>
 	<?php
 
 }

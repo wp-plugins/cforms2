@@ -26,7 +26,7 @@ abbr,
 span.abbr	{ border-bottom: 1px dashed #000080; cursor: help; }
 
 .tabletxt 	{ padding-top:5px; }
-.ex			{ background: url(images/attn.gif) no-repeat; padding: 2px 35px 7px 41px; }
+.ex			{ background: url(images/attn.gif) no-repeat; padding: 2px 35px 10px 41px; }
 
 code.codehighlight 	{ background:#D8FFCC; }
 

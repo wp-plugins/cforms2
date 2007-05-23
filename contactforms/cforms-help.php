@@ -681,7 +681,7 @@ insert_custom_cform($fields,5);    //<?php _e('call form #5 with new fields (4)'
 			<?php echo str_replace('[url]','?page=' . $plugindir . '/cforms-options.php#anchoremail',__('Email <strong>subjects and messages</strong> for emails both to the <a href="[url]">form admin</a> as well as to the ', 'cforms')); ?>
 			<?php echo str_replace('[url]','?page=' . $plugindir . '/cforms-options.php#autoconf',__('<a href="[url]">visitor</a> (auto confirmation, CC:) support insertion of pre-defined variables and/or any of the form input fields.', 'cforms')); ?>
 		</p>
-		<p class="ex" style="padding-bottom:10px;"><?php _e('Note that the variable names are case sensitive!', 'cforms'); ?></p>
+		<p class="ex"><?php _e('Note that the variable names are case sensitive!', 'cforms'); ?></p>
 
 		<table class="hf" cellspacing="2" border="4">
 			<tr>
@@ -704,22 +704,23 @@ insert_custom_cform($fields,5);    //<?php _e('call form #5 with new fields (4)'
 				<td class="bright"><code class="codehighlight"><?php _e('Inserts visitor IP address.', 'cforms'); ?></code></td>
 			</tr>
 			<tr>
-				<td class="bleft"><?php _e('Special:', 'cforms'); ?></td>
+				<td class="bleft"><em><?php _e('Special:', 'cforms'); ?></em></td>
 				<td class="bright"><code class="codehighlight"><?php _e('A single "<code class="codehighlight">.</code>" (period) on a line inserts a blank line.', 'cforms'); ?></code></td>
 			</tr>
 			<tr>
 				<td class="ball" colspan="2">
-					<?php _e('Alternatively, you can also include any of your form input fields by referring to the exact (!) field name:<br />Example: The default form features a <code class="codehighlight">Your Name</code> and <code class="codehighlight">Website</code> field.', 'cforms'); ?>
+					<?php _e('Alternatively, you can also include any of your form input fields by referring to the exact (!) <strong>field name</strong>:<br /><u>Example:</u> The default form comes with a <span style="font-weight:bold; background:#f2f2f2;">Your Name</span> and <span style="font-weight:bold; background:#f2f2f2;">Website</span> field.', 'cforms'); ?>
 					<br />
-					<?php _e('The corresponding variables to be used would be: <code class="codehighlight">{Your Name}</code> & <code class="codehighlight">{Website}</code>.', 'cforms'); ?>					
+					<?php _e('The corresponding variables to be used would be: <span style="font-weight:bold; background:#f2f2f2;">{Your Name}</span> & <span style="font-weight:bold; background:#f2f2f2;">{Website}</span>.', 'cforms'); ?>					
 				</td>
 			</tr>			
 		</table>
 
 
-	    <h3 id="CSS"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('Styling Your Forms (cforms.css)', 'cforms'); ?></h3>
+	    <h3 id="CSS"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('Styling Your Forms (CSS theme files)', 'cforms'); ?></h3>
 		<p><?php echo str_replace('[url]','?page=' . $plugindir . '/cforms-css.php',__('Please see the <a href="[url]">Styling page</a> for theme selection and editing options.', 'cforms')); ?></p>
 		<p><?php _e('cforms comes with a few theme examples (some of the may require adjustments to work with <strong>your</strong> forms!) but you can of course create your own theme file -based on the default <strong>cforms.css</strong> file- and put it in the <code class="codehighlight">/styling</code> directory.', 'cforms'); ?></p>
+		<p class="ex"><?php _e('Your form <strong>doesn\'t</strong> look like the preview image, or your individual changes don\'t take effect, check your global WP theme CSS! It may overwrite some or many cforms CSS declarations. If you don\'t know how to trouble shoot, take a look at the Firefox extension "Firebug" - an excellent CSS troubleshooting tool!', 'cforms'); ?></p>
 
 
 	    <h3 id="troubles"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('Having Troubles?', 'cforms'); ?></h3>
