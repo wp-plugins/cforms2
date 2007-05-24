@@ -1629,10 +1629,12 @@ function cforms_init() {
 	}
 	
 	//alter tracking tables if needed
-	if( get_option('cforms_database') ) {
+	$tables = $wpdb->get_col("SHOW TABLES FROM " . DB_NAME . " LIKE '$wpdb->cformssubmissions'",0);
+
+	if( $tables[0]==$wpdb->cformssubmissions ) {
 
 		$columns = $wpdb->get_results("SHOW COLUMNS FROM {$wpdb->cformssubmissions}");
-		if ( $columns[2]->Field == 'date' )
+		if ( $columns[2]->Field == 'date' ) 
 			$result = $wpdb->query("ALTER TABLE `{$wpdb->cformssubmissions}` CHANGE `date` `sub_date` TIMESTAMP");
 	
 	}

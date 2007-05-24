@@ -13,7 +13,7 @@ $cforms_root = get_settings('siteurl') . '/wp-content/plugins/'.$plugindir;
 $wpdb->cformssubmissions	= $wpdb->prefix . 'cformssubmissions';
 $wpdb->cformsdata       	= $wpdb->prefix . 'cformsdata';
 
-	
+		
 ### Check Whether User Can Manage Database
 if(!current_user_can('manage_cforms')) {
 	die(__('Access Denied','cforms'));
