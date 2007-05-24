@@ -7,11 +7,11 @@ Tested up to: 2.2
 Stable tag: 4.5
 
 cforms is a highly customizable, flexible and powerful contact form plugin, 
-covering a variety of features from attachments to multi form management.
+covering a variety of features from attachments to multi form management!
 
 == Description ==
 
-= Please Note, May 10th =
+= Please Note, May 10th  =
 When updating from any version prior to v4.5, please make backup copies of your 
 own customized theme files (.css). The form structure and CSS has changed,
 in favour of much cleaner and more robust code base!
