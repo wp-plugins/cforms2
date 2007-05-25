@@ -6,8 +6,7 @@ Requires at least: 1.6+
 Tested up to: 2.2
 Stable tag: 4.6
 
-cforms is a highly customizable, flexible and powerful contact form plugin, 
-covering a variety of features from attachments to multi form management.
+cforms is a highly customizable, flexible and powerful contact form plugin, covering a variety of features from attachments to multi form management.
 
 == Description ==
 
@@ -15,14 +14,11 @@ covering a variety of features from attachments to multi form management.
 **Please Note:** When upgrading to v4.6, please properly deactivate the running version before installing the new files.
 
 = Description =
-cforms is a highly customizable, flexible and powerful contact form plugin, 
-covering a variety of use cases and features from attachments to multi form 
-management, you can even have multiple forms on the same page!
+cforms is a highly customizable, flexible and powerful contact form plugin, covering a variety of use cases and features from attachments to multi form management, you can even have multiple forms on the same page!
 
 = Plugin Features =
 * New: Customizable auto confirmation message & form email
 * New: Page redirection on successful form submission
-
 * Creates robust XHTML form code (no floats)
 * Full localization support (currently: English, German, Spanish)
 * Built-in CSS editor & theme chooser
@@ -79,12 +75,10 @@ If you have suggestions or would like to point out typos etc, please contact the
 4. *Optionally check cforms.css for indvidual styling of your forms*
 
 = Usage =
-Of course you could just use the cforms button in either TinyMCE or the std editor to insert your forms,
-or disregard the possibility and do it manually.
+Of course you could just use the cforms button in either TinyMCE or the std editor to insert your forms, or disregard the possibility and do it manually.
 
 **Layout & CSS**
-If you'd like to customize the default **cforms** CSS theme and are not a CSS expert,
-you may find [this document](http://www.deliciousdays.com/download/cforms-css-guide.pdf) helpful.
+If you'd like to customize the default **cforms** CSS theme and are not a CSS expert, you may find [this document](http://www.deliciousdays.com/download/cforms-css-guide.pdf) helpful.
 
 ---
 
@@ -167,13 +161,11 @@ See the "**Other Notes**" section for another example.
 
 == Frequently Asked Questions ==
 
-Please visit the [cforms plugin forum](http://www.deliciousdays.com/cforms-forum)
-for up-to-date [FAQs](http://www.deliciousdays.com/cforms-forum?forum=3&page=1) 
-and more help.
+Please visit the [cforms plugin forum](http://www.deliciousdays.com/cforms-forum) for up-to-date [FAQs](http://www.deliciousdays.com/cforms-forum?forum=3&page=1) and more help.
 
 == Screenshots ==
 
-[Please visit the cforms plugin page for screenshots & samples](http://www.deliciousdays.com/cforms-plugin)
+[Please visit the cforms plugin page for screenshots & sample](http://www.deliciousdays.com/cforms-plugin)
 
 == A more advanced dynamic form example ==
 
