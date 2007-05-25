@@ -1,4 +1,4 @@
-=== cforms ===
+=== cforms - contact form ===
 Contributors: olivers
 Donate link: http://www.deliciousdays.com/
 Tags: ajax, email, secure, visitor, input, order, form, contact
@@ -57,8 +57,7 @@ cforms is a highly customizable, flexible and powerful contact form plugin, cove
 * Validates
 
 = Localization =
-cforms has been revised to fully support WP localization. If you'd like to contribute a language translation, please get in touch.
-If you have suggestions or would like to point out typos etc, please contact the actual author (see list below) of the respective localization.
+cforms has been revised to fully support WP localization. If you'd like to contribute a language translation, please get in touch. If you have suggestions or would like to point out typos etc, please contact the actual author (see list below) of the respective localization.
 
 * Currently, cforms includes the following language packs (besides English):
 	* **German** \* Author: [Sven Wappler](http://www.wordpressbox.de/plugins/cforms/)
@@ -83,13 +82,11 @@ If you'd like to customize the default **cforms** CSS theme and are not a CSS ex
 ---
 
 = Inserting a form in a posts or page =
-To do so, please insert `<!--cforms-->` for the first form and/or `<!--cformsX-->` for your other forms in the code view/edit
-mode to include them in either your **pages** or **posts**.
+To do so, please insert `<!--cforms-->` for the first form and/or `<!--cformsX-->` for your other forms in the code view/edit mode to include them in either your **pages** or **posts**.
 
 
 = Inserting a form via the PHP function call =
-Alternatively, you can specifically insert a form (into the sidebar, footer etc. ) per the PHP function call `insert_cform();`
-for the default (first) form and/or `insert_cform('X');` for any other, subsequent form.
+Alternatively, you can specifically insert a form (into the sidebar, footer etc. ) per the PHP function call `insert_cform();` for the default (first) form and/or `insert_cform('X');` for any other, subsequent form.
 
 _**Note**: "**X**" represents the number of the form, starting with **2**, 3,4 ..and so forth._
 
