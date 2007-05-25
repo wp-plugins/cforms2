@@ -82,7 +82,7 @@ If you have suggestions or would like to point out typos etc, please contact the
 Of course you could just use the cforms button in either TinyMCE or the std editor to insert your forms,
 or disregard the possibility and do it manually.
 
-= Layout & CSS =
+**Layout & CSS**
 If you'd like to customize the default **cforms** CSS theme and are not a CSS expert,
 you may find [this document](http://www.deliciousdays.com/download/cforms-css-guide.pdf) helpful.
 
