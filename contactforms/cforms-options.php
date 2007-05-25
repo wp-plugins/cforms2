@@ -701,7 +701,7 @@ if ( get_option('cforms'.$no.'_header')=='' ) {
 								$field_clear = '0';
 								$field_disabled = '0';
 
-								if(sizeof($field_stat) >= 5) {
+								if(sizeof($field_stat) >= 3) {
 									$field_name = stripslashes(htmlspecialchars($field_stat[0]));
 									$field_type = $field_stat[1];
 									$field_required = $field_stat[2];
