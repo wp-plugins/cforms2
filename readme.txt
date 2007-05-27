@@ -10,12 +10,14 @@ cforms is a highly customizable, flexible and powerful contact form plugin, cove
 
 == Description ==
 
+For a complete version history, see [here](http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1).
+
 = Description =
 cforms is a highly customizable, flexible and powerful contact form plugin, covering a variety of use cases and features from attachments to multi form management, you can even have multiple forms on the same page!
 
 = Plugin Features =
-* New: Customizable auto confirmation message & form email
-* New: Page redirection on successful form submission
+* Customizable auto confirmation message & form email
+* Page redirection on successful form submission
 * Creates robust XHTML form code (no floats)
 * Full localization support (currently: English, German, Spanish)
 * Built-in CSS editor & theme chooser

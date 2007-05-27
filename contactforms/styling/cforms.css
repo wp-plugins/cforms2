@@ -50,13 +50,14 @@ ol.cf-ol li.textonly {
 .cform label {
 	width:90px; 
 	margin:2px 10px 0 0; 
-	display: -moz-inline-box; 
+	display:-moz-inline-box; /*for mozilla*/
+	display:inline-block; /*for Opera & IE*/
 	text-align:right;
 	vertical-align:top;
 }
 .cform label span {
 	width:90px; /* must be the same as above!*/
-	display:block;
+	display:block; 
 }
 
 label.cf-before {
@@ -272,7 +273,6 @@ p.failure 	{
 /*                                                    */
 /*  Other: browser hacks                              */
 /*                                                    */
-* html .cform label,
 * html span.reqtxt,
 * html span.emailreqtxt { 
 	display: inline-block;  /*for ie6*/

@@ -62,7 +62,8 @@ ol.cf-ol li.textonly {
 	width:70px; 
 	margin:2px 0 0 0;
 	padding-left:10px;
-	display: -moz-inline-box; 
+	display:-moz-inline-box; /*for mozilla*/
+	display:inline-block; /*for Opera & IE*/
 	text-align:left;
 	vertical-align:top;
 }
@@ -291,7 +292,6 @@ p.failure 	{
 /*                                                    */
 /*  Other: browser hacks                              */
 /*                                                    */
-* html .cform label,
 * html span.reqtxt,
 * html span.emailreqtxt { 
 	display: inline-block;  /*for ie6*/

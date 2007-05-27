@@ -4,7 +4,7 @@ Plugin Name: cforms
 Plugin URI: http://www.deliciousdays.com/cforms-plugin
 Description: cforms offers convenient deployment of multiple contact forms throughout your blog or even on the same page. The form submission utilizes AJAX, however, falls back to a standard method in case AJAX/Javascript is not supported.
 Author: Oliver Seidel
-Version: 4.6
+Version: 4.7
 Author URI: http://www.deliciousdays.com
 */
 
@@ -12,16 +12,9 @@ Author URI: http://www.deliciousdays.com
 Copyright 2006  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
-v4.6 (bugfixes & features)
-*) new feature: page redirect on successful form submission
-*) new feature: customizable admin form email (header, subject)
-*) new feature: customizable auto confirmation message 
-	(input field reference) & pre-defined variables
-*) bugfix: multiple, sequentially arranged check box groups would "collapse"
-*) bugfix: fixed adding/duplicating new forms with WP2.2 (WP caching issue)
-*) bugfix: db tracking in non-Ajax mode showed inconsistent input field names
-*) other: made the DB tracking tables creation process more flexible, hopefully
-	avoiding "CURRENT_TIMESTAMP" err msgs in the future!
+v4.7 (bugfixes only)
+*) bugfix: field names would not show correctly when upgrading from 3.x to 4.6+
+*) bugfix: simple CSS changes to support Opera Browsers (tested on 9+)
 	
 */
 
