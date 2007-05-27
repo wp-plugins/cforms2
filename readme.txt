@@ -10,8 +10,8 @@ cforms is a highly customizable, flexible and powerful contact form plugin, cove
 
 == Description ==
 
-= May 23rd =
-**Please Note:** When upgrading to v4.6, please properly deactivate the running version before installing the new files.
+= May 27th =
+**Please Note:** v4.7 to be released soon will fix the Opera (9+) issues!
 
 = Description =
 cforms is a highly customizable, flexible and powerful contact form plugin, covering a variety of use cases and features from attachments to multi form management, you can even have multiple forms on the same page!
