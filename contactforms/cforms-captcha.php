@@ -14,9 +14,9 @@ $fontUsed  = 0;
 $font_url  = 'captchafonts/font4.ttf';   // 1,16,31
 $fonts_dir = 'captchafonts';
 
-$min_font_size = 13; $max_font_size = 19;
+$min_font_size = 13; $max_font_size = 17;
 
-$min_angle = -15; $max_angle = 15;
+$min_angle = -13; $max_angle = 13;
 
 $col_txt_type = 4;  $col_txt_r = 206; $col_txt_g = 227; $col_txt_b = 253; 
 

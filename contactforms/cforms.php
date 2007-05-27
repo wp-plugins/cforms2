@@ -15,6 +15,7 @@ Copyright 2006  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 v4.7 (bugfixes only)
 *) bugfix: field names would not show correctly when upgrading from 3.x to 4.6+
 *) bugfix: simple CSS changes to support Opera Browsers (tested on 9+)
+*) other: made some captcha mods for better readability 
 	
 */
 

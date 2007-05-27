@@ -132,6 +132,7 @@ label.cf-group-after span {
 .cform textarea {
 	height:5em;
 	overflow:auto;
+	display:block;
 }
 
 /*                                                    */
