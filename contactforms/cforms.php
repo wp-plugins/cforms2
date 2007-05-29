@@ -12,13 +12,15 @@ Author URI: http://www.deliciousdays.com
 Copyright 2006  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
-v4.8 (bugfixes only)
+v4.8 (bugfixes mostly)
 *) bugfix: properly escaped subject lines (when using visitor defined subject)
 *) bugfix: fixed single quotes in field names
 *) bugfix: text-only fields would falsely be added to the Tracking Tables
 *) bugfix: non Ajax method: possible formatting issues with 1st fieldset in email
 *) bugfix: non Ajax method: DB tracking of check boxes corrupted
 *) bugfix: Ajax method: fixed possible "Multi-Recipients" bug 
+*) bugfix: non Ajax method: added a missing error message for failed attempts email forms
+*) other: added seperate USER CAPability for trackong only! (use w/ Role Manager plugin!) 
 
 */
 
@@ -1108,17 +1110,18 @@ function cforms($args = '',$no = '') {
 				  			$usermessage_text = "Error occured while sending the auto confirmation message";
 			    }
 
-		// redirect to a different page on suceess?
-		if ( get_option('cforms'.$no.'_redirect') ) {
-			?>
-			<script type="text/javascript">
-				location.href = '<?php echo get_option('cforms'.$no.'_redirect_page') ?>';
-			</script>
-			<?php 
-		}
-		
+			// redirect to a different page on suceess?
+			if ( get_option('cforms'.$no.'_redirect') ) {
+				?>
+				<script type="text/javascript">
+					location.href = '<?php echo get_option('cforms'.$no.'_redirect_page') ?>';
+				</script>
+				<?php 
+			}		
 			
 	  	} // if first email already failed
+		else
+			$usermessage_text = "Error occured while sending the message";
 
 	} //if isset & valid sendbutton
 
@@ -1630,6 +1633,9 @@ function cforms_init() {
 	if(!$role->has_cap('manage_cforms')) {
 		$role->add_cap('manage_cforms');
 	}
+	if(!$role->has_cap('track_cforms')) {
+		$role->add_cap('track_cforms');
+	}
 	
 	//alter tracking tables if needed
 	$tables = $wpdb->get_col("SHOW TABLES FROM " . DB_NAME . " LIKE '$wpdb->cformssubmissions'",0);
@@ -1655,7 +1661,7 @@ function cforms_menu() {
 	if (function_exists('add_submenu_page')) {
 		add_submenu_page($plugindir.'/cforms-options.php', __('Plugin Settings', 'cforms'), __('Plugin Settings', 'cforms'), 'manage_cforms', $plugindir.'/cforms-global-settings.php');
 		if ( ($tablesup || isset($_REQUEST['cforms_database'])) && !isset($_REQUEST['deletetables']) )
-			add_submenu_page($plugindir.'/cforms-options.php', __('Tracking', 'cforms'), __('Tracking', 'cforms'), 'manage_cforms', $plugindir.'/cforms-database.php');
+			add_submenu_page($plugindir.'/cforms-options.php', __('Tracking', 'cforms'), __('Tracking', 'cforms'), 'track_cforms', $plugindir.'/cforms-database.php');
 		add_submenu_page($plugindir.'/cforms-options.php', __('Styling', 'cforms'), __('Styling', 'cforms'), 'manage_cforms', $plugindir.'/cforms-css.php');
 		add_submenu_page($plugindir.'/cforms-options.php', __('Help!', 'cforms'), __('Help!', 'cforms'), 'manage_cforms', $plugindir.'/cforms-help.php');
 	}

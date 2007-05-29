@@ -15,7 +15,7 @@ $wpdb->cformsdata       	= $wpdb->prefix . 'cformsdata';
 
 		
 ### Check Whether User Can Manage Database
-if(!current_user_can('manage_cforms')) {
+if(!current_user_can('manage_cforms') && !current_user_can('track_cforms')) {
 	die(__('Access Denied','cforms'));
 }
 

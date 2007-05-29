@@ -2,6 +2,16 @@
 Copyright 2006-2007  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
+v4.8 (bugfixes mostly)
+*) bugfix: properly escaped subject lines (when using visitor defined subject)
+*) bugfix: fixed single quotes in field names
+*) bugfix: text-only fields would falsely be added to the Tracking Tables
+*) bugfix: non Ajax method: possible formatting issues with 1st fieldset in email
+*) bugfix: non Ajax method: DB tracking of check boxes corrupted
+*) bugfix: Ajax method: fixed possible "Multi-Recipients" bug 
+*) bugfix: non Ajax method: added a missing error message for failed attempts email forms
+*) other: added seperate USER CAPability for trackong only! (use w/ Role Manager plugin!) 
+
 v4.7 (bugfixes only)
 *) bugfix: field names would not show correctly when upgrading from 3.x to 4.6+
 *) bugfix: simple CSS changes to support Opera Browsers (tested on 9+)
