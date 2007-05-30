@@ -13,6 +13,13 @@ Copyright 2006  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
 v4.8 (bugfixes mostly)
+
+*) other: added optional credit text - if you're happy with cforms, perhaps you'd like
+	to enable it :-) per default it is turned off.
+
+*) feature: added a configurable SPACE between labels & data in the form email
+*) feature: file uploads (form attachments) can now optionally be exlcuded from the email
+	they can be downloaded via "Tracking" (if enabled!) or accessed directly on the server
 *) bugfix: properly escaped subject lines (when using visitor defined subject)
 *) bugfix: fixed single quotes in field names
 *) bugfix: text-only fields would falsely be added to the Tracking Tables
@@ -20,7 +27,9 @@ v4.8 (bugfixes mostly)
 *) bugfix: non Ajax method: DB tracking of check boxes corrupted
 *) bugfix: Ajax method: fixed possible "Multi-Recipients" bug 
 *) bugfix: non Ajax method: added a missing error message for failed attempts email forms
-*) other: added seperate USER CAPability for trackong only! (use w/ Role Manager plugin!) 
+*) bugfix: DB Tracking: multi-line fields are now consistently stored (no extra <br/>)
+*) other: slightly enhanced email formatting
+*) other: added seperate USER CAPability for tracking only! (use w/ Role Manager plugin!) 
 
 */
 
@@ -83,6 +92,11 @@ function download_cforms() {
 			$buffer .= 'rd:'.get_option('cforms'.$no.'_redirect') . $br;
 			$buffer .= 'rp:'.get_option('cforms'.$no.'_redirect_page') . $br;
 			$buffer .= 'hd:'.preg_replace ( '|\r\n|', '$n$',get_option('cforms'.$no.'_header')) . $br;
+			$buffer .= 'pc:'.get_option('cforms'.$no.'_space') . $br;
+			$buffer .= 'at:'.get_option('cforms'.$no.'_noattachments') . $br;
+			$buffer .= 'ud:'.get_option('cforms'.$no.'_upload_dir') . $br;
+			$buffer .= 'ue:'.get_option('cforms'.$no.'_upload_ext') . $br;
+			$buffer .= 'us:'.get_option('cforms'.$no.'_upload_size') . $br;
 			
 			header("Pragma: public");
 			header("Expires: 0");
@@ -145,6 +159,7 @@ if (isset($_GET['activate']) && $_GET['activate'] == 'true') {
 		add_option('cforms_upload_dir', ABSPATH . 'wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/attachments');
 		add_option('cforms_upload_ext', 'txt,zip,doc,rtf,xls');
 		add_option('cforms_upload_size', '1024');
+		
 		add_option('cforms_upload_err1', __('Generic file upload error. Please try again', 'cforms'));
 		add_option('cforms_upload_err2', __('File is empty. Please upload something more substantial.', 'cforms'));
 		add_option('cforms_upload_err3', __('Sorry, file is too large. You may try to zip your file.', 'cforms'));
@@ -174,6 +189,8 @@ if (isset($_GET['activate']) && $_GET['activate'] == 'true') {
 		add_option('cforms_email', get_bloginfo('admin_email'));
 
 		add_option('cforms_header', __('A new submission (form: "{Form Name}")', 'cforms') . "\r\n============================================\r\n" . __('Submitted on: {Date}', 'cforms') . "\r\n" . __('Via: {Page}', 'cforms') . "\r\n" . __('By {IP} (visitor IP)', 'cforms') . ".\r\n" . ".\r\n" );		
+		add_option('cforms_space', '30');
+		add_option('cforms_noattachments', '0');
 
 		add_option('cforms_subject', __('A comment from {Your Name}', 'cforms'));
 		add_option('cforms_submit_text', __('Send Comment', 'cforms'));
@@ -187,6 +204,7 @@ if (isset($_GET['activate']) && $_GET['activate'] == 'true') {
 
 		add_option('cforms_css', 'cforms.css');
 		add_option('cforms_labelID', '0');
+		add_option('cforms_linklove', '0');
 
 		add_option('cforms_subid', '0');
 		add_option('cforms_subid_text', __('Submission', 'cforms') . ' ID#{id})' );
@@ -272,6 +290,7 @@ function cforms_submitcomment($content) {
 								 
 	} else
 		$message='';
+		
 
 	$track = array(); 
  	$to_one = "-1";
@@ -279,6 +298,8 @@ function cforms_submitcomment($content) {
 	$field_email='';
 	$vsubject='';
 	$off=0;
+
+	$customspace = (int)(get_option('cforms'.$no.'_space')>0)?get_option('cforms'.$no.'_space'):30;
 
 	for($i = 1; $i <= sizeof($params)-1; $i++) {
 
@@ -291,10 +312,10 @@ function cforms_submitcomment($content) {
 					if ( $field_stat[1] <> 'textonly' ){ // include and make only fieldsets pretty!
 
 							//just for email looks
-							$space='-'; $n = (62 - strlen($field_stat[0])) / 2;
-							if ( strlen($field_name) < 58 )
+							$space='-'; $n = ((($customspace*2)+2) - strlen($field_stat[0])) / 2;
+							if ( strlen($field_name) < (($customspace*2)-2) )
 								$space = str_repeat("-", $n );
-							$message .= substr("\n$space$field_stat[0]$space",0,60) . "\n\n";
+							$message .= substr("\n$space$field_stat[0]$space",0,($customspace*2)) . "\n\n";
 
 					}
 					
@@ -362,13 +383,15 @@ function cforms_submitcomment($content) {
 
 			
 			// break for textarea
- 			if ( $field_type == "textarea" )
-					$value = "\n\n" . $value . "\n";
+ 			if ( $field_type == "textarea" ) {
+					$field_name = "\n" . $field_name;
+					$value = "\n" . $value . "\n";
+			}
 
 			// just for looks
 		  	$space='';
 			if ( strlen(stripslashes($field_name)) < 30 )   // don't count ->\"  sometimes adds more spaces?!?
-				  $space = str_repeat(" ",30-strlen(stripslashes($field_name)));
+				  $space = str_repeat(" ",$customspace-strlen(stripslashes($field_name)));
 
 			//for email
 			if ( $field_stat[1] <> 'verification' && $field_stat[1] <> 'captcha' )
@@ -724,9 +747,9 @@ function cforms($args = '',$no = '') {
 						
 				// A successful upload will pass this test. It makes no sense to override this one.
 				$fileext = substr($file['name'],strrpos($file['name'], '.')+1,strlen($file['name']));
-				$allextensions = explode(',' ,  preg_replace('/\s/', '', get_option('cforms_upload_ext')) );
+				$allextensions = explode(',' ,  preg_replace('/\s/', '', get_option('cforms'.$no.'_upload_ext')) );
 				
-				if ( get_option('cforms_upload_ext')<>'' && !in_array($fileext, $allextensions) )
+				if ( get_option('cforms'.$no.'_upload_ext')<>'' && !in_array($fileext, $allextensions) )
 						$fileerr = get_option('cforms_upload_err5');
 
 				// A non-empty file will pass this test.
@@ -734,7 +757,7 @@ function cforms($args = '',$no = '') {
 						$fileerr = get_option('cforms_upload_err2');
 
 				// A non-empty file will pass this test.
-				if ( $file['size'] >= (int)get_option('cforms_upload_size') * 1024 )
+				if ( $file['size'] >= (int)get_option('cforms'.$no.'_upload_size') * 1024 )
 						$fileerr = get_option('cforms_upload_err3');
 
 
@@ -820,6 +843,8 @@ function cforms($args = '',$no = '') {
 			$vsubject = '';
 			$field_email = '';
 
+			$customspace = (int)(get_option('cforms'.$no.'_space')>0)?get_option('cforms'.$no.'_space'):30;
+
 			for($i = 1; $i <= $field_count; $i++) {
 
 				if ( !$custom ) 
@@ -834,10 +859,10 @@ function cforms($args = '',$no = '') {
 						if ( $field_stat[1] <> 'textonly' ){ // include and make only fieldsets pretty!
 	
 							//just for email looks
-							$space='-'; $n = (62 - strlen($field_stat[0])) / 2;
-							if ( strlen($field_name) < 58 )
+							$space='-'; $n = ((($customspace*2)+2) - strlen($field_stat[0])) / 2;
+							if ( strlen($field_name) < (($customspace*2)-2) )
 								$space = str_repeat("-", $n );
-							$message .= substr("\n$space$field_stat[0]$space",0,60) . "\n\n";
+							$message .= substr("\n$space$field_stat[0]$space",0,($customspace*2)) . "\n\n";
 							
 						}
 						
@@ -914,10 +939,6 @@ function cforms($args = '',$no = '') {
 				$value = $_POST['cf'.$no.'_field_' . $i];       // covers all other fields' values
 
 
-			// break for textarea
-			if ( $field_type == "textarea" )
-					$value = "\n\n" . $value . "\n";
-
 			//check boxes
 			if ( $field_type == "checkbox" || $field_type == "ccbox" ) {
 			
@@ -932,16 +953,20 @@ function cforms($args = '',$no = '') {
 						$value = '-';
 			} 
 
-
 			//for db tracking
 			$trackname = trim( ($field_type == "upload")?$field_name.'[*]':$field_name ); 
 			$track[$trackname] = $value;
 
+			// for looks: break for textarea
+ 			if ( $field_type == "textarea" ) {
+					$field_name = "\n" . $field_name;
+					$value = "\n" . $value . "\n";
+			}
 
 			// for looks
 			$space='';
 			if ( strlen(stripslashes($field_name)) < 30 )
-				  $space = str_repeat(" ",30-strlen(stripslashes($field_name)));
+				  $space = str_repeat(" ", $customspace - strlen(stripslashes($field_name)));
 
 			$field_name .= ': ' . $space;
 
@@ -985,7 +1010,7 @@ function cforms($args = '',$no = '') {
 			$wpdb->query(substr($sql,0,-1));
 
             //copy attachment to local server dir
-            copy($file['tmp_name'],get_option('cforms_upload_dir').'/'.$subID.'-'.$file['name']);
+            copy($file['tmp_name'],get_option('cforms'.$no.'_upload_dir').'/'.$subID.'-'.$file['name']);
 						 
 		}
 
@@ -1002,7 +1027,7 @@ function cforms($args = '',$no = '') {
 
 
 		$eol = "\n";
-		if ( !(isset($_FILES['cf_uploadfile'.$no]) && $filedata<>'') ) {
+		if ( !(isset($_FILES['cf_uploadfile'.$no]) && $filedata<>'') || get_option('cforms'.$no.'_noattachments') ) {
 		
 				// ready to send email
 				// email header for regular email
@@ -1509,6 +1534,11 @@ function cforms($args = '',$no = '') {
 										$ajaxenabled.'/></p>' . $nl;
 
 	$content .= $indent . $tab . '</form>' . $nl;
+
+	//link love?
+	if( get_option('cforms_linklove')=="1" ) 
+		$content .= $indent . $tab . '<p class="linklove"><a href="http://www.deliciousdays.com/cforms-plugin"><em>cforms</em> contact form by delicious:days</a></p>' . $nl;
+	
 
 	//either show message above or below
 	if( substr(get_option('cforms'.$no.'_showpos'),1,1)=='y' )

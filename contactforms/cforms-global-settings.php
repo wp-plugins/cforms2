@@ -62,23 +62,25 @@ if( isset($_REQUEST['deleteall']) ) {  // erase all cforms data
 			delete_option('cforms'.$j.'_popup');
 
 			delete_option('cforms'.$j.'_redirect');
-			delete_option('cforms'.$j.'_redirect_page');		
-
+			delete_option('cforms'.$j.'_redirect_page');
+			
+			delete_option('cforms'.$j.'_upload_dir');
+			delete_option('cforms'.$j.'_upload_ext');
+			delete_option('cforms'.$j.'_upload_size');
+		
   	}
 	
 		delete_option('cforms_subid');
 		delete_option('cforms_css');
 		delete_option('cforms_labelID');
+		delete_option('cforms_linklove');
 		delete_option('cforms_subid_text');		
 
 		delete_option('cforms_sec_qa');
 		delete_option('cforms_show_quicktag');
     	delete_option('cforms_codeerr');
       	delete_option('cforms_database');
-
-		delete_option('cforms_upload_dir');
-		delete_option('cforms_upload_ext');
-		delete_option('cforms_upload_size');
+		
 		delete_option('cforms_upload_err1');
 		delete_option('cforms_upload_err2');
 		delete_option('cforms_upload_err3');
@@ -118,8 +120,9 @@ if( isset($_REQUEST['deleteall']) ) {  // erase all cforms data
 
 
 // Update Settings
-if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUEST['Submit3']) ) {
+if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUEST['Submit3']) || isset($_REQUEST['Submit4']) ) {
 
+	update_option('cforms_linklove', $_REQUEST['cforms_linklove']?'1':'0');
 	update_option('cforms_show_quicktag', $_REQUEST['cforms_show_quicktag']?'1':'0');
 	update_option('cforms_sec_qa', $_REQUEST['cforms_sec_qa'] );
 	update_option('cforms_codeerr', $_REQUEST['cforms_codeerr']);
@@ -128,14 +131,6 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 	update_option('cforms_subid', $_REQUEST['cforms_subid']?'1':'0');
 	update_option('cforms_subid_text', $_REQUEST['cforms_subid_text']);
 
-	update_option('cforms_upload_dir', $_REQUEST['cforms_upload_dir']);
-	
-    if ( !file_exists(get_option('cforms_upload_dir')) ) {
-        echo '<div id="message" class="updated fade"><p>' . __('Can\'t find the specified <strong>Upload Directory</strong> ! Please verify that it exists!', 'cforms' ) . '</p></div>';
-    }
-
-	update_option('cforms_upload_ext', $_REQUEST['cforms_upload_ext']);
-	update_option('cforms_upload_size', $_REQUEST['cforms_upload_size']);
 	update_option('cforms_upload_err1', $_REQUEST['cforms_upload_err1']);
 	update_option('cforms_upload_err2', $_REQUEST['cforms_upload_err2']);
 	update_option('cforms_upload_err3', $_REQUEST['cforms_upload_err3']);
@@ -193,30 +188,31 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 	 <input type="hidden" name="cforms_database_new" value="<?php if(get_option('cforms_database')=="0") echo 'true'; ?>"/>
 
 
-		<a name="upload" id="upload"></a>
-		<fieldset class="cformsoptions">
-			<p class="cflegend" style="margin-top:10px;"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('File Upload Settings', 'cforms') ?></p>
+		<fieldset id="linklove" class="cformsoptions">
+			<p class="cflegend" style="margin-top:10px;"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('Credits & Link Love', 'cforms') ?></p>
 
-			<p><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#upload',__('Configure and double-check these settings in case you are adding a "<code class="codehighlight">File Upload Box</code>" to your form (also see the <a href="[url]">Help!</a> for further information).', 'cforms')); ?></p>
+			<p><?php _e('I\'ve made a conscious decision to not accept money/donations for the time and effort I put into <strong>cforms</strong>, it\'s my contribution & personal way of showing appreciation for open source software. However, if you\'re happy with cforms and would like to express your appreciation, feel free to enable a link to cforms ("<em>cforms</em> contact form by delicious:days") which will be shown below the form.', 'cforms') ?></p>
+	
+			<div class="optionsbox">
+				<div class="optionsboxL"><?php _e('Show some link love', 'cforms') ?></div>
+				<div class="optionsboxR"><input type="checkbox" id="cforms_linklove" name="cforms_linklove" <?php if(get_option('cforms_linklove')=="1") echo "checked=\"checked\""; ?>/></div>
+			</div>
+			<p class="updtsetting"><input type="submit" name="Submit4" class="allbuttons updbutton" value="<?php _e('Update Settings &raquo;', 'cforms'); ?>" onclick="javascript:document.mainform.action='#linklove';"/></p>
+
+		</fieldset>
+
+
+		<fieldset id="upload" class="cformsoptions">
+			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('File Upload Settings', 'cforms') ?></p>
+
+			<p>
+				<?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#upload',__('Configure and double-check these settings in case you are adding a "<code class="codehighlight">File Upload Box</code>" to your form (also see the <a href="[url]">Help!</a> for further information).', 'cforms')); ?>
+				<?php echo str_replace('[url]','?page='.$plugindir.'/cforms-options.php#fileupload',__('Form specific settings (directory path etc.) have been moved to <a href="[url]">here</a>.', 'cforms')); ?>
+			</p>
 
 			<p class="ex"><?php _e('Also, note that by adding a <em>File Upload Box</em> to your form, the Ajax (if enabled) submission method will (automatically) <strong>gracefully degrade</strong> to the standard method, due to general HTML limitations.', 'cforms') ?></p>
 
-			<div class="optionsbox" style="margin-top:15px;">
-				<div class="optionsboxL"><strong><?php _e('Upload directory', 'cforms') ?></strong></div>
-				<div class="optionsboxR"><input type="text" id="cforms_upload_dir" name="cforms_upload_dir" value="<?php echo stripslashes(htmlspecialchars(get_option('cforms_upload_dir'))); ?>"/> <?php _e('[make sure the dir exists!]', 'cforms') ?></div>
-			</div>
-
-			<div class="optionsbox" style="margin-top:15px;">
-				<div class="optionsboxL"><strong><?php _e('Allowed file extensions', 'cforms') ?></strong></div>
-				<div class="optionsboxR"><input type="text" id="cforms_upload_ext" name="cforms_upload_ext" value="<?php echo stripslashes(htmlspecialchars(get_option('cforms_upload_ext'))); ?>"/> <?php _e('[empty=all files are allowed]', 'cforms') ?></div>
-			</div>
-
-			<div class="optionsbox" style="margin-top:3px;">
-				<div class="optionsboxL"><strong><?php _e('Maximum file size<br />in kilobyte', 'cforms') ?></strong></div>
-				<div class="optionsboxR"><input type="text" id="cforms_upload_size" name="cforms_upload_size" value="<?php echo stripslashes(htmlspecialchars(get_option('cforms_upload_size'))); ?>"/></div>
-			</div>
-
-			<p style="padding-top:15px;"><?php _e('Specify the error messages shown in case something goes awry.', 'cforms') ?></p>
+			<p style="padding-top:15px;"><?php _e('Specify the error messages shown in case something goes awry:', 'cforms') ?></p>
 
 			<div class="optionsbox" style="margin-top:15px;">
 				<div class="optionsboxL"><strong><?php _e('File type not allowed', 'cforms'); ?></strong></div>
@@ -243,13 +239,12 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 				<div class="optionsboxR"><textarea class="errmsgbox" name="cforms_upload_err4" id="cforms_upload_err4" ><?php echo stripslashes(htmlspecialchars(get_option('cforms_upload_err4'))); ?></textarea></div>
 			</div>
 
-			<p class="updtsetting"><input type="submit" name="Submit3" class="allbuttons updbutton" value="<?php _e('Update Settings &raquo;', 'cforms'); ?>" onclick="javascript:document.mainform.action='#';"/></p>
+			<p class="updtsetting"><input type="submit" name="Submit3" class="allbuttons updbutton" value="<?php _e('Update Settings &raquo;', 'cforms'); ?>" onclick="javascript:document.mainform.action='#upload';"/></p>
 
 		</fieldset>
 
 
-		<a name="wpeditor" id="wpeditor"></a>
-		<fieldset class="cformsoptions">
+		<fieldset id="wpeditor" class="cformsoptions">
 			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('WP Editor Button support', 'cforms') ?></p>
 
 			<p><?php _e('If you would like to use editor buttons to insert your cforms please enable them below.', 'cforms') ?></p>
@@ -261,8 +256,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 		</fieldset>
 
 
-		<a name="visitorv" id="visitorv"></a>
-		<fieldset class="cformsoptions">
+		<fieldset id="visitorv" class="cformsoptions">
 			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('Visitor Verification (Q&A)', 'cforms') ?></p>
 
 			<p><?php _e('Getting a lot of <strong>SPAM</strong>? Use these Q&A\'s to counteract spam and ensure it\'s a human submitting the form. To use in your form, add the corresponding input field "<code class="codehighlight">Visitor verification</code>" preferably in its own FIELDSET!', 'cforms') ?></p>
@@ -287,8 +281,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 
 
 		
-		<a id="tracking"></a>
-		<fieldset class="cformsoptions">
+		<fieldset id="tracking" class="cformsoptions">
 			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('Database Input Tracking', 'cforms') ?></p>
 
 				<p><?php _e('If you like to track your form submissions also via the database, please enable this feature below. If required, this will create two new tables and you\'ll see a new sub tab "<strong>Tracking</strong>" under the cforms menu.', 'cforms') ?></p>

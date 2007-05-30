@@ -8,7 +8,7 @@
 /*                                                    */
 
 .cform { 
-	margin:10px auto 50px auto; 
+	margin:10px auto 0 auto; 
 	width: 185px; 
 }
 
@@ -277,6 +277,21 @@ p.failure 	{
 .cform input.cf_upload  {
 	background: #f9f9f9;
 	border:1px solid #888888;
+}
+
+/*                                                    */
+/*  Other: link love                                  */
+/*                                                    */
+.linklove {
+	margin:0 0 10px 0!important;
+	padding:0!important;	
+	text-align:center;
+}
+.linklove a,
+.linklove a:visited {
+	font-size: 0.8em;
+	font-family: Tahoma;
+	color:#aaaaaa;
 }
 
 /*                                                    */

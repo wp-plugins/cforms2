@@ -62,6 +62,8 @@ if(isset($_REQUEST['addbutton'])) {
 	add_option('cforms'.$no.'_cmsg', __('Dear {Your Name},', 'cforms') . "\n". __('Thank you for your note!', 'cforms') . "\n". __('We will get back to you as soon as possible.', 'cforms') . "\n\n");
 	add_option('cforms'.$no.'_email', get_bloginfo('admin_email', 'cforms'));
 	add_option('cforms'.$no.'_header', __('A new submission (form: "{Form Name}")', 'cforms') . "\r\n============================================\r\n" . __('Submitted on: {Date}', 'cforms') . "\r\n" . __('Via: {Page}', 'cforms') . "\r\n" . __('By {IP} (visitor IP)', 'cforms') . ".\r\n" . ".\r\n" );		
+	add_option('cforms'.$no.'_space', '30');
+	add_option('cforms'.$no.'_noattachments', '0');
 	
 	add_option('cforms'.$no.'_subject', __('A comment from {Your Name}', 'cforms'));
 	add_option('cforms'.$no.'_submit_text', __('Send Comment', 'cforms'));
@@ -73,6 +75,11 @@ if(isset($_REQUEST['addbutton'])) {
 	
 	add_option('cforms'.$no.'_redirect', '0');
 	add_option('cforms'.$no.'_redirect_page', 'http://redirect.to.this.page');		
+
+	/*file upload*/
+	add_option('cforms'.$no.'_upload_dir', ABSPATH . 'wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/attachments');
+	add_option('cforms'.$no.'_upload_ext', 'txt,zip,doc,rtf,xls');
+	add_option('cforms'.$no.'_upload_size', '1024');
 	
 	echo '<div id="message" class="updated fade"><p>'.__('A new form with default fields has been added.', 'cforms').'</p></div>';
 	
@@ -113,6 +120,8 @@ if(isset($_REQUEST['addbutton'])) {
 	add_option('cforms'.$FORMCOUNT.'_cmsg', get_option('cforms'.$no.'_cmsg'));
 	add_option('cforms'.$FORMCOUNT.'_email', get_option('cforms'.$no.'_email'));
 	add_option('cforms'.$FORMCOUNT.'_header', get_option('cforms'.$no.'_header'));
+	add_option('cforms'.$FORMCOUNT.'_space', get_option('cforms'.$no.'_space'));
+	add_option('cforms'.$FORMCOUNT.'_noattachments', get_option('cforms'.$no.'_noattachments'));
 	
 	add_option('cforms'.$FORMCOUNT.'_subject', get_option('cforms'.$no.'_subject'));
 	add_option('cforms'.$FORMCOUNT.'_submit_text', get_option('cforms'.$no.'_submit_text'));
@@ -124,7 +133,11 @@ if(isset($_REQUEST['addbutton'])) {
 
 	add_option('cforms'.$FORMCOUNT.'_redirect', get_option('cforms'.$no.'_redirect'));
 	add_option('cforms'.$FORMCOUNT.'_redirect_page', get_option('cforms'.$no.'_redirect_page'));		
-	
+
+	add_option('cforms'.$FORMCOUNT.'_upload_dir', get_option('cforms'.$no.'_upload_dir'));
+	add_option('cforms'.$FORMCOUNT.'_upload_ext', get_option('cforms'.$no.'_upload_ext'));
+	add_option('cforms'.$FORMCOUNT.'_upload_size', get_option('cforms'.$no.'_upload_size'));
+		
 	echo '<div id="message" class="updated fade"><p>'.__('The form has been duplicated, you\'re now working on the copy.', 'cforms').'</p></div>';
 
 	//sorry, but WP2.2 doesn quickly enough flush the cache!
@@ -234,6 +247,21 @@ if(isset($_REQUEST['addbutton'])) {
 
 		if ( !(strpos($importdata[19], 'hd:')===false) )
 					update_option('cforms'.$no.'_header',str_replace ('$n$', "\r\n",substr( trim($importdata[19]), 3) ));
+
+		if ( !(strpos($importdata[20], 'pc:')===false) )
+					update_option('cforms'.$no.'_space',substr( trim($importdata[20]), 3) );
+					
+		if ( !(strpos($importdata[21], 'pc:')===false) )
+					update_option('cforms'.$no.'_noattachments',substr( trim($importdata[21]), 3) );
+
+		if ( !(strpos($importdata[22], 'ud:')===false) )
+					update_option('cforms'.$no.'_upload_dir',substr( trim($importdata[22]), 3) );
+
+		if ( !(strpos($importdata[23], 'ue:')===false) )
+					update_option('cforms'.$no.'_upload_ext',substr( trim($importdata[23]), 3) );
+
+		if ( !(strpos($importdata[24], 'us:')===false) )
+					update_option('cforms'.$no.'_upload_size',substr( trim($importdata[24]), 3) );
 					
 	echo '<div id="message" class="updated fade"><p>'.__('All form specific settings have been restored from the backup file.', 'cforms').'</p></div>';
 	}
@@ -278,6 +306,17 @@ if(isset($_REQUEST['addbutton'])) {
     update_option('cforms'.$i.'_email',$tempo);
     $tempo = get_option('cforms'.($i+1).'_header');
     update_option('cforms'.$i.'_header',$tempo);
+    $tempo = get_option('cforms'.($i+1).'_space');
+    update_option('cforms'.$i.'_space',$tempo);
+    $tempo = get_option('cforms'.($i+1).'_noattachments');
+    update_option('cforms'.$i.'_noattachments',$tempo);
+
+    $tempo = get_option('cforms'.($i+1).'_upload_dir');
+    update_option('cforms'.$i.'_upload_dir',$tempo);
+    $tempo = get_option('cforms'.($i+1).'_upload_ext');
+    update_option('cforms'.$i.'_upload_ext',$tempo);
+    $tempo = get_option('cforms'.($i+1).'_upload_size');
+    update_option('cforms'.$i.'_upload_size',$tempo);
 
     $tempo = get_option('cforms'.($i+1).'_subject');
     update_option('cforms'.$i.'_subject',$tempo);
@@ -314,6 +353,12 @@ if(isset($_REQUEST['addbutton'])) {
   delete_option('cforms'.$FORMCOUNT.'_cmsg');
   delete_option('cforms'.$FORMCOUNT.'_email');
   delete_option('cforms'.$FORMCOUNT.'_header');
+  delete_option('cforms'.$FORMCOUNT.'_space');
+  delete_option('cforms'.$FORMCOUNT.'_noattachments');
+
+  delete_option('cforms'.$FORMCOUNT.'_upload_dir');
+  delete_option('cforms'.$FORMCOUNT.'_upload_ext');
+  delete_option('cforms'.$FORMCOUNT.'_upload_size');
 
   delete_option('cforms'.$FORMCOUNT.'_subject');
   delete_option('cforms'.$FORMCOUNT.'_submit_text');
@@ -380,7 +425,7 @@ if( isset($_REQUEST['AddField']) && isset($_REQUEST['field_count_submit']) )
 $usermsg='&nbsp;';
 
 // Update Settings
-if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUEST['Submit3']) || isset($_REQUEST['Submit4']) || isset($_REQUEST['AddField']) || array_search("X", $_REQUEST) ) {
+if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUEST['Submit3']) || isset($_REQUEST['Submit4']) || isset($_REQUEST['Submit5']) || isset($_REQUEST['AddField']) || array_search("X", $_REQUEST) ) {
 
 	$verification=false;
 	$captcha=false;
@@ -457,6 +502,10 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 		}
 	}
 
+	update_option('cforms'.$no.'_upload_dir', $_REQUEST['cforms_upload_dir']);
+	update_option('cforms'.$no.'_upload_ext', $_REQUEST['cforms_upload_ext']);
+	update_option('cforms'.$no.'_upload_size', $_REQUEST['cforms_upload_size']);
+	
 	update_option('cforms'.$no.'_confirm', $_REQUEST['cforms_confirm']?'1':'0');
 	update_option('cforms'.$no.'_ajax', $_REQUEST['cforms_ajax']?'1':'0');
 	update_option('cforms'.$no.'_popup', ($_REQUEST['cforms_popup1']?'y':'n').($_REQUEST['cforms_popup2']?'y':'n') );
@@ -476,6 +525,8 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 	update_option('cforms'.$no.'_email', $_REQUEST['cforms_email']);
 	update_option('cforms'.$no.'_subject', $_REQUEST['cforms_subject']);
 	update_option('cforms'.$no.'_header', preg_replace("/\\\+/", "\\",$_REQUEST['cforms_header']));
+	update_option('cforms'.$no.'_space', $_REQUEST['cforms_space']);
+	update_option('cforms'.$no.'_noattachments', $_REQUEST['cforms_noattachments']?'1':'0');
 
 	update_option('cforms'.$no.'_redirect', $_REQUEST['cforms_redirect']?'1':'0');
 	update_option('cforms'.$no.'_redirect_page', preg_replace("/\\\+/", "\\",$_REQUEST['cforms_redirect_page']));
@@ -545,13 +596,26 @@ for ($i=1; $i<=$FORMCOUNT; $i++){
 }
 $formlistbox .= '</select><input type="submit" class="allbuttons go" name="go"  value="'.__('Go', 'cforms').'">';
 
-  
+ 
 // check for updates that have not set 	add_option('cforms'.$no.'_showpos', 'yn');
 if ( get_option('cforms'.$no.'_showpos')=='' ) {
 	?>
 	
 	<div id="message" class="updated fade"><p><strong>
 		<?php echo str_replace('[url]','#anchormessage',__('It seems that you have recently upgraded cforms, please check the <a href="[url]">success/failure message settings</a> and >>Show messages<< options below!', 'cforms')) ?>
+	</strong></p></div>
+	
+	<?php
+
+} 
+
+
+// check for updates that have not set 	add_option('cforms'.$no.'_showpos', 'yn');
+if ( get_option('cforms'.$no.'_upload_dir')=='' ) {
+	?>
+	
+	<div id="message" class="updated fade"><p><strong>
+		<?php echo str_replace('[url]','#fileupload',__('In case you\'ve recently upgraded, please check the new <a href="[url]">file upload/attachment</a> relevant settings below!', 'cforms')) ?>
 	</strong></p></div>
 	
 	<?php
@@ -820,6 +884,38 @@ if ( get_option('cforms'.$no.'_header')=='' ) {
 
 
 
+		<fieldset id="fileupload" class="cformsoptions">
+			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('File Upload Settings', 'cforms') ?></p>
+
+			<p>
+				<?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#upload',__('Configure and double-check these settings in case you are adding a "<code class="codehighlight">File Upload Box</code>" to your form (also see the <a href="[url]">Help!</a> for further information).', 'cforms')); ?>
+				<?php echo str_replace('[url]','?page='.$plugindir.'/cforms-global-settings.php#upload',__('You may also want to verify the global, file upload specific  <a href="[url]">error messages</a>.', 'cforms')); ?>
+			</p>
+
+		    <?php
+			if ( !file_exists(get_option('cforms'.$no.'_upload_dir')) ) {
+		        echo '<div id="message" class="updated fade"><p>' . __('Can\'t find the specified <strong>Upload Directory</strong> ! Please verify that it exists!', 'cforms' ) . '</p></div>';
+		    }
+			?>
+			
+			<div class="optionsbox" style="margin-top:15px;">
+				<div class="optionsboxL"><strong><?php _e('Upload directory', 'cforms') ?></strong></div>
+				<div class="optionsboxR"><input type="text" id="cforms_upload_dir" name="cforms_upload_dir" value="<?php echo stripslashes(htmlspecialchars(get_option('cforms'.$no.'_upload_dir'))); ?>"/> <?php _e('[make sure the dir exists!]', 'cforms') ?></div>
+			</div>
+
+			<div class="optionsbox" style="margin-top:15px;">
+				<div class="optionsboxL"><strong><?php _e('Allowed file extensions', 'cforms') ?></strong></div>
+				<div class="optionsboxR"><input type="text" id="cforms_upload_ext" name="cforms_upload_ext" value="<?php echo stripslashes(htmlspecialchars(get_option('cforms'.$no.'_upload_ext'))); ?>"/> <?php _e('[empty=all files are allowed]', 'cforms') ?></div>
+			</div>
+
+			<div class="optionsbox" style="margin-top:3px;">
+				<div class="optionsboxL"><strong><?php _e('Maximum file size<br />in kilobyte', 'cforms') ?></strong></div>
+				<div class="optionsboxR"><input type="text" id="cforms_upload_size" name="cforms_upload_size" value="<?php echo stripslashes(htmlspecialchars(get_option('cforms'.$no.'_upload_size'))); ?>"/></div>
+			</div>
+		</fieldset>
+		<p align="right"><input type="submit" name="Submit5" class="allbuttons updbutton" value="<?php _e('Update Settings &raquo;', 'cforms'); ?>" onclick="javascript:document.mainform.action='#fileupload';" /></p>
+			
+
 		<fieldset class="cformsoptions" id="anchormessage">
 			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('Redirection, Messages, Text and Button Label', 'cforms') ?></p>
 
@@ -892,15 +988,24 @@ if ( get_option('cforms'.$no.'_header')=='' ) {
 				<div class="optionsboxL"><?php _e('Subject', 'cforms') ?></div>
 				<div class="optionsboxR"><input type="text" name="cforms_subject" id="cforms_subject" value="<?php echo stripslashes(htmlspecialchars(get_option('cforms'.$no.'_subject'))); ?>" /> <?php echo str_replace('[url]','?page='. $plugindir.'/cforms-help.php#variables',__('<a href="[url]">Variables</a> allowed.', 'cforms')); ?></div>
 			</div>
+			<div class="optionsbox">
+				<div class="optionsboxL"><?php _e('Spacing between labels & data', 'cforms') ?></div>
+				<div class="optionsboxR"><input type="text" name="cforms_space" id="cforms_space" value="<?php echo stripslashes(htmlspecialchars(get_option('cforms'.$no.'_space'))); ?>" /></div>
+			</div>
+			<div class="optionsbox">
+				<div class="optionsboxL"><?php _e('Do not email attachments', 'cforms') ?></div>
+				<div class="optionsboxR"><input type="checkbox" id="cforms_noattachments" name="cforms_noattachments" <?php if(get_option('cforms'.$no.'_noattachments')=="1") echo "checked=\"checked\""; ?>/><?php echo str_replace('[url]','?page='. $plugindir.'/cforms-global-settings.php#tracking',__('Attachments are stored on the server & can be accessed via the <a href="[url]">cforms tracking</a> tables.', 'cforms')); ?></div>
+			</div>
 
-			<p><?php echo str_replace('[url]','?page='. $plugindir.'/cforms-help.php#variables',__('The email header permits the use of any of the <strong>pre-defined variables</strong> or <strong>data from input fields</strong>, <a href="[url]">here is</a> how.', 'cforms')); ?></p>
+			<p style="margin-top:30px;"><?php echo str_replace('[url]','?page='. $plugindir.'/cforms-help.php#variables',__('The email header permits the use of any of the <strong>pre-defined variables</strong> or <strong>data from input fields</strong>, <a href="[url]">here is</a> how.', 'cforms')); ?></p>
 
 			<div class="optionsbox">
 				<div class="optionsboxL"><?php _e('Header', 'cforms') ?></div>
 				<div class="optionsboxR"><textarea name="cforms_header" id="cforms_header" ><?php echo stripslashes(htmlspecialchars(get_option('cforms'.$no.'_header'))); ?></textarea> <?php echo str_replace('[url]','?page='. $plugindir.'/cforms-help.php#variables',__('<a href="[url]">Variables</a> allowed.', 'cforms')); ?></div>
 			</div>
+			
 		</fieldset>
-		<p align="right"><input type="submit" name="Submit4" class="allbuttons updbutton" value="<?php _e('Update Settings &raquo;', 'cforms'); ?>" onclick="javascript:document.mainform.action='#adminmail';" /></p>
+		<p align="right"><input type="submit" name="Submit4" class="allbuttons updbutton" value="<?php _e('Update Settings &raquo;', 'cforms'); ?>" onclick="javascript:document.mainform.action='#anchoremail';" /></p>
 
 
 

@@ -144,18 +144,23 @@ input.go			{ font-size:10px; height:22px; }
 #cforms_cc2,
 #cforms_confirm,
 #cforms_subid,
-#cforms_database 		{ width:16px; margin-top:4px; background:none; }
-
+#cforms_database,
 #cforms_showposa,
 #cforms_showposb,
-#cforms_redirect		{ width:16px; margin-top:4px; background:none; }
+#cforms_redirect,
+#cforms_linklove,
+#cforms_noattachments	{ width:16px; margin-top:4px; background:none; }
+
+#cforms_space 			{ width:3em; }
 
 * html .cforms_ajax ,
 * html #cforms_confirm,
 * html #cforms_popup1,
 * html #cforms_popup2,
 * html #cforms_showposa,
-* html #cforms_showposb	{ border:0; background:none; }
+* html #cforms_showposb,
+* html #cforms_redirect,
+* html #cforms_linklove	{ border:0; background:none; }
 
 * html #cforms_showposa,
 * html #cforms_showposb	{ position:relative; top:2px; }

@@ -58,8 +58,8 @@ if ( (isset($_POST['delete'])) ) {
 	foreach ($_POST['entries'] as $entry) :
 		$entry = (int) $entry;
 
-		$fileval = $wpdb->get_row("SELECT DISTINCT field_val FROM {$wpdb->cformsdata} WHERE sub_id = '$entry' AND field_name LIKE '%[*]%'");
-		$file = get_option('cforms_upload_dir').'/'.$entry.'-'.$fileval->field_val;
+		$fileval = $wpdb->get_row("SELECT DISTINCT field_val,form_id FROM {$wpdb->cformsdata},{$wpdb->cformssubmissions} WHERE sub_id = '$entry' AND id=sub_id AND field_name LIKE '%[*]%'");
+		$file = get_option('cforms'.$fileval->form_id.'_upload_dir').'/'.$entry.'-'.$fileval->field_val;
 		
 		$del='';
 		if ( $fileval->field_val <> '' ){
@@ -90,8 +90,9 @@ if ( isset($_POST['sqlwhere']) ){
 			$entry = substr( $arg,7 );
 	}
 
-	$fileval = $wpdb->get_row("SELECT DISTINCT field_val FROM {$wpdb->cformsdata} WHERE sub_id = '$entry' AND field_name LIKE '%[*]%'");
-	$file = get_option('cforms_upload_dir').'/'.$entry.'-'.$fileval->field_val;
+	$fileval = $wpdb->get_row("SELECT DISTINCT field_val,form_id FROM {$wpdb->cformsdata},{$wpdb->cformssubmissions} WHERE sub_id = '$entry' AND id=sub_id AND field_name LIKE '%[*]%'");
+
+	$file = get_option('cforms'.$fileval->form_id.'_upload_dir').'/'.$entry.'-'.$fileval->field_val;
 	
 	$del='';
 	if ( $fileval->field_val <> '' ){
@@ -152,7 +153,8 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']) || isset($_POST['sql
 
 			if (strpos($name,'[*]')!==false) {  // attachments?
 
-                    $file = get_option('cforms_upload_dir').'/'.$entry->sub_id.'-'.strip_tags($val);
+					$no   = $entry->form_id; 
+                    $file = get_option('cforms'.$no.'_upload_dir').'/'.$entry->sub_id.'-'.strip_tags($val);
                     $file = get_settings('siteurl') . substr( $file, strpos($file, '/wp-content/') );
                     
 					echo '<div class="showformfield" style="margin-bottom:10px;color:#3C575B;"><div class="L">';
