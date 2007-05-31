@@ -12,11 +12,13 @@ Author URI: http://www.deliciousdays.com
 Copyright 2006  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
-v4.7 (bugfixes only)
-*) bugfix: field names would not show correctly when upgrading from 3.x to 4.6+
-*) bugfix: simple CSS changes to support Opera Browsers (tested on 9+)
-*) other: made some captcha mods for better readability 
-	
+v4.7(x) (bugfixes only)
+*) bugfix: properly escaped subject lines (when using visitor defined subject)
+*) bugfix: fixed single quotes in field names
+*) bugfix: text-only fields would falsely be added to the Tracking Tables
+*) bugfix: non Ajax method: possible formatting issues with 1st fieldset in email
+*) bugfix: non Ajax method: DB tracking of check boxes corrupted
+
 */
 
 load_plugin_textdomain('cforms');
@@ -307,7 +309,7 @@ function cforms_submitcomment($content) {
 
 			// set subject for later if subject field found
 			if ( $field_stat[1] == 'vsubject' )
-				$vsubject = $params ['field_' . $i]; 
+				$vsubject = $params['field_' . $i]; 
 
 			// strip out default value
 			if ( ($pos=strpos($field_name,'|')) )
@@ -441,7 +443,7 @@ function cforms_submitcomment($content) {
 	}
 
 		
-	if( @mail($to, $vsubject, stripslashes($message), $headers) )
+	if( @mail($to, stripslashes($vsubject), stripslashes($message), $headers) )
 	{
 		  // send copy or notification?
 	    if ( (get_option('cforms'.$no.'_confirm')=='1' && $field_email<>'') || $ccme )  // not if no email & already CC'ed
@@ -824,13 +826,17 @@ function cforms($args = '',$no = '') {
 
 
 				// filter non input fields
-				while ( $field_stat[1] == 'fieldsetstart' || $field_stat[1] == 'fieldsetend' ) {
+				while ( $field_stat[1] == 'fieldsetstart' || $field_stat[1] == 'fieldsetend' || $field_stat[1] == 'textonly' ) {
 
-						//just for email looks
-						$space='-'; $n = (62 - strlen($field_stat[0])) / 2;
-						if ( strlen($field_name) < 58 )
-							$space = str_repeat("-", $n );
-						$message .= substr("\n$space$field_stat[0]$space",0,60) . "\n\n";
+						if ( $field_stat[1] <> 'textonly' ){ // include and make only fieldsets pretty!
+	
+							//just for email looks
+							$space='-'; $n = (62 - strlen($field_stat[0])) / 2;
+							if ( strlen($field_name) < 58 )
+								$space = str_repeat("-", $n );
+							$message .= substr("\n$space$field_stat[0]$space",0,60) . "\n\n";
+							
+						}
 						
 						//get next in line...
 						$i++;
@@ -881,11 +887,11 @@ function cforms($args = '',$no = '') {
 			if ( $field_type == "emailtobox" ){  				//special case where the value needs to bet get from the DB!
 
                 $field_name = explode('#',$field_stat[0]);  //can't use field_name, since '|' check earlier
-                $to_one 		= $_POST['cf'.$no.'_field_' . $i];
+                $to_one = $_POST['cf'.$no.'_field_' . $i];
                 
                 $off = (strpos($field_name[1],'|')===false) ? 1 : 2; // names come usually right after the label
                 
-                $value 			= $field_name[(int)$to_one+$off];  // values start from 0 or after!
+                $value 	= $field_name[(int)$to_one+$off];  // values start from 0 or after!
                 $field_name = $field_name[0];
 	 		}
 	 		else if ( $field_type == "upload" ){
@@ -909,18 +915,7 @@ function cforms($args = '',$no = '') {
 			if ( $field_type == "textarea" )
 					$value = "\n\n" . $value . "\n";
 
-			//for db tracking
-			$trackname = trim( ($field_type == "upload")?$field_name.'[*]':$field_name ); 
-			$track[$trackname] = $value;
-
-
-			// for looks
-			$space='';
-			if ( strlen(stripslashes($field_name)) < 30 )
-				  $space = str_repeat(" ",30-strlen(stripslashes($field_name)));
-
-			$field_name .= ': ' . $space;
-
+			//check boxes
 			if ( $field_type == "checkbox" || $field_type == "ccbox" ) {
 			
 					if ( isset($_POST['cf'.$no.'_field_' . $i]) )
@@ -935,7 +930,20 @@ function cforms($args = '',$no = '') {
 			} 
 
 
-			if ( $field_stat[1] <> 'verification' && $field_stat[1] <> 'captcha' && $field_stat[1] <> 'textonly' )
+			//for db tracking
+			$trackname = trim( ($field_type == "upload")?$field_name.'[*]':$field_name ); 
+			$track[$trackname] = $value;
+
+
+			// for looks
+			$space='';
+			if ( strlen(stripslashes($field_name)) < 30 )
+				  $space = str_repeat(" ",30-strlen(stripslashes($field_name)));
+
+			$field_name .= ': ' . $space;
+
+
+			if ( $field_stat[1] <> 'verification' && $field_stat[1] <> 'captcha' )
 					$message .= $field_name . $value . "\n";
 
 
@@ -1059,7 +1067,7 @@ function cforms($args = '',$no = '') {
 			}
 		}
 
-		if( @mail($to, $vsubject, $fullmsg, $headers) ) {
+		if( @mail($to, stripslashes($vsubject), $fullmsg, $headers) ) {
 		
 				  // send copy or notification?
 			    if ( (get_option('cforms'.$no.'_confirm')=='1' && $field_email<>'') || $ccme )  // not if no email & already CC'ed

@@ -890,7 +890,7 @@ if ( get_option('cforms'.$no.'_header')=='' ) {
 			</div>
 			<div class="optionsbox">
 				<div class="optionsboxL"><?php _e('Subject', 'cforms') ?></div>
-				<div class="optionsboxR"><input type="text" name="cforms_subject" id="cforms_subject" value="<?php echo(get_option('cforms'.$no.'_subject')); ?>" /> <?php echo str_replace('[url]','?page='. $plugindir.'/cforms-help.php#variables',__('<a href="[url]">Variables</a> allowed.', 'cforms')); ?></div>
+				<div class="optionsboxR"><input type="text" name="cforms_subject" id="cforms_subject" value="<?php echo stripslashes(htmlspecialchars(get_option('cforms'.$no.'_subject'))); ?>" /> <?php echo str_replace('[url]','?page='. $plugindir.'/cforms-help.php#variables',__('<a href="[url]">Variables</a> allowed.', 'cforms')); ?></div>
 			</div>
 
 			<p><?php echo str_replace('[url]','?page='. $plugindir.'/cforms-help.php#variables',__('The email header permits the use of any of the <strong>pre-defined variables</strong> or <strong>data from input fields</strong>, <a href="[url]">here is</a> how.', 'cforms')); ?></p>
