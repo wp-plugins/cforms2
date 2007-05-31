@@ -28,6 +28,7 @@ v4.8 (bugfixes mostly)
 *) bugfix: Ajax method: fixed possible "Multi-Recipients" bug 
 *) bugfix: non Ajax method: added a missing error message for failed attempts email forms
 *) bugfix: DB Tracking: multi-line fields are now consistently stored (no extra <br/>)
+*) other: a few more form themes (wide & big, no border)
 *) other: slightly enhanced email formatting
 *) other: added seperate USER CAPability for tracking only! (use w/ Role Manager plugin!) 
 

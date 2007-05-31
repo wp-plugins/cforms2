@@ -3,6 +3,12 @@ Copyright 2006-2007  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
 v4.8 (bugfixes mostly)
+*) other: added optional credit text - if you're happy with cforms, perhaps you'd like
+	to enable it :-) per default it is turned off.
+
+*) feature: added a configurable SPACE between labels & data in the form email
+*) feature: file uploads (form attachments) can now optionally be exlcuded from the email
+	they can be downloaded via "Tracking" (if enabled!) or accessed directly on the server
 *) bugfix: properly escaped subject lines (when using visitor defined subject)
 *) bugfix: fixed single quotes in field names
 *) bugfix: text-only fields would falsely be added to the Tracking Tables
@@ -10,7 +16,10 @@ v4.8 (bugfixes mostly)
 *) bugfix: non Ajax method: DB tracking of check boxes corrupted
 *) bugfix: Ajax method: fixed possible "Multi-Recipients" bug 
 *) bugfix: non Ajax method: added a missing error message for failed attempts email forms
-*) other: added seperate USER CAPability for trackong only! (use w/ Role Manager plugin!) 
+*) bugfix: DB Tracking: multi-line fields are now consistently stored (no extra <br/>)
+*) other: slightly enhanced email formatting
+*) other: a few more form themes (wide & big, no border)
+*) other: added seperate USER CAPability for tracking only! (use w/ Role Manager plugin!) 
 
 v4.7 (bugfixes only)
 *) bugfix: field names would not show correctly when upgrading from 3.x to 4.6+

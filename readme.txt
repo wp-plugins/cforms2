@@ -4,24 +4,24 @@ Donate link: http://www.deliciousdays.com/
 Tags: ajax, email, secure, visitor, input, order, form, contact
 Requires at least: 1.6+
 Tested up to: 2.2
-Stable tag: 4.7
+Stable tag: 4.8
 
 cforms is a highly customizable, flexible and powerful contact form plugin, covering a variety of features from attachments to multi form management.
 
 == Description ==
 
-For a complete version history, see [here](http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1).
+For a complete version history (new features, bug fixes etc.), see [here](http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1).
 
 = Description =
 cforms is a highly customizable, flexible and powerful contact form plugin, covering a variety of use cases and features from attachments to multi form management, you can even have multiple forms on the same page!
 
 = Plugin Features =
-* Customizable auto confirmation message & form email
+* Customizable auto confirmation message & form email **enhanced functionality**
 * Page redirection on successful form submission
 * Creates robust XHTML form code (no floats)
 * Full localization support (currently: English, German, Spanish)
 * Built-in CSS editor & theme chooser
-* File attachments (upload)
+* File attachments (upload) **enhanced functionality**
 * Multiple forms on one or many pages / posts
 * Ajax supported form submission (w/ graceful fall-back)
 * Multiple recipients per form (optionally selectable by visitor)
