@@ -21,6 +21,7 @@ cforms is a highly customizable, flexible and powerful contact form plugin, cove
 * Creates robust XHTML form code (no floats)
 * Full localization support (currently: English, German, Spanish)
 * Built-in CSS editor & theme chooser
+* **New predefined themes ('wide, no-border, big')**
 * File attachments (upload) **enhanced functionality**
 * Multiple forms on one or many pages / posts
 * Ajax supported form submission (w/ graceful fall-back)
