@@ -3,8 +3,8 @@ Copyright 2006-2007  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
 v4.8 (bugfixes mostly)
-*) other: added optional credit text - if you're happy with cforms, perhaps you'd like
-	to enable it :-) per default it is turned off.
+*) other: added optional credit text - if you're happy with cforms you may want to
+	leave it enabled
 
 *) feature: added a configurable SPACE between labels & data in the form email
 *) feature: file uploads (form attachments) can now optionally be exlcuded from the email
