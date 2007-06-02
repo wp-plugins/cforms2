@@ -14,8 +14,8 @@ Copyright 2006  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 
 v4.8 (bugfixes mostly)
 
-*) other: added optional credit text - if you're happy with cforms, perhaps you'd like
-	to enable it :-) per default it is turned off.
+*) other: added optional credit text - if you're happy with cforms you may want to
+	leave it enabled
 
 *) feature: added a configurable SPACE between labels & data in the form email
 *) feature: file uploads (form attachments) can now optionally be exlcuded from the email
@@ -205,7 +205,7 @@ if (isset($_GET['activate']) && $_GET['activate'] == 'true') {
 
 		add_option('cforms_css', 'cforms.css');
 		add_option('cforms_labelID', '0');
-		add_option('cforms_linklove', '0');
+		add_option('cforms_linklove', '1');
 
 		add_option('cforms_subid', '0');
 		add_option('cforms_subid_text', __('Submission', 'cforms') . ' ID#{id})' );
