@@ -6,7 +6,7 @@ Requires at least: 1.6+
 Tested up to: 2.2
 Stable tag: 4.8
 
-cforms is a highly customizable, flexible and powerful contact form plugin, covering a variety of features from attachments to multi form management!
+cforms is a highly customizable, flexible and powerful contact form plugin, covering a variety of features from attachments to multi form management.
 
 == Description ==
 
