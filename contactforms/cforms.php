@@ -2,7 +2,7 @@
 /*
 Plugin Name: cforms II
 Plugin URI: http://www.deliciousdays.com/cforms-plugin
-Description: cforms offers convenient deployment of multiple contact forms throughout your blog or even on the same page. The form submission utilizes AJAX, however, falls back to a standard method in case AJAX/Javascript is not supported.
+Description: cforms II offers unparalleled flexibility in deploying contact forms across your blog. Features include, comprehensive SPAM protection, Ajax support, Backup & Restore, Multi-Recipients, Role Manager support, Database tracking and many more.
 Author: Oliver Seidel
 Version: 5.0
 Author URI: http://www.deliciousdays.com
@@ -19,7 +19,7 @@ v5.0
 	message body and SUBJECT fully support default and custom variables
 
 *) feature: multiple upload fields in the same form now supported
-*) feature: 3rd party email tracking support: readnotify & didtheyreadit
+*) feature: 3rd party email tracking support, e.g. readnotify & didtheyreadit
 *) feature: basic widget support (make sure to double check Theme CSS!)
 *) feature: alternative form action supported (please read config info!)
 *) feature: BCC to copy additional admin(s) 
@@ -616,7 +616,7 @@ function cforms_submitcomment($content) {
 
 					// email tracking via 3rd party?
 					$field_email = (get_option('cforms'.$no.'_tracking')<>'')?$field_email.get_option('cforms'.$no.'_tracking'):$field_email;
-					
+
 					if ( $ccme ) 
 					  $sent = @mail($field_email, stripslashes($subject2), stripslashes($fmessage), $headers2); //takes $message!!
 					else
@@ -1138,13 +1138,18 @@ function cforms($args = '',$no = '') {
 			
 			$wpdb->query(substr($sql,0,-1));
 
+			// Files uploaded??
 			$filefield=0;
-			foreach( $_FILES['cf_uploadfile'.$no][tmp_name] as $tmpfile ) {
-	            //copy attachment to local server dir
-	            if ( $tmpfile <> '')
-	            	copy($tmpfile,get_option('cforms'.$no.'_upload_dir').'/'.$subID.'-'.$file['name'][$filefield++]);
-			}	 
+			if ( isset($_FILES['cf_uploadfile'.$no]) ) {
+				foreach( $_FILES['cf_uploadfile'.$no][tmp_name] as $tmpfile ) {
+		            //copy attachment to local server dir
+		            if ( $tmpfile <> '')
+		            	copy($tmpfile,get_option('cforms'.$no.'_upload_dir').'/'.$subID.'-'.$file['name'][$filefield++]);
+				}	 
+			}
+			
 		}
+		
 
 		//set header
 		$replyto = preg_replace( array('/\s/','/;|#|\|/'), array('',','), stripslashes(get_option('cforms'.$no.'_email')) );
@@ -1921,7 +1926,7 @@ function cforms_menu() {
 	$tablesup = ($wpdb->get_var("show tables like '$wpdb->cformssubmissions'") == $wpdb->cformssubmissions)?true:false;
 	
 	if (function_exists('add_menu_page')) {
-		add_menu_page(__('cforms', 'cforms'), __('cforms', 'cforms'), 'manage_cforms', $plugindir.'/cforms-options.php');
+		add_menu_page(__('cforms II', 'cforms'), __('cforms II', 'cforms'), 'manage_cforms', $plugindir.'/cforms-options.php');
 	}
 	if (function_exists('add_submenu_page')) {
 		add_submenu_page($plugindir.'/cforms-options.php', __('Plugin Settings', 'cforms'), __('Plugin Settings', 'cforms'), 'manage_cforms', $plugindir.'/cforms-global-settings.php');

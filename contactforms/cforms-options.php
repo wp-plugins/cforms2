@@ -1128,7 +1128,7 @@ if ( get_option('cforms'.$no.'_header')=='' ) {
 		<fieldset class="cformsoptions" id="readnotify">
 			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('3rd Party Read-Notification Support', 'cforms') ?></p>
 
-			<p><?php _e('If you\'d like to utilize 3rd party email tracking such as <strong>readnotify.com</strong> or <strong>didtheyreadit.com</strong>, add the respective suffix (e.g.: <code class="codehighlight">.invisible.readnotify.com</code>) here:', 'cforms') ?></p>
+			<p><?php _e('If you\'d like to utilize 3rd party email tracking such as <strong>readnotify.com</strong> or <strong>didtheyreadit.com</strong>, add the respective suffix (e.g.: <code class="codehighlight">.readnotify.com</code>) here:', 'cforms') ?></p>
 
 			<div class="optionsbox">
 				<div class="optionsboxL"><label for="cforms_tracking"><strong><?php _e('Suffix for email tracking', 'cforms') ?></strong></label></div>
