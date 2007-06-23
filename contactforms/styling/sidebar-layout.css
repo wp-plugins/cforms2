@@ -320,7 +320,7 @@ p.failure 	{
 	margin:0!important;
 }
 
-.cform legend { 
+* html .cform legend { 
 	position:absolute; 
 	top: -10px; 
 	left: 10px; 
