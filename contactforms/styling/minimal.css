@@ -149,12 +149,12 @@ label.cf-group-after span {
 
 span.reqtxt,
 span.emailreqtxt { 
-	margin:1px 5px 0 98px;
-	font-size:0.9em;
-	display: -moz-inline-box; 
+	margin:0px 5px 7px 98px;
+	display: block; 
 	vertical-align:top;
 	color: #aaa;
 	font-size:0.7em;
+	line-height:1.2em;
 }
 
 
@@ -313,14 +313,7 @@ p.failure 	{
 /*                                                    */
 * html span.reqtxt,
 * html span.emailreqtxt { 
-	display: inline-block;  /*for ie6*/
-	line-height:1.2em;
-}
-*+html .cform label,
-*+html span.reqtxt,
-*+html span.emailreqtxt {
-	display: inline-block; /*for ie7*/
-	line-height:1.2em;
+	display: inline-block;
 }
 * html .cform fieldset.cf_hidden { 
 	border:none!important;
