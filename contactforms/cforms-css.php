@@ -111,16 +111,25 @@ if(!empty($_POST['save_css'])){
 											?>
 											<select style="cursor:pointer;" name="style"><?php
 							
+												$allCSS = array();
 												$dir = opendir($d);
 												while ( $dir && ($f = readdir($dir)) ) {
 												
 													if( eregi("\.css$",$f) ){
-															if( $f==$style )
-															    	echo '<option selected="selected">'.$f.'</option>'."\n";
-															else
-																	echo '<option>'.$f.'</option>';																		
+														array_push($allCSS, $f);
 													}
+
 												}
+
+												sort($allCSS);
+												foreach ( $allCSS as $f ) {
+												
+													if( $f==$style )
+													    	echo '<option selected="selected">'.$f.'</option>'."\n";
+													else
+															echo '<option>'.$f.'</option>';																		
+												}
+												
 												
 											?></select>
 									<?php } ?>																				
