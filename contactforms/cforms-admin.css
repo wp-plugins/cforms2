@@ -146,16 +146,16 @@ input.go			{ font-size:10px; height:22px; }
 #cformsdata 		{ }
 .areadesc			{ margin:5px 0 0 0; }
 
-.optionsbox 		{ clear:both; margin:1px auto; width:750px; font-size:11px; overflow:hidden; }
+.optionsbox 		{ clear:both; margin:1px auto; width:850px; font-size:11px; overflow:hidden; }
 .optionsboxL		{ float:left; text-align:right; width:166px; margin-right:10px; padding-top:2px; }
-.optionsboxR	 	{ float:left; width:450px; }
+.optionsboxR	 	{ float:left; width:550px; }
 .optionsbox input,
 .optionsbox textarea	{ font-size:11px; padding-top:2px; }
 .optionsbox input 		{ width:280px; }
 .optionsbox textarea	{ width:280px; height:80px; }
 .optionsbox textarea.errmsgbox { height:45px; }
 
-.optionsboxRxl 		{ float:left; width:550px; }
+.optionsboxRxl 		{ float:left; width:650px; }
 .optionsboxRxl pre  { margin-top:0; width:440px; background:#fafafa; }
 
 #cforms_cmsg,
