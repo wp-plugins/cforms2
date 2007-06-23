@@ -98,7 +98,7 @@ label.cf-after span {
 label.cf-group-after {
 	margin:0 0 0 2px;
 	width:60px;
-	text-align:left;
+	text-align:right;
 }
 label.cf-group-after span {
 	width:60px;
@@ -229,16 +229,22 @@ p.cf-sb {
 label.seccap {
 	margin-top: 6px;
 }
+
 label.secq,
 label.secq span {
-	margin-top: 2px;
-	width:194px;
+	display:inline;
+	width:auto;
 }
+label.secq {
+	vertical-align:middle;
+}
+
 input.secinput {
 	width:45px;
-	margin: 3px 0 0 0;
-	vertical-align:top;
+	margin: 3px 0 0 10px;
+	vertical-align:middle;
 }
+
 
 #cforms_captcha5,
 #cforms_captcha4,
@@ -249,6 +255,7 @@ input.secinput {
 	width:50px;
 	padding: 4px 4px;
 	margin: 0;
+	vertical-align:top;
 }
 
 img.captcha	{
@@ -345,8 +352,12 @@ p.failure 	{
 	margin-top:1px;
 }
 *+html input.cf-box-a,
-*+html input.cf-box-b,
+*+html input.cf-box-b {
+	background:none;  
+	margin-top:0;
+}
 * html input.cf-box-a,
 * html input.cf-box-b { 
+	background:none;
 	margin-top:0;
 }

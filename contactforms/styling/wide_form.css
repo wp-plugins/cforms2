@@ -145,12 +145,12 @@ label.cf-group-after span {
 
 span.reqtxt,
 span.emailreqtxt { 
-	display:-moz-inline-box; /*for mozilla*/
-	display:inline-block; /*for Opera & IE*/
+	display:block; /*for mozilla*/
 	font-size:9px;
 	vertical-align:top;
 	color:#888888;
-	text-align:left;
+	text-align:right;
+	margin-right:25px;
 }
 
 
@@ -220,16 +220,19 @@ p.cf-sb {
 label.seccap {
 	margin-top: 6px;
 }
+
 label.secq,
 label.secq span {
-	display:-moz-inline-box; /*for mozilla*/
-	display:inline-block; /*for Opera & IE*/
-	margin-top: 2px;
+	display:inline;
 }
+label.secq {
+	vertical-align:middle;
+}
+
 input.secinput {
 	width:45px;
-	margin: 3px 0 0 20px;
-	vertical-align:top;
+	margin: 3px 0 0 10px;
+	vertical-align:middle;
 }
 
 #cforms_captcha5,
@@ -241,6 +244,7 @@ input.secinput {
 	width:50px;
 	padding: 4px 4px;
 	margin: 0;
+	vertical-align:top;
 }
 
 img.captcha	{
@@ -327,8 +331,12 @@ p.failure 	{
 	margin-top:1px;
 }
 *+html input.cf-box-a,
-*+html input.cf-box-b,
+*+html input.cf-box-b{ 
+	background:none;
+	margin-top:0;
+}
 * html input.cf-box-a,
 * html input.cf-box-b { 
+	background:none;
 	margin-top:0;
 }

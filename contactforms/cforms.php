@@ -18,6 +18,7 @@ v5.0
 *) NOTE: The special input field "Email subject" is now obsolete, since both
 	message body and SUBJECT fully support default and custom variables
 
+*) feature: added a couple of CSS Themes
 *) feature: multiple upload fields in the same form now supported
 *) feature: 3rd party email tracking support, e.g. readnotify & didtheyreadit
 *) feature: basic widget support (make sure to double check Theme CSS!)
@@ -39,6 +40,7 @@ v5.0
 *) bugfix: critical javascript error when using more than 9 forms
 *) bugfix: regexp in non-ajax mode cause an error when using a slash '/'
 
+*) other: layout enhancements for all CSS Themes
 *) other: default variables fixed for auto confirmation message (subject & message)
 *) other: code clean up & major admin usability/accessibility improvements
 *) other: fixed leading _ in form object ID's

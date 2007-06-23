@@ -258,16 +258,17 @@ label.seccap {
 }
 label.secq,
 label.secq span {
-	display: inline;
-	margin-top: 3px;
-	width: auto;
-	text-align:right;
+	display:inline;
+	width:auto;
 }
+label.secq {
+	vertical-align:middle;
+}
+
 input.secinput {
-	width:60px;
-	margin: 0 0 0 10px;
-	padding:2px 0 2px 0;
-	vertical-align:top;
+	width:45px;
+	margin: 3px 0 0 10px;
+	vertical-align:middle;
 }
 
 #cforms_captcha5,
@@ -279,6 +280,7 @@ input.secinput {
 	width:50px;
 	padding: 4px 4px;
 	margin: 0;
+	vertical-align:top;
 }
 
 img.captcha	{
@@ -373,7 +375,9 @@ p.failure 	{
 	margin-top:1px;
 }
 *+html input.cf-box-a,
-*+html input.cf-box-b,
+*+html input.cf-box-b { 
+	margin-top:0;
+}
 * html input.cf-box-a,
 * html input.cf-box-b { 
 	margin-top:0;
