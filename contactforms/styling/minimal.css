@@ -174,7 +174,8 @@ input.cf-box-a,
 input.cf-box-b 	{ 
 	margin:1px 0 0 0; 
 	width:16px; 
-	border:none; 
+	border:none!important;
+	background:none!important;
 }
 
 input.cf-box-a 	{ 
@@ -344,7 +345,7 @@ p.failure 	{
 }
 *+html input.cf-box-a,
 *+html input.cf-box-b {
-	margin-top:3px;
+	margin-top:0px;
 	background:none;
 }
 * html input.cf-box-a,
@@ -353,3 +354,7 @@ p.failure 	{
 	margin-top:0px;
 	background:none;
 }
+*+html label.cf-after 	{
+	margin-top:2px;
+}
+
