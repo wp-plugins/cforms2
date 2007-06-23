@@ -2,14 +2,39 @@
 Copyright 2006-2007  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
-v5.0 cforms - contact form
+cforms II - v5.0
+*) NOTE: The extra settings for form ID's (in email messages) are obsolete,
+	this feature is now available via the default variable {ID} - see Help!
+*) NOTE: The special input field "Email subject" is now obsolete, since both
+	message body and SUBJECT fully support default and custom variables
+
+*) feature: added a couple of CSS Themes
+*) feature: multiple upload fields in the same form now supported
+*) feature: 3rd party email tracking support, e.g. readnotify & didtheyreadit
+*) feature: basic widget support (make sure to double check Theme CSS!)
+*) feature: alternative form action supported (please read config info!)
+*) feature: BCC to copy additional admin(s) 
 *) feature: additional themes: blue & green
+*) feature: full [additional] HTML formatting support for email messages
+
+*) bugfix: BACKUP & RESTORE fixed (not all fields were backed-up prev.)
+*) bugfix: "spacing between labels & data" error when number < than length(field name)
 *) bugfix: more CSS corrections
 *) bugfix: the use of single & double quotes fixed in FIELDSETS
 *) bugfix: one more single quote bug remedied in form labels
 *) bugfix: DB tracking of user verification input now consistent w/ and w/o Ajax mode
 *) bugfix: critical CAPTCHA issue resolved when more than one CAPTCHA fields are 
 			displayed on the same page
+*) bugfix: a mail server error would cause a bogus redirect and on top "hide" the actual
+			error making any troubleshooting virtually impossible
+*) bugfix: critical javascript error when using more than 9 forms
+*) bugfix: regexp in non-ajax mode cause an error when using a slash '/'
+
+*) other: layout enhancements for all CSS Themes
+*) other: default variables fixed for auto confirmation message (subject & message)
+*) other: code clean up & major admin usability/accessibility improvements
+*) other: fixed leading _ in form object ID's
+*) other: now validates for XHTML 1.0 "Strict", too
 
 v4.8 (bugfixes mostly)
 *) other: added optional credit text - if you're happy with cforms you may want to

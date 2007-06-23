@@ -3,10 +3,10 @@ Contributors: olivers
 Donate link: http://www.deliciousdays.com/
 Tags: ajax, email, secure, visitor, input, order, form, contact
 Requires at least: 1.6+
-Tested up to: 2.2
-Stable tag: 4.8
+Tested up to: 2.2.1
+Stable tag: 5.0
 
-cforms is a highly customizable, flexible and powerful contact form plugin, covering a variety of features from attachments to multi form management.
+cforms II is a highly customizable, flexible and powerful contact form plugin, covering a variety of features from attachments to multi form management.
 
 == Description ==
 
@@ -16,13 +16,16 @@ For a complete version history (new features, bug fixes etc.), see [here](http:/
 cforms is a highly customizable, flexible and powerful contact form plugin, covering a variety of use cases and features from attachments to multi form management, you can even have multiple forms on the same page!
 
 = Plugin Features =
-* Customizable auto confirmation message & form email **enhanced functionality**
-* Page redirection on successful form submission
+* **NEW: full HTML formatting support for email messages**
+* Customizable auto confirmation message & form email **(Variables!)**
+* Page redirection after successful form submission
+* **NEW: Alternative form action supported (please read config info!)**
 * Creates robust XHTML form code (no floats)
+* Alternative form action supported (please read config info!)
 * Full localization support (currently: English, German, Spanish)
 * Built-in CSS editor & theme chooser
-* **New predefined themes ('wide, no-border, big')**
-* File attachments (upload) **enhanced functionality**
+* **NEW: additional predefined CSS themes**
+* File attachments (upload) **now mulitple upload fields supported**
 * Multiple forms on one or many pages / posts
 * Ajax supported form submission (w/ graceful fall-back)
 * Multiple recipients per form (optionally selectable by visitor)
@@ -31,6 +34,8 @@ cforms is a highly customizable, flexible and powerful contact form plugin, cove
 * Backup & Restore of individual forms
 * Cloning, duplication of forms
 * Tracking of submitted data per DB (unique form submission IDs)
+* **NEW: BCC to copy additional admin(s)**
+* 3rd party email tracking support, e.g. readnotify & didtheyreadit
 * SPAM protection (Q & A + Captcha)
 * Submission status (success/failure) optionally via Alert Box
 * Form validation & *regular expressions*
@@ -46,15 +51,15 @@ cforms is a highly customizable, flexible and powerful contact form plugin, cove
 	* grouped check boxes
 	* radio buttons
 * ...and a few special ones:
-	* subject input field (determins the subject of the form email)
 	* "CC me" check box for visitors
 	* multiple form recipient (drop down list)
 	* visitor verification Q&A
 	* Captcha
 * Default values for single/multi-line input fields (w/ auto clear,reset)
 * Fully integrated with TinyMCE & std editor (buttons)
+* **NEW:Basic widget support **
 * Clean separation of CSS styling and form code
-* Validates
+* Validates XHTML 1.0 Strict
 
 = Localization =
 cforms has been revised to fully support WP localization. If you'd like to contribute a language translation, please get in touch. If you have suggestions or would like to point out typos etc, please contact the actual author (see list below) of the respective localization.

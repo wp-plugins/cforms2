@@ -1417,6 +1417,7 @@ function cforms($args = '',$no = '') {
 
 
 		//Label ID's
+		$labelIDx = '';
 		$labelID = (get_option('cforms_labelID')=='1')?' id="label-'.$no.'-'.$i.'"':'';
 		
 
@@ -1496,7 +1497,7 @@ function cforms($args = '',$no = '') {
 
 			case "upload":
 	  			$upload=true;  // set upload flag for ajax suppression!
-				$field = '<input ' . $disabled . ' type="file" name="cf_uploadfile'.$no.'[]" id="cf_uploadfile'.$no.'[]" class="cf_upload ' . $field_class . '"/>';
+				$field = '<input ' . $disabled . ' type="file" name="cf_uploadfile'.$no.'[]" id="cf_uploadfile'.$no.'" class="cf_upload ' . $field_class . '"/>';
 				break;
 
 			case "textonly":
@@ -1602,11 +1603,13 @@ function cforms($args = '',$no = '') {
 	                        $j++;
 	                    }
 						
+						if ( $labelID<>'' ) $labelIDx = substr($labelID,0,-1) . $id . '"';
+
 						if ( $opt[0]=='' )
 							$field .= '<br />';
 						else
 							$field .= '<input ' . $disabled . ' type="checkbox" id="cf'.$no.'_field_'.$i. $id . '" name="cf'.$no.'_field_' . $i . '[]" value="'.$opt[1].'" '.$checked.' class="cf-box-b"/>'.
-											'<label ' . $disabled . $labelID . ' for="cf'.$no.'_field_'. $i . ($id++) . '" class="cf-group-after"><span>'.$opt[0] . "</span></label>";
+											'<label ' . $disabled . $labelIDx . ' for="cf'.$no.'_field_'. $i . ($id++) . '" class="cf-group-after"><span>'.$opt[0] . "</span></label>";
 											
 					}
 				$field .= $nl . $indent . $tab . $tab . '</li>';
@@ -1682,8 +1685,10 @@ function cforms($args = '',$no = '') {
 						}	else
 								if ( $opt[1]==$field_value ) $checked = 'checked="checked"';
 						
+						if ( $labelID<>'' ) $labelIDx = substr($labelID,0,-1) . $id . '"';
+						
 						$field .= '<input ' . $disabled . ' type="radio" id="cf'.$no.'_field_'.$i. $id . '" name="cf'.$no.'_field_' . $i . '" value="'.$opt[1].'" '.$checked.' class="cf-box-a'.(($second)?' cformradioplus':'').'"/>'.
-											'<label ' . $disabled . $labelID . ' for="cf'.$no.'_field_'. $i . ($id++) . '" class="cf-after"><span>'.$opt[0] . "</span></label>$break";
+											'<label ' . $disabled . $labelIDx . ' for="cf'.$no.'_field_'. $i . ($id++) . '" class="cf-after"><span>'.$opt[0] . "</span></label>$break";
 											
 						$second = true;
 					}
