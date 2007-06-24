@@ -13,6 +13,11 @@
 	border:none;
 	background:none; }
 
+.cform fieldset.cf_hidden { 
+	padding:0!important;
+	margin:0!important;
+}
+
 .cform legend { 
 	margin-left:10px;
 	padding: 0 2px; 
@@ -305,7 +310,12 @@ p.failure 	{
 /*                                                    */
 /*  Other: browser hacks                              */
 /*                                                    */
-* html .cform legend { 
+* html .cform fieldset.cf_hidden { 
+	padding:0!important;
+	margin:0!important;
+}
+
+.cform legend { 
 	position:absolute; 
 	top: -10px; 
 	left: 10px; 

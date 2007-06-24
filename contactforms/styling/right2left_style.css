@@ -28,6 +28,11 @@ ol.cf-ol li.infotext { font-size:0.9em; color:#de8a0c; }
 	border:none; 
 	background:white; }
 
+.cform fieldset.cf_hidden { 
+	padding:0!important;
+	margin:0!important;
+}
+
 .cform legend { 
 	display:none;
 }
@@ -316,7 +321,12 @@ p.failure 	{
 *+html span.emailreqtxt {
 	display: inline-block; /*for ie7*/
 }
-* html .cform legend { 
+* html .cform fieldset.cf_hidden { 
+	padding:0!important;
+	margin:0!important;
+}
+
+.cform legend { 
 	position:absolute; 
 	top: -10px; 
 	left: 10px; 

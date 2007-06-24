@@ -30,6 +30,11 @@
 	background: url(../images/customform_dark_bg_top.jpg) no-repeat top left;
 	}
 
+.cform fieldset.cf_hidden { 
+	padding:0!important;
+	margin:0!important;
+}
+
 .cform legend { 
 	display:none;
 }
@@ -314,7 +319,12 @@ p.failure 	{
 *+html span.emailreqtxt {
 	display: inline-block; /*for ie7*/
 }
-* html .cform legend { 
+* html .cform fieldset.cf_hidden { 
+	padding:0!important;
+	margin:0!important;
+}
+
+.cform legend { 
 	position:absolute; 
 	top: -10px; 
 	left: 10px; 
