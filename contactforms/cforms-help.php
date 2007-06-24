@@ -157,7 +157,7 @@ if(!current_user_can('manage_cforms')) {
 			</tr>
 			<tr>
 				<td class="bleft"><?php _e('Example:', 'cforms'); ?></td><td class="bright">
-					<code class="codehighlight"><?php _e('Your age#12-18|kiddo#19-30|young#31-45#45+|older', 'cforms'); ?></code></td>
+					<code class="codehighlight"><?php _e('Your age#12-18|kiddo#19 to 30|young#31 to 45#45+ |older', 'cforms'); ?></code></td>
 			</tr>
 			<tr>
 				<td class="ball" colspan="2">
@@ -176,7 +176,7 @@ if(!current_user_can('manage_cforms')) {
 			</tr>			
 			<tr>
 				<td class="ball" colspan="2">
-					<?php _e('<strong>Select box marked "Is Required":</strong> Using a minus symbol <code class="codehighlight">-</code> as the value (after <span style="color:red; font-weight:bold;">|</span>), will mark an option as "not valid"! Example:<br /><code class="codehighlight">Your age#Please pick your age group|-#12-18|kiddo#19-30|young#31-45#45+|older</code>. <br />"Please pick..." is shown but not considered a valid value.', 'cforms'); ?>
+					<?php _e('<strong>Select box marked "Is Required":</strong> Using a minus symbol <code class="codehighlight">-</code> as the value (after <span style="color:red; font-weight:bold;">|</span>), will mark an option as "not valid"! Example:<br /><code class="codehighlight">Your age#Please pick your age group|-#12 to 18|kiddo#19 to 30|young#31 to 45#45+ |older</code>. <br />"Please pick..." is shown but not considered a valid value.', 'cforms'); ?>
 				</td>
 			</tr>			
 		</table>
@@ -197,7 +197,7 @@ if(!current_user_can('manage_cforms')) {
 			</tr>
 			<tr>
 				<td class="bleft"><?php _e('Example:', 'cforms'); ?></td><td class="bright">
-					<code class="codehighlight"><?php _e('Please choose#red#blue#green#yellow#orange#pink', 'cforms'); ?></code></td>
+					<code class="codehighlight"><?php _e('Pick#red#blue#green#yellow#orange', 'cforms'); ?></code></td>
 			</tr>
 			<tr>
 				<td class="ball" colspan="2">
@@ -269,7 +269,7 @@ if(!current_user_can('manage_cforms')) {
 			</tr>
 			<tr>
 				<td class="bleft"><?php _e('Example:', 'cforms'); ?></td><td class="bright">
-					<code class="codehighlight"><?php _e('Select Color#green|00ff00#red|ff0000#purple|8726ac#yellow|fff90f', 'cforms'); ?></code></td>
+					<code class="codehighlight"><?php _e('Select Color#green|00ff00 #red|ff0000 #purple|8726ac #yellow|fff90f', 'cforms'); ?></code></td>
 			</tr>
 			<tr>
 				<td class="ball" colspan="2">

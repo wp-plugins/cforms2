@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-06-24 00:14+0200\n"
+"POT-Creation-Date: 2007-06-24 07:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -784,7 +784,7 @@ msgid ""
 msgstr ""
 
 #: cforms-help.php:160
-msgid "Your age#12-18|kiddo#19-30|young#31-45#45+|older"
+msgid "Your age#12-18|kiddo#19 to 30|young#31 to 45#45+ |older"
 msgstr ""
 
 #: cforms-help.php:164
@@ -811,8 +811,8 @@ msgid ""
 "<code class=\"codehighlight\">-</code> as the value (after <span style="
 "\"color:red; font-weight:bold;\">|</span>), will mark an option as \"not "
 "valid\"! Example:<br /><code class=\"codehighlight\">Your age#Please pick "
-"your age group|-#12-18|kiddo#19-30|young#31-45#45+|older</code>. <br />"
-"\"Please pick...\" is shown but not considered a valid value."
+"your age group|-#12 to 18|kiddo#19 to 30|young#31 to 45#45+ |older</code>. "
+"<br />\"Please pick...\" is shown but not considered a valid value."
 msgstr ""
 
 #: cforms-help.php:190
@@ -820,7 +820,7 @@ msgid "Multi select boxes"
 msgstr ""
 
 #: cforms-help.php:200
-msgid "Please choose#red#blue#green#yellow#orange#pink"
+msgid "Pick#red#blue#green#yellow#orange"
 msgstr ""
 
 #: cforms-help.php:204
@@ -888,7 +888,7 @@ msgid ""
 msgstr ""
 
 #: cforms-help.php:272
-msgid "Select Color#green|00ff00#red|ff0000#purple|8726ac#yellow|fff90f"
+msgid "Select Color#green|00ff00 #red|ff0000 #purple|8726ac #yellow|fff90f"
 msgstr ""
 
 #: cforms-help.php:276
