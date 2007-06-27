@@ -10,7 +10,7 @@ cforms is a highly customizable, flexible and powerful contact form plugin, cove
 
 == Description ==
 
-For a complete version history (new features, bug fixes etc.), see [here](http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1).
+For a complete version history (new features, bug fixes etc.), see [here](http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1)!
 
 [Next Release (v5.0) Preview](http://www.deliciousdays.com/cforms-forum?forum=2&topic=135&page=1)
 
