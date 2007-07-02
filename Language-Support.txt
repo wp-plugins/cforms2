@@ -23,4 +23,4 @@ cforms currently supports the following languages:
 *) English (default)  Author: Oliver Seidel        oliver.seidel@deliciousdays.com
 *) German             Author: Sven Wappler         wappler@wappler.eu
 *) Spanish            Author: Samuel Aguilera      samuel.aguilera@agamum.net
-*) Hungarian          Author: Ungvári Béla         ungvarib@t-online.hu
+*) Hungarian          Author: Ungvári Béla         life-univ@freemail.hu
