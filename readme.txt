@@ -22,7 +22,7 @@ cforms is a highly customizable, flexible and powerful contact form plugin, cove
 * **NEW: Alternative form action supported (please read config info!)**
 * Creates robust XHTML form code (no floats)
 * Alternative form action supported (please read config info!)
-* Full localization support (currently: English, German, Spanish)
+* Full localization support (currently: English, German, Spanish, Hungarian)
 * Built-in CSS editor & theme chooser
 * **NEW: additional predefined CSS themes**
 * File attachments (upload) **now mulitple upload fields supported**
@@ -67,6 +67,7 @@ cforms has been revised to fully support WP localization. If you'd like to contr
 * Currently, cforms includes the following language packs (besides English):
 	* **German** \* Author: [Sven Wappler](http://www.wordpressbox.de/plugins/cforms/)
 	* **Spanish** \* Author: [Samuel Aguilera](http://agamum.net/blog/archivo/plugin-cforms-en-espanol-formularios-para-tu-wordpress.xhtml)
+	* **Hungarian** \* Author: [Ungvári Béla](http://www.deliciousdays.com/download/cformsII-v5-hu_hu.zip)
 
 == Installation ==
 
