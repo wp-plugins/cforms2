@@ -2,6 +2,12 @@
 Copyright 2006-2007  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
+cforms II - v5.1
+*) re-introduced feature: FROM: address can again be changed via UI, BE CAREFUL!
+*) feature: added hook for outside processing/manipulation of form data
+*) bugfix: Outlook (especially 2007) requires special HTML formatting
+*) other: bit of code clean up here and there
+
 cforms II - v5.0
 *) NOTE: The extra settings for form ID's (in email messages) are obsolete,
 	this feature is now available via the default variable {ID} - see Help!
