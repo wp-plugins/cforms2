@@ -15,6 +15,9 @@ For a complete version history (new features, bug fixes etc.), see [here](http:/
 = Description =
 cforms is a highly customizable, flexible and powerful contact form plugin, covering a variety of use cases and features from attachments to multi form management, you can even have multiple forms on the same page!
 
+= Note: =
+5.1 is only a small update to 5.0 and may only be of interest to you if you **1.** would like to change the **FROM:** address **2.** want to send the form **data to a 3rd party** system or **3.** experience the '**ugly HTML Outlook**' syndrome.
+
 = Plugin Features =
 * **NEW: full HTML formatting support for email messages**
 * Customizable auto confirmation message & form email **(Variables!)**
