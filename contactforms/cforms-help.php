@@ -493,7 +493,7 @@ if(!current_user_can('manage_cforms')) {
 		
 		<p style="margin:10px 30px;"><?php _e('A regular expression (regex or regexp for short) is a special text string for describing a search pattern, according to certain syntax rules. Many programming languages support regular expressions for string manipulation, you can use them here to validate user input. Single/Multi line input fields:', 'cforms'); ?></p>
 
-		<img class="helpimg" src="<?php echo $cforms_root; ?>/images/example-22222222222.png"  alt=""/>
+		<!-- no img for regexps-->
 		<table class="hf" cellspacing="2" border="4" width="95%">
 			<tr>
 				<td class="bleft"><span class="abbr" title="<?php _e('Entry format for Field Name', 'cforms'); ?>"><?php _e('Format:', 'cforms'); ?></span></td>
