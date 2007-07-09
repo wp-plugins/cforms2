@@ -1,5 +1,5 @@
 // Hungarian lang variables
 tinyMCE.addToLang('cforms', {
-desc : 'kapcsolati ûrlap hozzáadása'
+desc : 'cforms kapcsolati &#369;rlap hozz&aacute;ad&aacute;sa'
 } );
 
