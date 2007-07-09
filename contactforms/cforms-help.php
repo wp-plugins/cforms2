@@ -306,7 +306,7 @@ if(!current_user_can('manage_cforms')) {
 		<table class="hf" cellspacing="2" border="4">
 			<tr>
 				<td class="bleft"><span class="abbr" title="<?php _e('Entry format for Field Name', 'cforms'); ?>"><?php _e('Format:', 'cforms'); ?></span></td>
-				<td class="bright"><?php _e('field name<u>left</u><span style="color:red; font-weight:bold;">#</span>field name <u>right</u>', 'cforms'); ?></td>
+				<td class="bright"><?php _e('field name <u>left</u><span style="color:red; font-weight:bold;">#</span>field name <u>right</u>', 'cforms'); ?></td>
 			</tr>
 			<tr>
 				<td class="bleft"><?php _e('Example:', 'cforms'); ?></td><td class="bright">
