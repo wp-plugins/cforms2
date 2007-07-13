@@ -2,6 +2,18 @@
 Copyright 2006-2007  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
+cforms II - v5.2
+*) feature: 	support for alternative SMTP server
+   !! Note:     Due to a obvious WP bug, class-smtp.php needs to be renamed to class.smtp.php
+*) feature:		post processing of submitted data (see documentation)
+*) enhancement: simplified, and this made non-HTML (=TXT) emails more robust
+*) enhancement: improved layout of textarea data (HTML) in admin emails	
+*) bugfix:      stopped leaking HTML in TXT part of message
+*) bugfix:      fixed CC: feature for non-Ajax submissions
+*) other:       re-implemented ajax support now utilizing POST to
+                avoid any input limitations (# of characters)
+*) other:       more robust email address/name processing
+
 cforms II - v5.1
 *) re-introduced feature: FROM: address can again be changed via UI, BE CAREFUL!
 *) feature: added hook for outside processing/manipulation of form data

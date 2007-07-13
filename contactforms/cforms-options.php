@@ -1065,7 +1065,8 @@ if ( get_option('cforms'.$no.'_fromemail') == '' )
 				<div class="optionsboxR"><input type="checkbox" id="cforms_noattachments" name="cforms_noattachments" <?php if(get_option('cforms'.$no.'_noattachments')=="1") echo "checked=\"checked\""; ?>/><br /><?php echo str_replace('[url]','?page='. $plugindir.'/cforms-global-settings.php#tracking',__('<u>Note</u>: Attachments are stored on the server &amp; can be accessed via the <a href="[url]">cforms tracking</a> tables.', 'cforms')); ?></div>
 			</div>
 
-			<p style="margin-top:30px;"><?php echo str_replace('[url]','?page='. $plugindir.'/cforms-help.php#variables',__('Below you\'ll find the settings for both the <strong>text part</strong> of the admin email as well as the <strong>optional HTML part</strong> of the message. Both areas permit the use of any of the <strong>pre-defined variables</strong> or <strong>data from input fields</strong>, <a href="[url]">here is</a> how (including HTML message examples!).', 'cforms')); ?></p>
+			<p style="margin-top:30px;"><?php echo str_replace('[url]','?page='. $plugindir.'/cforms-help.php#variables',__('Below you\'ll find the settings for both the <strong>TXT part</strong> of the admin email as well as the <strong>optional HTML part</strong> of the message. Both areas permit the use of any of the <strong>pre-defined variables</strong> or <strong>data from input fields</strong>, <a href="[url]">here is</a> how (including HTML message examples!).', 'cforms')); ?></p>
+			<p class="ex"><?php _e('<strong>IF</strong> for whatever reason the received, HTML formatted email seems broken, feel free to <label for="cforms_header_html"><u>clear the entire HTML message parts</u></label> to enforce TXT ONLY emails to be sent.', 'cforms'); ?></p>
 
 			<div class="optionsbox">
 				<div class="optionsboxL"><label for="cforms_header"><?php _e('<strong>Admin TEXT message</strong> part<br />(header)', 'cforms') ?></label></div>

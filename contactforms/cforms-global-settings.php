@@ -14,6 +14,9 @@ $wpdb->cformssubmissions	= $wpdb->prefix . 'cformssubmissions';
 $wpdb->cformsdata       	= $wpdb->prefix . 'cformsdata';
 
 
+// SMPT sever configured?
+$smtpsettings=explode('$#$',get_option('cforms_smtp'));
+
 ### Check Whether User Can Manage Database
 if(!current_user_can('manage_cforms')) {
 	die(__('Access Denied','cforms'));
@@ -85,6 +88,7 @@ if( isset($_REQUEST['deleteall']) ) {  // erase all cforms data
 		delete_option('cforms_show_quicktag');
     	delete_option('cforms_codeerr');
       	delete_option('cforms_database');
+      	delete_option('cforms_smtp');
 		
 		delete_option('cforms_upload_err1');
 		delete_option('cforms_upload_err2');
@@ -125,13 +129,21 @@ if( isset($_REQUEST['deleteall']) ) {  // erase all cforms data
 
 
 // Update Settings
-if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUEST['Submit3']) || isset($_REQUEST['Submit4']) ) {
+if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUEST['Submit3']) || isset($_REQUEST['Submit4']) || isset($_REQUEST['Submit5']) ) {
 
 //	update_option('cforms_linklove', $_REQUEST['cforms_linklove']?'1':'0');
 	update_option('cforms_show_quicktag', $_REQUEST['cforms_show_quicktag']?'1':'0');
 	update_option('cforms_sec_qa', $_REQUEST['cforms_sec_qa'] );
 	update_option('cforms_codeerr', $_REQUEST['cforms_codeerr']);
 	update_option('cforms_database', $_REQUEST['cforms_database']?'1':'0');
+
+	$smtpsettings[0]=$_REQUEST['cforms_smtp_onoff']?'1':'0';
+	$smtpsettings[1]=$_REQUEST['cforms_smtp_host'];
+	$smtpsettings[2]=$_REQUEST['cforms_smtp_user'];
+	if ( !preg_match('/^\*+$/',$_REQUEST['cforms_smtp_pass']) ) {
+		$smtpsettings[3]=$_REQUEST['cforms_smtp_pass'];
+		}
+	update_option('cforms_smtp', implode('$#$',$smtpsettings) );
 
 	update_option('cforms_upload_err1', $_REQUEST['cforms_upload_err1']);
 	update_option('cforms_upload_err2', $_REQUEST['cforms_upload_err2']);
@@ -189,6 +201,44 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 
 	<form id="cformsdata" name="mainform" method="post" action="">
 	 <input type="hidden" name="cforms_database_new" value="<?php if(get_option('cforms_database')=="0") echo 'true'; ?>"/>
+
+		<fieldset id="smtp" class="cformsoptions">
+			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('SMTP Server Settings', 'cforms') ?></p>
+
+			<p><?php _e('In case your web hosting provider doesn\'t support the <strong>native PHP mail()</strong> command feel free to configure cforms to utilize an external SMTP mail server to deliver the emails.', 'cforms') ?></p>
+
+			<p class="ex"><?php echo str_replace('[url]','http://phpmailer.sourceforge.net/',__('This requires either the latest WP code (coming with the <strong>phpmailer class</strong>) or the <a href="[url]">respective files</a> to be copied to your wp-include/ directory.', 'cforms')) ?></p>
+
+			<?php
+				if ( $smtpsettings[0]=='1' ) {
+					if ( !file_exists(ABSPATH . WPINC . '/class-phpmailer.php') )
+						echo '<div id="message" class="updated fade"><p>'.__('<strong>ERROR</strong>: Can\'t find "<strong>class-phpmailer.php</strong>" in your WP include directory!<br/>If you intend to use an specific STMP server, please make sure that your WP installation is up-to-date and supports the <i>phpmailer</i> class.', 'cforms').'</p></div>';
+				}
+			?>
+			
+			<div class="optionsbox">
+				<div class="optionsboxL"></div>
+				<div class="optionsboxR"><input type="checkbox" id="cforms_smtp_onoff" name="cforms_smtp_onoff" <?php if($smtpsettings[0]=="1") echo "checked=\"checked\""; ?>/><label for="cforms_smtp_onoff"><?php _e('Enable specific SMTP server for relaying emails.', 'cforms') ?></label></div>
+			</div>
+
+			<div class="optionsbox" style="margin-top:15px;">
+				<div class="optionsboxL"><label for="cforms_smtp_host"><strong><?php _e('SMTP server address', 'cforms'); ?></strong></label></div>
+				<div class="optionsboxR"><input type="text" id="cforms_smtp_host" name="cforms_smtp_host" value="<?php echo stripslashes(htmlspecialchars($smtpsettings[1])); ?>"/></div>
+			</div>
+			<div class="optionsbox">
+				<div class="optionsboxL"><label for="cforms_smtp_user"><strong><?php _e('Username', 'cforms'); ?></strong></label></div>
+				<div class="optionsboxR"><input type="text" id="cforms_smtp_user" name="cforms_smtp_user" value="<?php echo stripslashes(htmlspecialchars($smtpsettings[2])); ?>"/></div>
+			</div>
+			<div class="optionsbox">
+				<div class="optionsboxL"><label for="cforms_smtp_pass"><strong><?php _e('Password', 'cforms'); ?></strong></label></div>
+				<div class="optionsboxR"><input type="text" id="cforms_smtp_pass" name="cforms_smtp_pass" value="<?php echo str_repeat('*',strlen($smtpsettings[3])); ?>"/><br/><?php _e('Please note that in a normal WP environment you do not need to configure these settings!', 'cforms') ?></div>
+			</div>
+
+
+			<p class="updtsetting"><input type="submit" name="Submit5" class="allbuttons updbutton" value="<?php _e('Update Settings &raquo;', 'cforms'); ?>"/></p>
+			
+		</fieldset>
+
 
 		<fieldset id="upload" class="cformsoptions">
 			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><?php _e('Global File Upload Settings', 'cforms') ?></p>

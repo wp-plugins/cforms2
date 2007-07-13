@@ -12,18 +12,25 @@ Author URI: http://www.deliciousdays.com
 Copyright 2006  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
-v5.2
-*) enhancement: made non HTML mails more robust
-*) document above!
-*) document hook
-
+cforms II - v5.2
+*) feature: 	support for alternative SMTP server
+   !! Note:     Due to a obvious WP bug, class-smtp.php needs to be renamed to class.smtp.php
+*) feature:		post processing of submitted data (see documentation)
+*) enhancement: simplified, and this made non-HTML (=TXT) emails more robust
+*) enhancement: improved layout of textarea data (HTML) in admin emails	
+*) bugfix:      stopped leaking HTML in TXT part of message
+*) bugfix:      fixed CC: feature for non-Ajax submissions
+*) other:       re-implemented ajax support now utilizing POST to
+                avoid any input limitations (# of characters)
+*) other:       more robust email address/name processing
 */
 
 load_plugin_textdomain('cforms');
 
-//http://trac.wordpress.org/ticket/3002
+### http://trac.wordpress.org/ticket/3002
 $plugindir   = dirname(plugin_basename(__FILE__));
 $cforms_root = get_settings('siteurl') . '/wp-content/plugins/'.$plugindir;
+
 
 ### db settings
 $wpdb->cformssubmissions	= $wpdb->prefix . 'cformssubmissions';
@@ -33,7 +40,24 @@ require		(dirname(__FILE__) . '/buttonsnap.php');
 require_once(dirname(__FILE__) . '/editor.php');
 include_once(dirname(__FILE__) . '/wp.php');
 
-//need this for captchas
+
+### SMPT sever configured?
+$smtpsettings=explode('$#$',get_option('cforms_smtp'));
+
+if ( ABSPATH=='' || WPINC=='' ) {
+	define('ABSPATH', substr(dirname(__FILE__),0,strpos(dirname(__FILE__),'/wp-includes')) );
+	define('WPINC', '/wp-includes/');
+} 
+
+if ( $smtpsettings[0]=='1' ) {
+	if ( file_exists(ABSPATH . WPINC . '/class-phpmailer.php') )
+		require_once ABSPATH . WPINC . '/class-phpmailer.php';
+	else
+		$smtpsettings[0]=='0';
+}
+
+
+### need this for captchas
 session_start();
 
 ### download form settings or tracked form data ??
@@ -296,6 +320,99 @@ function check_cust_vars($m,$t) {
 	
 }
 
+// phpmailer support
+function cforms_phpmailer( $no, $frommail, $field_email, $to, $vsubject, $message, $formdata, $htmlmessage, $htmlformdata, $fileext='' ) {	
+		global $smtpsettings;
+		
+		$mail = new PHPMailer();
+		$mail->ClearAllRecipients();
+		$mail->ClearAddresses();
+		$mail->ClearAttachments(); 
+
+		$mail->PluginDir=ABSPATH.WPINC.'/'; 
+
+		$mail->IsSMTP();                    // send via SMTP
+		$mail->Host     = $smtpsettings[1]; // SMTP servers
+		if ( $smtpsettings[2]<>''){
+			$mail->SMTPAuth = true;         // turn on SMTP authentication
+			$mail->Username = $smtpsettings[2]; // SMTP username
+			$mail->Password = $smtpsettings[3]; // SMTP password
+		}
+
+
+		//from
+		if( preg_match('/([\w-\.]+@([\w-]+\.)+[\w-]{2,4})/',$frommail,$temp) ) 
+			$mail->From     = $temp[0];
+		
+		if( preg_match('/(.*)\s+(([\w-\.]+@|<)).*/',$frommail,$temp2) ) 
+			$mail->FromName = str_replace('"','',$temp2[1]);
+		else
+			$mail->FromName = $temp[0];
+		
+		//reply-to
+		if( preg_match('/([\w-\.]+@([\w-]+\.)+[\w-]{2,4})/',$field_email,$temp) ) {
+			if ( preg_match('/(.*)\s+(([\w-\.]+@|<)).*/',$field_email,$temp2) )
+				$mail->AddReplyTo($temp[0] ,str_replace('"','',$temp2[1]) );				
+			else
+				$mail->AddReplyTo($temp[0]);		
+		}
+
+		//bcc
+		if( preg_match('/[\w-\.]+@([\w-]+\.)+[\w-]{2,4}/',stripslashes(get_option('cforms'.$no.'_bcc')),$temp) )
+			$mail->AddBCC($temp[0]);
+
+		//to
+		if( preg_match('/[\w-\.]+@([\w-]+\.)+[\w-]{2,4}/',$to,$temp) )
+			$mail->AddAddress($temp[0]);
+
+
+		if ($htmlmessage<>'') {     // send as HTML
+			$htmlmessage = str_replace('=3D','=',$htmlmessage);  //remove 3D's
+			$htmlformdata = str_replace('=3D','=',$htmlformdata);  //remove 3D's, 
+			$mail->IsHTML(true);        
+			$mail->Body     =  "<HTML>\n".$styles."<BODY>".stripslashes($htmlmessage).((substr(get_option('cforms'.$no.'_formdata'),1,1)=='1'&&$htmlformdata<>'')?$eol.$htmlformdata:'')."\n</BODY></HTML>\n";
+			$mail->AltBody  =  stripslashes($message).((substr(get_option('cforms'.$no.'_formdata'),0,1)=='1'&&$formdata<>'')?$eol.$formdata:'');
+		}
+		else
+			$mail->Body     =  stripslashes($message).((substr(get_option('cforms'.$no.'_formdata'),0,1)=='1'&&$formdata<>'')?$eol.$formdata:'');
+		
+		// possibly add attachment with indiv. mime types
+		if ( $fileext<>'' && count($_FILES['cf_uploadfile'.$no]['tmp_name']) > 0 && isset($_FILES['cf_uploadfile'.$no]) && !get_option('cforms'.$no.'_noattachments') ) {
+
+		 		$all_mime = array("txt"=>"text/plain", "htm"=>"text/html", "html"=>"text/html", "gif"=>"image/gif", "png"=>"image/x-png",
+		 						 "jpeg"=>"image/jpeg", "jpg"=>"image/jpeg", "tif"=>"image/tiff", "bmp"=>"image/x-ms-bmp", "wav"=>"audio/x-wav",
+		 						 "mpeg"=>"video/mpeg", "mpg"=>"video/mpeg", "mov"=>"video/quicktime", "avi"=>"video/x-msvideo",
+		 						 "rtf"=>"application/rtf", "pdf"=>"application/pdf", "zip"=>"application/zip", "hqx"=>"application/mac-binhex40",
+		 						 "sit"=>"application/x-stuffit", "exe"=>"application/octet-stream", "ppz"=>"application/mspowerpoint",
+								 "ppt"=>"application/vnd.ms-powerpoint", "ppj"=>"application/vnd.ms-project", "xls"=>"application/vnd.ms-excel",
+								 "doc"=>"application/msword");
+
+				for ( $filefield=0; $filefield < count($_FILES['cf_uploadfile'.$no][name]); $filefield++) {
+					if ( $_FILES['cf_uploadfile'.$no]['size'][$filefield] > 0 ){
+						$mime = (!$all_mime[$fileext[$filefield]])?'application/octet-stream':$all_mime[$fileext[$filefield]];
+						$mail->AddAttachment($_FILES['cf_uploadfile'.$no]['tmp_name'][$filefield], $_FILES['cf_uploadfile'.$no]['name'][$filefield],'base64',$mime); // optional name 
+					}				
+					
+				}
+			
+ 		}
+		
+		$mail->Subject  = $vsubject;		
+		$sentadmin      = $mail->Send();
+		
+		if ($sentadmin) 
+			return true;
+		else 
+			return $mail->ErrorInfo;
+}
+
+
+
+// Common HTML message information 
+$styles  = "<HEAD><style><!--\n";
+$styles .= ".fs-td { font-weight:bold; font-size:1.2em; border-bottom:1px solid #888; padding-top:15px; }\n";
+$styles .= ".data-td { font-weight:bold; padding-right:20px; }\n";
+$styles .= "--></style></HEAD>\n";	
 
 
 //
@@ -303,7 +420,7 @@ function check_cust_vars($m,$t) {
 //
 function cforms_submitcomment($content) {
 
-	global $wpdb, $subID;
+	global $wpdb, $subID, $styles, $smtpsettings;
 
 	$segments = explode('$#$', $content);
 	$params = array();
@@ -421,7 +538,7 @@ function cforms_submitcomment($content) {
  			if ( $field_type == "textarea" ) {
 					$field_name = "\n" . $field_name;
 					$value = "\n" . $value . "\n";
-					$htmlvalue = "<pre>" . $value . "</pre>";
+					$htmlvalue = str_replace("\n","<br/>\n",$value);
 			}
 
 			// just for looks:rest
@@ -445,7 +562,7 @@ function cforms_submitcomment($content) {
 	//
 	//reply to all email recipients
 	//
-	$replyto = preg_replace( array('/\s/','/;|#|\|/'), array('',','), stripslashes(get_option('cforms'.$no.'_email')) );
+	$replyto = preg_replace( array('/;|#|\|/'), array(','), stripslashes(get_option('cforms'.$no.'_email')) );
 
 	// multiple recipients? and to whom is the email sent? to_one = picked recip.
 	if ( $to_one <> "-1" ) {
@@ -521,7 +638,7 @@ function cforms_submitcomment($content) {
 	
 	// need to add form data summary or is all in the header anyway?
 	if(substr(get_option('cforms'.$no.'_formdata'),0,1)=='1')
-		$fmessage .= $eol . $formdata;
+		$fmessage .= $eol . $formdata . $eol;
 
 
 	// HTML text
@@ -538,10 +655,7 @@ function cforms_submitcomment($content) {
 
 		$fmessage .= "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">"  . $eol;
 		$fmessage .= "<HTML>" . $eol;
-		$fmessage .= "<style><!--" . $eol;
-		$fmessage .= ".fs-td { font-weight:bold; font-size:1.2em; border-bottom:1px solid #888; padding-top:15px; }" . $eol;	
-		$fmessage .= ".data-td { font-weight:bold; padding-right:20px; }" . $eol;	
-		$fmessage .= "--></style>" . $eol;
+		$fmessage .= $styles;
 		$fmessage .= "<BODY>" . $eol;
 
 		$fmessage .= stripslashes($htmlmessage);
@@ -560,8 +674,14 @@ function cforms_submitcomment($content) {
 	$vsubject = check_default_vars($vsubject,$no);
 	$vsubject = check_cust_vars($vsubject,$track);
 
-		
-	if( ($sentadmin=@mail($to, stripslashes($vsubject), stripslashes($fmessage), $headers)) )
+
+	// SMTP server or native PHP mail() ?
+	if ( $smtpsettings[0]=='1' )
+		$sentadmin = cforms_phpmailer( $no, $frommail, $field_email, $to, $vsubject, $message, $formdata, $htmlmessage, $htmlformdata );
+	else
+		$sentadmin = @mail($to, stripslashes($vsubject), stripslashes($fmessage), $headers);	
+
+	if( $sentadmin==1 )
 	{
 		  // send copy or notification?
 	    if ( (get_option('cforms'.$no.'_confirm')=='1' && $field_email<>'') || $ccme )  // not if no email & already CC'ed
@@ -594,7 +714,7 @@ function cforms_submitcomment($content) {
 					$cmsg = check_cust_vars($cmsg,$track);
 					
 					// text text
-					$automessage .= $cmsg;
+					$automessage .= $cmsg  . $eol;
 
 					// HTML text
 					if ( $cmsghtml<>'' ) {
@@ -621,12 +741,20 @@ function cforms_submitcomment($content) {
 					// email tracking via 3rd party?
 					$field_email = (get_option('cforms'.$no.'_tracking')<>'')?$field_email.get_option('cforms'.$no.'_tracking'):$field_email;
 
-					if ( $ccme ) 
-					  $sent = @mail($field_email, stripslashes($subject2), stripslashes($fmessage), $headers2); //takes $message!!
-					else
-					  $sent = @mail($field_email, stripslashes($subject2), stripslashes($automessage), $headers2);
-
-		  		if( !$sent )
+					if ( $ccme ) {
+						if ( $smtpsettings[0]=='1' )
+							$sent = cforms_phpmailer( $no, $frommail, $replyto, $field_email, stripslashes($subject2), $message, $formdata, $htmlmessage, $htmlformdata );
+						else
+							$sent = @mail($field_email, stripslashes($subject2), stripslashes($fmessage), $headers2); //takes $message!!
+					}
+					else {
+						if ( $smtpsettings[0]=='1' )
+							$sent = cforms_phpmailer( $no, $frommail, $replyto, $field_email, stripslashes($subject2) , $cmsg , '', $cmsghtml, '' );
+						else
+							$sent = @mail($field_email, stripslashes($subject2), stripslashes($automessage), $headers2);
+					}
+					
+		  		if( $sent<>'1' )
 		  			return "Error occured while sending the auto confirmation message ($sent)";
 	    } // cc
 
@@ -639,40 +767,102 @@ function cforms_submitcomment($content) {
 	    $pre = $segments[0].'*$#'.substr(get_option('cforms'.$no.'_popup'),0,1);
 	    return $pre . preg_replace ( '|\r\n|', '<br />', stripslashes(get_option('cforms'.$no.'_success'))).'|'.
 						'<root>'.preg_replace ( '/(.*)(\r\n|$)/', '<text>\1</text>', stripslashes(get_option('cforms'.$no.'_success'))).'</root>';
+
+	} // no admin mail sent!
+	else {
+		return "Error occured while sending the message." . $smtpsettings[0]?'<br/>('.$sentadmin.')':'';
 	}
-	else
-		return "Error occured while sending the message: ".$sentadmin;
 
 } //function
 
 
-
+//
 // sajax stuff
-// global $REQUEST_URI;
+//
 
-$sajax_request_type = "GET";
+if (!isset($SAJAX_INCLUDED)) {
 
-$sajax_debug_mode = 0;
-$sajax_export_list = array();
-$sajax_remote_uri = $REQUEST_URI;
+	$GLOBALS['sajax_version'] = '0.12';	
+	$GLOBALS['sajax_debug_mode'] = 0;
+	$GLOBALS['sajax_export_list'] = array();
+	$GLOBALS['sajax_request_type'] = 'POST';
+	$GLOBALS['sajax_remote_uri'] = '';
+	$GLOBALS['sajax_failure_redirect'] = '';
+	 
+	//
+	// Initialize the Sajax library.
+	//
+	function sajax_init() {
+	}
+	
+	//
+	// Helper function to return the script's own URI. 
+	// 
+	function sajax_get_my_uri() {
+		return $_SERVER["REQUEST_URI"];
+	}
+	$sajax_remote_uri = sajax_get_my_uri();
+	
+	//
+	// Helper function to return an eval()-usable representation
+	// of an object in JavaScript.
+	// 
+	function sajax_get_js_repr($value) {
+		$type = gettype($value);
+		
+		if ($type == "boolean") {
+			return ($value) ? "Boolean(true)" : "Boolean(false)";
+		} 
+		elseif ($type == "integer") {
+			return "parseInt($value)";
+		} 
+		elseif ($type == "double") {
+			return "parseFloat($value)";
+		} 
+		elseif ($type == "array" || $type == "object" ) {
+			//
+			// XXX Arrays with non-numeric indices are not
+			// permitted according to ECMAScript, yet everyone
+			// uses them.. We'll use an object.
+			// 
+			$s = "{ ";
+			if ($type == "object") {
+				$value = get_object_vars($value);
+			} 
+			foreach ($value as $k=>$v) {
+				$esc_key = sajax_esc($k);
+				if (is_numeric($k)) 
+					$s .= "$k: " . sajax_get_js_repr($v) . ", ";
+				else
+					$s .= "\"$esc_key\": " . sajax_get_js_repr($v) . ", ";
+			}
+			if (count($value))
+				$s = substr($s, 0, -2);
+			return $s . " }";
+		} 
+		else {
+			$esc_val = sajax_esc($value);
+			$s = "'$esc_val'";
+			return $s;
+		}
+	}
 
-cf_sajax_export("cforms_submitcomment");
-cf_sajax_handle_client_request();
-
-function cf_sajax_handle_client_request() {
+	function sajax_handle_client_request() {
 		global $sajax_export_list;
-
+		
 		$mode = "";
-
-		if (! empty($_GET["rs"]))
+		
+		if (! empty($_GET["rs"])) 
 			$mode = "get";
-
+		
 		if (!empty($_POST["rs"]))
 			$mode = "post";
-
-		if (empty($mode))
+			
+		if (empty($mode)) 
 			return;
 
+		$target = "";
+		
 		if ($mode == "get") {
 			// Bust cache in the head
 			header ("Expires: Mon, 26 Jul 1997 05:00:00 GMT");    // Date in the past
@@ -681,44 +871,93 @@ function cf_sajax_handle_client_request() {
 			header ("Cache-Control: no-cache, must-revalidate");  // HTTP/1.1
 			header ("Pragma: no-cache");                          // HTTP/1.0
 			$func_name = $_GET["rs"];
-			if (! empty($_GET["rsargs"]))
+			if (! empty($_GET["rsargs"])) 
 				$args = $_GET["rsargs"];
 			else
 				$args = array();
 		}
 		else {
 			$func_name = $_POST["rs"];
-			if (! empty($_POST["rsargs"]))
+			if (! empty($_POST["rsargs"])) 
 				$args = $_POST["rsargs"];
 			else
 				$args = array();
 		}
-
+		
 		if (! in_array($func_name, $sajax_export_list))
-			echo "-:$func_name not callable(1)";
+			echo "-:$func_name not callable";
 		else {
 			echo "+:";
 			$result = call_user_func_array($func_name, $args);
-			echo $result;
+			echo "var res = " . trim(sajax_get_js_repr($result)) . "; res;";
 		}
 		exit;
 	}
+	
+	// javascript escape a value
+	function sajax_esc($val)
+	{
+		$val = str_replace("\\", "\\\\", $val);
+		$val = str_replace("\r", "\\r", $val);
+		$val = str_replace("\n", "\\n", $val);
+		$val = str_replace("'", "\\'", $val);
+		return str_replace('"', '\\"', $val);
+	}
 
-function cf_sajax_export() {
+	function sajax_get_one_stub($func_name) {
+		ob_start();	
+		$html = ob_get_contents();
+		ob_end_clean();
+		return $html;
+	}
+	
+	function sajax_show_one_stub($func_name) {
+		echo sajax_get_one_stub($func_name);
+	}
+	
+	function sajax_export() {
 		global $sajax_export_list;
-
+		
 		$n = func_num_args();
 		for ($i = 0; $i < $n; $i++) {
 			$sajax_export_list[] = func_get_arg($i);
 		}
+	}
+	
+	$sajax_js_has_been_shown = 0;
+	function sajax_get_javascript()
+	{
+		global $sajax_js_has_been_shown;
+		global $sajax_export_list;
+		
+		$html = "";
+		if (! $sajax_js_has_been_shown) {
+			$html .= sajax_get_common_js();
+			$sajax_js_has_been_shown = 1;
+		}
+		foreach ($sajax_export_list as $func) {
+			$html .= sajax_get_one_stub($func);
+		}
+		return $html;
+	}
+	
+	$SAJAX_INCLUDED = 1;
 }
 
+// $sajax_debug_mode = 1;
+sajax_init();
+sajax_export("cforms_submitcomment");
+sajax_handle_client_request();	
 
 
+
+//
+// main function
+//
 
 function cforms($args = '',$no = '') {
 
-	global $subID, $cforms_root, $wpdb;
+	global $smtpsettings, $styles, $subID, $cforms_root, $wpdb;
 
 	parse_str($args, $r);	// parse all args, and if not specified, initialize to defaults
 
@@ -891,8 +1130,7 @@ function cforms($args = '',$no = '') {
 						// A properly uploaded file will pass this test. There should be no reason to override this one.
 						if (! @ is_uploaded_file( $file['tmp_name'][$filefield] ) )
 								$fileerr = get_option('cforms_upload_err4');
-		
-		
+				
 						if ( $fileerr <> '' ){
 		
 								$err = 3;
@@ -1095,7 +1333,7 @@ function cforms($args = '',$no = '') {
  			if ( $field_type == "textarea" ) {
 					$field_name = "\n" . $field_name;
 					$value = "\n" . $value . "\n";
-					$htmlvalue = "<pre>" . $value . "</pre>";
+					$htmlvalue = str_replace("\n","<br/>\n",$value);
 			}
 
 
@@ -1164,7 +1402,7 @@ function cforms($args = '',$no = '') {
 		
 
 		//set header
-		$replyto = preg_replace( array('/\s/','/;|#|\|/'), array('',','), stripslashes(get_option('cforms'.$no.'_email')) );
+		$replyto = preg_replace( array('/;|#|\|/'), array(','), stripslashes(get_option('cforms'.$no.'_email')) );
 
 		// multiple recipients? and to whom is the email sent?
 		if ( $to_one <> "-1" ) {
@@ -1174,8 +1412,10 @@ function cforms($args = '',$no = '') {
 				$to = $replyto;
 
 
+		//
 		// ready to send email
-		// email header for regular email
+		// email header 
+		//
 		$eol = "\n";
 
 		if ( ($frommail=stripslashes(get_option('cforms'.$no.'_fromemail')))=='' )
@@ -1213,7 +1453,7 @@ function cforms($args = '',$no = '') {
 		
 		// need to add form data summary or is all in the header anyway?
 		if(substr(get_option('cforms'.$no.'_formdata'),0,1)=='1')
-			$fmessage .= $eol . $formdata;
+			$fmessage .= $eol . $formdata . $eol;
 
 
 		// HTML text
@@ -1232,10 +1472,7 @@ function cforms($args = '',$no = '') {
 			$fmessage .= "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">"  . $eol;
 
 			$fmessage .= "<HTML>" . $eol;
-			$fmessage .= "<style><!--" . $eol;
-			$fmessage .= ".fs-td { font-weight:bold; font-size:1.2em; border-bottom:1px solid #888; padding-top:15px; }" . $eol;	
-			$fmessage .= ".data-td { font-weight:bold; padding-right:20px; }" . $eol;	
-			$fmessage .= "--></style>" . $eol;
+			$fmessage .= $styles;
 			$fmessage .= "<BODY>" . $eol;
 
 			$fmessage .= stripslashes($htmlmessage);
@@ -1249,7 +1486,7 @@ function cforms($args = '',$no = '') {
 
 		// end of sub message
 		
-
+		$attached='';
 		// possibly add attachment
 		if ( isset($_FILES['cf_uploadfile'.$no]) && $filedata[0]<>'' && !get_option('cforms'.$no.'_noattachments') ) {
 
@@ -1271,11 +1508,11 @@ function cforms($args = '',$no = '') {
 					if ( $filedata[$filefield] <> '' ){
 						$mime = (!$all_mime[$fileext[$filefield]])?'application/octet-stream':$all_mime[$fileext[$filefield]];
 		
-						$fmessage .= "------MIME_BOUNDRY_main_message" . $eol;		
-						$fmessage .= "Content-Type: $mime;\n\tname=\"" . $file['name'][$filefield] . "\"" . $eol;
-						$fmessage .= "Content-Transfer-Encoding: base64" . $eol;
-						$fmessage .= "Content-Disposition: inline;\n\tfilename=\"" . $file['name'][$filefield] . "\"\n" . $eol;
-						$fmessage .= $eol . $filedata[$filefield]; 	//The base64 encoded message
+						$attached .= "------MIME_BOUNDRY_main_message" . $eol;		
+						$attached .= "Content-Type: $mime;\n\tname=\"" . $file['name'][$filefield] . "\"" . $eol;
+						$attached .= "Content-Transfer-Encoding: base64" . $eol;
+						$attached .= "Content-Disposition: inline;\n\tfilename=\"" . $file['name'][$filefield] . "\"\n" . $eol;
+						$attached .= $eol . $filedata[$filefield]; 	//The base64 encoded message
 					}				
 					
 				}
@@ -1294,9 +1531,13 @@ function cforms($args = '',$no = '') {
 		$vsubject = check_default_vars($vsubject,$no);
 		$vsubject = check_cust_vars($vsubject,$track);
 
+		// SMTP server or native PHP mail() ?
+		if ( $smtpsettings[0]=='1' )
+			$sentadmin = cforms_phpmailer( $no, $frommail, $field_email, $to, $vsubject, $message, $formdata, $htmlmessage, $htmlformdata, $fileext );
+		else
+			$sentadmin = @mail($to, stripslashes($vsubject), stripslashes($fmessage).$attached, $headers);	
 
-		if( ($sentadmin=@mail($to, stripslashes($vsubject), $fmessage, $headers)) ) {
-		
+		if( $sentadmin==1 ) {
 				  // send copy or notification?
 			    if ( (get_option('cforms'.$no.'_confirm')=='1' && $field_email<>'') || $ccme )  // not if no email & already CC'ed
 			    {
@@ -1305,7 +1546,7 @@ function cforms($args = '',$no = '') {
 							
 							// HTML message part?
 							$cmsghtml = get_option('cforms'.$no.'_cmsg_html');					
-							$fmessage = '';
+							$automsg = '';
 
 							$headers2 = "From: ". $frommail . $eol;
 							$headers2.= "Reply-To: " . $replyto . $eol;
@@ -1313,10 +1554,10 @@ function cforms($args = '',$no = '') {
 
 							if( $cmsghtml<>'' ){
 								$headers2.= "Content-Type: multipart/alternative; boundary=\"----MIME_BOUNDRY_main_message\"";
-								$fmessage = "This is a multi-part message in MIME format."  . $eol;
-								$fmessage .= "------MIME_BOUNDRY_main_message"  . $eol;
-								$fmessage .= "Content-Type: text/plain; charset=\"" . get_option('blog_charset') . "\"; format=flowed" . $eol;
-								$fmessage .= "Content-Transfer-Encoding: quoted-printable"  . $eol . $eol;								
+								$automsg .= "This is a multi-part message in MIME format."  . $eol;
+								$automsg .= "------MIME_BOUNDRY_main_message"  . $eol;
+								$automsg .= "Content-Type: text/plain; charset=\"" . get_option('blog_charset') . "\"; format=flowed" . $eol;
+								$automsg .= "Content-Transfer-Encoding: quoted-printable"  . $eol . $eol;								
 							} 
 							else
 								$headers2.= "Content-Type: text/plain; charset=\"" . get_option('blog_charset') . "\"; format=flowed";
@@ -1329,7 +1570,7 @@ function cforms($args = '',$no = '') {
 		
 					
 							// text text
-							$fmessage .= $cmsg;
+							$automsg .= $cmsg . $eol;
 		
 							// HTML text
 							if ( $cmsghtml<>'' ) {
@@ -1338,18 +1579,15 @@ function cforms($args = '',$no = '') {
 								$cmsghtml = check_default_vars($cmsghtml,$no);
 								$cmsghtml = check_cust_vars($cmsghtml,$track);
 		
-								$fmessage .= "------MIME_BOUNDRY_main_message"  . $eol;
-								$fmessage .= "Content-Type: text/html; charset=\"" . get_option('blog_charset') . "\"". $eol;
-								$fmessage .= "Content-Transfer-Encoding: quoted-printable"  . $eol . $eol;;
+								$automsg .= "------MIME_BOUNDRY_main_message"  . $eol;
+								$automsg .= "Content-Type: text/html; charset=\"" . get_option('blog_charset') . "\"". $eol;
+								$automsg .= "Content-Transfer-Encoding: quoted-printable"  . $eol . $eol;;
 			
-								$fmessage .= "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">"  . $eol;
-								$fmessage .= "<HTML><BODY>"  . $eol;
-								$fmessage .= $cmsghtml;
-								$fmessage .= "</BODY></HTML>"  . $eol . $eol;
-							}
-//							$fmessage .= "------MIME_BOUNDRY_main_message"  . $eol;
-							//message ends
-							
+								$automsg .= "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0 Transitional//EN\">"  . $eol;
+								$automsg .= "<HTML><BODY>"  . $eol;
+								$automsg .= $cmsghtml;
+								$automsg .= "</BODY></HTML>"  . $eol . $eol;
+							}							
 							
 						 	$subject2 = get_option('cforms'.$no.'_csubject');
 							$subject2 = check_default_vars($subject2,$no);
@@ -1358,12 +1596,21 @@ function cforms($args = '',$no = '') {
 							// email tracking via 3rd party?
 							$field_email = (get_option('cforms'.$no.'_tracking')<>'')?$field_email.get_option('cforms'.$no.'_tracking'):$field_email;
 	    
-	    					if ( $ccme ) 
-	    					  $sent = @mail($field_email, stripslashes($subject2), stripslashes($message), $headers2); //uses $message!!
-	    					else
-	    					  $sent = @mail($field_email, stripslashes($subject2), stripslashes($fmessage), $headers2);
-	    
-				  		if( !$sent )
+
+							if ( $ccme ) {
+								if ( $smtpsettings[0]=='1' )
+									$sent = cforms_phpmailer( $no, $frommail, $replyto, $field_email, stripslashes($subject2), $message, $formdata, $htmlmessage, $htmlformdata, '' );
+								else
+									$sent = @mail($field_email, stripslashes($subject2), stripslashes($fmessage), $headers2); //the admin one
+							}
+							else {
+								if ( $smtpsettings[0]=='1' )
+									$sent = cforms_phpmailer( $no, $frommail, $replyto, $field_email, stripslashes($subject2) , $cmsg , '', $cmsghtml, '' );
+								else
+									$sent = @mail($field_email, stripslashes($subject2), stripslashes($automsg), $headers2); //takes the above
+							}
+					
+			  		if( $sent<>'1' )
 				  			$usermessage_text = "Error occured while sending the auto confirmation message ($sent)";
 			    }
 
@@ -1424,12 +1671,12 @@ function cforms($args = '',$no = '') {
 		else
     		$field_stat = explode('$#$', $customfields[$i-1]);
 		
-		$field_name = $field_stat[0];
-		$field_type = $field_stat[1];
-		$field_required = $field_stat[2];
+		$field_name       = $field_stat[0];
+		$field_type       = $field_stat[1];
+		$field_required   = $field_stat[2];
 		$field_emailcheck = $field_stat[3];
-		$field_clear = $field_stat[4];
-		$field_disabled = $field_stat[5];
+		$field_clear      = $field_stat[4];
+		$field_disabled   = $field_stat[5];
 
 
 		//special treatment for selectboxes  
@@ -1456,7 +1703,7 @@ function cforms($args = '',$no = '') {
 
 		//Label ID's
 		$labelIDx = '';
-		$labelID = (get_option('cforms_labelID')=='1')?' id="label-'.$no.'-'.$i.'"':'';
+		$labelID  = (get_option('cforms_labelID')=='1')?' id="label-'.$no.'-'.$i.'"':'';
 		
 
 		$defaultvalue = '';
@@ -1505,7 +1752,7 @@ function cforms($args = '',$no = '') {
 		// field classes
 		$field_class = 'default';
 		
-		if ( $field_disabled )			$field_class .= ' disabled';
+		if      ( $field_disabled )		$field_class .= ' disabled';
 		else if ( $field_emailcheck )	$field_class .= ' fldemail';
 		else if ( $field_required ) 	$field_class .= ' fldrequired';
 
@@ -1518,14 +1765,14 @@ function cforms($args = '',$no = '') {
 		if(! $all_valid){
 			$field_class .= ($validations[$i]==1)?'':' error';  //error ?
 			if ( $field_type == 'multiselectbox' || $field_type == 'checkboxgroup' ){
-			     $field_value = $_POST['cf'.$no.'_field_' . $i];  // in this case it's an array! will do the stripping later
+				$field_value = $_POST['cf'.$no.'_field_' . $i];  // in this case it's an array! will do the stripping later
 			}
 			else
-			     $field_value = stripslashes(htmlspecialchars($_POST['cf'.$no.'_field_' . $i]));
+				$field_value = stripslashes(htmlspecialchars($_POST['cf'.$no.'_field_' . $i]));
 		}
 		
 		if ( $field_value=='' && $defaultvalue<>'' ) // if not reloaded (due to err) then use default values
-					$field_value=$defaultvalue;    
+			$field_value=$defaultvalue;    
 
 		// field disabled, greyed out?
 		$disabled = $field_disabled?'disabled="disabled"':'';

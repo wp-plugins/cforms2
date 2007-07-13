@@ -34,6 +34,7 @@ if(!current_user_can('manage_cforms')) {
 				<li><?php echo str_replace('[url]','#regexp',__('<a href="[url]">Using regular expressions with form fields &raquo;</a>', 'cforms')); ?></li>
 			</ul>
 			<li><?php echo str_replace('[url]','#dynamicforms',__('<a href="[url]">Advanced: Real-time creation of dynamic forms &raquo;</a>', 'cforms')); ?></li>
+			<li><?php echo str_replace('[url]','#hook',__('<a href="[url]">Advanced: Post-processing of submitted data &raquo;</a>', 'cforms')); ?></li>
 			<li><?php echo str_replace('[url]','#variables',__('<a href="[url]">Using variables in email subjects & messages &raquo;</a>', 'cforms')); ?></li>
 			<li><?php echo str_replace('[url]','#CSS',__('<a href="[url]">Styling your forms &raquo;</a>', 'cforms')); ?></li>
 			<li><?php echo str_replace('[url]','#troubles',__('<a href="[url]">Need more help? &raquo;</a>', 'cforms')); ?></li>
@@ -541,11 +542,44 @@ if(!current_user_can('manage_cforms')) {
 		
 
 
-	    <h3 id="dynamicforms"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><span class="h3title-no">4.</span><?php _e('Advanced: Real-time creation of dynamic forms', 'cforms'); ?></h3>
+	    <h3 id="hook"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><span class="h3title-no">4.</span><?php _e('Advanced: Post-processing of submitted data', 'cforms'); ?></h3>
 
 		<p><?php _e('This is really for hard core deployments, where <em>real-time manipulation</em> of a form & fields are required.', 'cforms'); ?></p>
 
-		<p><strong><?php _e('A few things to note:', 'cforms'); ?></strong></p>
+		<p><?php _e('If you require the submitted data to be sent to a 3rd party or would like to make use of the data otherwise, here is how:', 'cforms'); ?></p>
+		<ol>
+			<li><?php _e('Edit your WP theme\'s <strong>function.php</strong> file and add a <em>new action</em>', 'cforms');?></li>
+			<li><?php _e('Take the below code sample and modify as required', 'cforms');?></li>
+		</ol>
+
+        <strong><?php _e('Complete Example:', 'cforms'); ?></strong>
+		<code class="codehighlight"><pre style="font-size: 11px;">
+function process_data($cformsdata) {
+
+	$formID = $cformsdata['id'];      // <?php _e('Note: <code class="codehighlight">$formID</code> = <strong>\'\'</strong> (empty) for the first form!', 'cforms');?> 
+	$form   = $cformsdata['data'];    // & form data
+	
+	if ( $formID == '3' ) {           // your third form (1st form would be '' !)
+		
+		foreach ( array_keys($form) as $key ) {                 // go through all keys (field names)
+			if ( $key=="Your Name" )                        // if specific one found, 
+				$form[$key] = 'Mr./Mrs. '.$form[$key];  // do someting with it
+		}
+		
+		// send to 3d party or do something else
+		
+	}
+	
+}
+add_action('cforms_data','process_data');</pre></code>
+
+
+	    <h3 id="dynamicforms"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><span class="h3title-no">5.</span><?php _e('Advanced: Real-time creation of dynamic forms', 'cforms'); ?></h3>
+
+		<p><?php _e('This is really for hard core deployments, where <em>real-time manipulation</em> of a form & fields are required.', 'cforms'); ?></p>
+
+		
+		<p><strong><?php _e('A few things to note on dynamic forms:', 'cforms'); ?></strong></p>
 		<ol>
 			<li><?php _e('Dynamic forms only work in <strong>non-Ajax</strong> mode.', 'cforms');?></li>
 			<li><?php _e('Each dynamic form references and thus requires <strong>a base form defined</strong> in the cforms form settings. All its settings will be used, except the form (&field) definition.', 'cforms');?></li>
@@ -556,7 +590,7 @@ if(!current_user_can('manage_cforms')) {
                 <code class="codehighlight">$form-no</code>: <?php _e('empty string for the first (default) form and <strong>2</strong>,3,4... for any subsequent form', 'cforms'); ?><br />
                 <code class="codehighlight">$fields</code> :
 
-                <code class="codehighlight"><pre>
+                <code class="codehighlight"><pre style="font-size: 11px;">
             $fields['label'][n]      = '<?php _e('field name', 'cforms'); ?>';           <?php _e('<em>field name</em> format described above', 'cforms'); ?>
 
             $fields['type'][n]       = 'input field type';     default: 'textfield';
@@ -601,7 +635,7 @@ if(!current_user_can('manage_cforms')) {
         <strong><?php _e('Simple example:', 'cforms'); ?></strong>
         <ul style="list-style:none;">
         <li>
-        <code class="codehighlight"><pre>
+        <code class="codehighlight"><pre style="font-size: 11px;">
 $fields = array();
 
 $fields['label'][0]   ='<?php _e('Your Name|Your Name', 'cforms'); ?>';
@@ -674,7 +708,7 @@ insert_custom_cform($fields,5);    //<?php _e('call form #5 with new fields (4)'
 
 
 
-	    <h3 id="variables"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><span class="h3title-no">5.</span><?php _e('Using variables in email subject and messages', 'cforms'); ?></h3>
+	    <h3 id="variables"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><span class="h3title-no">6.</span><?php _e('Using variables in email subject and messages', 'cforms'); ?></h3>
 		<p>
 			<?php echo str_replace('[url]','?page=' . $plugindir . '/cforms-options.php#anchoremail',__('Email <strong>subjects and messages</strong> for emails both to the <a href="[url]">form admin</a> as well as to the ', 'cforms')); ?>
 			<?php echo str_replace('[url]','?page=' . $plugindir . '/cforms-options.php#autoconf',__('<a href="[url]">visitor</a> (auto confirmation, CC:) support insertion of pre-defined variables and/or any of the form input fields.', 'cforms')); ?>
@@ -793,13 +827,13 @@ insert_custom_cform($fields,5);    //<?php _e('call form #5 with new fields (4)'
 			</tr>			
 		</table>
 
-	    <h3 id="CSS"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><span class="h3title-no">6.</span><?php _e('Styling Your Forms (CSS theme files)', 'cforms'); ?></h3>
+	    <h3 id="CSS"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><span class="h3title-no">7.</span><?php _e('Styling Your Forms (CSS theme files)', 'cforms'); ?></h3>
 		<p><?php echo str_replace('[url]','?page=' . $plugindir . '/cforms-css.php',__('Please see the <a href="[url]">Styling page</a> for theme selection and editing options.', 'cforms')); ?></p>
 		<p><?php _e('cforms comes with a few theme examples (some of the may require adjustments to work with <strong>your</strong> forms!) but you can of course create your own theme file -based on the default <strong>cforms.css</strong> file- and put it in the <code class="codehighlight">/styling</code> directory.', 'cforms'); ?></p>
 		<p class="ex"><?php _e('Your form <strong>doesn\'t</strong> look like the preview image, or your individual changes don\'t take effect, check your global WP theme CSS! It may overwrite some or many cforms CSS declarations. If you don\'t know how to trouble shoot, take a look at the Firefox extension "Firebug" - an excellent CSS troubleshooting tool!', 'cforms'); ?></p>
 
 
-	    <h3 id="troubles"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><span class="h3title-no">7.</span><?php _e('Need more help?', 'cforms'); ?></h3>
+	    <h3 id="troubles"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><span class="h3title-no">8.</span><?php _e('Need more help?', 'cforms'); ?></h3>
 		<p><?php _e('For up-to-date information check the <a href="http://www.deliciousdays.com/cforms-forum">cforms forum</a> and comment section on the plugin homepage.', 'cforms'); ?></p>
 
 
