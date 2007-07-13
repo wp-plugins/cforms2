@@ -552,7 +552,7 @@ if(!current_user_can('manage_cforms')) {
 			<li><?php _e('Take the below code sample and modify as required', 'cforms');?></li>
 		</ol>
 
-        <strong><?php _e('Complete Example:', 'cforms'); ?></strong>
+        <strong><?php _e('Example:', 'cforms'); ?></strong>
 		<code class="codehighlight"><pre style="font-size: 11px;">
 function process_data($cformsdata) {
 
@@ -576,7 +576,7 @@ add_action('cforms_data','process_data');</pre></code>
 
 	    <h3 id="dynamicforms"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><span class="h3title-no">5.</span><?php _e('Advanced: Real-time creation of dynamic forms', 'cforms'); ?></h3>
 
-		<p><?php _e('This is really for hard core deployments, where <em>real-time manipulation</em> of a form & fields are required.', 'cforms'); ?></p>
+		<p><?php _e('Again, this is for the advanced user who requires ad-hoc creation of forms.', 'cforms'); ?></p>
 
 		
 		<p><strong><?php _e('A few things to note on dynamic forms:', 'cforms'); ?></strong></p>

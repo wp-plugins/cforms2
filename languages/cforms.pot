@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-07-13 17:43+0200\n"
+"POT-Creation-Date: 2007-07-13 18:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -781,6 +781,7 @@ msgstr ""
 #: cforms-help.php:200 cforms-help.php:236 cforms-help.php:272
 #: cforms-help.php:313 cforms-help.php:347 cforms-help.php:373
 #: cforms-help.php:404 cforms-help.php:431 cforms-help.php:460
+#: cforms-help.php:555
 msgid "Example:"
 msgstr ""
 
@@ -1200,7 +1201,7 @@ msgstr ""
 msgid "Advanced: Post-processing of submitted data"
 msgstr ""
 
-#: cforms-help.php:547 cforms-help.php:579
+#: cforms-help.php:547
 msgid ""
 "This is really for hard core deployments, where <em>real-time manipulation</"
 "em> of a form & fields are required."
@@ -1222,10 +1223,6 @@ msgstr ""
 msgid "Take the below code sample and modify as required"
 msgstr ""
 
-#: cforms-help.php:555
-msgid "Complete Example:"
-msgstr ""
-
 #: cforms-help.php:559
 msgid ""
 "Note: <code class=\"codehighlight\">$formID</code> = <strong>''</strong> "
@@ -1234,6 +1231,11 @@ msgstr ""
 
 #: cforms-help.php:577
 msgid "Advanced: Real-time creation of dynamic forms"
+msgstr ""
+
+#: cforms-help.php:579
+msgid ""
+"Again, this is for the advanced user who requires ad-hoc creation of forms."
 msgstr ""
 
 #: cforms-help.php:582
