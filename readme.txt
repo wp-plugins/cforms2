@@ -15,19 +15,24 @@ For a complete version history (new features, bug fixes etc.), see [here](http:/
 = Description =
 cforms is a highly customizable, flexible and powerful contact form plugin, covering a variety of use cases and features from attachments to multi form management, you can even have multiple forms on the same page!
 
+= Upgrading Note: =
+5.2 introdues a more robust handling of email addresses (it's more forgiving) - however, when upgrading to 5.2 please double and tripple check your **admin email settings** and **auto confirmation** options.
+
 = Note: =
-5.1 is only a small update to 5.0 and may only be of interest to you if you **1.** would like to change the **FROM:** address **2.** want to send the form **data to a 3rd party** system or **3.** experience the '**ugly HTML Outlook**' syndrome.
+5.2 fixes the issue with ajax submitted forms that resulted in an error caused by too much user data in input fields.
 
 = Plugin Features =
-* **NEW: full HTML formatting support for email messages**
+* **NEW: support for alternative SMTP server (in case you can't use *PHP mail()*)**
+* **NEW: better non-HTML (TXT only) email support**
+* **NEW: post processing of submitted data (see documentation) **
+* Full HTML formatting support for email messages
 * Customizable auto confirmation message & form email **(Variables!)**
 * Page redirection after successful form submission
-* **NEW: Alternative form action supported (please read config info!)**
 * Creates robust XHTML form code (no floats)
 * Alternative form action supported (please read config info!)
 * Full localization support (currently: English, German, Spanish)
 * Built-in CSS editor & theme chooser
-* **NEW: additional predefined CSS themes**
+* Additional predefined CSS themes
 * File attachments (upload) **now mulitple upload fields supported**
 * Multiple forms on one or many pages / posts
 * Ajax supported form submission (w/ graceful fall-back)
@@ -37,7 +42,7 @@ cforms is a highly customizable, flexible and powerful contact form plugin, cove
 * Backup & Restore of individual forms
 * Cloning, duplication of forms
 * Tracking of submitted data per DB (unique form submission IDs)
-* **NEW: BCC to copy additional admin(s)**
+* BCC to copy additional admin(s)
 * 3rd party email tracking support, e.g. readnotify & didtheyreadit
 * SPAM protection (Q & A + Captcha)
 * Submission status (success/failure) optionally via Alert Box
@@ -60,7 +65,7 @@ cforms is a highly customizable, flexible and powerful contact form plugin, cove
 	* Captcha
 * Default values for single/multi-line input fields (w/ auto clear,reset)
 * Fully integrated with TinyMCE & std editor (buttons)
-* **NEW:Basic widget support **
+* Basic widget support
 * Clean separation of CSS styling and form code
 * Validates XHTML 1.0 Strict
 

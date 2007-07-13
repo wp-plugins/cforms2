@@ -35,7 +35,7 @@ ol.cf-ol {
 ol.cf-ol li	{ 
 	margin:5px 0!important; /*some themes may interfere otherwise*/
 	padding:0; 
-	list-style:none; 
+	list-style:none!important; 
 	text-align:left;
 }
 
