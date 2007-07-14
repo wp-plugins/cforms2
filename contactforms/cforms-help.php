@@ -33,8 +33,8 @@ if(!current_user_can('manage_cforms')) {
 				<li><?php echo str_replace('[url]','#hfieldsets',__('<a href="[url]">Fieldsets &raquo;</a>', 'cforms')); ?></li>
 				<li><?php echo str_replace('[url]','#regexp',__('<a href="[url]">Using regular expressions with form fields &raquo;</a>', 'cforms')); ?></li>
 			</ul>
-			<li><?php echo str_replace('[url]','#dynamicforms',__('<a href="[url]">Advanced: Real-time creation of dynamic forms &raquo;</a>', 'cforms')); ?></li>
 			<li><?php echo str_replace('[url]','#hook',__('<a href="[url]">Advanced: Post-processing of submitted data &raquo;</a>', 'cforms')); ?></li>
+			<li><?php echo str_replace('[url]','#dynamicforms',__('<a href="[url]">Advanced: Real-time creation of dynamic forms &raquo;</a>', 'cforms')); ?></li>
 			<li><?php echo str_replace('[url]','#variables',__('<a href="[url]">Using variables in email subjects & messages &raquo;</a>', 'cforms')); ?></li>
 			<li><?php echo str_replace('[url]','#CSS',__('<a href="[url]">Styling your forms &raquo;</a>', 'cforms')); ?></li>
 			<li><?php echo str_replace('[url]','#troubles',__('<a href="[url]">Need more help? &raquo;</a>', 'cforms')); ?></li>

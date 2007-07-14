@@ -231,7 +231,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 			</div>
 			<div class="optionsbox">
 				<div class="optionsboxL"><label for="cforms_smtp_pass"><strong><?php _e('Password', 'cforms'); ?></strong></label></div>
-				<div class="optionsboxR"><input type="text" id="cforms_smtp_pass" name="cforms_smtp_pass" value="<?php echo str_repeat('*',strlen($smtpsettings[3])); ?>"/><br/><?php _e('Please note that in a normal WP environment you do not need to configure these settings!', 'cforms') ?></div>
+				<div class="optionsboxR"><input type="text" id="cforms_smtp_pass" name="cforms_smtp_pass" value="<?php echo str_repeat('*',strlen($smtpsettings[3])); ?>"/><p style="width:280px"><?php _e('Please note that in a normal WP environment you do not need to configure these settings!', 'cforms') ?></p></div>
 			</div>
 
 
