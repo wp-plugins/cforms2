@@ -15,6 +15,9 @@ For a complete version history (new features, bug fixes etc.), see [here](http:/
 = Description =
 cforms is a highly customizable, flexible and powerful contact form plugin, covering a variety of use cases and features from attachments to multi form management, you can even have multiple forms on the same page!
 
+= PATCHED on July 13th: =
+5.2 received a patch (see forum) that fixes the redirection issue to the current page when using cforms **in the sidebar** && **in non-ajax mode**.
+
 = Upgrading Note: =
 5.2 introduces a more robust handling of email addresses (it's more forgiving) - however, when upgrading to 5.2 please double and triple check your **admin email settings** and **auto confirmation** options.
 
