@@ -1651,7 +1651,7 @@ function cforms($args = '',$no = '') {
 		$action = get_option('cforms'.$no.'_action_page');
 		$alt_action=true;
  	} else
-		$action = get_permalink() . '#usermessage'. $no . $actiontarget;
+		$action = $_SERVER['REQUEST_URI'] . '#usermessage'. $no . $actiontarget;
 
  	
 	$content .= $indent . $tab . '<form enctype="multipart/form-data" action="' . $action . '" method="post" class="cform" id="cforms'.$no.'form">' . $nl;
