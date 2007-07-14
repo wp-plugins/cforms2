@@ -1069,7 +1069,7 @@ function cforms($args = '',$no = '') {
 				else if( $field_type == 'verification' ){  // visitor verification code
 				
 	            		$validations[$i+$off] = 1;
-						if ( $_POST['cforms_a'.$no] <> md5(strtolower($_POST['cforms_q'.$no])) ) {
+						if ( $_POST['cforms_a'.$no] <> md5(rawurlencode(strtolower($_POST['cforms_q'.$no]))) ) {
 								$validations[$i+$off] = 0;
 								$err = !($err)?2:$err;
 								}
@@ -2018,7 +2018,7 @@ function cforms($args = '',$no = '') {
 
 	// if visitor verification turned on:
 	if ( $verification )
-		$content .= $nl . $indent . $tab . '<input type="hidden" name="cforms_a'.$no.'" id="cforms_a'.$no.'" value="' . md5(strtolower($q[1])) . '"/>';
+		$content .= $nl . $indent . $tab . '<input type="hidden" name="cforms_a'.$no.'" id="cforms_a'.$no.'" value="' . md5(rawurlencode(strtolower($q[1]))) . '"/>';
 
 	if ( $captcha )
 		$content .= $nl . $indent . $tab . '<input type="hidden" name="cforms_cap'.$no.'" id="cforms_cap'.$no.'" value="' . md5(strtolower($_SESSION['turing_string_'.$no])) . '"/>';

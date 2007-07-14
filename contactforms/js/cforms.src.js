@@ -311,7 +311,7 @@ function cforms_validate(no, upload) {
 
 
 		//normal visitor verification turned on?
-		if ( document.getElementById('cforms_q'+no) && (document.getElementById('cforms_a'+no).value != hex_md5(document.getElementById('cforms_q'+no).value.toLowerCase() )) ) {
+		if ( document.getElementById('cforms_q'+no) && (document.getElementById('cforms_a'+no).value != hex_md5(encodeURI(document.getElementById('cforms_q'+no).value.toLowerCase()) )) ) {
 			document.getElementById('cforms_q'+no).className = "secinput error";
 			if ( all_valid ) {
 				all_valid = false;
