@@ -54,7 +54,8 @@ function sajax_do_call(func_name, args) {
 	if (typeof(sajax_request_type) == "undefined" || sajax_request_type == "") 
 		sajax_request_type = "GET";
 	
-	uri = "/?p=11";
+//	uri = "/";
+	uri = document.location.pathname;
 	if (sajax_request_type == "GET") {
 	
 		if (uri.indexOf("?") == -1) 
@@ -139,7 +140,7 @@ function sajax_do_call(func_name, args) {
 		}
 	}
 	
-	sajax_debug(func_name + " uri = " + uri + "/post = " + post_data);
+	sajax_debug(func_name + " uri = " + uri + "*/post = " + post_data);
 	x.send(post_data);
 	sajax_debug(func_name + " waiting..");
 	delete x;
