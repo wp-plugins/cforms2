@@ -211,7 +211,7 @@ if (isset($_GET['activate']) && $_GET['activate'] == 'true') {
 		add_option('cforms_bcc', '');
 
 		add_option('cforms_header', __('A new submission (form: "{Form Name}")', 'cforms') . "\r\n============================================\r\n" . __('Submitted on: {Date}', 'cforms') . "\r\n" . __('Via: {Page}', 'cforms') . "\r\n" . __('By {IP} (visitor IP)', 'cforms') . ".\r\n" . ".\r\n" );		
-		add_option('cforms_header_html', '<p style="background:#fafafa; text-align:center; font:10px arial">' . __('a form has been submitted on {Date}, via: {Page} [IP {IP}]', 'cforms') . '</p>', 'cforms') . ".\r\n" . ".\r\n" );		
+		add_option('cforms_header_html', '<p style="background:#fafafa; text-align:center; font:10px arial">' . __('a form has been submitted on {Date}, via: {Page} [IP {IP}]', 'cforms') . '</p>' );		
 		add_option('cforms_formdata', '11');
 		add_option('cforms_space', '30');
 		add_option('cforms_noattachments', '0');
