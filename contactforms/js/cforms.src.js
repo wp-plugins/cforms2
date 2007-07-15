@@ -59,24 +59,24 @@ function sajax_do_call(func_name, args) {
 	if (sajax_request_type == "GET") {
 	
 		if (uri.indexOf("?") == -1) 
-			uri += "?rs=" + escape(func_name);
+			uri += "?rs=" + encodeURIComponent(func_name);
 		else
-			uri += "&rs=" + escape(func_name);
-		uri += "&rst=" + escape(sajax_target_id);
+			uri += "&rs=" + encodeURIComponent(func_name);
+		uri += "&rst=" + encodeURIComponent(sajax_target_id);
 		uri += "&rsrnd=" + new Date().getTime();
 		
 		for (i = 0; i < args.length-1; i++) 
-			uri += "&rsargs[]=" + escape(args[i]);
+			uri += "&rsargs[]=" + encodeURIComponent(args[i]);
 
 		post_data = null;
 	} 
 	else if (sajax_request_type == "POST") {
-		post_data = "rs=" + escape(func_name);
-		post_data += "&rst=" + escape(sajax_target_id);
+		post_data = "rs=" + encodeURIComponent(func_name);
+		post_data += "&rst=" + encodeURIComponent(sajax_target_id);
 		post_data += "&rsrnd=" + new Date().getTime();
 		
 		for (i = 0; i < args.length-1; i++) 
-			post_data = post_data + "&rsargs[]=" + escape(args[i]);
+			post_data = post_data + "&rsargs[]=" + encodeURIComponent(args[i]);
 	}
 	else {
 		alert("Illegal request type: " + sajax_request_type);
