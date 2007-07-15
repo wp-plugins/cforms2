@@ -17,9 +17,10 @@ cforms is a highly customizable, flexible and powerful contact form plugin, cove
 
 = PATCHED on July 15th: =
 Sorry for the post-release patches, but these were important:
+
 * **AJAX bug fixed** that may have caused your form/blog to stall on submission
 * Fixed redirection issue (to the current page) when using cforms **in the sidebar** && **in non-ajax mode**.
-* Fixed the use of *special characters (language dependend) in Q&A's** (visitor verification).
+* Fixed the use of **special characters** (language dependend) in **Q&A's** (visitor verification).
 
 = Upgrading Note: =
 5.2 introduces a more robust handling of email addresses (it's more forgiving) - however, when upgrading to 5.2 please double and triple check your **admin email settings** and **auto confirmation** options.
