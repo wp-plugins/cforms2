@@ -616,7 +616,10 @@ function cforms_submitcomment($content) {
 	
 	$headers = "From: ". $frommail . $eol;
 	$headers.= "Reply-To: " . $field_email . $eol;
-	$headers.= "Bcc: " . stripslashes(get_option('cforms'.$no.'_bcc')) . $eol;
+
+	if ( ($tempBcc = stripslashes(get_option('cforms'.$no.'_bcc'))) != "")
+	    $headers.= "Bcc: " . $tempBcc . $eol;
+
 	$headers.= "MIME-Version: 1.0"  .$eol;
 	if ($htmlmessage<>'') {
 		$headers.= "Content-Type: multipart/alternative; boundary=\"----MIME_BOUNDRY_main_message\"";
@@ -1423,7 +1426,10 @@ function cforms($args = '',$no = '') {
 		
 		$headers = "From: ". $frommail . $eol;
 		$headers.= "Reply-To: " . $field_email . $eol;
-		$headers.= "Bcc: " . stripslashes(get_option('cforms'.$no.'_bcc')) . $eol;
+
+		if ( ($tempBcc=stripslashes(get_option('cforms'.$no.'_bcc'))) != "")
+		    $headers.= "Bcc: " . $tempBcc . $eol;
+
 		$headers.= "MIME-Version: 1.0"  .$eol;
 		$headers.= "Content-Type: multipart/mixed; boundary=\"----MIME_BOUNDRY_main_message\"";
 	
