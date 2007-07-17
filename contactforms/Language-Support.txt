@@ -10,7 +10,7 @@ cforms supports WP localization.
 
 (3) In case the translation author has included localized title images, you 
     may want to replace the original ones at plugins/contactform/images/ with
-    the onex provided.
+    the one provided.
     
 
 Note:
