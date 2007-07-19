@@ -6,11 +6,11 @@ Requires at least: 1.6+
 Tested up to: 2.2.1
 Stable tag: 5.1
 
-cforms II is a highly customizable, flexible and powerful contact form plugin, covering a variety of features from attachments to multi form management.
+cforms II is a highly customizable, flexible and powerful contact form plugin, covering a variety of features from attachments to multi form management!
 
 == Description ==
 
-For a complete version history (new features, bug fixes etc.), see [here](http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1).
+For a complete version history (new features, bug fixes etc.), see [here](http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1)!
 
 = Description =
 cforms is a highly customizable, flexible and powerful contact form plugin, covering a variety of use cases and features from attachments to multi form management, you can even have multiple forms on the same page!
