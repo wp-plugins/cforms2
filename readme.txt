@@ -16,7 +16,7 @@ For a complete version history (new features, bug fixes etc.), see [here](http:/
 cforms is a highly customizable, flexible and powerful contact form plugin, covering a variety of use cases and features from attachments to multi form management, you can even have multiple forms on the same page!
 
 = Upgrading Note: =
-With v5.2 a more robust handling of email addresses (read: more forgiving) was introduces - however, as part of upgrading to 5.2+ please double and triple check your **admin email settings** and **auto confirmation** options.
+With v5.2 a more robust handling of email addresses (read: more forgiving) was introduced - however, as part of upgrading to 5.2+ please double and triple check your **admin email settings** and **auto confirmation** options.
 
 = Plugin Features =
 * **NEW: support for alternative SMTP server (in case you can't use *PHP mail()*)**
