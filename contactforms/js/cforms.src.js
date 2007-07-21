@@ -509,7 +509,10 @@ function cforms_setsuccessmessage(message) {
 
 		result="success";
 
+		var offset = message.indexOf('*$#');
 		var no = message.substring(0,offset);
+		var pop    = message.charAt(offset+3); // check with return val from php call!
+
 		if ( no == '1' ) no='';
 
 		document.getElementById('cforms'+no+'form').reset();
@@ -521,8 +524,6 @@ function cforms_setsuccessmessage(message) {
 		else if ( message.match(/!!!/) )
 			result = " mailerr";
 
-		var offset = message.indexOf('*$#');
-		var pop    = message.charAt(offset+3); // check with return val from php call!
 
 		stringXHTML = message.substring(offset+4,message.indexOf('|'));
 		stringDOM   = message.substring(message.indexOf('|')+1);
