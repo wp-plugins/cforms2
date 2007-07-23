@@ -611,7 +611,7 @@ function cforms_submitcomment($content) {
 
 		// return success msg
 	    $pre = $segments[0].'*$#'.substr(get_option('cforms'.$no.'_popup'),0,1);
-	    return $pre . preg_replace ( '|\r\n|', '<br />', stripslashes(get_option('cforms'.$no.'_success'))).'|'.
+	    return $pre . preg_replace ( '|\r\n|', '<br/>', stripslashes(get_option('cforms'.$no.'_success'))).'|'.
 						'<root>'.preg_replace ( '/(.*)(\r\n|$)/', '<text>\1</text>', stripslashes(get_option('cforms'.$no.'_success'))).'</root>';
 
 	} // no admin mail sent!
