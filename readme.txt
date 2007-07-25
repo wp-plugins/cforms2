@@ -6,7 +6,7 @@ Requires at least: 1.6+
 Tested up to: 2.2.1
 Stable tag: 5.3
 
-cforms II is an extremely customizable, flexible & powerful contact form plugin!
+cforms II is an extremely customizable, flexible & powerful contact form plugin.
 
 == Description ==
 
