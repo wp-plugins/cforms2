@@ -73,6 +73,7 @@ cforms has been revised to fully support WP localization. If you'd like to contr
 	* **German** \* Author: [Sven Wappler](http://www.wordpressbox.de/plugins/cforms/)
 	* **Spanish** \* Author: [Samuel Aguilera](http://agamum.net/blog/archivo/plugin-cforms-en-espanol-formularios-para-tu-wordpress.xhtml)
 	* **Hungarian** \* Author: [Ungv&aacute;ri B&eacute;la](http://www.deliciousdays.com/download/cformsII-hu_hu.zip)
+	* **French** \* Author: [La maison de l&rsquo;informatiqu](http://www.deliciousdays.com/download/contactforms-fr_FR.zip)
 
 == Installation ==
 
