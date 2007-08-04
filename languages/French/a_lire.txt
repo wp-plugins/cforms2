@@ -1,0 +1,16 @@
+﻿Placer les fichiers :
+	-> cforms-fr_FR.mo dans le dossier contactforms
+	-> fr.js dans le dossier js/langs/
+	-> phpmailer.lang-fr dans le dossier phpmailer
+	
+ouvrir cforms.js
+modifier la ligne 22:
+	load_plugin_textdomain('cforms','wp-content/plugins/contactforms');
+
+ouvrir js/editor_plugin.js
+modifier la ligne 2:
+	tinyMCE.importPluginLanguagePack('cforms', 'fr');
+
+ouvrir phpmailer/cforms_phpmailer.php
+modifier la ligne 11 :
+	include_once ('phpmailer.lang-fr.php');
