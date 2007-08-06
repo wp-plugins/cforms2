@@ -362,14 +362,17 @@ function cforms_submitcomment($content) {
 			$track[trim($field_name)] = $value;
 
 			//for all equal except textareas!
-			$htmlvalue = $value;
+			//$htmlvalue = $value;
+			$htmlvalue = str_replace("=","=3D",$value);
+
 			$htmlfield_name = $field_name;
 
 			// just for looks: break for textarea
  			if ( $field_type == "textarea" ) {
 					$field_name = "\n" . $field_name;
 					$value = "\n" . $value . "\n";
-					$htmlvalue = str_replace("\n","<br/>\n",$value);
+					//$htmlvalue = str_replace("\n","<br/>\n",$value);
+					$htmlvalue = str_replace(array("=","\n"),array("=3D","<br/>\n"),$value);
 			}
 
 			// just for looks:rest
@@ -1161,14 +1164,16 @@ function cforms($args = '',$no = '') {
 			$track[$trackname] = $value;
 
 			//for all equal except textareas!
-			$htmlvalue = $value;
+			//$htmlvalue = $value;
+			$htmlvalue = str_replace("=","=3D",$value);
 			$htmlfield_name = $field_name;
 			
 			// just for looks: break for textarea
  			if ( $field_type == "textarea" ) {
 					$field_name = "\n" . $field_name;
 					$value = "\n" . $value . "\n";
-					$htmlvalue = str_replace("\n","<br/>\n",$value);
+					//$htmlvalue = str_replace("\n","<br/>\n",$value);
+					$htmlvalue = str_replace(array("=","\n"),array("=3D","<br/>\n"),$value);
 			}
 
 
