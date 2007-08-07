@@ -105,11 +105,10 @@ label.cf-group-after span {
 .cform textarea,
 .cform select { 
 	padding:1px 3px;
-	background: #f9f9f9; 
 	border: 1px solid #aaa; 
 	font:0.9em Trebuchet MS,sans-serif;
 	color:#888;
-	background:url(../images/field-bg-top.gif) repeat-x top left; 
+	background:#ffffff url(../images/field-bg-top.gif) repeat-x top left; 
 
 
 }
@@ -117,14 +116,14 @@ label.cf-group-after span {
 .cform textarea:hover,
 .cform select:hover	{
 	border: 1px solid #FFCC00;
-	background:url(../images/field-bg-bottom.gif) repeat-x bottom left; 
+	background:#ffffff url(../images/field-bg-bottom.gif) repeat-x bottom left; 
 }
 
 .cform input:focus,
 .cform textarea:focus,
 .cform select:focus	{ 
 	color:#666;
-	background:url(../images/field-bg-bottom.gif) repeat-x bottom left; 
+	background:#ffffff url(../images/field-bg-bottom.gif) repeat-x bottom left; 
 }
 
 .cform textarea,
