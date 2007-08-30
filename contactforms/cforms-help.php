@@ -110,6 +110,12 @@ if(!current_user_can('manage_cforms')) {
 				<td class="bleft"><?php _e('Example:', 'cforms'); ?></td><td class="bright"><code class="codehighlight"><?php _e('Please make sure...|mytextclass|font-size:9x; font-weight:bold;', 'cforms'); ?></code></td>
 			</tr>
 			<tr>
+				<td class="bleft"><?php _e('Example:', 'cforms'); ?></td><td class="bright"><code class="codehighlight"><?php _e('Check &lt;a href="http://mysite.com"&gt;here&lt;/a&gt; for more info.||font-size:9x;', 'cforms'); ?></code></td>
+			</tr>
+			<tr>
+				<td class="ball" colspan="2"><?php _e('HTML: the <code class="codehighlight">text paragraph</code> supports HTML. If you need actual &lt;, &gt; in your text please use the proper HTML entity.', 'cforms'); ?></td>
+			</tr>
+			<tr>
 				<td class="ball" colspan="2"><?php _e('The above expression applies the custom class "<code class="codehighlight">mytextclass</code>" <strong>AND</strong> the specific styles "<code class="codehighlight">font-size:9x; font-weight:bold;</code>" to the paragraph.', 'cforms'); ?></td>
 			</tr>
 			<tr>
@@ -138,11 +144,16 @@ if(!current_user_can('manage_cforms')) {
 			</tr>
 			<tr>
 				<td class="bleft"><?php _e('Example:', 'cforms'); ?></td><td class="bright">
-					<code class="codehighlight"><?php _e('Your &lt;u&gt;Full&lt;/u&gt; Name #|xxx-xx-xxx|^[0-9A-Z-]+$', 'cforms'); ?></code></td>
+					<code class="codehighlight"><?php _e('Your &lt;u&gt;Full&lt;/u&gt; Name||^[A-Za-z- \.]+$', 'cforms'); ?></code></td>
+			</tr>
+			<tr>
+			<tr>
+				<td class="bleft"><?php _e('Example:', 'cforms'); ?></td><td class="bright">
+					<code class="codehighlight"><?php _e('&lt;acronym title="We need your email address for confirmation."&gt;Your EMail&lt;/acronym&gt;', 'cforms'); ?></code></td>
 			</tr>
 			<tr>
 				<td class="ball" colspan="2">
-					<?php _e('If you need to omit the <em>default value</em>, the syntax would be: <code class="codehighlight">Your name||^[a-zA-Z \.]+$</code>', 'cforms'); ?>
+					<?php _e('You can of course omit the <em>default value</em>, the syntax would as in Example 2.', 'cforms'); ?>
 				</td>
 			</tr>
 		</table>
@@ -473,12 +484,12 @@ if(!current_user_can('manage_cforms')) {
 			</tr>
 			<tr>
 				<td class="ball" colspan="2">
-					<?php echo str_replace(array('[url]'),array('?page='.$plugindir.'/cforms-options.php#tellafriend'),__('Ensure that the <a href="[url]">Tell A Friend feature</a> is turned on for the right form, otherwise you won\'t see the above input fields in the select box (<em>Field Type</em>).', 'cforms')); ?>
+					<?php echo str_replace(array('[url]'),array('?page='.$plugindir.'/cforms-options.php#tellafriend'),__('The <a href="[url]">Tell A Friend feature</a> needs to be enabled for the respective form, otherwise you won\'t see the above input fields in the select box (<em>Field Type</em>).', 'cforms')); ?>
 				</td>
 			</tr>
 			<tr>
 				<td class="ball" colspan="2">
-					<?php echo str_replace(array('[url1]','[url2]'),array('#tafvariables','?page='.$plugindir.'/cforms-options.php#cforms_cmsg'),__('There a <a href="[url1]">three additional</a>, <em>predefined variables</em> that can be used in the <a href="[url2]">autoconfirmation</a> message.', 'cforms')); ?>
+					<?php echo str_replace(array('[url1]','[url2]'),array('#tafvariables','?page='.$plugindir.'/cforms-options.php#cforms_cmsg'),__('There a <a href="[url1]">three additional</a>, <em>predefined variables</em> that can be used in the <a href="[url2]">auto confirmation</a> message.', 'cforms')); ?>
 				</td>
 			</tr>
 			<tr>
@@ -505,6 +516,12 @@ if(!current_user_can('manage_cforms')) {
 			<tr>
 				<td class="ball" colspan="2">
 					<?php _e('<strong>Note:</strong> In addition to the above TXT message you can, of course, add an HTML counterpart.', 'cforms'); ?>
+				</td>
+			</tr>
+			<tr>
+				<td class="ball" colspan="2">
+					<?php _e('<strong>Implementation:</strong> Typically, the form would be added to for instance the <code class="codehighlight">single.php</code> or <code class="codehighlight">page.php</code> template. ', 'cforms'); ?>
+					<?php _e('Simply add a <code class="codehighlight">&lt;?php insert_cform(<em>#</em>); ?&gt;</code> below the WP <code class="codehighlight">the_content()</code> function call or wherever you deem fit.', 'cforms'); ?>
 				</td>
 			</tr>
 		</table>
@@ -629,7 +646,7 @@ if(!current_user_can('manage_cforms')) {
 			</tr>
 			<tr>
 				<td class="bleft"><?php _e('Example 2:', 'cforms'); ?></td><td class="bright">
-					<code class="codehighlight"><?php _e('<code class="codehighlight">Your age#12-18|kiddo#19 to 30|young#31 to 45#45+ |older|err: your age is important to us.</code>', 'cforms'); ?></code></td>
+					<code class="codehighlight"><?php _e('<code class="codehighlight">Your age#12-18|kiddo#19 to 30|young#31 to 45#45+ |older|err: your age is &lt;strong&gt;important&lt;/strong&gt; to us.</code>', 'cforms'); ?></code></td>
 			</tr>
 			<tr>
 				<td class="ball" colspan="2">
@@ -638,7 +655,7 @@ if(!current_user_can('manage_cforms')) {
 			</tr>			
 			<tr>
 				<td class="ball" colspan="2">
-					<?php _e('<strong>Custom error messages</strong> can be applied to any input field that can beb flagged "<strong>Is Required</strong>".', 'cforms'); ?>
+					<?php _e('<strong>Custom error messages</strong> can be applied to any input field that can be flagged "<strong>Is Required</strong>".', 'cforms'); ?>
 				</td>
 			</tr>			
 		</table>

@@ -96,7 +96,7 @@ li.col1	input 		{ border:none; background:none; margin:0; padding:0; height:14px
 #allchktop,
 #allchkbottom		{ line}
 
-#filterbutton 		{ margin: 5px 0 0 0; padding:0; border:0; }
+#filterbutton 		{ margin: 5px 0 0 0; padding:0; border:0; height:100%;}
 #filter_form,
 #filter_email,
 #filter_ip,

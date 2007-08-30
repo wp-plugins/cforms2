@@ -27,9 +27,11 @@ cforms II - v5.4
     if using the default permalink structure
 *) other: changed session_start() call in favour of gzip compression
 *) other: forcing chronological order of data records when downloading as CSV
+*) bugfix: fixed special characters (e.g. Umlauts) in subject line
 *) bugfix: minor CSS bugs
 *) bugfix: check box select bug on "Tracking" page
 *) bugfix: fixed copying of attachment(s) to specified server dir, when Tracking is turned off
+*) bugfix: fixed sorting bug on 'Tracking' page for Internet Explorer
 */
 
 load_plugin_textdomain('cforms');
@@ -217,6 +219,30 @@ function cf_getip()
 	return $ip_addr;
 }
 endif;
+
+
+//
+// Special Character Suppoer in subject lines
+//
+function encode_header ($str) {
+
+	$x = preg_match_all('/[\000-\010\013\014\016-\037\177-\377]/', $str, $matches);
+	
+	if ($x == 0)
+		return ($str);
+
+	$maxlen = 75 - 7 - strlen( get_option('blog_charset') );
+	
+	$encoded = base64_encode($str);
+	$maxlen -= $maxlen % 4;
+	$encoded = trim(chunk_split($encoded, $maxlen, "\n"));
+	
+	$encoded = preg_replace('/^(.*)$/m', " =?".get_option('blog_charset')."?B?\\1?=", $encoded);
+	$encoded = trim($encoded);
+	
+	return $encoded;
+
+}
 
 
 //
@@ -474,14 +500,14 @@ function cforms_submitcomment($content) {
 
 			// create formdata block for email
 			if ( $field_stat[1] <> 'verification' && $field_stat[1] <> 'captcha' ) {
-				$formdata .= $field_name . ': '. $space . $value . "\n";
+				$formdata .= stripslashes( $field_name ). ': '. $space . $value . "\n";
 				$htmlformdata .= '<tr><td valign=3Dtop class=3Ddata-td>' . $htmlfield_name . '</td><td>' . $htmlvalue . '</td></tr>';
 			}
 					
 	} // for
 
 	// assemble html formdata
-	$htmlformdata = '<table width=3D"100%" cellpadding=3D2 bgcolor=3D#fafafa>' . $htmlformdata . '</table>';
+	$htmlformdata = '<table width=3D"100%" cellpadding=3D2 bgcolor=3D#fafafa>' . stripslashes( $htmlformdata ) . '</table>';
 
 
 	
@@ -549,10 +575,10 @@ function cforms_submitcomment($content) {
 	// prep message text, replace variables
 	$message = get_option('cforms'.$no.'_header');
 	$message = check_default_vars($message,$no);
-	$message = check_cust_vars($message,$track);
+	$message = stripslashes( check_cust_vars($message,$track) );
 
 	// text text
-	$fmessage .= stripslashes($message) . $eol;
+	$fmessage .= $message . $eol;
 	
 	// need to add form data summary or is all in the header anyway?
 	if(substr(get_option('cforms'.$no.'_formdata'),0,1)=='1')
@@ -565,7 +591,7 @@ function cforms_submitcomment($content) {
 		// actual user message
 		$htmlmessage = get_option('cforms'.$no.'_header_html');					
 		$htmlmessage = preg_replace('/=([^3D])/','=3D${1}', check_default_vars($htmlmessage,$no));
-		$htmlmessage = check_cust_vars($htmlmessage,$track);
+		$htmlmessage = stripslashes( check_cust_vars($htmlmessage,$track) );
 
 		$fmessage .= "------MIME_BOUNDRY_main_message"  . $eol;
 		$fmessage .= "Content-Type: text/html; charset=\"" . get_option('blog_charset') . "\"". $eol;
@@ -576,7 +602,7 @@ function cforms_submitcomment($content) {
 		$fmessage .= $styles;
 		$fmessage .= "<BODY>" . $eol;
 
-		$fmessage .= stripslashes($htmlmessage);
+		$fmessage .= $htmlmessage;
 
 		// need to add form data summary or is all in the header anyway?
 		if(substr(get_option('cforms'.$no.'_formdata'),1,1)=='1')
@@ -590,14 +616,14 @@ function cforms_submitcomment($content) {
 	//either use configured subject or user determined
 	$vsubject = get_option('cforms'.$no.'_subject');
 	$vsubject = check_default_vars($vsubject,$no);
-	$vsubject = check_cust_vars($vsubject,$track);
+	$vsubject = stripslashes( check_cust_vars($vsubject,$track) );
 
 
 	// SMTP server or native PHP mail() ?
 	if ( $smtpsettings[0]=='1' )
 		$sentadmin = cforms_phpmailer( $no, $frommail, $field_email, $to, $vsubject, $message, $formdata, $htmlmessage, $htmlformdata );
 	else
-		$sentadmin = @mail($to, stripslashes($vsubject), stripslashes($fmessage), $headers);	
+		$sentadmin = @mail($to, encode_header($vsubject), $fmessage, $headers);	
 
 	if( $sentadmin==1 )
 	{
@@ -675,13 +701,13 @@ function cforms_submitcomment($content) {
 						if ( $smtpsettings[0]=='1' )
 							$sent = cforms_phpmailer( $no, $frommail, $replyto, $field_email, stripslashes($t[1]), $message, $formdata, $htmlmessage, $htmlformdata );
 						else
-							$sent = @mail($field_email, stripslashes($t[1]), stripslashes($fmessage), $headers2); //takes $message!!
+							$sent = @mail($field_email, encode_header(stripslashes($t[1])), $fmessage, $headers2); //takes $message!!
 					}
 					else {
 						if ( $smtpsettings[0]=='1' )
 							$sent = cforms_phpmailer( $no, $frommail, $replyto, $field_email, stripslashes($t[0]) , $cmsg , '', $cmsghtml, '' );
 						else
-							$sent = @mail($field_email, stripslashes($t[0]), stripslashes($automessage), $headers2);
+							$sent = @mail($field_email, encode_header(stripslashes($t[0])), stripslashes($automessage), $headers2);
 					}
 					
 		  		if( $sent<>'1' ) {
@@ -1329,14 +1355,14 @@ function cforms($args = '',$no = '') {
 
 
 			if ( $field_stat[1] <> 'verification' && $field_stat[1] <> 'captcha' ){
-					$formdata .= $field_name . $value . "\n";
+					$formdata .= stripslashes( $field_name ) . $value . "\n";
 					$htmlformdata .= '<tr><td valign=3Dtop class=3Ddata-td>' . $htmlfield_name . '</td><td>' . $htmlvalue . '</td></tr>';
 			}
 
 		} //for all fields
 
 		// assemble html formdata
-		$htmlformdata = '<table width=3D\'100%\' cellpadding=3D2px bgcolor=3D#fafafa>' . $htmlformdata . '</table>';
+		$htmlformdata = '<table width=3D\'100%\' cellpadding=3D2px bgcolor=3D#fafafa>' . stripslashes( $htmlformdata ) . '</table>';
 
 		//
 		// allow the user to use form data for other apps
@@ -1429,7 +1455,7 @@ function cforms($args = '',$no = '') {
 		else
 			$fmessage .= "Content-Type: text/plain; charset=\"" . get_option('blog_charset') . "\"" . $eol . $eol;
 
-		$fmessage .= stripslashes($message) . $eol;
+		$fmessage .= $message . $eol;
 		
 		// need to add form data summary or is all in the header anyway?
 		if(substr(get_option('cforms'.$no.'_formdata'),0,1)=='1')
@@ -1442,7 +1468,7 @@ function cforms($args = '',$no = '') {
 			// actual user message
 			$htmlmessage = get_option('cforms'.$no.'_header_html');					
 			$htmlmessage = preg_replace('/=([^3D])/','=3D${1}', check_default_vars($htmlmessage,$no));
-			$htmlmessage = check_cust_vars($htmlmessage,$track);
+			$htmlmessage = stripslashes( check_cust_vars($htmlmessage,$track) );
 
 	
 			$fmessage .= "------MIME_BOUNDRY_sub_message"  . $eol;	
@@ -1455,7 +1481,7 @@ function cforms($args = '',$no = '') {
 			$fmessage .= $styles;
 			$fmessage .= "<BODY>" . $eol;
 
-			$fmessage .= stripslashes($htmlmessage);
+			$fmessage .= $htmlmessage;
 	
 			// need to add form data summary or is all in the header anyway?
 			if(substr(get_option('cforms'.$no.'_formdata'),1,1)=='1')
@@ -1508,13 +1534,13 @@ function cforms($args = '',$no = '') {
 		//now replace the left over {xyz} variables with the input data
 		$vsubject = get_option('cforms'.$no.'_subject');
 		$vsubject = check_default_vars($vsubject,$no);
-		$vsubject = check_cust_vars($vsubject,$track);
+		$vsubject = stripslashes( check_cust_vars($vsubject,$track) );
 
 		// SMTP server or native PHP mail() ?
 		if ( $smtpsettings[0]=='1' )
 			$sentadmin = cforms_phpmailer( $no, $frommail, $field_email, $to, $vsubject, $message, $formdata, $htmlmessage, $htmlformdata, $fileext );
 		else
-			$sentadmin = @mail($to, stripslashes($vsubject), stripslashes($fmessage).$attached, $headers);	
+			$sentadmin = @mail($to, encode_header($vsubject), $fmessage.$attached, $headers);	
 
 		if( $sentadmin==1 ) {
 				  // send copy or notification?
@@ -1588,13 +1614,13 @@ function cforms($args = '',$no = '') {
 								if ( $smtpsettings[0]=='1' )
 									$sent = cforms_phpmailer( $no, $frommail, $replyto, $field_email, stripslashes($t[1]), $message, $formdata, $htmlmessage, $htmlformdata, '' );
 								else
-									$sent = @mail($field_email, stripslashes($t[1]), stripslashes($fmessage), $headers2); //the admin one
+									$sent = @mail($field_email, encode_header(stripslashes($t[1])), $fmessage, $headers2); //the admin one
 							}
 							else {
 								if ( $smtpsettings[0]=='1' )
 									$sent = cforms_phpmailer( $no, $frommail, $replyto, $field_email, stripslashes($t[0]) , $cmsg , '', $cmsghtml, '' );
 								else
-									$sent = @mail($field_email, stripslashes($t[0]), stripslashes($automsg), $headers2); //takes the above
+									$sent = @mail($field_email, encode_header(stripslashes($t[0])), stripslashes($automsg), $headers2); //takes the above
 							}
 					
 			  		if( $sent<>'1' )
