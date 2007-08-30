@@ -1653,7 +1653,7 @@ function cforms($args = '',$no = '') {
 
 	//either show message above or below
 	if( substr(get_option('cforms'.$no.'_showpos'),0,1)=='y' ) {
-		$content .= $nl . $indent . $tab . '<p id="usermessage'.$no.'a" class="info ' . $usermessage_class . '" >' . $usermessage_text . '&nbsp;</p>' . $nl;
+		$content .= $nl . $indent . $tab . '<p id="usermessage'.$no.'a" class="info ' . $usermessage_class . '" >' . $usermessage_text . '</p>' . $nl;
 		$actiontarget = 'a';
  	} else if ( substr(get_option('cforms'.$no.'_showpos'),1,1)=='y' )
 		$actiontarget = 'b';
@@ -2102,7 +2102,7 @@ function cforms($args = '',$no = '') {
 
 	//either show message above or below
 	if( substr(get_option('cforms'.$no.'_showpos'),1,1)=='y' )
-		$content .= $indent . $tab . '<p id="usermessage'.$no.'b" class="info ' . $usermessage_class . '" >' . $usermessage_text . '&nbsp;</p>' . $nl;
+		$content .= $indent . $tab . '<p id="usermessage'.$no.'b" class="info ' . $usermessage_class . '" >' . $usermessage_text . '</p>' . $nl;
 
 	return $content;
 }
