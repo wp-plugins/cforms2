@@ -3,49 +3,55 @@ Contributors: olivers
 Donate link: http://www.deliciousdays.com/
 Tags: ajax, email, secure, visitor, input, order, form, contact
 Requires at least: 1.6+
-Tested up to: 2.2.1
+Tested up to: 2.2.2
 Stable tag: 5.4
 
-cforms II is an extremely customizable, flexible & powerful contact form plugin!
+cforms II is an extremely customizable, flexible & powerful contact form plugin.
 
 == Description ==
 
-For a complete version history (new features, bug fixes etc.), see [here](http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1).
+For **WHAT'S NEW** and a complete version history (new features, bug fixes etc.), see [here](http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1)!
 
 = Description =
 cforms is a highly customizable, flexible and powerful contact form plugin, covering a variety of use cases and features from attachments to multi form management, you can even have multiple forms on the same page!
 
-= Upgrading Note: =
-With v5.2 a more robust handling of email addresses (read: more forgiving) was introduced - however, as part of upgrading to 5.2+ please double and triple check your **admin email settings** and **auto confirmation** options.
+= Upgrading Notes: =
+For all the new features, see the Help documentation. 
 
 = Plugin Features =
-* **NEW: support for alternative SMTP server (in case you can't use *PHP mail()*)**
-* **NEW: better non-HTML (TXT only) email support**
-* **NEW: post processing of submitted data (see documentation) **
+* **NEW: individual error messages (HTML enabled), see Help!**
+* **NEW: Tell-A-Friend functionality, see Help!**
+* Support for alternative SMTP server (in case you can't use *PHP mail()*)
+* Better non-HTML (TXT only) email support
+* Post processing of submitted data (see documentation) 
 * Full HTML formatting support for email messages
-* Customizable auto confirmation message & form email **(Variables!)**
+* Customizable auto confirmation message & form email (Variables!)
 * Page redirection after successful form submission
 * Creates robust XHTML form code (no floats)
 * Alternative form action supported (please read config info!)
 * Full localization support (currently: English, German, Spanish)
 * Built-in CSS editor & theme chooser
 * Additional predefined CSS themes
-* File attachments (upload) **now mulitple upload fields supported**
+* Multiple file attachments (upload)
 * Multiple forms on one or many pages / posts
 * Ajax supported form submission (w/ graceful fall-back)
 * Multiple recipients per form (optionally selectable by visitor)
-* Fully customizable Look & Feel
+* Fully customizable Look & Feel (** labels & fields **)
 * Role Manager support
 * Backup & Restore of individual forms
 * Cloning, duplication of forms
-* Tracking of submitted data per DB (unique form submission IDs)
+* **NEW: Tracking of submissions, searching/filtering & download of data**
+* Support for tracking unique form submission IDs
 * BCC to copy additional admin(s)
 * 3rd party email tracking support, e.g. readnotify & didtheyreadit
 * SPAM protection (Q & A + Captcha)
+* **NEW: added Ajax captcha reset**
 * Submission status (success/failure) optionally via Alert Box
+* **NEW: HTML support for success/failure messages** 
 * Form validation & *regular expressions*
 * Configurable text elements
 * Convenient handling of input field order, via drag and drop
+* **NEW: HTML support for field labels (*field names*), see examples on Help!**
 * Supporting DISABLED form fields for better usability
 * Various standard form building blocks:
 	* fieldsets

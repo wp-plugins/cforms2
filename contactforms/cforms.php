@@ -19,7 +19,7 @@ cforms II - v5.4
     ie. unique <li> ID's, see "Styling" page
 *) feature: added ajax captcha reset
 *) feature: added individual error messages (HTML enabled), see Help
-*) feature: added HTML support for field labels (field names)
+*) feature: added HTML support for field labels (field names), see examples on Help page
 *) feature: added HTML support for the general error and success message
     (HTML gets stripped for popup alert() boxes!)
 
@@ -27,6 +27,7 @@ cforms II - v5.4
     if using the default permalink structure
 *) other: changed session_start() call in favour of gzip compression
 *) other: forcing chronological order of data records when downloading as CSV
+
 *) bugfix: fixed special characters (e.g. Umlauts) in subject line
 *) bugfix: minor CSS bugs
 *) bugfix: check box select bug on "Tracking" page

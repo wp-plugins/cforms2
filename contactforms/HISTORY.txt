@@ -2,6 +2,28 @@
 Copyright 2006-2007  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
+cforms II - v5.4
+*) feature: added Tell-A-Friend functionality, see Help documentation
+*) feature: added filter option for displaying data records on "Tracking" page
+*) feature: added support for individual input field CSS customization
+    ie. unique <li> ID's, see "Styling" page
+*) feature: added ajax captcha reset
+*) feature: added individual error messages (HTML enabled), see Help
+*) feature: added HTML support for field labels (field names), see examples on Help page
+*) feature: added HTML support for the general error and success message
+    (HTML gets stripped for popup alert() boxes!)
+
+*) other: changed {Page} variable to reflect query params (/?p=123)
+    if using the default permalink structure
+*) other: changed session_start() call in favour of gzip compression
+*) other: forcing chronological order of data records when downloading as CSV
+
+*) bugfix: fixed special characters (e.g. Umlauts) in subject line
+*) bugfix: minor CSS bugs
+*) bugfix: check box select bug on "Tracking" page
+*) bugfix: fixed copying of attachment(s) to specified server dir, when Tracking is turned off
+*) bugfix: fixed sorting bug on 'Tracking' page for Internet Explorer
+
 cforms II - v5.3
 *) bugfix: admin HTML with non auto conf. TXT email would cause flawed HTML CC email
 *) bugfix: fixed mailer error messsages for ajax (they would not show)
