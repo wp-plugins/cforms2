@@ -138,6 +138,9 @@ function download_cforms() {
 
 					if ( $sub_id<>'' ) 
 						$buffer = substr($buffer,0,-1) . $br;
+
+					//if ( $buffer=='' ) 
+					//	$buffer=chr(255).chr(254);
 						
 					$sub_id = $entry->sub_id;
 
@@ -146,8 +149,11 @@ function download_cforms() {
 					$buffer .= '"Form: ' . get_option('cforms'.$entry->form_id.'_fname'). '"'. $format .'"'. $entry->sub_date .'"' . $format;
 				}
 
+				//$buffer .= '"' . str_replace('"','""', (stripslashes($entry->field_val))) . '"' . $format;
 				$buffer .= '"' . str_replace('"','""', utf8_decode(stripslashes($entry->field_val))) . '"' . $format;
-		
+				//$buffer .= '"' . str_replace('"','""', iconv ( 'UTF-8', 'UTF-16LE//IGNORE', ($entry->field_val) ) ) . '"' . $format;
+				//$buffer .= '"' . str_replace('"','""', mb_convert_encoding ( stripslashes($entry->field_val), 'UTF-16LE', 'UTF-8' ) ) . '"' . $format;
+				        
 			}
 	
 			header("Pragma: public");
@@ -155,7 +161,7 @@ function download_cforms() {
 			header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
 			header("Content-Type: application/force-download");
 			header("Content-Type: text/download");
-			header("Content-Type: text/csv");
+			header("Content-Type: text/csv;");
 			header("Content-Disposition: attachment; filename=\"formdata." . $_REQUEST['downloadformat'] . "\"");
 			header("Content-Transfer-Encoding: binary");
 			header("Content-Length: " .(string)(strlen($buffer)) );
