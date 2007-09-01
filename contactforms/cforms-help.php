@@ -484,33 +484,38 @@ if(!current_user_can('manage_cforms')) {
 			</tr>
 			<tr>
 				<td class="ball" colspan="2">
-					<?php echo str_replace(array('[url]'),array('?page='.$plugindir.'/cforms-options.php#tellafriend'),__('The <a href="[url]">Tell A Friend feature</a> needs to be enabled for the respective form, otherwise you won\'t see the above input fields in the select box (<em>Field Type</em>).', 'cforms')); ?>
+					<?php _e('<strong>To get it working:</strong>', 'cforms'); ?>
+					<ol>
+						<li><?php echo str_replace(array('[url]'),array('?page='.$plugindir.'/cforms-options.php#tellafriend'),__('The <a href="[url]">Tell A Friend feature</a> needs to be <strong>enabled for the respective form</strong> (<em>check the selected form first!</em>), otherwise you won\'t see the above input fields in the [<em>Field Type</em>] select box.', 'cforms')); ?></li>
+						<li><?php echo str_replace(array('[url2]'),array('?page='.$plugindir.'/cforms-options.php#cforms_cmsg'),__('The <a href="[url2]">auto confirmation</a> message will be used as a <strong>message template</strong> and needs to be defined. See example below.', 'cforms')); ?></li>
+						<li><?php echo str_replace(array('[url1]','[url2]'),array('#tafvariables','?page='.$plugindir.'/cforms-options.php#cforms_cmsg'),__('There a <a href="[url1]">three additional</a>, <em>predefined variables</em> that can be used in the <a href="[url2]">message template</a>.', 'cforms')); ?></li>
+						<li><?php echo _e('<strong>Add the form</strong> to your post/page php templates (see deployment options further below).', 'cforms'); ?></li>
+						<li><img style="float:right;" src="<?php echo $cforms_root; ?>/images/example-t-a-f2.png"  alt=""/><?php echo _e('Tell-A-Friend <strong>enable your posts/pages</strong> by checking the T-A-F field in the WP post (page) editor.', 'cforms'); ?></li>
+					</ol>
+					
 				</td>
 			</tr>
-			<tr>
-				<td class="ball" colspan="2">
-					<?php echo str_replace(array('[url1]','[url2]'),array('#tafvariables','?page='.$plugindir.'/cforms-options.php#cforms_cmsg'),__('There a <a href="[url1]">three additional</a>, <em>predefined variables</em> that can be used in the <a href="[url2]">auto confirmation</a> message.', 'cforms')); ?>
-				</td>
-			</tr>
+		</table>
+		<br/>
+		<table class="hf" cellspacing="2" border="4">			
 			<tr>
 				<td class="ball" colspan="2">
 					<?php echo str_replace(array('[url]'),array('?page='.$plugindir.'/cforms-options.php#cforms_cmsg'),__('Here is an example of how to setup the TXT part of the <a href="[url]">auto confirmation message</a> as a Tell-A-friend template:', 'cforms')); ?>
-
-					<p><code class="codehighlight">
+	
+				</td>
+			</tr>
+			<tr>
+				<td class="ball" colspan="2">
+					<code class="codehighlight">
 					<?php _e('Hello {Friend\'s Name}','cforms'); ?>,<br />
-					<br />
-					<?php _e('{Your Name} left you this message:','cforms'); ?><br />
-					<br />
-					<?php _e('{Optional Comment}','cforms'); ?><br />
-					<br />
-					<?php _e('The message was sent in reference to {Title}:','cforms'); ?><br />
-					<br />
-					<?php _e('{Excerpt}','cforms'); ?><br />
-					<?php _e('{Permalink}','cforms'); ?><br />
-					<br />
+					<?php  _e('{Your Name} left you this message:','cforms'); ?><br />		
+					<?php  _e('{Optional Comment}','cforms'); ?><br />
+					<?php  _e('The message was sent in reference to {Title}:','cforms'); ?><br />
+					<?php  _e('{Excerpt}','cforms'); ?><br />
+					<?php  _e('{Permalink}','cforms'); ?><br />
 					--<br />
-					<?php _e('This email is sent, as a courtesy of website.com, located at http://website.com. The person who sent this email to you, {Your Name}, gave an email address of {Your Email}. {Your Name} logged into website.com from IP {IP}, and sent the email at {Time}.','cforms'); ?>
-					</code></p>
+					<?php  _e('This email is sent, as a courtesy of website.com, located at http://website.com. The person who sent this email to you, {Your Name}, gave an email address of {Your Email}. {Your Name} logged into website.com from IP {IP}, and sent the email at {Time}.','cforms'); ?><br />
+					</code>
 				</td>
 			</tr>
 			<tr>
@@ -518,10 +523,62 @@ if(!current_user_can('manage_cforms')) {
 					<?php _e('<strong>Note:</strong> In addition to the above TXT message you can, of course, add an HTML counterpart.', 'cforms'); ?>
 				</td>
 			</tr>
+		</table>
+		<br/>
+		<table class="hf" cellspacing="2" border="4">			
 			<tr>
 				<td class="ball" colspan="2">
-					<?php _e('<strong>Implementation:</strong> Typically, the form would be added to for instance the <code class="codehighlight">single.php</code> or <code class="codehighlight">page.php</code> template. ', 'cforms'); ?>
-					<?php _e('Simply add a <code class="codehighlight">&lt;?php insert_cform(<em>#</em>); ?&gt;</code> below the WP <code class="codehighlight">the_content()</code> function call or wherever you deem fit.', 'cforms'); ?>
+					<?php _e('<strong>Recommended Implementation Options:</strong>.', 'cforms'); ?>
+				</td>
+			</tr>
+			<tr>
+				<td class="ball" colspan="2">
+					<?php _e('<em> Alternative 1:</em> The actual form will not show on the WP front page, but in the individual post/page view.', 'cforms'); ?>
+					<ol>
+						<li><?php echo str_replace(array('[url]'),array('#inserting'),__('Simply add a <code class="codehighlight">&lt;?php insert_cform(<em>#</em>); ?&gt;</code> (# = <a href="[url]">your form id</a>) to your existing <code class="codehighlight">single.php</code> and/or <code class="codehighlight">page.php</code> template, e.g:', 'cforms'));?>
+
+<code class="codehighlight" style="font-size: 11px;"><br/ >
+[...]<br/ >
+&lt;?php the_content('&lt;p&gt;Read the rest of this entry &raquo;&lt;/p&gt;'); ?&gt;<br/ >
+<strong style="color:red;">&lt;?php if ( is_tellafriend( $post-&gt;ID ) ) insert_cform(#); ?&gt;</strong><br/ >
+[...]
+</code>
+						</li>				
+						<li><?php echo _e('Suggestion: For a less crowded layout, optionally add some Javascript code to show/hide the form.', 'cforms'); ?></li>
+					</ol>
+				</td>
+			</tr>
+			<tr>
+				<td class="ball" colspan="2">
+					<?php _e('<em> Alternative 2:</em> A Tell-A-Friend link is shown under every eligible post/page, shown both on the blog\'s front page & individual post & page view.', 'cforms'); ?>
+					<ol>
+						<li><?php  _e('This requires a new WP page created (make note of the page ID or permalink), with its own page template (a clone of page.php will do). Add the following code to the new page template:', 'cforms'); ?>
+
+<code class="codehighlight" style="font-size: 11px;"><br/ >
+[...]<br/ >
+&lt;?php the_content('&lt;p&gt;Read the rest of this page &raquo;&lt;/p&gt;'); ?&gt;<br/ >
+<strong style="color:red;">&lt;h3&gt<br/ >
+ &lt;?php echo 'E-Mail "'.get_the_title( $_GET['pid'] ).'" to a friend:'; ?&gt;<br/ >
+&lt;/h3&gt;<br/ >
+&lt;?php if ( is_tellafriend( $post-&gt;ID ) ) insert_cform(#); ?&gt;</strong><br/ >
+[...]
+</code>
+						</li>				
+						<li><?php echo _e('In <em>single.php</em> and/or <em>page.php</em> add beneath the "the_content()" call the link to the new page created above, e.g.:', 'cforms'); ?>
+
+<code class="codehighlight" style="font-size: 11px;"><br/ >
+[...]<br/ >
+&lt;?php the_content('&lt;p&gt;Read the rest of this entry &raquo;&lt;/p&gt;'); ?&gt;<br/ >
+<strong style="color:red;">&lt;?php <br/ >
+if ( is_tellafriend( $post-&gt;ID ) ) <br/ >
+ &nbsp; &nbsp; echo '&lt;a href="[your-new-page]&pid='.$post-&gt;ID.'" title="Tell-A-Friend form"&gt;Tell a friend!&lt;/a&gt;'; <br/ >
+?&gt;</strong><br/ >
+[...]<br/ >
+</code>
+						</li>				
+						<li><?php echo _e('With <strong>[your-new-page]</strong> = the permalink to your newly created page.', 'cforms'); ?></li>
+					</ol>
+
 				</td>
 			</tr>
 		</table>

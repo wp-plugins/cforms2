@@ -287,7 +287,7 @@ function write_tracking_record($no,$field_email){
 function get_current_page(){
 
 	$page = substr( $_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'],'?')-1);
-	$page = (trim($page)=='')?$_SERVER['HTTP_REFERER']:trim($page);
+	$page = (trim($page)=='')?$_SERVER['HTTP_REFERER']:trim($page); // for ajax
 	return $page;
 	
 }
@@ -304,11 +304,12 @@ function check_default_vars($m,$no) {
 		
 		$page = get_current_page();
 		
-		if ( preg_match('/http:\/\//',$page) )
+		/*if ( preg_match('/http:\/\//',$page) )
 			$permalink = $page;
 		else
 			$permalink = ( (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS']=='off')?'http://':'https://' ) . $_SERVER['SERVER_NAME'] . $page;
-		
+		*/
+					
 		$find = $wpdb->get_row("SELECT post_title, post_excerpt FROM $wpdb->posts WHERE ID='$pid'");
 		
 		$m 	= str_replace( __('{Form Name}', 'cforms'), get_option('cforms'.$no.'_fname'), $m );
@@ -901,19 +902,14 @@ sajax_export("reset_captcha");
 sajax_handle_client_request();	
 
 
-
 //
 // reset captcha image
 //
-function reset_captcha( $no = '' )
-{
+function reset_captcha( $no = '' ){
     @session_start();
 	$_SESSION['turing_string_'.$no] = rc(4,5);
-	
-	$begin = strpos(__FILE__,'/wp-content/');
-	$end = strripos (__FILE__,'/');
-	
-	$path = substr(__FILE__, $begin, ($end-$begin) );
+		
+	$path = preg_replace( '|.*(/wp-content/.*)/.*|','${1}', __FILE__ );
 	
 	$newimage = md5(strtolower($_SESSION['turing_string_'.$no])) . '|' . $no . '|' . $path  . '/cforms-captcha.php?ts='.$no;	 
 	return $newimage;
@@ -2079,9 +2075,11 @@ function cforms($args = '',$no = '') {
 	if ( $captcha )
 		$content .= $nl . $indent . $tab . '<input type="hidden" name="cforms_cap'.$no.'" id="cforms_cap'.$no.'" value="' . md5(strtolower($_SESSION['turing_string_'.$no])) . '"/>';
 
-	if ( get_option('cforms'.$no.'_tellafriend') )
-		$content .= $nl . $indent . $tab . '<input type="hidden" name="cforms_pid'.$no.'" id="cforms_pid'.$no.'" value="' . get_the_ID() . '"/>';
-
+	if ( get_option('cforms'.$no.'_tellafriend') ){
+		$content .= $nl . $indent . $tab . '<input type="hidden" name="cforms_pid'.$no.'" id="cforms_pid'.$no.'" value="' . ( isset($_GET['pid'])? $_GET['pid'] : get_the_ID() ) . '"/>';
+		$content .= $nl . $indent . $tab . '<input type="hidden" name="cforms_pl'.$no.'" id="cforms_pl'.$no.'" value="' . ( isset($_GET['pid'])? get_permalink($_GET['pid']) : get_permalink() ) . '"/>';
+	}
+	
 	$content .= $indent . $tab . $tab . '<input type="hidden" name="cf_working'.$no.'" id="cf_working'.$no.'" value="'.rawurlencode(get_option('cforms'.$no.'_working')).'"/>'. $nl .
 				$indent . $tab . $tab . '<input type="hidden" name="cf_failure'.$no.'" id="cf_failure'.$no.'" value="'.rawurlencode(get_option('cforms'.$no.'_failure')).'"/>'. $nl .
 				$indent . $tab . $tab . '<input type="hidden" name="cf_codeerr'.$no.'" id="cf_codeerr'.$no.'" value="'.rawurlencode(get_option('cforms_codeerr')).'"/>'. $nl .
@@ -2107,24 +2105,6 @@ function cforms($args = '',$no = '') {
 	return $content;
 }
 
-// replace placeholder by generated code
-function cforms_insert( $content ) {
-
-  $forms = get_option('cforms_formcount');
-  for ($i=1;$i<=$forms;$i++)
-  {
-    if($i==1)
-    {
-      if(preg_match('#<!--cforms-->#', $content))
-  	   	$content = preg_replace('/(<p>)?<!--cforms-->(<\/p>)?/', cforms(''), $content);
-    } else {
-      if(preg_match('#<!--cforms'.$i.'-->#', $content))
-    		$content = preg_replace('/(<p>)?<!--cforms'.$i.'-->(<\/p>)?/', cforms('',$i), $content);
-    }
-	}
-
-	return $content;
-}
 
 // captcha random code
 function rc($min,$max) 
@@ -2193,6 +2173,25 @@ function cforms_footer() {
 <?php 
 }
 
+// replace placeholder by generated code
+function cforms_insert( $content ) {
+	global $post;
+
+	$forms = get_option('cforms_formcount');
+
+	for ($i=1;$i<=$forms;$i++) {
+		if($i==1) {
+	  		if(preg_match('#<!--cforms-->#', $content) && check_for_taf('',$post->ID) )
+	   			$content = preg_replace('/(<p>)?<!--cforms-->(<\/p>)?/', cforms(''), $content);
+		} else {
+	 		 if(preg_match('#<!--cforms'.$i.'-->#', $content) && check_for_taf($i,$post->ID) )
+				$content = preg_replace('/(<p>)?<!--cforms'.$i.'-->(<\/p>)?/', cforms('',$i), $content);
+		}
+	}
+	
+	return $content;
+}
+
 //build field_stat string from array (for custom forms)
 function build_fstat($fields) {	
     $cfarray = array();
@@ -2208,11 +2207,67 @@ function build_fstat($fields) {
 }
 
 // inserts a cform anywhere you want
-function insert_cform($no='') {	echo cforms('',$no); }
+function insert_cform($no='') {	
+	global $post;
+
+	if ( isset($_GET['pid']) )
+		$pid = $_GET['pid'];
+	else if ($post->ID == 0)
+		$pid = false;
+	else
+		$pid = $post->ID;
+		
+	if ( !$pid )
+		cforms('',$no);
+	else
+		echo check_for_taf($no,$pid)?cforms('',$no):''; 
+}
 
 // inserts a custom cform anywhere you want
-function insert_custom_cform($fields='',$no='') { echo cforms($fields,$no.'+'); }
+function insert_custom_cform($fields='',$no='') { 
+	global $post;
+	
+	if ( isset($_GET['pid']) )
+		$pid = $_GET['pid'];
+	else if ($post->ID == 0)
+		$pid = false;
+	else
+		$pid = $post->ID;
+		
+	if ( !$pid )
+		cforms($fields,$no.'+');
+	else
+		echo check_for_taf($no,$pid)?cforms($fields,$no.'+'):''; 
+}
 
+// check if t-f-a is set
+function check_for_taf($no,$pid) {
+
+	$tmp = get_post_custom($pid);
+	$taf = $tmp["tell-a-friend"][0];
+
+	if ( get_option('cforms'.$no.'_tellafriend')<>'1')
+		return true;
+	else {
+		if ( $taf=='1' )
+			return true;
+		else
+			return false;
+	}
+
+}
+
+// check if post is t-f-a enabled
+function is_tellafriend($pid) {
+
+	$tmp = get_post_custom($pid);
+	$taf = $tmp["tell-a-friend"][0];
+
+	if ( $taf=='1' )
+		return true;
+	else
+		return false;
+}
 
 // Set 'manage_database' Capabilities To Administrator
 add_action('activate_'.$plugindir.'/cforms.php', 'cforms_init');
@@ -2271,7 +2326,49 @@ function widget_cforms_init() {
 
 
 
+### Add Tell A Friend checkbox to admin
+add_action('dbx_post_sidebar', 'taf_admin');
+add_action('dbx_page_sidebar', 'taf_admin');
+function taf_admin() {
+	global $wpdb;
+	$edit_post = intval($_GET['post']);
 
+	for ( $i=1;$i<=get_option('cforms_formcount');$i++ ) {
+		$tafenabled = (get_option('cforms'.(($i=='1')?'':$i).'_tellafriend')=='1') ? true : false;
+		if ( $tafenabled ) break;
+	}
+	
+	if ( $tafenabled && function_exists('get_post_custom') && $edit_post > 0 ){
+
+		$tmp = get_post_custom($edit_post);
+		$taf = $tmp["tell-a-friend"][0];
+				
+		?>
+		<fieldset id="poststickystatusdiv" class="dbx-box">
+			<h3 class="dbx-handle"><?php _e('cforms Tell-A-Friend', 'cforms'); ?></h3> 
+			<div class="dbx-content">
+				<label for="tellafriend" class="selectit"><input type="checkbox" id="tellafriend" name="tellafriend" value="1"<?php checked($taf, 1); ?>/>&nbsp;<?php _e('Include Form', 'cforms'); ?></label>
+			</div>
+		</fieldset>
+		<?php
+	}
+}
+
+### Add Tell A Friend processing
+add_action('save_post', 'enable_tellafriend');
+function enable_tellafriend($post_ID) {
+	global $wpdb;
+	
+	$tellafriend_status = isset($_POST['tellafriend']);
+
+	if($tellafriend_status && intval($post_ID) > 0)
+		add_post_meta($post_ID, 'tell-a-friend', '1', true);
+	else
+		delete_post_meta($post_ID, 'tell-a-friend');
+}
+
+
+### Add cforms menu to admin
 function cforms_menu() {
 	global $plugindir, $wpdb;
 

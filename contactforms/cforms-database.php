@@ -200,7 +200,7 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']) || isset($_POST['sql
 	$WHERE .= ($_POST['filter_date1']<>'' && $_POST['filter_date1']<>'from')?" sub_date >= '{$_POST['filter_date1']}' AND":"";
 	$WHERE .= ($_POST['filter_date2']<>'' && $_POST['filter_date1']<>'to')?" sub_date <= '{$_POST['filter_date2']}' AND":"";
 
-	$WHERE = substr( $WHERE,0,strripos($WHERE, 'AND') );
+	$WHERE = substr( $WHERE,0,strrpos($WHERE, 'AND') );
 			
 	//
 	// load entries

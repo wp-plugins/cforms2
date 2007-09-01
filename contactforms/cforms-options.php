@@ -1191,6 +1191,13 @@ if( strlen($fd)<=2 ) {
 			<div class="optionsbox">
 				<div class="optionsboxL"><label for="cforms_tellafriend"><strong><?php _e('Enable Tell-A-Friend', 'cforms') ?></strong></label></div>
 				<div class="optionsboxR"><input type="checkbox" id="cforms_tellafriend" name="cforms_tellafriend" <?php if( get_option('cforms'.$no.'_tellafriend')=='1' ) echo "checked=\"checked\""; ?>/></div>
+				<?php if( get_option('cforms'.$no.'_tellafriend')=='1' ) : ?>
+					<div class="optionsboxR">
+						<p class="ex">
+						<?php echo __('You will find a <strong>cforms Tell-A-Friend</strong> checkbox on your <strong>admin/edit page</strong> (typically under "Post/Author")! Check it if you want to have the form appear for the given post or page.', 'cforms');?>
+						</p>
+					</div>
+				<?php endif; ?>
 			</div>
 
 		</fieldset>	
