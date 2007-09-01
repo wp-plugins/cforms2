@@ -71,6 +71,7 @@ if ( $smtpsettings[0]=='1' ) {
 ### other global stuff
 $track = array(); 
 $Ajaxpid = '';
+$AjaxURL = '';
 
 ### need this for captchas
 add_action('template_redirect', 'start_cforms_session');
@@ -294,7 +295,7 @@ function get_current_page(){
 
 function check_default_vars($m,$no) {
 
-		global $subID, $Ajaxpid, $post, $wpdb;
+		global $subID, $Ajaxpid, $AjaxURL, $post, $wpdb;
 
 		$pid = ($_POST['cforms_pid'.$no])?$_POST['cforms_pid'.$no]:$Ajaxpid;
 				
@@ -309,7 +310,9 @@ function check_default_vars($m,$no) {
 		else
 			$permalink = ( (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS']=='off')?'http://':'https://' ) . $_SERVER['SERVER_NAME'] . $page;
 		*/
-					
+
+		$permalink = ($_POST['cforms_pl'.$no])?$_POST['cforms_pl'.$no]:$AjaxURL;
+
 		$find = $wpdb->get_row("SELECT post_title, post_excerpt FROM $wpdb->posts WHERE ID='$pid'");
 		
 		$m 	= str_replace( __('{Form Name}', 'cforms'), get_option('cforms'.$no.'_fname'), $m );
@@ -357,10 +360,11 @@ $styles .= "--></style></HEAD>\n";
 //
 function cforms_submitcomment($content) {
 
-	global $wpdb, $subID, $styles, $smtpsettings, $track, $Ajaxpid;
+	global $wpdb, $subID, $styles, $smtpsettings, $track, $Ajaxpid, $AjaxURL;
 
 	$content = explode('+++', $content);
-	$Ajaxpid = $content[1];
+	$Ajaxpid  = $content[1];
+	$AjaxpURL = $content[2];
 
 	$segments = explode('$#$', $content[0]);
 	$params = array();
