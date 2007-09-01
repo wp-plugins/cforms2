@@ -1483,7 +1483,7 @@ function cforms($args = '',$no = '') {
 			     $field_value = $_POST['cf'.$no.'_field_' . $i];  // in this case it's an array! will do the stripping later
 			}
 			else
-			     $field_value = stripslashes(htmlspecialchars($_POST['cf'.$no.'_field_' . $i]));
+			     $field_value = stripslashes(($_POST['cf'.$no.'_field_' . $i]));
 		}
 		
 		if ( $field_value=='' && $defaultvalue<>'' ) // if not reloaded (due to err) then use default values
