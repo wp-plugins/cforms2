@@ -1012,8 +1012,6 @@ if( strlen($fd)<=2 ) {
 
 			<p><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-global-settings.php#visitorv',__('These are the messages displayed to the user on successful (or failed) form submission. These messages are form specific, a general message for entering a wrong <strong>visitor verification code</strong> can be found <a href="[url]">here</a>.', 'cforms')); ?></p>
 
-			<p class="ex"><?php _e('Please <strong>do not use HTML code</strong> in these fields instead, adjust the (cforms.css) stylesheet to your needs. Line breaks and quotes are fine. The actual success &amp; failure message can in addition be shown in a popup <strong>alert box</strong>. This may come handy in case your forms are extremely long and the user can\'t see the submission status at the top anymore.', 'cforms') ?></p>
-
 			<br />
 			<div class="optionsbox">
 				<div class="optionsboxL"><label for="cforms_working"><strong><?php _e('Waiting message', 'cforms'); ?></strong></label></div>
@@ -1059,10 +1057,10 @@ if( strlen($fd)<=2 ) {
 				<div class="optionsboxR"><input name="cforms_submit_text" id="cforms_submit_text" value="<?php echo (get_option('cforms'.$no.'_submit_text'));  ?>" /></div>
 			</div>
 
-			<p class="ex" style="margin-top:50px;"><?php _e('If you enable an alternative <strong>form action</strong> you <u>will loose any cforms application logic</u> (spam security, field validation, DB tracking etc.) in non-ajax mode! The settings below are really only for developers that require additional capabilities around forwarding of form data. These settings turn cforms into a front-end "form builder" so to speak.', 'cforms') ?></p>
+			<p class="ex" style="margin-top:50px;"><?php _e('If you enable an alternative <strong>form action</strong> you <u>will loose any cforms application logic</u> (spam security, field validation, DB tracking etc.) in non-ajax mode! The settings below are really only for developers that require additional capabilities around forwarding of form data. These settings turn cforms into a front-end only, a "form builder" so to speak.', 'cforms') ?></p>
 
 			<div class="optionsbox" style="margin-top:10px;">
-				<div class="optionsboxL"><label for="cforms_action"><?php _e('<strong>Redirect form data</strong> to <br />an alternative page:', 'cforms'); ?></label></div>
+				<div class="optionsboxL"><label for="cforms_action"><?php _e('<strong>Redirect form data</strong><br /> to an alternative page:', 'cforms'); ?></label></div>
 				<div class="optionsboxR">
 					<input type="checkbox" id="cforms_action" name="cforms_action" <?php if(get_option('cforms'.$no.'_action')) echo "checked=\"checked\""; ?>/><label for="cforms_action"><?php _e('Enable alternative form action!', 'cforms'); ?></label><br />
 					<input name="cforms_action_page" id="cforms_action_page" value="<?php echo (get_option('cforms'.$no.'_action_page'));  ?>" />
@@ -1084,7 +1082,7 @@ if( strlen($fd)<=2 ) {
 				<div class="optionsboxR"><input type="text" name="cforms_fromemail" id="cforms_fromemail" value="<?php echo stripslashes(htmlspecialchars(get_option('cforms'.$no.'_fromemail'))); ?>" /></div>
 			</div>
 
-			<p class="ex"><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#multirecipients',__('More than one "<strong>form admin</strong>"? Simply add additional email addresses separated by a <strong style="color:red">comma</strong>. &nbsp; <em><u>Note:</u></em> &nbsp; If you want the visitor to choose from any of these per select box, you need to add a corresponding "<code class="codehighlight">Multiple Recipients</code>" input field <a href="#anchorfields">above</a> (see the HELP section for <a href="[url]">details</a> on the <em>field name</em> format expected!). If <strong>no</strong> "Multiple Recipients" input field is defined above, the submitted form data will go out to <strong>every email recipient</strong>!', 'cforms')); ?></p>
+			<p class="ex"><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#multirecipients',__('More than one "<strong>form admin</strong>"? Simply add additional email addresses separated by a <strong style="color:red">comma</strong>. &nbsp; <em><u>Note:</u></em> &nbsp; If you want the visitor to choose from any of these per select box, you need to add a corresponding "<code class="codehighlight">Multiple Recipients</code>" input field <a href="#anchorfields">above</a> (see the HELP section for <a href="[url]">details</a> on the <em>field name</em> format expected!). If <strong>no</strong> "Multiple Recipients" input field is defined above, the submitted form data will go out to <strong>every address listed</strong>!', 'cforms')); ?></p>
 			<br />
 			<div class="optionsbox">
 				<div class="optionsboxL"><label for="cforms_email"><strong><?php _e('Admin email address(es)', 'cforms') ?></strong></label></div>
@@ -1186,11 +1184,11 @@ if( strlen($fd)<=2 ) {
 		<fieldset class="cformsoptions" id="tellafriend">
 			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><input type="submit" name="Submit8" class="allbuttons updbutton" value="<?php _e('Update Settings &raquo;', 'cforms'); ?>" onclick="javascript:document.mainform.action='#tellafriend';" /><?php _e('Tell-A-Friend Form Support', 'cforms') ?></p>
 
-			<p><?php echo str_replace('[url]','?page='. $plugindir.'/cforms-help.php#taf',__('If enabled, this forms\' feature set will be extended to cover tell-a-friend requirements. Please see the Help section for <a href="[url]">more details.</a>', 'cforms')); ?></p>
+			<p><?php echo str_replace('[url]','?page='. $plugindir.'/cforms-help.php#taf',__('If enabled, this forms\' feature set will be extended to cover tell-a-friend requirements, 4 new <em>input field types</em> will be available. Please see the Help section for <a href="[url]">more details.</a>', 'cforms')); ?></p>
 
 			<div class="optionsbox">
-				<div class="optionsboxL"><label for="cforms_tellafriend"><strong><?php _e('Enable Tell-A-Friend', 'cforms') ?></strong></label></div>
-				<div class="optionsboxR"><input type="checkbox" id="cforms_tellafriend" name="cforms_tellafriend" <?php if( get_option('cforms'.$no.'_tellafriend')=='1' ) echo "checked=\"checked\""; ?>/></div>
+				<div class="optionsboxL"></label></div>
+				<div class="optionsboxR"><input type="checkbox" id="cforms_tellafriend" name="cforms_tellafriend" <?php if( get_option('cforms'.$no.'_tellafriend')=='1' ) echo "checked=\"checked\""; ?>/><label for="cforms_tellafriend"><strong><?php _e('Enable Tell-A-Friend', 'cforms') ?></strong></div>
 				<?php if( get_option('cforms'.$no.'_tellafriend')=='1' ) : ?>
 					<div class="optionsboxR">
 						<p class="ex">

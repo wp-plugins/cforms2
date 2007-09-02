@@ -484,6 +484,10 @@ function cforms_submitcomment(no) {
 								params = params + '+++' + objColl[i].value;
 					 	
 					 	} else
+						if ( typ == "hidden" && objColl[i].name.match(/cforms_pl/) ) {
+								params = params + '+++' + objColl[i].value;
+					 	
+					 	} else
 						if ( typ != "hidden" && typ != "submit" && typ != "radio") {
 								params = params + prefix + objColl[i].value.replace(regexp, '$');
 					 	}

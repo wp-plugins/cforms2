@@ -426,6 +426,10 @@ if(!current_user_can('manage_cforms')) {
 					<code class="codehighlight"><?php _e('Enter code', 'cforms'); ?></code></td>
 			</tr>
 			<tr>
+				<td class="bleft"><?php _e('Example:', 'cforms'); ?></td><td class="bright">
+					<code class="codehighlight"><?php _e('Spam Protection|err:Please enter the CAPTCHA code correctly! If text is unreadable, try reloading.', 'cforms'); ?></code></td>
+			</tr>
+			<tr>
 				<td class="ball" colspan="2">
 					<?php _e('Alternatively or in addition to the above <strong>Visitor verification</strong> feature, you can have the visitor provide a captcha response.', 'cforms'); ?>
 				</td>
@@ -486,7 +490,7 @@ if(!current_user_can('manage_cforms')) {
 				<td class="ball" colspan="2">
 					<?php _e('<strong>To get it working:</strong>', 'cforms'); ?>
 					<ol>
-						<li><?php echo str_replace(array('[url]'),array('?page='.$plugindir.'/cforms-options.php#tellafriend'),__('The <a href="[url]">Tell A Friend feature</a> needs to be <strong>enabled for the respective form</strong> (<em>check the selected form first!</em>), otherwise you won\'t see the above input fields in the [<em>Field Type</em>] select box.', 'cforms')); ?></li>
+						<li><?php echo str_replace(array('[url]'),array('?page='.$plugindir.'/cforms-options.php#tellafriend'),__('The <a href="[url]">Tell A Friend feature</a> needs to be <strong>enabled for the respective form</strong> (<em>check if it\'s the right one!</em>), otherwise you won\'t see the above input fields in the [<em>Field Type</em>] select box.', 'cforms')); ?></li>
 						<li><?php echo str_replace(array('[url2]'),array('?page='.$plugindir.'/cforms-options.php#cforms_cmsg'),__('The <a href="[url2]">auto confirmation</a> message will be used as a <strong>message template</strong> and needs to be defined. See example below.', 'cforms')); ?></li>
 						<li><?php echo str_replace(array('[url1]','[url2]'),array('#tafvariables','?page='.$plugindir.'/cforms-options.php#cforms_cmsg'),__('There a <a href="[url1]">three additional</a>, <em>predefined variables</em> that can be used in the <a href="[url2]">message template</a>.', 'cforms')); ?></li>
 						<li><?php echo _e('<strong>Add the form</strong> to your post/page php templates (see deployment options further below).', 'cforms'); ?></li>
@@ -550,17 +554,15 @@ if(!current_user_can('manage_cforms')) {
 			</tr>
 			<tr>
 				<td class="ball" colspan="2">
-					<?php _e('<em> Alternative 2:</em> A Tell-A-Friend link is shown under every eligible post/page, shown both on the blog\'s front page & individual post & page view.', 'cforms'); ?>
+					<?php _e('<em> Alternative 2:</em> A Tell-A-Friend link is shown under every eligible post/page, displayed both on the blog\'s front page & individual post & page view.', 'cforms'); ?>
 					<ol>
-						<li><?php  _e('This requires a new WP page created (make note of the page ID or permalink), with its own page template (a clone of page.php will do). Add the following code to the new page template:', 'cforms'); ?>
+						<li><?php  _e('This requires a new WP page created (make note of the page ID or permalink), with its own page template (a clone of page.php will do). Add the following code to the new <strong>page template</strong>:', 'cforms'); ?>
 
 <code class="codehighlight" style="font-size: 11px;"><br/ >
 [...]<br/ >
 &lt;?php the_content('&lt;p&gt;Read the rest of this page &raquo;&lt;/p&gt;'); ?&gt;<br/ >
-<strong style="color:red;">&lt;h3&gt<br/ >
- &lt;?php echo 'E-Mail "'.get_the_title( $_GET['pid'] ).'" to a friend:'; ?&gt;<br/ >
-&lt;/h3&gt;<br/ >
-&lt;?php if ( is_tellafriend( $post-&gt;ID ) ) insert_cform(#); ?&gt;</strong><br/ >
+<strong style="color:red;">&lt;h3&gt &lt;?php echo 'E-Mail "'.get_the_title( $_GET['pid'] ).'" to a friend:'; ?&gt; &lt;/h3&gt;<br/ >
+&lt;?php if ( is_tellafriend( $_GET['pid'] ) ) insert_cform(#); ?&gt;</strong><br/ >
 [...]
 </code>
 						</li>				
@@ -571,12 +573,12 @@ if(!current_user_can('manage_cforms')) {
 &lt;?php the_content('&lt;p&gt;Read the rest of this entry &raquo;&lt;/p&gt;'); ?&gt;<br/ >
 <strong style="color:red;">&lt;?php <br/ >
 if ( is_tellafriend( $post-&gt;ID ) ) <br/ >
- &nbsp; &nbsp; echo '&lt;a href="[your-new-page]&pid='.$post-&gt;ID.'" title="Tell-A-Friend form"&gt;Tell a friend!&lt;/a&gt;'; <br/ >
+ &nbsp; &nbsp; echo '&lt;a href="[your-new-page]?&pid='.$post-&gt;ID.'" title="Tell-A-Friend form"&gt;Tell a friend!&lt;/a&gt;'; <br/ >
 ?&gt;</strong><br/ >
 [...]<br/ >
 </code>
 						</li>				
-						<li><?php echo _e('With <strong>[your-new-page]</strong> = the permalink to your newly created page.', 'cforms'); ?></li>
+						<li><?php echo _e('Replace <strong>[your-new-page]</strong> with <strong>the permalink</strong> of your newly created page.', 'cforms'); ?></li>
 					</ol>
 
 				</td>

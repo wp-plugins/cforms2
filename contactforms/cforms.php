@@ -302,15 +302,8 @@ function check_default_vars($m,$no) {
 		// special fields: {Form Name}, {Date}, {Page}, {IP}, {PERMALINK}, {TITLE}, {EXCERPT}
 		$date = mysql2date(get_option('date_format'), current_time('mysql'));
 		$time = gmdate(get_option('time_format'), current_time('timestamp'));
-		
 		$page = get_current_page();
 		
-		/*if ( preg_match('/http:\/\//',$page) )
-			$permalink = $page;
-		else
-			$permalink = ( (!isset($_SERVER['HTTPS']) || $_SERVER['HTTPS']=='off')?'http://':'https://' ) . $_SERVER['SERVER_NAME'] . $page;
-		*/
-
 		$permalink = ($_POST['cforms_pl'.$no])?$_POST['cforms_pl'.$no]:$AjaxURL;
 
 		$find = $wpdb->get_row("SELECT post_title, post_excerpt FROM $wpdb->posts WHERE ID='$pid'");
@@ -363,8 +356,8 @@ function cforms_submitcomment($content) {
 	global $wpdb, $subID, $styles, $smtpsettings, $track, $Ajaxpid, $AjaxURL;
 
 	$content = explode('+++', $content);
-	$Ajaxpid  = $content[1];
-	$AjaxpURL = $content[2];
+	$Ajaxpid = $content[1];
+	$AjaxURL = $content[2];
 
 	$segments = explode('$#$', $content[0]);
 	$params = array();
@@ -2342,7 +2335,7 @@ function taf_admin() {
 		if ( $tafenabled ) break;
 	}
 	
-	if ( $tafenabled && function_exists('get_post_custom') && $edit_post > 0 ){
+	if ( $tafenabled && function_exists('get_post_custom') ){
 
 		$tmp = get_post_custom($edit_post);
 		$taf = $tmp["tell-a-friend"][0];
