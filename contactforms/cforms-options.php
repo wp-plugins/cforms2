@@ -744,7 +744,7 @@ if( strlen($fd)<=2 ) {
 	<form name="chgform" method="post" action="#">
 			<!-- <span class="bignumber">#'.$noDISP.'</span> -->
 			<div class="chgformbox">
-				<div class="chgL"><?php _e('Your forms:', 'cforms'); echo $formlistbox; ?></div>
+				<div class="chgL" title="<?php _e('You may give each an optional name to better identify incoming emails.', 'cforms') ?>"><span class="abbr"><?php _e('Your forms:', 'cforms'); ?></span><?php echo $formlistbox; ?></div>
 				<div class="chgR">
 					<input class="allbuttons addbutton" type="submit" name="addbutton" title="<?php _e('adds a new form with default values', 'cforms'); ?>" value="<?php _e('Add New Form', 'cforms'); ?>"/>&nbsp;&nbsp;
 			    	<input class="allbuttons dupbutton" type="submit" name="dupbutton" title="<?php _e('clones the current form', 'cforms'); ?>" value="<?php _e('Duplicate This Form', 'cforms'); ?>"/>&nbsp;&nbsp;
@@ -771,9 +771,6 @@ if( strlen($fd)<=2 ) {
 	<form enctype="multipart/form-data" id="cformsdata" name="mainform" method="post" action="#anchorfields">
 		<input type="hidden" name="noSub" value="<?php echo $noDISP; ?>" />
 
-			<p class="areadesc">
-				<?php _e('If you have many different forms, you may give each an optional name to better identify incoming emails:', 'cforms') ?>
-			</p>
 			<p class="mainoptions">
 					<input style="float:right;" type="submit" name="Submit1" class="allbuttons updbutton" value="<?php _e('Update Settings &raquo;', 'cforms') ?>" onclick="javascript:document.mainform.action='#';" />
 					<label for="cforms_fname" class="bignumber"><?php _e('Form Name', 'cforms') ?></label>
@@ -794,15 +791,14 @@ if( strlen($fd)<=2 ) {
 	<fieldset class="cformsoptions" id="anchorfields">
 		<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><input type="submit" name="Submit2" class="allbuttons updbutton" value="<?php _e('Update Settings &raquo;', 'cforms'); ?>" onclick="javascript:document.mainform.action='#anchorfields';" /><?php _e('Form Input Fields', 'cforms') ?></p>
 
-		<p><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#fields',__('Please see the help section for information on how to deploy the various <a href="[url]">supported fields</a>.', 'cforms')); ?></p>
+		<p>
+			<?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#fields',__('Please see the <strong>Help!</strong> section for information on how to deploy the various <a href="[url]">supported fields</a>,', 'cforms')); ?> 
+			<?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#hfieldsets',__('set up forms using <a href="[url]">FIELDSETS</a>,', 'cforms')); ?>
+			<?php echo str_replace(array('[url1]','[url2]'),array('?page='.$plugindir.'/cforms-help.php#single','?page='.$plugindir.'/cforms-help.php#regexp'),__('the use of <a href="[url1]">default values</a> & <a href="[url2]">regular expressions</a> (<em>specific field validation; enable</em> <code class="codehighlight">Is Required</code>!) for single &amp; multi-line fields.', 'cforms')); ?> 
+			<?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#customerr',__('Besides the generic success & failure messages below you can add <a href="[url]">custom error messages</a>.', 'cforms')); ?>
+		</p>
 
 		<p class="ex"><?php _e('For the <em>auto confirmation</em> feature to work, make sure to mark at least one field <code class="codehighlight">Is Email</code>, otherwise <strong>NO</strong> auto confirmation email will be sent out! If multiple fields are checked "Is Email", only the first in the list will receive a notification.', 'cforms') ?></p>
-
-		<p><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#hfieldsets',__('How to structure your form using <strong>FIELDSETS</strong>? Check out the <a href="[url]">help section</a> for a sample screenshot depicting proper setup.', 'cforms')); ?></p>
-
-		<p><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#single',__('<strong>Default values</strong> can be set for single &amp; multi-line fields. <a href="[url]">See help</a>. In case you\'d like to <strong>auto clear</strong> a default value <em>on field focus</em>, set <code class="codehighlight">Auto Clear</code>.', 'cforms')); ?></p>
-
-		<p><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#regexp',__('Single &amp; Multi line input fields support custom <strong>regular expressions</strong> for specific field validation! Check the <a href="[url]">help</a> section for examples and make sure to check <code class="codehighlight">Is Required</code>.', 'cforms')); ?></p>
 
 		<p id="cformswarning"><?php echo $usermsg; ?></p>
 
@@ -1074,7 +1070,7 @@ if( strlen($fd)<=2 ) {
 		<fieldset class="cformsoptions" id="anchoremail">
 			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><input type="submit" name="Submit4" class="allbuttons updbutton" value="<?php _e('Update Settings &raquo;', 'cforms'); ?>" onclick="javascript:document.mainform.action='#anchoremail';" /><?php _e('Core Form Admin / Email Options', 'cforms') ?></p>
 
-			<p><?php _e('These settings will be used for the email sent to you. Both "<strong>xx@yy.zz</strong>" and "<strong>abc &lt;xx@yy.zz&gt;</strong>" formats are valid, but check if your mailserver does accept the format of choice!"', 'cforms') ?></p>
+			<p><?php _e('These settings will be used for the email sent to you. Both "<strong>xx@yy.zz</strong>" and "<strong>abc &lt;xx@yy.zz&gt;</strong>" formats are valid, but check if your mailserver does accept the format of choice!', 'cforms') ?></p>
 			<p><?php _e('The default FROM: address is based on your blog\'s name and the WP default address. It can be changed, but I highly recommend you do not, as it may render the plugin useless. If you do change the FROM: address, triple check if all admin emails are being sent/received! ', 'cforms') ?></p>
 
 			<div class="optionsbox">
@@ -1104,7 +1100,7 @@ if( strlen($fd)<=2 ) {
 		<fieldset class="cformsoptions" id="emailoptions">
 			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><input type="submit" name="Submit6" class="allbuttons updbutton" value="<?php _e('Update Settings &raquo;', 'cforms'); ?>" onclick="javascript:document.mainform.action='#emailoptions';" /><?php _e('Admin Email Message Options', 'cforms') ?></p>
 
-			<p><?php _e('Emails sent to the admin and the submitting user (CC or auto confirmation) can be both text and HTML formatted. The TXT part is required, HTML optional.', 'cforms'); ?></p>
+			<p><?php _e('Generally, EMails sent to the admin and the submitting user can be both in plain text and HTML. The TXT part <strong>is required</strong>, HTML <strong>optional</strong>.', 'cforms'); ?></p>
 			<p><?php echo str_replace('[url]','?page='. $plugindir.'/cforms-help.php#variables',__('Below you\'ll find the settings for both the <strong>TXT part</strong> of the admin email as well as the <strong>optional HTML part</strong> of the message. Both areas permit the use of any of the <strong>pre-defined variables</strong> or <strong>data from input fields</strong>. <a href="[url]">Please see the documentation on the HELP page</a> (including HTML message examples!).', 'cforms')); ?></p>
 
 			<div class="optionsbox" style="margin-top:30px;">
@@ -1133,7 +1129,7 @@ if( strlen($fd)<=2 ) {
 				<div class="optionsboxL"></div>
 				<div class="optionsboxR"><input type="checkbox" id="cforms_formdata_html" name="cforms_formdata_html" <?php if(substr(get_option('cforms'.$no.'_formdata'),1,1)=='1') echo "checked=\"checked\""; ?>/><label for="cforms_formdata_html"><?php _e('<strong>Include</strong> <em>pre formatted</em> form input at the bottom of the HTML part', 'cforms') ?></label></div>
 			</div>
-			<p class="ex" style="margin-top:30px;"><?php _e('<strong><u>Note</u></strong>: To avoid sending ALL submitted user data (especially of very long forms) to the form admin simply <strong>uncheck</strong> "<em>Include pre formatted form input ...</em>" and instead specify the fields you\'d like to receive via the use of <strong>custom variables</strong>.', 'cforms'); ?></p>
+			<p class="ex" style="margin-top:30px;"><?php _e('<strong><u>Note</u></strong>: To avoid sending ALL of the submitted user data (especially for very long forms) to the form admin simply <strong>uncheck</strong> "<em>Include pre formatted form input ...</em>" and instead specify the fields you\'d like to receive via the use of <strong>custom variables</strong>.', 'cforms'); ?></p>
 						
 		</fieldset>
 
@@ -1154,7 +1150,7 @@ if( strlen($fd)<=2 ) {
 		<fieldset class="cformsoptions" id="autoconf">
 			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><input type="submit" name="Submit7" class="allbuttons updbutton" value="<?php _e('Update Settings &raquo;', 'cforms'); ?>" onclick="javascript:document.mainform.action='#autoconf';" /><?php _e('Auto Confirmation', 'cforms') ?></p>
 
-			<p><?php _e('These settings apply to an auto response/confirmation sent to the visitor. If your form includes a "<code class="codehighlight">CC me</code>" field <strong>AND</strong> the visitor selected it, no extra confirmation email is sent!', 'cforms') ?></p>
+			<p><?php _e('These settings apply to an auto response/confirmation sent to the visitor. If enabled AND your form contains a "<code class="codehighlight">CC me</code>" field <strong>AND</strong> the visitor selected it, no extra confirmation email is sent!', 'cforms') ?></p>
 
 			<div class="optionsbox" style="margin-top:15px;">
 				<div class="optionsboxL"></div>

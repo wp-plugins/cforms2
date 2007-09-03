@@ -452,16 +452,27 @@ function cforms_submitcomment(no) {
 							if ( objColl[i].name.match(/\[\]/) ){
 								group='';
 								
-								while ( !(objColl[i].tagName.toLowerCase()!='span' && objColl[i].nextSibling==null) && !(objColl[i].textContent && objColl[i].textContent.match(/\n/)) && i < j ){
-
+								//while ( !(objColl[i].tagName.toLowerCase()!='span' && objColl[i].nextSibling==null) && !(objColl[i].textContent && objColl[i].textContent.match(/\n/)) && i < j ){
+								while ( i<j && !(objColl[i].nextSibling && objColl[i].nextSibling.nodeType && objColl[i].nextSibling.nodeType=='3')  ){
 									if ( objColl[i].type == 'checkbox' && objColl[i].name.match(/\[\]/) && objColl[i].checked ) {
-										group = group + objColl[i].value + ',';
+										group = group + objColl[i].value + ',';										
 									}
+
+									/* debug stuff */
+									/*alert(objColl[i].nodeName + ':' +objColl[i].id);
+									tmp='';
+									if ( objColl[i].nextSibling!=null && objColl[i].nextSibling.nodeType!=null ) {
+										tmp = objColl[i].nextSibling.nodeType;
+										alert('node val: '+tmp);
+									}
+									*/
+
 									i++;
 								}
 									
-								params = params + prefix + group.substring(0,group.length-1);
-								i=i-1;
+								if ( group.length > 1 )
+									params = params + prefix + group.substring(0,group.length-1);
+								//i=i-1;
 							}
 							else
 								params = params + prefix + (objColl[i].checked?"X":"-");
