@@ -18,6 +18,7 @@ cforms II - v5.4
 *) other: changed session_start() call in favour of gzip compression
 *) other: forcing chronological order of data records when downloading as CSV
 
+*) bugfix: fixed group check box bug (in ajax)
 *) bugfix: fixed special characters (e.g. Umlauts) in subject line
 *) bugfix: minor CSS bugs
 *) bugfix: check box select bug on "Tracking" page
