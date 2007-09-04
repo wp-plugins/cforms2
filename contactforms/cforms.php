@@ -908,6 +908,7 @@ function reset_captcha( $no = '' ){
 	$_SESSION['turing_string_'.$no] = rc(4,5);
 		
 	$path = preg_replace( '|.*(/wp-content/.*)/.*|','${1}', __FILE__ );
+	$path = get_settings('siteurl') . $path;
 	
 	$newimage = md5(strtolower($_SESSION['turing_string_'.$no])) . '|' . $no . '|' . $path  . '/cforms-captcha.php?ts='.$no;	 
 	return $newimage;
