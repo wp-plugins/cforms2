@@ -32,3 +32,4 @@ cforms currently supports the following languages:
 *) German             Author: Sven Wappler         wappler@wappler.eu
 *) Spanish            Author: Samuel Aguilera      samuel.aguilera@agamum.net
 *) Hungarian          Author: Ungvári Béla         life-univ@freemail.hu
+*) French             Author: Serge RAUBER         serge@kalyx.fr
