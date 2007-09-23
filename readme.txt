@@ -10,7 +10,7 @@ cforms II is an extremely customizable, flexible & powerful contact form plugin.
 
 == Description ==
 
-For **WHAT'S NEW** and a complete version history (new features, bug fixes etc.), see [here](http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1).
+For **WHAT'S NEW** and a complete version history (new features, bug fixes etc.), see [here](http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1)!
 
 = Description =
 cforms is a highly customizable, flexible and powerful contact form plugin, covering a variety of use cases and features from attachments to multi form management, you can even have multiple forms on the same page!
@@ -79,7 +79,7 @@ cforms has been revised to fully support WP localization. If you'd like to contr
 	* **German** \* Author: [Sven Wappler](http://www.wordpressbox.de/plugins/cforms/)
 	* **Spanish** \* Author: [Samuel Aguilera](http://agamum.net/blog/archivo/plugin-cforms-en-espanol-formularios-para-tu-wordpress.xhtml)
 	* **Hungarian** \* Author: [Ungv&aacute;ri B&eacute;la](http://www.deliciousdays.com/download/cformsII-hu_hu.zip)
-	* **French** \* Author: [La maison de l&rsquo;informatiqu](http://www.deliciousdays.com/download/cformsII-fr_fr.zip)
+	* **French** \* Author: [La maison de l&rsquo;informatiqu](http://www.deliciousdays.com/download/contactforms-fr_FR.zip)
 
 == Installation ==
 

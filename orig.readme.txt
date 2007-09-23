@@ -76,10 +76,11 @@ For all the new features, see the Help documentation.
 cforms has been revised to fully support WP localization. If you'd like to contribute a language translation, please get in touch. If you have suggestions or would like to point out typos etc, please contact the actual author (see list below) of the respective localization.
 
 * Currently, cforms includes the following language packs (besides English):
-	* **German** \* Author: [Sven Wappler](http://www.wordpressbox.de/plugins/cforms/)
-	* **Spanish** \* Author: [Samuel Aguilera](http://agamum.net/blog/archivo/plugin-cforms-en-espanol-formularios-para-tu-wordpress.xhtml)
-	* **Hungarian** \* Author: [Ungv&aacute;ri B&eacute;la](http://www.deliciousdays.com/download/cformsII-hu_hu.zip)
 	* **French** \* Author: [La maison de l&rsquo;informatiqu](http://www.deliciousdays.com/download/cformsII-fr_fr.zip)
+	* **German** \* Author: [Sven Wappler](http://www.wordpressbox.de/plugins/cforms/)
+	* **Hungarian** \* Author: [Ungv&aacute;ri B&eacute;la](http://www.deliciousdays.com/download/cformsII-hu_hu.zip)
+	* **Spanish** \* Author: [Samuel Aguilera](http://agamum.net/blog/archivo/plugin-cforms-en-espanol-formularios-para-tu-wordpress.xhtml)
+	* **Turkish** \* Author: [M.Yasin ERDOGAN](http://www.myerdogan.com/)
 
 == Installation ==
 
