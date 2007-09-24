@@ -80,7 +80,7 @@ cforms has been revised to fully support WP localization. If you'd like to contr
 	* **German** \* Author: [Sven Wappler](http://www.wordpressbox.de/plugins/cforms/)
 	* **Hungarian** \* Author: [Ungv&aacute;ri B&eacute;la](http://www.deliciousdays.com/download/cformsII-hu_hu.zip)
 	* **Spanish** \* Author: [Samuel Aguilera](http://agamum.net/blog/archivo/plugin-cforms-en-espanol-formularios-para-tu-wordpress.xhtml)
-	* **Turkish** \* Author: [M.Yasin ERDOGAN](http://www.myerdogan.com/)
+	* **Turkish** \* Author: M.Yasin ERDOGAN, not yet completed
 
 == Installation ==
 
