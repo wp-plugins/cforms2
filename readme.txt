@@ -10,7 +10,7 @@ cforms II is an extremely customizable, flexible & powerful contact form plugin.
 
 == Description ==
 
-For **WHAT'S NEW** and a complete version history (new features, bug fixes etc.), see [here](http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1).
+For **WHAT'S NEW** and a complete version history (new features, bug fixes etc.), see [here](http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1)!
 
 = Description =
 cforms is a highly customizable, flexible and powerful contact form plugin, covering a variety of use cases and features from attachments to multi form management, you can even have multiple forms on the same page!
@@ -76,11 +76,10 @@ For all the new features, see the Help documentation.
 cforms has been revised to fully support WP localization. If you'd like to contribute a language translation, please get in touch. If you have suggestions or would like to point out typos etc, please contact the actual author (see list below) of the respective localization.
 
 * Currently, cforms includes the following language packs (besides English):
-	* **French** \* Author: [La maison de l&rsquo;informatiqu](http://www.deliciousdays.com/download/cformsII-fr_fr.zip)
 	* **German** \* Author: [Sven Wappler](http://www.wordpressbox.de/plugins/cforms/)
-	* **Hungarian** \* Author: [Ungv&aacute;ri B&eacute;la](http://www.deliciousdays.com/download/cformsII-hu_hu.zip)
 	* **Spanish** \* Author: [Samuel Aguilera](http://agamum.net/blog/archivo/plugin-cforms-en-espanol-formularios-para-tu-wordpress.xhtml)
-	* **Turkish** \* Author: M.Yasin ERDOGAN, not yet completed
+	* **Hungarian** \* Author: [Ungv&aacute;ri B&eacute;la](http://www.deliciousdays.com/download/cformsII-hu_hu.zip)
+	* **French** \* Author: [La maison de l&rsquo;informatiqu](http://www.deliciousdays.com/download/contactforms-fr_FR.zip)
 
 == Installation ==
 
