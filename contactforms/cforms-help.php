@@ -566,7 +566,7 @@ if(!current_user_can('manage_cforms')) {
 [...]
 </code>
 						</li>				
-						<li><?php echo _e('In <em>single.php</em> and/or <em>page.php</em> add beneath the "the_content()" call the link to the new page created above, e.g.:', 'cforms'); ?>
+						<li><?php echo _e('In <em>single.php &	 index.php</em> and/or <em>page.php</em> add beneath the "the_content()" call the link to the new page created above, e.g.:', 'cforms'); ?>
 
 <code class="codehighlight" style="font-size: 11px;"><br/ >
 [...]<br/ >
