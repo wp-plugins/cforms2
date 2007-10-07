@@ -673,22 +673,25 @@ if ( is_tellafriend( $post-&gt;ID ) ) <br/ >
 					<br /><a href="<?php echo $cforms_root; ?>/codesnippet.txt"><?php _e('click here to view code for copy & paste', 'cforms'); ?></a>
 							
 <code class="codehighlight"><pre style="font-size: 11px;">
-if ( isset($_POST['send2author']) && $_POST['send2author']=='1' ) {
+if ( isset($_POST['send2author']) && $_POST['send2author']=='1' ) { // cforms
 
-  $r_post = array_flip($_POST);
-  if ( strlen($r_post['Submit']) > 10 )
-    $no = substr($r_post['Submit'],10);
-  else
-    $no='';
+	$keys = array_keys($_POST);
 	
-  cforms( '',$no );
+	foreach ( $keys as $key ){
+		if ( preg_match('/sendbutton(.*)/',$key,$no ) )
+			break;
+	}
 
-  $location = (empty($_POST['redirect_to'])?get_permalink($_POST['comment_post_ID']):$_POST['redirect_to']);
-  $location = apply_filters('comment_post_redirect', $location, $comment);
+	$no = $no[1];
+		
+	cforms( '',$no );
 
-  wp_redirect($location);
-  exit;
-}		
+	$location = ( empty($_POST['redirect_to'] ) ? get_permalink($_POST['comment_post_ID']).'?email=sent' : $_POST['redirect_to'] );
+	$location = apply_filters('comment_post_redirect', $location, $comment);
+	
+	wp_redirect($location);
+	exit;
+}	
 </pre></code>							
 				</td>
 			</tr>
