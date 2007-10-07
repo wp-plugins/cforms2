@@ -1,0 +1,21 @@
+
+// cforms addition to wp-comments-post.php 
+// place it right under "nocache_headers();"
+// line 12 or so
+
+if ( isset($_POST['send2author']) && $_POST['send2author']=='1' ) {
+
+	$r_post = array_flip($_POST);
+	if ( strlen($r_post['Submit']) > 10 )
+		$no = substr($r_post['Submit'],10);
+	else
+		$no='';
+		
+	cforms( '',$no );
+
+	$location = ( empty($_POST['redirect_to'] ) ? get_permalink($_POST['comment_post_ID']) : $_POST['redirect_to'] );
+	$location = apply_filters('comment_post_redirect', $location, $comment);
+	
+	wp_redirect($location);
+	exit;
+}

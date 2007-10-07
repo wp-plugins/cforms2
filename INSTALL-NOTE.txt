@@ -1,0 +1,19 @@
+
+Please only upload the directory /contactforms/, contained in this zip file, 
+to your WP plugin directory!
+
+
+Updating the plugin 
+-------------------
+
+!) Please deactivate the plugin before you install the update (exchange the 
+current plugin dir with the new one)
+
+
+Also note that it is always advisable to make or keep a backup of your current
+plugin directory just in case you need to revert back to a previous release!
+
+Localization:
+-------------
+
+Please read:  Language-Support.txt
