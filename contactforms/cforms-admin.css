@@ -32,6 +32,8 @@ code.codehighlight 	{ background:#D8FFCC; }
 /****************************************************************
   HELP page
 *****************************************************************/
+table.dateinfo td { font-size:10px; }
+table.dateinfo th { font-size:10px; font-weight:bold; background:white; bborder-bottom:1px solid white; }
 
 a.helptop 	{ font-size:8px; float:right; margin:3px 10px 0 0; color:white!important; text-decoration:none; border-bottom:1px solid white;}
 

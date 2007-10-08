@@ -140,11 +140,23 @@ if(!current_user_can('manage_cforms')) {
 			</tr>
 			<tr>
 				<td class="bleft"><?php _e('Example:', 'cforms'); ?></td><td class="bright">
-					<code class="codehighlight"><?php _e('Arrival Date|mm/dd/yyyy|^[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]$', 'cforms'); ?></code></td>
+					<code class="codehighlight" style="font-size:9px;"><?php _e('Arrival Date|mm/dd/yyyy|^[0-9][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]$', 'cforms'); ?></code></td>
 			</tr>
 			<tr>
 				<td class="ball" colspan="2">
-					<?php echo str_replace('[url]','?page=' . $plugindir . '/cforms-global-settings.php#datepicker',__('The example above will set a <em>default value</em> of "mm/dd/yyyy" so users know the expected format. The <strong>regexp</strong> at the end ensures that only this format is accepted. <strong>NOTE:</strong> You also need to <a href="[url]">configure the date picker options</a> to match the date format "mm/dd/yyyy"', 'cforms')); ?>
+					<?php echo str_replace('[url]','?page=' . $plugindir . '/cforms-global-settings.php#datepicker',__('The example above will set a <em>default value</em> of "mm/dd/yyyy" so users know the expected format. The <strong>regexp</strong> at the end ensures that only this format is accepted. <strong>NOTE:</strong> You also need to <a href="[url]">configure the date picker options</a> to match the date format ("MM/dd/yyyy" !)', 'cforms')); ?>
+				</td>
+			</tr>
+			<tr>
+				<td class="ball" colspan="2">
+				<table class="dateinfo" width="100%">
+					<tr><td colspan="3"><strong><?php _e('Supported Date Formats (see "Plugin Settings" tab)', 'cforms');?><br /></strong></td></tr>
+					<tr><th><?php _e('Field', 'cforms');?></th><th><?php _e('Full Form', 'cforms');?></th><th><?php _e('Short Form', 'cforms');?></th></tr>
+					<tr><td><strong><?php _e('Year', 'cforms');?></strong></td><td><?php _e('yyyy (4 digits)', 'cforms');?></td><td><?php _e('yy (2 digits), y (2 or 4 digits)', 'cforms');?></td></tr>
+					<tr><td><strong><?php _e('Month', 'cforms');?></strong></td><td><?php _e('MMM (name or abbr.)', 'cforms');?></td><td><?php _e('MM (2 digits), M (1 or 2 digits)', 'cforms');?></td></tr>
+					<tr><td><strong><?php _e('Day of Month', 'cforms');?></strong></td><td><?php _e('dd (2 digits)', 'cforms');?></td><td><?php _e('d (1 or 2 digits)', 'cforms');?></td></tr>
+					<tr><td><strong><?php _e('Day of Week', 'cforms');?></strong></td><td><?php _e('EE (name)', 'cforms');?></td><td><?php _e('E (abbr)', 'cforms');?></td></tr>
+				</table>					
 				</td>
 			</tr>
 		</table>

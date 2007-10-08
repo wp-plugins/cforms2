@@ -220,7 +220,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 		<fieldset id="popupdate" class="cformsoptions">
 			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><input type="submit" name="Submit6" class="allbuttons updbutton" value="<?php _e('Update Settings &raquo;', 'cforms'); ?>" onclick="javascript:document.mainform.action='#popupdate';"/><?php _e('Popup Date Picker', 'cforms') ?></p>
 
-			<p><?php _e('If you\'d like to offer a Javascript based date picker for more convenient date entry, enable this feature here. This will add a <strong>new input field</strong> for you to add to your form.', 'cforms') ?></p>
+			<p><?php echo str_replace('[url]','?page='.$plugindir.'/cforms-help.php#datepicker',__('If you\'d like to offer a Javascript based date picker for more convenient date entry, enable this feature here. This will add a <strong>new input field</strong> for you to add to your form. See <a href="[url]">Help!</a> for more info and <strong>date formats</strong>.', 'cforms')) ?></p>
 
 			<div class="optionsbox">
 				<div class="optionsboxL"></div>
