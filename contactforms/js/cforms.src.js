@@ -284,8 +284,15 @@ function cforms_validate(no, upload) {
 								obj_regexp = document.getElementById(objColl[i].id+'_regexp');
 
 								if ( obj_regexp && obj_regexp.value != '' ) {
+									if ( obj_regexp.value.match(/_field_/) ){
+										if (objColl[i].value != document.getElementById(obj_regexp.value).value){
+											regexp = null;
+											}
+									}
+									else{
 										regexp = new RegExp(obj_regexp.value);
 										regexp = objColl[i].value.match(regexp);
+									}
 								}
 
 

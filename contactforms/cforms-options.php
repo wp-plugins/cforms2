@@ -89,7 +89,7 @@ if(isset($_REQUEST['addbutton'])) {
 	add_option('cforms'.$no.'_upload_size', '1024');
 
 	add_option('cforms'.$no.'_tracking', '');
-	add_option('cforms'.$no.'_tellafriend', '0');
+	add_option('cforms'.$no.'_tellafriend', '01');
 	add_option('cforms'.$no.'_dashboard', '0');
 	
 	echo '<div id="message" class="updated fade"><p>'.__('A new form with default fields has been added.', 'cforms').'</p></div>';
@@ -505,6 +505,31 @@ if(isset($_REQUEST['addbutton'])) {
 //default: $field_count = what's in the DB
 $field_count = get_option('cforms'.$no.'_count_fields');
 
+
+//check if T-A-F action is required
+$alldisabled=false;
+$allenabled=0;
+if( isset($_REQUEST['addTAF']) || isset($_REQUEST['removeTAF']) )
+{
+	
+	$posts = $wpdb->get_results("SELECT ID FROM $wpdb->posts");
+
+	if ( isset($_REQUEST['addTAF']) ){
+	
+		foreach($posts as $post) {
+		echo $post->ID.'-';
+			if ( add_post_meta($post->ID, 'tell-a-friend', '1', true) )
+				$allenabled++;
+		}
+		
+	} else if ( isset($_REQUEST['removeTAF']) ){
+		$wpdb->query("DELETE FROM $wpdb->postmeta WHERE meta_key = 'tell-a-friend'");
+		$alldisabled=true;
+	}	
+
+}
+
+
 // new field added (will actually be added below!)
 if( isset($_REQUEST['AddField']) && isset($_REQUEST['field_count_submit']) )
 {
@@ -624,8 +649,9 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 	update_option('cforms'.$no.'_action_page',   preg_replace("/\\\+/", "\\",$_REQUEST['cforms_action_page']));
 	update_option('cforms'.$no.'_tracking',      preg_replace("/\\\+/", "\\",$_REQUEST['cforms_tracking']));
 
-	update_option('cforms'.$no.'_tellafriend',	($_REQUEST['cforms_tellafriend']?'1':'0') );
-	if ( isset($_REQUEST['cforms_commentrep']))
+	update_option('cforms'.$no.'_tellafriend',	($_REQUEST['cforms_tellafriend']?'1':'0').($_REQUEST['cforms_tafdefault']?'1':'0') );
+	
+	if ( isset($_REQUEST['cforms_commentrep']) )
 		update_option('cforms'.$no.'_tellafriend',	($_REQUEST['cforms_commentrep']?'2':'0') );
 	
 	update_option('cforms'.$no.'_dashboard',	($_REQUEST['cforms_dashboard']?'1':'0') );
@@ -946,7 +972,7 @@ if( strlen($fd)<=2 ) {
 														<option value="datepicker" <?php echo($field_type == 'datepicker'?' selected="selected"':''); ?>><?php _e('Date Entry/Dialog', 'cforms'); ?></option>
 													<?php endif; ?>
 
-													<?php if ( get_option('cforms'.$no.'_tellafriend')=='1' ) : ?>
+													<?php if ( substr(get_option('cforms'.$no.'_tellafriend'),0,1)=='1' ) : ?>
 														<option value=""><?php _e('-------------------------------', 'cforms'); ?></option>
 														<option value="yourname" <?php echo($field_type == 'yourname'?' selected="selected"':''); ?>><?php _e('T-A-F * Your Name', 'cforms'); ?></option>
 														<option value="youremail" <?php echo($field_type == 'youremail'?' selected="selected"':''); ?>><?php _e('T-A-F * Your Email', 'cforms'); ?></option>
@@ -1224,19 +1250,40 @@ if( strlen($fd)<=2 ) {
 
 			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><input type="submit" name="Submit8" class="allbuttons updbutton" value="<?php _e('Update Settings &raquo;', 'cforms'); ?>" onclick="javascript:document.mainform.action='#tellafriend';" /><?php _e('Tell-A-Friend Form Support', 'cforms') ?></p>
 
+			<?php 
+				if ( $allenabled <> false )
+					echo '<div id="message" class="updated fade"><p>'.$allenabled.' '. __('posts and pages processed and tell-a-friend <strong>enabled</strong>.', 'cforms'). ' </p></div>';
+				else if ( $alldisabled )
+					echo '<div id="message" class="updated fade"><p>'. __('All posts & pages processed and tell-a-friend <strong>disabled</strong>.', 'cforms'). ' </p></div>';
+			?>
+			
 			<p><?php echo str_replace('[url]','?page='. $plugindir.'/cforms-help.php#taf',__('If enabled, this forms\' feature set will be extended to cover tell-a-friend requirements, 4 new <em>input field types</em> will be available. Please see the Help section for <a href="[url]">more details.</a>', 'cforms')); ?></p>
 
 			<div class="optionsbox">
 				<div class="optionsboxL"></label></div>
-				<div class="optionsboxR"><input type="checkbox" id="cforms_tellafriend" name="cforms_tellafriend" <?php if( get_option('cforms'.$no.'_tellafriend')=='1' ) echo "checked=\"checked\""; ?>/><label for="cforms_tellafriend"><strong><?php _e('Enable Tell-A-Friend', 'cforms') ?></strong></div>
-				<?php if( get_option('cforms'.$no.'_tellafriend')=='1' ) : ?>
-					<div class="optionsboxR">
-						<p class="ex">
-						<?php echo __('You will find a <strong>cforms Tell-A-Friend</strong> checkbox on your <strong>admin/edit page</strong> (typically under "Post/Author")! Check it if you want to have the form appear for the given post or page.', 'cforms');?>
-						</p>
-					</div>
-				<?php endif; ?>
+				<div class="optionsboxR"><input type="checkbox" id="cforms_tellafriend" name="cforms_tellafriend" <?php if( substr(get_option('cforms'.$no.'_tellafriend'),0,1)=='1' ) echo "checked=\"checked\""; ?>/><label for="cforms_tellafriend"><strong><?php _e('Enable Tell-A-Friend', 'cforms') ?></strong></div>
 			</div>
+			
+			<?php if( substr(get_option('cforms'.$no.'_tellafriend'),0,1)=='1' ) : ?>
+			<div class="optionsbox">
+				<div class="optionsboxL"></label></div>
+				<div class="optionsboxR"><input type="checkbox" id="cforms_tafdefault" name="cforms_tafdefault" <?php if( substr(get_option('cforms'.$no.'_tellafriend'),1,1)=='1' ) echo "checked=\"checked\""; ?>/><label for="cforms_tafdefault"><strong><?php _e('T-A-F enable <strong>new posts/pages</strong> by default', 'cforms') ?></strong></div>
+			</div>
+			
+			<div class="optionsbox" style="padding-top:25px;">
+				<div class="optionsboxL"><label for="migrate"><?php _e('<strong>T-A-F dis-/enable all</strong> your previous posts.', 'cforms') ?></label></div>
+				<div class="optionsboxR">
+					<input type="submit" title="<?php _e('This will add a T-A-F custom field per post/page.', 'cforms') ?>" name="addTAF" class="allbuttons" style="width:150px;" value="<?php _e('Enable', 'cforms') ?>" onclick="document.mainform.action='#tellafriend'; return confirm('<?php _e('Do you really want to enable all previous posts and pages for T-A-F?', 'cforms') ?>');"/>
+					<input type="submit" title="<?php _e('This will remove the T-A-F custom field on all posts/pages.', 'cforms') ?>" name="removeTAF" class="allbuttons" style="width:150px;" value="<?php _e('Disable', 'cforms') ?>" onclick="document.mainform.action='#tellafriend'; return confirm('<?php _e('Do you really want to disable all previous posts and pages for T-A-F?', 'cforms') ?>');"/>
+				</div>
+			</div>
+
+			<div class="optionsboxR">
+				<p class="ex">
+				<?php echo __('You will find a <strong>cforms Tell-A-Friend</strong> checkbox on your <strong>admin/edit page</strong> (typically under "Post/Author")! Check it if you want to have the form appear for the given post or page.', 'cforms');?>
+				</p>
+			</div>
+			<?php endif; ?>
 
 		</fieldset>	
 		
@@ -1276,7 +1323,6 @@ if( strlen($fd)<=2 ) {
 		
 
 		</form>
-
 
 	<?php cforms_footer(); ?>
 </div>

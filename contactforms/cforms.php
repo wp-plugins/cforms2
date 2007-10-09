@@ -13,6 +13,9 @@ Copyright 2006  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
 WHAT's NEW in cforms II - v5.5
+*) feature: special regexp use: compare two input fields for equal content (e.g. email verification)
+*) feature: 'Tell-A-Friend' enable all posts/pages per click
+*) feature: 'Tell-A-Friend' default behaviour for new posts/pages
 *) feature: Fancy Javascript date picker
 *) feature: "WP Comment/Message to author" Feature
 *) feature: added dashboad support (showing last 5 entries)
@@ -25,6 +28,7 @@ WHAT's NEW in cforms II - v5.5
 *) bugfix: fixed use of special character "." as an empty trailing line in TXT messages
 *) other: tuned code a bit, hopefully with a performance gain 
 *) bugfix: fixed weird caching phenomena when deleting of forms	
+*) bugfix: fixed non ajax regexp processing
 */
 
 $localversion = 'v5.5';
@@ -412,7 +416,7 @@ function cforms_submitcomment($content) {
 			$to = $replyto;
 
 	// T-A-F overwrite?
-	if ( $taf_youremail && $taf_friendsemail && get_option('cforms'.$no.'_tellafriend')=='1' )
+	if ( $taf_youremail && $taf_friendsemail && substr(get_option('cforms'.$no.'_tellafriend'),0,1)=='1' )
 		$replyto = "\"{$taf_yourname}\" <{$taf_youremail}>";
 
 
@@ -581,7 +585,7 @@ function cforms_submitcomment($content) {
 					$field_email = (get_option('cforms'.$no.'_tracking')<>'')?$field_email.get_option('cforms'.$no.'_tracking'):$field_email;
 
 					// if in Tell-A-Friend Mode, then overwrite header stuff...
-					if ( $taf_youremail && $taf_friendsemail && get_option('cforms'.$no.'_tellafriend')=='1' )
+					if ( $taf_youremail && $taf_friendsemail && substr(get_option('cforms'.$no.'_tellafriend'),0,1)=='1' )
 						$field_email = "\"{$taf_friendsname}\" <{$taf_friendsemail}>";
 
 					
@@ -905,14 +909,22 @@ function cforms($args = '',$no = '') {
 								$validations[$i+$off] = !empty($_POST['cf'.$no.'_field_' . ((int)$i+(int)$off)]);
 	
 								// regexp set for textfields?
-								$obj = explode('|', $errobj[0], 3);
+								$obj = explode('|', $c_err[0], 3);
 								
 				  				if ( $obj[2] <> '') {
-				  				
-									$reg_exp = str_replace('/','\/',stripslashes($obj[2]) );
-									if( !preg_match('/'.$reg_exp.'/',$_POST['cf'.$no.'_field_' . ((int)$i+(int)$off)]) )
-									    $validations[$i+$off] = false;
-											    
+				  					if ( strpos($obj[2],'_field_') ){
+
+				  					
+										if( $_POST['cf'.$no.'_field_' . ((int)$i+(int)$off)] <> $_POST[$obj[2]] )
+										    $validations[$i+$off] = false;
+										
+				  					}
+				  					else {
+										$reg_exp = str_replace('/','\/',stripslashes($obj[2]) );
+										if( !preg_match('/'.$reg_exp.'/',$_POST['cf'.$no.'_field_' . ((int)$i+(int)$off)]) )
+										    $validations[$i+$off] = false;
+									}
+										    
 								}						
 								
 
@@ -947,7 +959,7 @@ function cforms($args = '',$no = '') {
 								$validations[$i+$off] = !empty($_POST[$field_type]);
 	
 								// regexp set for textfields?
-								$obj = explode('|', $errobj[0], 3);
+								$obj = explode('|', $c_err[0], 3);
 								
 				  				if ( $obj[2] <> '') {
 				  				
@@ -1350,7 +1362,7 @@ function cforms($args = '',$no = '') {
 				$to = $replyto;
 
 		//T-A-F? then overwrite
-		if ( $taf_youremail && $taf_friendsemail && get_option('cforms'.$no.'_tellafriend')=='1' )
+		if ( $taf_youremail && $taf_friendsemail && substr(get_option('cforms'.$no.'_tellafriend'),0,1)=='1' )
 			$replyto = "\"{$taf_yourname}\" <{$taf_youremail}>";
 
 
@@ -1546,7 +1558,7 @@ function cforms($args = '',$no = '') {
 							$field_email = (get_option('cforms'.$no.'_tracking')<>'')?$field_email.get_option('cforms'.$no.'_tracking'):$field_email;
 	    
 							// if in Tell-A-Friend Mode, then overwrite header stuff...
-							if ( $taf_youremail && $taf_friendsemail && get_option('cforms'.$no.'_tellafriend')=='1' )
+							if ( $taf_youremail && $taf_friendsemail && substr(get_option('cforms'.$no.'_tellafriend'),0,1)=='1' )
 								$field_email = "\"{$taf_friendsname}\" <{$taf_friendsemail}>";
 
 							if ( $ccme ) {
@@ -2056,8 +2068,7 @@ function cforms($args = '',$no = '') {
 
 
 	// rest of the form
-
-	if ( get_option('cforms'.$no.'_ajax')=='1' && !$upload && !$custom && !$alt_action && !get_option('cforms'.$no.'_tellafriend')=='2' )   // ajax enabled & no upload file field!
+	if ( get_option('cforms'.$no.'_ajax')=='1' && !$upload && !$custom && !$alt_action && !(get_option('cforms'.$no.'_tellafriend')=='2') )
 		$ajaxenabled = ' onclick="return cforms_validate(\''.$no.'\', false)"';
 	else if ( ($upload || $custom || $alt_action || get_option('cforms'.$no.'_tellafriend')=='2') && get_option('cforms'.$no.'_ajax')=='1' )
 		$ajaxenabled = ' onclick="return cforms_validate(\''.$no.'\', true)"';
@@ -2219,7 +2230,7 @@ function check_for_taf($no,$pid) {
 	$tmp = get_post_custom($pid);
 	$taf = $tmp["tell-a-friend"][0];
 
-	if ( get_option('cforms'.$no.'_tellafriend')<>'1')
+	if ( substr(get_option('cforms'.$no.'_tellafriend'),0,1)<>'1')
 		return true;
 	else {
 		if ( $taf=='1' )
@@ -2246,7 +2257,7 @@ function taf_admin() {
 	$edit_post = intval($_GET['post']);
 
 	for ( $i=1;$i<=get_option('cforms_formcount');$i++ ) {
-		$tafenabled = (get_option('cforms'.(($i=='1')?'':$i).'_tellafriend')=='1') ? true : false;
+		$tafenabled = ( substr(get_option('cforms'.(($i=='1')?'':$i).'_tellafriend'),0,1)=='1') ? true : false;
 		if ( $tafenabled ) break;
 	}
 	
@@ -2254,12 +2265,14 @@ function taf_admin() {
 
 		$tmp = get_post_custom($edit_post);
 		$taf = $tmp["tell-a-friend"][0];
+		
+		$chk = ($taf=='1' || ($edit_post=='' && substr(get_option('cforms'.$i.'_tellafriend'),1,1)=='1') )?'checked="checked"':'';
 				
 		?>
 		<fieldset id="poststickystatusdiv" class="dbx-box">
 			<h3 class="dbx-handle"><?php _e('cforms Tell-A-Friend', 'cforms'); ?></h3> 
 			<div class="dbx-content">
-				<label for="tellafriend" class="selectit"><input type="checkbox" id="tellafriend" name="tellafriend" value="1"<?php checked($taf, 1); ?>/>&nbsp;<?php _e('Include Form', 'cforms'); ?></label>
+				<label for="tellafriend" class="selectit"><input type="checkbox" id="tellafriend" name="tellafriend" value="1"<?php echo $chk; ?>/>&nbsp;<?php _e('Include Form', 'cforms'); ?></label>
 			</div>
 		</fieldset>
 		<?php

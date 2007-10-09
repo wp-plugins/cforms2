@@ -3,21 +3,12 @@ Contributors: olivers
 Donate link: http://www.deliciousdays.com/
 Tags: ajax, email, secure, visitor, input, order, form, contact
 Requires at least: 1.6+
-Tested up to: 2.2.2
-Stable tag: 5.4
+Tested up to: 2.3
+Stable tag: 5.5
 
 cforms II is an extremely customizable, flexible & powerful contact form plugin.
 
 == Description ==
-
-= PREVIEW: cforms II (v5.5) =
-*(to be released soon)*
-
-* **WP Comment / Note feature** - Thanks to Rob Rice' inspiration (via the cforms forum) v5.5 will allow you to have one form as a replacement for your WP default comment form, essentially giving the user the option to leave a comment behind or simply send his note to the post author. Of course all the cforms security features and other functionality can be used on top of the special comment fields. My favorite new feature.
-* **Dashboard Support** - Enable your forms individually to allow most recent entries to appear on the dashboard (requires cforms DB Tracking turned on).
-* **Fancy Javascript Date Picker** - Not the food is meant, but a mini calendar popup for more convenient date entry.
-
-and more....
 
 For **WHAT'S NEW** and a complete version history (new features, bug fixes etc.), see [here](http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1).
 
@@ -28,8 +19,11 @@ cforms is a highly customizable, flexible and powerful contact form plugin, cove
 For all the new features, see the Help documentation. 
 
 = Plugin Features =
-* **NEW: individual error messages (HTML enabled), see Help!**
-* **NEW: Tell-A-Friend functionality, see Help!**
+* **NEW: WP Comment / Note feature** 
+* **NEW: Dashboard Support**
+* **NEW: Fancy Javascript Date Picker**
+* Individual error messages (HTML enabled), see Help!
+* Tell-A-Friend functionality, see Help!
 * Support for alternative SMTP server (in case you can't use *PHP mail()*)
 * Better non-HTML (TXT only) email support
 * Post processing of submitted data (see documentation) 
@@ -49,18 +43,17 @@ For all the new features, see the Help documentation.
 * Role Manager support
 * Backup & Restore of individual forms
 * Cloning, duplication of forms
-* **NEW: Tracking of submissions, searching/filtering & download of data**
+* Tracking of submissions, searching/filtering & download of data
 * Support for tracking unique form submission IDs
 * BCC to copy additional admin(s)
 * 3rd party email tracking support, e.g. readnotify & didtheyreadit
-* SPAM protection (Q & A + Captcha)
-* **NEW: added Ajax captcha reset**
+* SPAM protection (Q & A + Captcha/Ajax captcha reset)
 * Submission status (success/failure) optionally via Alert Box
-* **NEW: HTML support for success/failure messages** 
+* HTML support for success/failure messages
 * Form validation & *regular expressions*
 * Configurable text elements
 * Convenient handling of input field order, via drag and drop
-* **NEW: HTML support for field labels (*field names*), see examples on Help!**
+* HTML support for field labels (*field names*), see examples on Help!
 * Supporting DISABLED form fields for better usability
 * Various standard form building blocks:
 	* fieldsets
@@ -74,7 +67,10 @@ For all the new features, see the Help documentation.
 	* "CC me" check box for visitors
 	* multiple form recipient (drop down list)
 	* visitor verification Q&A
+	* Tell a Friend fields
+	* WP Comment fields
 	* Captcha
+	* Javascript popup calendar
 * Default values for single/multi-line input fields (w/ auto clear,reset)
 * Fully integrated with TinyMCE & std editor (buttons)
 * Basic widget support

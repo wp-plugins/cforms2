@@ -213,6 +213,7 @@ input.go			{ font-size:10px; height:22px; }
 #cforms_showdashboard,
 #cforms_commentrep,
 #cforms_datepicker,
+#cforms_tafdefault,
 #cforms_smtp_onoff		{ width:16px; margin-top:4px; background:none; border:none; }
 
 #cforms_fromemail		{ background:#fdc4c4;}

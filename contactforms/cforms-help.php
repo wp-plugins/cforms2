@@ -773,15 +773,19 @@ if ( isset($_POST['send2author']) && $_POST['send2author']=='1' ) { // cforms
 			</tr>
 			<tr>
 				<td class="bleft"><?php _e('Example:<br />US zip code', 'cforms'); ?></td><td class="bright">
-					<code class="codehighlight"><?php _e('<code class="codehighlight">^\d{5}$)|(^\d{5}-\d{4}$</code>', 'cforms'); ?></code></td>
+					<code class="codehighlight"><?php _e('<code class="codehighlight">zip code||^\d{5}$)|(^\d{5}-\d{4}$</code>', 'cforms'); ?></code></td>
 			</tr>
 			<tr>
 				<td class="bleft"><?php _e('Example:<br />US phone #', 'cforms'); ?></td><td class="bright">
-					<code class="codehighlight"><?php _e('<code class="codehighlight">^[\(]?(\d{0,3})[\)]?[\s]?[\-]?(\d{3})[\s]?[\-]?(\d{4})[\s]?[x]?(\d*)$</code>', 'cforms'); ?></code></td>
+					<code class="codehighlight"><?php _e('<code class="codehighlight">phone||^[\(]?(\d{0,3})[\)]?[\s]?[\-]?(\d{3})[\s]?[\-]?(\d{4})[\s]?[x]?(\d*)$</code>', 'cforms'); ?></code></td>
+			</tr>
+			<tr>
+				<td class="bleft"><?php _e('Special Example:<br />comparing two input fields', 'cforms'); ?></td><td class="bright">
+					<code class="codehighlight"><?php _e('<code class="codehighlight">please repeat email||cf2_field2</code>', 'cforms'); ?></code></td>
 			</tr>
 			<tr>
 				<td class="ball" colspan="2">
-					<?php _e('<strong>NOTE:</strong>', 'cforms'); ?>
+					<?php _e('<strong>GENERAL:</strong>', 'cforms'); ?>
 				</td>
 			</tr>			
 			<tr>
@@ -807,6 +811,11 @@ if ( isset($_POST['send2author']) && $_POST['send2author']=='1' ) { // cforms
 			<tr>
 				<td class="ball" colspan="2">
 					<?php _e('More information can be found <a href="http://weblogtoolscollection.com/regex/regex.php">here</a>, a great regexp repository <a href="http://regexlib.com">here</a>.', 'cforms'); ?>
+				</td>
+			</tr>			
+			<tr>
+				<td class="ball" colspan="2">
+					<?php _e('<strong>If you would like to compare two input fields (e.g. email verification):</strong> simply use the regexp field (see special example above, to point to the <u>HTML element ID</u> of the field you want to compare the current one to.', 'cforms'); ?>
 				</td>
 			</tr>			
 		</table>
