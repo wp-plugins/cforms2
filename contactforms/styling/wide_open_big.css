@@ -54,6 +54,7 @@ ol.cf-ol li.textonly {
 /*                                                    */
 
 .cform label {
+	width:100%; 
 	margin:2px 10px 0 0; 
 	text-align:left;
 	vertical-align:top;
