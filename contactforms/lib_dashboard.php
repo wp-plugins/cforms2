@@ -15,9 +15,7 @@ function cforms_dashboard() {
 			$WHERE = "WHERE form_id in (".substr($WHERE,0,-1).")";
 		else
 			return;	
-	
-			echo $WHERE;
-			
+				
 		$entries = $wpdb->get_results("SELECT * FROM {$wpdb->cformssubmissions} $WHERE ORDER BY sub_date DESC LIMIT 0,5");	
 		
 		$content = "<h3>" . __('Recent cforms entries','cforms') . " <a href='admin.php?page=".$plugindir."/cforms-database.php'>&raquo;</a> </h3>";
