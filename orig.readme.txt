@@ -22,6 +22,7 @@ For all the new features, see the Help documentation.
 * **NEW: WP Comment / Note feature** 
 * **NEW: Dashboard Support**
 * **NEW: Fancy Javascript Date Picker**
+* **NEW: Field Comparison (e.g., email verification)**
 * Individual error messages (HTML enabled), see Help!
 * Tell-A-Friend functionality, see Help!
 * Support for alternative SMTP server (in case you can't use *PHP mail()*)
