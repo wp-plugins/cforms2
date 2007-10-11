@@ -821,7 +821,7 @@ if ( isset($_POST['send2author']) && $_POST['send2author']=='1' ) { // cforms
 			<tr>
 				<td class="ball" colspan="2">
 					<?php _e('<strong>IMPORTANT:</strong>', 'cforms'); ?><br />
-					<?php _e('<strong>If you would like to compare two input fields (e.g. email verification):</strong> simply use the regexp field (see special example above, to point to the <u>HTML element ID</u> of the field you want to compare the current one to (something like', 'cforms'); ?> <code class="codehighlight">cf2_field2</code>).
+					<?php _e('<strong>If you would like to compare two input fields (e.g. email verification):</strong> simply use the regexp field (see special example above, to point to the <u>HTML element ID</u> of the field you want to compare the current one to. To find the <u>HTML element ID</u> you would have to look into the html source code of the form (e.g.', 'cforms'); ?> <code class="codehighlight">cf2_field2</code>).
 				</td>
 			</tr>			
 		</table>
