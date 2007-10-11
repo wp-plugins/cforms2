@@ -790,6 +790,11 @@ if ( isset($_POST['send2author']) && $_POST['send2author']=='1' ) { // cforms
 			</tr>			
 			<tr>
 				<td class="ball" colspan="2">
+					<?php _e('Ensure that the input field in question is tagged \'<strong>Is Required</strong>\'!', 'cforms'); ?>
+				</td>
+			</tr>			
+			<tr>
+				<td class="ball" colspan="2">
 					<?php _e('<code class="codehighlight">^</code> and <code class="codehighlight">$</code> define the start and the end of the input', 'cforms'); ?>
 				</td>
 			</tr>			
@@ -815,7 +820,8 @@ if ( isset($_POST['send2author']) && $_POST['send2author']=='1' ) { // cforms
 			</tr>			
 			<tr>
 				<td class="ball" colspan="2">
-					<?php _e('<strong>If you would like to compare two input fields (e.g. email verification):</strong> simply use the regexp field (see special example above, to point to the <u>HTML element ID</u> of the field you want to compare the current one to.', 'cforms'); ?>
+					<?php _e('<strong>IMPORTANT:</strong>', 'cforms'); ?><br />
+					<?php _e('<strong>If you would like to compare two input fields (e.g. email verification):</strong> simply use the regexp field (see special example above, to point to the <u>HTML element ID</u> of the field you want to compare the current one to (something like', 'cforms'); ?> <code class="codehighlight">cf2_field2</code>).
 				</td>
 			</tr>			
 		</table>
