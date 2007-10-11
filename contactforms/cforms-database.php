@@ -209,7 +209,7 @@ if ( ($_POST['showid']<>'' || isset($_POST['showselected']) || isset($_POST['sql
 	$entries = $wpdb->get_results($sql);
 
 	$formselect  = '<select align="right" type="text" name="filter_form" id="filter_form">';
-	$formselect .= '<option value="*" '.( (!isset($_POST['filter_form']))?'selected="selected"':'' ).'>**all forms**</option>';
+	$formselect .= '<option value="*" '.( (!isset($_POST['filter_form']))?'selected="selected"':'' ).'>'.__('**all forms**','cforms').'</option>';
 
 	for ($i=1; $i <= get_option('cforms_formcount'); $i++){
 		$n = ( $i==1 )?'':$i; 

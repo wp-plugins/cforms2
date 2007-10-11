@@ -1,5 +1,5 @@
 // Load the language file
-tinyMCE.importPluginLanguagePack('cforms', 'en');
+tinyMCE.importPluginLanguagePack('cforms');
 
 var TinyMCE_cformsscript = {
 
