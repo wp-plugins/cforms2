@@ -801,8 +801,8 @@ function reset_captcha( $no = '' ){
 		
 	//fix for windows!!!
 	if ( strpos(__FILE__,'\\') ){
-		$path = preg_replace( '|.*(\\\\wp-content\\\\.*)\\.*|','${1}', __FILE__ );
-		$path = str_replace('\\\\','/',$path);
+		$path = preg_replace( '|.*(wp-content.*)cforms.php|','${1}', __FILE__ );
+		$path = '/'.str_replace('\\','/',$path);
 	}
 	else
 		$path = preg_replace( '|.*(/wp-content/.*)/.*|','${1}', __FILE__ );
