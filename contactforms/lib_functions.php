@@ -173,5 +173,11 @@ function cforms_footer() {
 
 	<p align="center">Version <?php echo $localversion; ?></p>
 <?php 
+
+	$admin = dirname($_SERVER['SCRIPT_FILENAME']);
+	echo "\n<!-- $admin  -->";
+	$admin = substr($admin, strrpos($admin, '/')+1);
+	echo "\n<!-- $admin  -->";
+	echo "\n<!-- ".basename($_SERVER['SCRIPT_FILENAME'])." -->";	
 }
 ?>

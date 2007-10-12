@@ -800,7 +800,13 @@ function reset_captcha( $no = '' ){
 	$_SESSION['turing_string_'.$no] = rc(4,5);
 		
 	//fix for windows!!!
-	$path = preg_replace( '|.*(/wp-content/.*)/.*|','${1}', __FILE__ );
+	if ( strpos(__FILE__,'\\') ){
+		$path = preg_replace( '|.*(\\\\wp-content\\\\.*)\\.*|','${1}', __FILE__ );
+		$path = str_replace('\\\\','/',$path);
+	}
+	else
+		$path = preg_replace( '|.*(/wp-content/.*)/.*|','${1}', __FILE__ );
+	
 	$path = get_bloginfo('wpurl') . $path;
 	
 	$newimage = md5(strtolower($_SESSION['turing_string_'.$no])) . '|' . $no . '|' . $path  . '/cforms-captcha.php?ts='.$no;	 
@@ -2333,7 +2339,11 @@ if (function_exists('add_action')){
 
 	### dashboard
 	$admin = dirname($_SERVER['SCRIPT_FILENAME']);
-	$admin = substr($admin, strrpos($admin, '/')+1);
+	if ( strpos($admin,'\\') )
+		$admin = substr($admin, strrpos($admin, '\\')+1);
+	else
+		$admin = substr($admin, strrpos($admin, '/')+1);
+
 	if ( $admin == 'wp-admin' && basename($_SERVER['SCRIPT_FILENAME']) == 'index.php' && get_option('cforms_showdashboard')=='1') {
 		require_once(dirname(__FILE__) . '/lib_dashboard.php');
 		add_action('admin_footer', 'cforms_dashboard');
