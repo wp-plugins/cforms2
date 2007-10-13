@@ -10,7 +10,7 @@ cforms II is an extremely customizable, flexible & powerful contact form plugin.
 
 == Description ==
 
-For **WHAT'S NEW** and a complete version history (new features, bug fixes etc.), see [here](http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1).
+For **WHAT'S NEW** and a complete version history (new features, bug fixes etc.), see [here](http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1)!
 
 = Description =
 cforms is a highly customizable, flexible and powerful contact form plugin, covering a variety of use cases and features from attachments to multi form management, you can even have multiple forms on the same page!
@@ -19,12 +19,8 @@ cforms is a highly customizable, flexible and powerful contact form plugin, cove
 For all the new features, see the Help documentation. 
 
 = Plugin Features =
-* **NEW: WP Comment / Note feature** 
-* **NEW: Dashboard Support**
-* **NEW: Fancy Javascript Date Picker**
-* **NEW: Field Comparison (e.g., email verification)**
-* Individual error messages (HTML enabled), see Help!
-* Tell-A-Friend functionality, see Help!
+* **NEW: individual error messages (HTML enabled), see Help!**
+* **NEW: Tell-A-Friend functionality, see Help!**
 * Support for alternative SMTP server (in case you can't use *PHP mail()*)
 * Better non-HTML (TXT only) email support
 * Post processing of submitted data (see documentation) 
@@ -44,17 +40,18 @@ For all the new features, see the Help documentation.
 * Role Manager support
 * Backup & Restore of individual forms
 * Cloning, duplication of forms
-* Tracking of submissions, searching/filtering & download of data
+* **NEW: Tracking of submissions, searching/filtering & download of data**
 * Support for tracking unique form submission IDs
 * BCC to copy additional admin(s)
 * 3rd party email tracking support, e.g. readnotify & didtheyreadit
-* SPAM protection (Q & A + Captcha/Ajax captcha reset)
+* SPAM protection (Q & A + Captcha)
+* **NEW: added Ajax captcha reset**
 * Submission status (success/failure) optionally via Alert Box
-* HTML support for success/failure messages
+* **NEW: HTML support for success/failure messages** 
 * Form validation & *regular expressions*
 * Configurable text elements
 * Convenient handling of input field order, via drag and drop
-* HTML support for field labels (*field names*), see examples on Help!
+* **NEW: HTML support for field labels (*field names*), see examples on Help!**
 * Supporting DISABLED form fields for better usability
 * Various standard form building blocks:
 	* fieldsets
@@ -68,10 +65,7 @@ For all the new features, see the Help documentation.
 	* "CC me" check box for visitors
 	* multiple form recipient (drop down list)
 	* visitor verification Q&A
-	* Tell a Friend fields
-	* WP Comment fields
 	* Captcha
-	* Javascript popup calendar
 * Default values for single/multi-line input fields (w/ auto clear,reset)
 * Fully integrated with TinyMCE & std editor (buttons)
 * Basic widget support
@@ -82,11 +76,10 @@ For all the new features, see the Help documentation.
 cforms has been revised to fully support WP localization. If you'd like to contribute a language translation, please get in touch. If you have suggestions or would like to point out typos etc, please contact the actual author (see list below) of the respective localization.
 
 * Currently, cforms includes the following language packs (besides English):
-	* **French** \* Author: [La maison de l&rsquo;informatiqu](http://serge-rauber.fr/27-traduction-de-cforms-v55)
 	* **German** \* Author: [Sven Wappler](http://www.wordpressbox.de/plugins/cforms/)
-	* **Hungarian** \* Author: [Ungv&aacute;ri B&eacute;la](http://www.deliciousdays.com/download/cformsII-hu_hu.zip)
 	* **Spanish** \* Author: [Samuel Aguilera](http://agamum.net/blog/archivo/plugin-cforms-en-espanol-formularios-para-tu-wordpress.xhtml)
-	* **Turkish** \* Author: M.Yasin ERDOGAN, not yet completed
+	* **Hungarian** \* Author: [Ungv&aacute;ri B&eacute;la](http://www.deliciousdays.com/download/cformsII-hu_hu.zip)
+	* **French** \* Author: [La maison de l&rsquo;informatiqu](http://www.deliciousdays.com/download/contactforms-fr_FR.zip)
 
 == Installation ==
 
