@@ -479,6 +479,9 @@ function cforms_submitcomment(no) {
 									
 								if ( group.length > 1 )
 									params = params + prefix + group.substring(0,group.length-1);
+								else
+									params = params + prefix + "-";
+								
 								//i=i-1;
 							}
 							else
