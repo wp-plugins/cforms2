@@ -2,6 +2,24 @@
 Copyright 2006-2007  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
+cforms II - v5.5
+*) feature: special regexp use: compare two input fields for equal content (e.g. email verification)
+*) feature: 'Tell-A-Friend' enable all posts/pages per click
+*) feature: 'Tell-A-Friend' default behaviour for new posts/pages
+*) feature: Fancy Javascript date picker
+*) feature: "WP Comment/Message to author" Feature
+*) feature: added dashboad support (showing last 5 entries)
+*) other: since 2.3 comes with update support,
+	I removed local update notification code (saves a few kb)
+*) bugfix: corrected form layout when no FIELDSETS are being used
+*) bugfix: radio button fix, in case no label/li ID's are enabled
+*) bugfix: made some changes to session mgmt in favour of keeping form content 
+	when hitting the browsers back button
+*) bugfix: fixed use of special character "." as an empty trailing line in TXT messages
+*) other: tuned code a bit, hopefully with a performance gain 
+*) bugfix: fixed weird caching phenomena when deleting of forms	
+*) bugfix: fixed non ajax regexp processing
+
 cforms II - v5.4
 *) feature: added Tell-A-Friend functionality, see Help documentation
 *) feature: added filter option for displaying data records on "Tracking" page
