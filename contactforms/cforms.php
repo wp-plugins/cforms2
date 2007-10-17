@@ -1714,7 +1714,7 @@ function cforms($args = '',$no = '') {
 
 
 		//check if fieldset is open
-		if ( !$fieldsetopen && !$ol ) {
+		if ( !$fieldsetopen && !$ol && $field_type<>'fieldsetstart') {
 			$content .= $indent . $tab . '<ol class="cf-ol">' . $nl;
 			$ol = true;
 		}
@@ -1845,7 +1845,7 @@ function cforms($args = '',$no = '') {
 
 			case "fieldsetend":
 				if ($fieldsetopen) {
-						$field = $indent . $tab . '</ol>' . $nl .
+						$field = $nl . $indent . $tab . '</ol>' . $nl .
 								 $indent . $tab . '</fieldset>' . $nl;
 						$fieldsetopen = false;
 						$ol = false;
@@ -2069,7 +2069,7 @@ function cforms($args = '',$no = '') {
 
 
 	if ( $ol )
-		$content .= $nl . $indent . $tab . '</ol>';
+		$content .= $nl . $indent . $tab . '</ol>' . $nl;
 	if ( $fieldsetopen )
 		$content .= $nl . $indent . $tab . '</fieldset>' . $nl;
 
