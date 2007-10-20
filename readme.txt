@@ -4,7 +4,7 @@ Donate link: http://www.deliciousdays.com/
 Tags: ajax, email, secure, visitor, input, order, form, contact
 Requires at least: 1.6+
 Tested up to: 2.3
-Stable tag: 5.6
+Stable tag: 5.51
 
 cforms II is an extremely customizable, flexible & powerful contact form plugin.
 
