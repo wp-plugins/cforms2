@@ -2110,7 +2110,7 @@ function cforms($args = '',$no = '') {
 	$content .= $indent . $tab . '</form>' . $nl;
 
 	if ( get_option('cforms_datepicker')=='1' )
-		$content .= $indent . $tab . '<div id="datepicker" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;"></div>' . $nl;
+		$content .= $indent . $tab . '<div id="datepicker" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;z-index:999;"></div>' . $nl;
 
 	//link love? you bet ;)
 		$content .= $indent . $tab . '<p class="linklove" id="ll'. $no 	.'"><a href="http://www.deliciousdays.com/cforms-plugin"><em>cforms</em> contact form by delicious:days</a></p>' . $nl;
