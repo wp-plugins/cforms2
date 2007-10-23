@@ -2110,13 +2110,7 @@ function cforms($args = '',$no = '') {
 	$content .= $indent . $tab . '</form>' . $nl;
 
 	if ( get_option('cforms_datepicker')=='1' )
-		$content .= $indent . $tab . '<div id="datepicker" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;z-index:999;"></div>' . $nl;
-
-	//link love? you bet ;)
-		$content .= $indent . $tab . '<p class="linklove" id="ll'. $no 	.'"><a href="http://www.deliciousdays.com/cforms-plugin"><em>cforms</em> contact form by delicious:days</a></p>' . $nl;
-	
-
-	//either show message above or below
+		$content .= $indent . $tab . '<div id="datepicker" style="position:absolute;visibility:hidden;background-color:white;layer-background-color:white;z-index:999;"></div>' . $nl; $content .= $indent . $tab . '<p class="linklove"><a href="http://www.deliciousdays.com/cforms-plugin"><em>cforms</em> contact form by delicious:days</a></p>' . $nl;
 	if( substr(get_option('cforms'.$no.'_showpos'),1,1)=='y' )
 		$content .= $indent . $tab . '<p id="usermessage'.$no.'b" class="info ' . $usermessage_class . '" >' . $usermessage_text . '</p>' . $nl;
 
