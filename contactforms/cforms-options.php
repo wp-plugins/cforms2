@@ -803,7 +803,7 @@ function get_form_presets(){
 		        $title = fgets($fhandle, 4096);
 		    fclose($fhandle);
 		}
-		$list .= '<option value="'.$file.'">' .$title,'cforms'. '</option>';
+		$list .= '<option value="'.$file.'">' .$title. '</option>';
 	}
     return $list;
 }
