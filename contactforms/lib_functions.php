@@ -154,12 +154,18 @@ function cforms_init() {
 // some css for arranging the table fields in wp-admin
 function cforms_options_page_style() {  
  	// other admin pages
-	global $cforms_root;
-	if (   strpos($_SERVER['REQUEST_URI'], $plugindir.'/cforms') !== false )
+	global $cforms_root,$wpmu_version,$wp_version;
+	if (   strpos($_SERVER['REQUEST_URI'], $plugindir.'/cforms') !== false ){
 		echo	'<link rel="stylesheet" type="text/css" href="' . $cforms_root . '/cforms-admin.css" />' . "\n" .
 				'<script type="text/javascript" src="' . $cforms_root . '/js/jquery.js"></script>' . "\n" .
-				'<script type="text/javascript" src="' . $cforms_root . '/js/interface.js"></script>' . "\n" .
-				'<script type="text/javascript" src="' . $cforms_root . '/js/cformsadmin.js"></script>' . "\n";
+				'<script type="text/javascript" src="' . $cforms_root . '/js/interface.js"></script>' . "\n";
+
+		if ( $wpmu_version <> '' ){ 
+			echo	'<script type="text/javascript" src="' . $cforms_root . '/js/cformsadmin-mu.js"></script>' . "\n";		
+		}else{
+			echo	'<script type="text/javascript" src="' . $cforms_root . '/js/cformsadmin.js"></script>' . "\n";		
+		}
+	}
 }
 
 //footer unbder all options pages
