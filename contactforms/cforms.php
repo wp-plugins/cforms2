@@ -2,7 +2,7 @@
 /*
 Plugin Name: cforms II
 Plugin URI: http://www.deliciousdays.com/cforms-plugin
-Description: cforms II offers unparalleled flexibility in deploying contact forms across your blog. Features include: comprehensive SPAM protection, Ajax support, Backup & Restore, Multi-Recipients, Role Manager support, Database tracking and many more. Please see the <a href="http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1>VERSION HISTORY</a> for <strong>what's new</strong> and current <strong>bugfixes</strong>.
+Description: cforms II offers unparalleled flexibility in deploying contact forms across your blog. Features include: comprehensive SPAM protection, Ajax support, Backup & Restore, Multi-Recipients, Role Manager support, Database tracking and many more. Please see the <a href="http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1">VERSION HISTORY</a> for <strong>what's new</strong> and current <strong>bugfixes</strong>.
 Author: Oliver Seidel
 Version: 6.0
 Author URI: http://www.deliciousdays.com
