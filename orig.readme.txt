@@ -19,10 +19,10 @@ cforms is a highly customizable, flexible and powerful contact form plugin, cove
 For all the new features, see the Help documentation. 
 
 = Plugin Features =
-* **NEW: TinyMCE: enhanced visual appearance of form placeholder & form insertion dialog**
-* **NEW: completely revamped admin UI JS core for drag&drop (fixing some IE issues)**
-* **NEW: preset forms for “quick starts” (basic, T-A-F, WP Comment and custom err)**
-* **NEW: if no ‘required’ text is given (empty), then HTML will be entirely omitted**
+* **NEW: TinyMCE: enhanced visual appearance of form placeholder &amp; form insertion dialog**
+* **NEW: completely revamped admin UI JS core for drag&amp;drop (fixing some IE issues)**
+* **NEW: preset forms for &ldquo;quick starts&rdquo; (basic, T-A-F, WP Comment and custom err)**
+* **NEW: if no &lsquo;required&rsquo; text is given (empty), then HTML will be entirely omitted**
 
 * WP Comment / Note feature
 * Dashboard Support
