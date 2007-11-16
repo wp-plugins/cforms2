@@ -19,16 +19,16 @@ cforms is a highly customizable, flexible and powerful contact form plugin, cove
 For all the new features, see the Help documentation. 
 
 = New 6.0 Plugin Features =
-* **NEW: TinyMCE: enhanced visual appearance of form placeholder &amp; form insertion dialog**
-* **NEW: completely revamped admin UI JS core for drag&amp;drop (fixing some IE issues)**
-* **NEW: preset forms for &ldquo;quick starts&rdquo; (basic, T-A-F, WP Comment and custom err)**
-* **NEW: if no &lsquo;required&rsquo; text is given (empty), then HTML will be entirely omitted**
+* **NEW:** TinyMCE: enhanced visual appearance of form placeholder &amp; form insertion dialog
+* **NEW:** completely revamped admin UI JS core for drag&amp;drop (fixing some IE issues)
+* **NEW:** preset forms for &ldquo;quick starts&rdquo; (basic, T-A-F, WP Comment and custom err)
+* **NEW:** if no &lsquo;required&rsquo; text is given (empty), then HTML will be entirely omitted
 
 [Check out the cforms CSS Guide and webcast on layout customization](http://www.deliciousdays.com/cforms-forum?forum=1&topic=428&page=1)
 
 [Please visit the cforms plugin page for a detailed features list](http://www.deliciousdays.com/cforms-plugin)
 
-* General Features
+* **General Features**
 	* Ajax supported form submission (incl. graceful fall-back)
 	* Multiple forms on one or many pages / posts
 	* WP Dashboard Support (showing last 5 entries)
@@ -36,7 +36,7 @@ For all the new features, see the Help documentation.
 	* Full localization support (see section below)
 	* Tell-A-Friend functionality, see Help documentation
 	* [...]
-* Supported Form Fields
+* **Supported Form Fields**
 	* Fancy Javascript date picker
 	* Configurable text elements (non input fields)
 	* Various standard input fields:
@@ -44,23 +44,23 @@ For all the new features, see the Help documentation.
 		* single and multi-line input fields
 		* select boxes (drop down)
 	* [...]
-* Styling
+* **Styling*+
 	* Fully customizable Look &amp; Feel (optional label ID&rsquo;s and list item ID&rsquo;s!)
 	* Built in CSS theme selector and CSS editor
 	* Set of predefined themes
 	* [...]
-* Input &amp; Validation
+* **Input &amp; Validation**
 	* Default values for single/multi-line input field
 	* Form validation &amp; regular expressions
 	* [...]
-* Messaging
+* **Messaging**
 	* Fully customizable auto confirmation message &amp; form email (TXT &amp; HTML)
 	* Message(s) can contain system variables and form based variables!
 	* [...]
-* Anti SPAM / Security
+* **Anti SPAM / Security**
 	* SPAM protection Q &amp;A
 	* SPAM protection using CAPTCHA NEW: + Ajax CAPTCHA reset
-* Extensibility
+* **Extensibility**
 	* Support for alternative SMTP server (in case you can&rsquo;t use PHP mail()
 	* Generate dynamic forms in real-time
 	* Filtering &amp; Download of recorded data
