@@ -107,5 +107,5 @@ Please visit the [cforms plugin forum](http://www.deliciousdays.com/cforms-forum
 == Screenshots ==
 
 [Please visit the cforms plugin page for screenshots & sample](http://www.deliciousdays.com/cforms-plugin)
-[Check out the cforms CSS Guide and webcast on layout customization](http://www.deliciousdays.com/cforms-forum?forum=1&topic=428&page=1)
 
+[Check out the cforms CSS Guide and webcast on layout customization](http://www.deliciousdays.com/cforms-forum?forum=1&topic=428&page=1)

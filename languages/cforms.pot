@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2007-11-16 07:23+0100\n"
+"POT-Creation-Date: 2007-11-16 17:20+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -57,7 +57,7 @@ msgid ""
 "default look and feel, no need to do anything here."
 msgstr ""
 
-#: cforms-css.php:95 cforms-css.php:182 cforms-global-settings.php:166
+#: cforms-css.php:95 cforms-css.php:188 cforms-global-settings.php:166
 #: cforms-global-settings.php:203 cforms-global-settings.php:240
 #: cforms-global-settings.php:283 cforms-global-settings.php:297
 #: cforms-global-settings.php:322 cforms-global-settings.php:351
@@ -69,7 +69,7 @@ msgstr ""
 #: cforms-help.php:515 cforms-help.php:636 cforms-help.php:727
 #: cforms-help.php:771 cforms-help.php:840 cforms-help.php:874
 #: cforms-help.php:908 cforms-help.php:1043 cforms-help.php:1184
-#: cforms-help.php:1193 cforms-options.php:284 cforms-options.php:470
+#: cforms-help.php:1197 cforms-options.php:284 cforms-options.php:470
 #: cforms-options.php:509 cforms-options.php:574 cforms-options.php:612
 #: cforms-options.php:651 cforms-options.php:666 cforms-options.php:700
 #: cforms-options.php:743 cforms-options.php:767
@@ -121,29 +121,36 @@ msgstr ""
 msgid "Deactivate List Element IDs"
 msgstr ""
 
-#: cforms-css.php:163
+#: cforms-css.php:157 cforms-help.php:1189
+#, php-format
+msgid ""
+"You might also want to study the <a href=\"%s\">PDF guide on cforms CSS & a "
+"web screencast</a> I put together to give you a head start."
+msgstr ""
+
+#: cforms-css.php:169
 msgid "PREVIEW:"
 msgstr ""
 
-#: cforms-css.php:163
+#: cforms-css.php:169
 msgid "Theme Preview"
 msgstr ""
 
-#: cforms-css.php:182
+#: cforms-css.php:188
 msgid "Update Changes &raquo;"
 msgstr ""
 
-#: cforms-css.php:182
+#: cforms-css.php:188
 msgid "Basic CSS editor. Current style file: "
 msgstr ""
 
-#: cforms-css.php:184
+#: cforms-css.php:190
 msgid ""
 "Use this simple editor to further tailor your forms' style to meet your "
 "requirements. Currently you're editing: "
 msgstr ""
 
-#: cforms-css.php:197
+#: cforms-css.php:203
 msgid "Sorry. The file you are looking for doesn't exist."
 msgstr ""
 
@@ -337,7 +344,7 @@ msgstr ""
 #: cforms-global-settings.php:351 cforms-help.php:44 cforms-help.php:66
 #: cforms-help.php:82 cforms-help.php:840 cforms-help.php:874
 #: cforms-help.php:908 cforms-help.php:1043 cforms-help.php:1184
-#: cforms-help.php:1193 cforms-options.php:470 cforms-options.php:509
+#: cforms-help.php:1197 cforms-options.php:470 cforms-options.php:509
 #: cforms-options.php:574 cforms-options.php:612 cforms-options.php:651
 #: cforms-options.php:666 cforms-options.php:700 cforms-options.php:743
 #: cforms-options.php:767
@@ -685,7 +692,7 @@ msgstr ""
 msgid "Styling your forms"
 msgstr ""
 
-#: cforms-help.php:40 cforms-help.php:1193
+#: cforms-help.php:40 cforms-help.php:1197
 msgid "Need more help?"
 msgstr ""
 
@@ -2137,7 +2144,7 @@ msgid ""
 "put it in the <code>/styling</code> directory."
 msgstr ""
 
-#: cforms-help.php:1189
+#: cforms-help.php:1190
 msgid ""
 "Your form <strong>doesn't</strong> look like the preview image, or your "
 "individual changes don't take effect, check your global WP theme CSS! It may "
@@ -2146,7 +2153,7 @@ msgid ""
 "excellent CSS troubleshooting tool!"
 msgstr ""
 
-#: cforms-help.php:1196
+#: cforms-help.php:1200
 msgid ""
 "For up-to-date information check the <a href=\"http://www.deliciousdays.com/"
 "cforms-forum\">cforms forum</a> and comment section on the plugin homepage."
