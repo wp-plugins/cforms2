@@ -152,6 +152,12 @@ if(!empty($_POST['save_css'])){
 
 								</td>
 							</tr>
+							<tr>
+								<td colspan="3">							
+										<p><?php echo sprintf(__('You might also want to study the <a href="%s">PDF guide on cforms CSS & a web screencast</a> I put together to give you a head start.', 'cforms'),'http://www.deliciousdays.com/cforms-forum?forum=1&topic=428&page=1'); ?></p>
+								</td>
+							</tr>
+
 						</table>
 					</td>
 					

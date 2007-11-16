@@ -1,6 +1,6 @@
 === cforms II - contact form ===
 Contributors: olivers
-Donate link: http://www.deliciousdays.com/
+Donate link: http://www.deliciousdays.com/cforms-forum?forum=2&topic=368&page=1
 Tags: ajax, email, secure, visitor, input, order, form, contact
 Requires at least: 1.6+
 Tested up to: 2.3.1
@@ -18,78 +18,61 @@ cforms is a highly customizable, flexible and powerful contact form plugin, cove
 = Upgrading Notes: =
 For all the new features, see the Help documentation. 
 
-= Plugin Features =
-* **NEW: TinyMCE: enhanced visual appearance of form placeholder & form insertion dialog**
-* **NEW: completely revamped admin UI JS core for drag&drop (fixing some IE issues)**
-* **NEW: preset forms for “quick starts” (basic, T-A-F, WP Comment and custom err)**
-* **NEW: if no ‘required’ text is given (empty), then HTML will be entirely omitted**
+= New 6.0 Plugin Features =
+* **NEW: TinyMCE: enhanced visual appearance of form placeholder &amp; form insertion dialog**
+* **NEW: completely revamped admin UI JS core for drag&amp;drop (fixing some IE issues)**
+* **NEW: preset forms for &ldquo;quick starts&rdquo; (basic, T-A-F, WP Comment and custom err)**
+* **NEW: if no &lsquo;required&rsquo; text is given (empty), then HTML will be entirely omitted**
 
-* WP Comment / Note feature
-* Dashboard Support
-* Fancy Javascript Date Picker
-* Field Comparison (e.g., email verification)
-* Individual error messages (HTML enabled), see Help!
-* Tell-A-Friend functionality, see Help!
-* Support for alternative SMTP server (in case you can't use *PHP mail()*)
-* Better non-HTML (TXT only) email support
-* Post processing of submitted data (see documentation) 
-* Full HTML formatting support for email messages
-* Customizable auto confirmation message & form email (Variables!)
-* Page redirection after successful form submission
-* Creates robust XHTML form code (no floats)
-* Alternative form action supported (please read config info!)
-* Full localization support (currently: English, German, Spanish)
-* Built-in CSS editor & theme chooser
-* Additional predefined CSS themes
-* Multiple file attachments (upload)
-* Multiple forms on one or many pages / posts
-* Ajax supported form submission (w/ graceful fall-back)
-* Multiple recipients per form (optionally selectable by visitor)
-* Fully customizable Look & Feel (** labels & fields **)
-* Role Manager support
-* Backup & Restore of individual forms
-* Cloning, duplication of forms
-* Tracking of submissions, searching/filtering & download of data
-* Support for tracking unique form submission IDs
-* BCC to copy additional admin(s)
-* 3rd party email tracking support, e.g. readnotify & didtheyreadit
-* SPAM protection (Q & A + Captcha/Ajax captcha reset)
-* Submission status (success/failure) optionally via Alert Box
-* HTML support for success/failure messages
-* Form validation & *regular expressions*
-* Configurable text elements
-* Convenient handling of input field order, via drag and drop
-* HTML support for field labels (*field names*), see examples on Help!
-* Supporting DISABLED form fields for better usability
-* Various standard form building blocks:
-	* fieldsets
-	* single and multi-line fields
-	* select boxes (drop down)
-	* multi select boxes
-	* check boxes
-	* grouped check boxes
-	* radio buttons
-* ...and a few special ones:
-	* "CC me" check box for visitors
-	* multiple form recipient (drop down list)
-	* visitor verification Q&A
-	* Tell a Friend fields
-	* WP Comment fields
-	* Captcha
-	* Javascript popup calendar
-* Default values for single/multi-line input fields (w/ auto clear,reset)
-* Fully integrated with TinyMCE & std editor (buttons)
-* Basic widget support
-* Clean separation of CSS styling and form code
-* Validates XHTML 1.0 Strict
+[Check out the cforms CSS Guide and webcast on layout customization](http://www.deliciousdays.com/cforms-forum?forum=1&topic=428&page=1)
+
+[Please visit the cforms plugin page for a detailed features list](http://www.deliciousdays.com/cforms-plugin)
+
+* General Features
+	* Ajax supported form submission (incl. graceful fall-back)
+	* Multiple forms on one or many pages / posts
+	* WP Dashboard Support (showing last 5 entries)
+	* &ldquo;WP Comment/Message to author&rdquo; Feature (!)
+	* Full localization support (see section below)
+	* Tell-A-Friend functionality, see Help documentation
+	* [...]
+* Supported Form Fields
+	* Fancy Javascript date picker
+	* Configurable text elements (non input fields)
+	* Various standard input fields:
+		* fieldsets
+		* single and multi-line input fields
+		* select boxes (drop down)
+	* [...]
+* Styling
+	* Fully customizable Look &amp; Feel (optional label ID&rsquo;s and list item ID&rsquo;s!)
+	* Built in CSS theme selector and CSS editor
+	* Set of predefined themes
+	* [...]
+* Input &amp; Validation
+	* Default values for single/multi-line input field
+	* Form validation &amp; regular expressions
+	* [...]
+* Messaging
+	* Fully customizable auto confirmation message &amp; form email (TXT &amp; HTML)
+	* Message(s) can contain system variables and form based variables!
+	* [...]
+* Anti SPAM / Security
+	* SPAM protection Q &amp;A
+	* SPAM protection using CAPTCHA NEW: + Ajax CAPTCHA reset
+* Extensibility
+	* Support for alternative SMTP server (in case you can&rsquo;t use PHP mail()
+	* Generate dynamic forms in real-time
+	* Filtering &amp; Download of recorded data
+	* [...]
 
 = Localization =
 cforms has been revised to fully support WP localization. If you'd like to contribute a language translation, please get in touch. If you have suggestions or would like to point out typos etc, please contact the actual author (see list below) of the respective localization.
 
-* Currently, cforms includes the following language packs (besides English):
+* Currently, these language packs are available:
 	* **French** \* Author: [La maison de l&rsquo;informatiqu](http://serge-rauber.fr/27-traduction-de-cforms-v55)
 	* **German** \* Author: [Sven Wappler](http://www.wappler.eu/cforms/)
-	* **Hungarian** \* Author: [Ungv&aacute;ri B&eacute;la](http://www.deliciousdays.com/download/cformsII-hu_hu.zip)
+	* **Hungarian** \* Original Author: [Ungv&aacute;ri B&eacute;la](http://www.deliciousdays.com/download/cformsII-hu_hu.zip) (discontinued as of v6.0, volunteers?)
 	* **Spanish** \* Author: [Samuel Aguilera](http://agamum.net/blog/archivo/plugin-cforms-en-espanol-formularios-para-tu-wordpress.xhtml)
 
 == Installation ==
@@ -110,6 +93,8 @@ Of course you could just use the cforms button in either TinyMCE or the std edit
 
 To do so, please insert `<!--cforms-->` for the first form and/or `<!--cformsX-->` for your other forms in the code view/edit mode to include them in either your **pages** or **posts**.
 
+[Check out the cforms CSS Guide and webcast on layout customization](http://www.deliciousdays.com/cforms-forum?forum=1&topic=428&page=1)
+
 = Inserting a form via the PHP function call =
 Alternatively, you can specifically insert a form (into the sidebar, footer etc. ) per the PHP function call `insert_cform();` for the default (first) form and/or `insert_cform('X');` for any other, subsequent form.
 
@@ -122,3 +107,5 @@ Please visit the [cforms plugin forum](http://www.deliciousdays.com/cforms-forum
 == Screenshots ==
 
 [Please visit the cforms plugin page for screenshots & sample](http://www.deliciousdays.com/cforms-plugin)
+[Check out the cforms CSS Guide and webcast on layout customization](http://www.deliciousdays.com/cforms-forum?forum=1&topic=428&page=1)
+
