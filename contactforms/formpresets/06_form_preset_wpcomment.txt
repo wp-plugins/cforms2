@@ -1,0 +1,11 @@
+Advanced: WP comment feature form
+ff~~~Leave a comment or send a note$#$fieldsetstart$#$0$#$0$#$0$#$0
+ff~~~Your Name|Your Name$#$author$#$1$#$0$#$1$#$0
+ff~~~Your Email$#$email$#$0$#$1$#$0$#$0
+ff~~~Your Website|http://$#$url$#$0$#$0$#$1$#$0
+ff~~~Your Comment|err:You need to say something!$#$comment$#$1$#$0$#$0$#$0
+ff~~~Send#as comment|0#note to author|1$#$send2author$#$0$#$0$#$0$#$0
+ri~~~(required)
+re~~~(valid email required)
+tf~~~2
+cs~~~wide_form.css
