@@ -1578,7 +1578,8 @@ function build_fstat($fields) {
         if ( $fields['isemail'][$i] == '') $fields['isemail'][$i] = '0';
         if ( $fields['isclear'][$i] == '') $fields['isclear'][$i] = '0';
         if ( $fields['isdisabled'][$i] == '') $fields['isdisabled'][$i] = '0';
-        $cfarray[$i]=$fields['label'][$i].'$#$'.$fields['type'][$i].'$#$'.$fields['isreq'][$i].'$#$'.$fields['isemail'][$i].'$#$'.$fields['isclear'][$i].'$#$'.$fields['isdisabled'][$i];
+        if ( $fields['isreadonly'][$i] == '') $fields['isreadonly'][$i] = '0';
+        $cfarray[$i]=$fields['label'][$i].'$#$'.$fields['type'][$i].'$#$'.$fields['isreq'][$i].'$#$'.$fields['isemail'][$i].'$#$'.$fields['isclear'][$i].'$#$'.$fields['isdisabled'][$i].'$#$'.$fields['isreadonly'][$i];
     }
     return $cfarray;
 }
