@@ -1004,7 +1004,7 @@ $fields = array();
 
 $formdata = array(	
 		array('<?php _e('Your Name|Your Name', 'cforms'); ?>','textfield',0,1,0,1,0),
-		array('<?php _e('Your Email', 'cforms'); ?>','textfield',0,0,1,0,0)
+		array('<?php _e('Your Email', 'cforms'); ?>','textfield',0,0,1,0,0),
 		array('<?php _e('Your Message', 'cforms'); ?>','textarea',0,0,0,0,0)
 		);
 				
