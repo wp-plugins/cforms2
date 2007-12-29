@@ -68,7 +68,7 @@ h3 a.helptop { color:#666666!important; border-bottom:1px solid #666666; margin:
 pre code,
 .hf code		{ font-size:11px; background:none!important; }
 
-table.cf_dyn_fields td { background: #f2f2f2; }
+table.cf_dyn_fields td { background: #f2f2f2; padding:2px 6px; }
 table.cf_dyn_fields td.cf-wh { background: #ffffff; }
 /****************************************************************
 Options Page: Styling

@@ -969,13 +969,13 @@ add_action('cforms_data','process_data');</code></pre>
 	        <ul style="list-style:none;">
 	        <li>
 	            <table class="cf_dyn_fields">
-	                <tr><td><strong><?php _e('Basic fields', 'cforms'); ?></strong></td><td></td><td class="cf-wh">&nbsp;</td><td><strong><?php _e('Special T-A-F fields', 'cforms'); ?></strong></td></tr>
+	                <tr><td><strong><?php _e('Basic fields', 'cforms'); ?></strong></td><td></td><td class="cf-wh">&nbsp;</td><td><strong><?php _e('Special T-A-F fields', 'cforms'); ?></strong></td><td></td></tr>
 	                <tr><td><?php _e('Text paragraph', 'cforms'); ?>:</td><td> <code>textonly</code></td><td class="cf-wh">&nbsp;</td><td><?php _e('T-A-F * Your Name', 'cforms'); ?>:</td><td> <code>yourname</code></td></tr>
 	                <tr><td><?php _e('Single input field', 'cforms'); ?>:</td><td> <code>textfield</code></td><td class="cf-wh">&nbsp;</td><td><?php _e('T-A-F * Your Email', 'cforms'); ?>:</td><td> <code>youremail</code></td></tr>
 	                <tr><td><?php _e('Multi line field', 'cforms'); ?>:</td><td> <code>textarea</code></td><td class="cf-wh">&nbsp;</td><td><?php _e('T-A-F * Friend\'s Name', 'cforms'); ?>:</td><td> <code>friendsname</code></td></tr>
 	                <tr><td><?php _e('Hidden field', 'cforms'); ?>:</td><td> <code>hidden</code></td><td class="cf-wh">&nbsp;</td><td><?php _e('T-A-F * Friend\'s Name', 'cforms'); ?>:</td><td> <code>friendsemail</code></td></tr>
 	                <tr><td><?php _e('Password field', 'cforms'); ?>:</td><td> <code>pwfield</code></td></tr>
-	                <tr><td><?php _e('Date picker field', 'cforms'); ?>:</td><td> <code>datepicker</code></td><td class="cf-wh">&nbsp;</td><td><strong><?php _e('WP Comment Feature', 'cforms'); ?></strong></td></tr>
+	                <tr><td><?php _e('Date picker field', 'cforms'); ?>:</td><td> <code>datepicker</code></td><td class="cf-wh">&nbsp;</td><td><strong><?php _e('WP Comment Feature', 'cforms'); ?></strong></td><td></td></tr>
 	                <tr><td><?php _e('Check boxes', 'cforms'); ?>:</td><td> <code>checkbox</code></td><td class="cf-wh">&nbsp;</td><td><?php _e('Comment Author', 'cforms'); ?>:</td><td> <code>author</code></td></tr>
 	                <tr><td><?php _e('Check boxes groups', 'cforms'); ?>:</td><td> <code>checkboxgroup</code></td><td class="cf-wh">&nbsp;</td><td><?php _e('Author\'s Email', 'cforms'); ?>:</td><td> <code>email</code></td></tr>
 	                <tr><td><?php _e('Drop down fields', 'cforms'); ?>:</td><td> <code>selectbox</code></td><td class="cf-wh">&nbsp;</td><td><?php _e('Author\'s URL', 'cforms'); ?>:</td><td> <code>url</code></td></tr>
