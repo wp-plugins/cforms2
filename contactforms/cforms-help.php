@@ -959,6 +959,7 @@ add_action('cforms_data','process_data');</code></pre>
 	            $fields['isemail'][n]    = true|false;             default: false;
 	            $fields['isclear'][n]    = true|false;             default: false;
 	            $fields['isdisabled'][n] = true|false;             default: false;
+	            $fields['isreadonly'][n] = true|false;             default: false;
 	
 	            n = 0,1,2...</code></pre></li>
 	    	</ol>
@@ -967,21 +968,25 @@ add_action('cforms_data','process_data');</code></pre>
 	        <strong><?php _e('Form input field types (\'type\'):', 'cforms'); ?></strong>
 	        <ul style="list-style:none;">
 	        <li>
-	            <table>
-	                <tr><td><?php _e('Text paragraph', 'cforms'); ?>:</td><td> <code>textonly</code>:</td></tr>
-	                <tr><td><?php _e('Single input field', 'cforms'); ?>:</td><td> <code>textfield</code>:</td></tr>
-	                <tr><td><?php _e('Multi line field', 'cforms'); ?>:</td><td> <code>textarea</code>:</td></tr>
-	                <tr><td><?php _e('Check boxes', 'cforms'); ?>:</td><td> <code>checkbox</code>:</td></tr>
-	                <tr><td><?php _e('Check boxes groups', 'cforms'); ?>:</td><td> <code>checkboxgroup</code>:</td></tr>
-	                <tr><td><?php _e('Drop down fields', 'cforms'); ?>:</td><td> <code>selectbox</code>:</td></tr>
-	                <tr><td><?php _e('Multi select boxes', 'cforms'); ?>:</td><td> <code>multiselectbox</code>:</td></tr>
-	                <tr><td><?php _e('Radio buttons', 'cforms'); ?>:</td><td> <code>radiobuttons</code>:</td></tr>
-	                <tr><td><?php _e('\'CC\' check box', 'cforms'); ?> <sup>*)</sup>::</td><td> <code>ccbox</code>:</td></tr>
-	                <tr><td><?php _e('Multi-recipients field', 'cforms'); ?> <sup>*)</sup>::</td><td> <code>emailtobox</code>:</td></tr>
-	                <tr><td><?php _e('Spam/Q&amp;A verification', 'cforms'); ?> <sup>*)</sup>::</td><td> <code>verification</code>:</td></tr>
-	                <tr><td><?php _e('Spam/captcha verification', 'cforms'); ?> <sup>*)</sup>::</td><td> <code>captcha</code>:</td></tr>
-	                <tr><td><?php _e('File upload fields', 'cforms'); ?> <sup>*)</sup>::</td><td> <code>upload</code>:</td></tr>
-	                <tr><td><?php _e('Begin of a fieldset', 'cforms'); ?>:</td><td> <code>fieldsetstart</code>:</td></tr>
+	            <table class="cf_dyn_fields">
+	                <tr><td><strong><?php _e('Basic fields', 'cforms'); ?></strong></td><td></td><td class="cf-wh">&nbsp;</td><td><strong><?php _e('Special T-A-F fields', 'cforms'); ?></strong></td></tr>
+	                <tr><td><?php _e('Text paragraph', 'cforms'); ?>:</td><td> <code>textonly</code></td><td class="cf-wh">&nbsp;</td><td><?php _e('T-A-F * Your Name', 'cforms'); ?>:</td><td> <code>yourname</code></td></tr>
+	                <tr><td><?php _e('Single input field', 'cforms'); ?>:</td><td> <code>textfield</code></td><td class="cf-wh">&nbsp;</td><td><?php _e('T-A-F * Your Email', 'cforms'); ?>:</td><td> <code>youremail</code></td></tr>
+	                <tr><td><?php _e('Multi line field', 'cforms'); ?>:</td><td> <code>textarea</code></td><td class="cf-wh">&nbsp;</td><td><?php _e('T-A-F * Friend\'s Name', 'cforms'); ?>:</td><td> <code>friendsname</code></td></tr>
+	                <tr><td><?php _e('Hidden field', 'cforms'); ?>:</td><td> <code>hidden</code></td><td class="cf-wh">&nbsp;</td><td><?php _e('T-A-F * Friend\'s Name', 'cforms'); ?>:</td><td> <code>friendsemail</code></td></tr>
+	                <tr><td><?php _e('Password field', 'cforms'); ?>:</td><td> <code>pwfield</code></td></tr>
+	                <tr><td><?php _e('Date picker field', 'cforms'); ?>:</td><td> <code>datepicker</code></td><td class="cf-wh">&nbsp;</td><td><strong><?php _e('WP Comment Feature', 'cforms'); ?></strong></td></tr>
+	                <tr><td><?php _e('Check boxes', 'cforms'); ?>:</td><td> <code>checkbox</code></td><td class="cf-wh">&nbsp;</td><td><?php _e('Comment Author', 'cforms'); ?>:</td><td> <code>author</code></td></tr>
+	                <tr><td><?php _e('Check boxes groups', 'cforms'); ?>:</td><td> <code>checkboxgroup</code></td><td class="cf-wh">&nbsp;</td><td><?php _e('Author\'s Email', 'cforms'); ?>:</td><td> <code>email</code></td></tr>
+	                <tr><td><?php _e('Drop down fields', 'cforms'); ?>:</td><td> <code>selectbox</code></td><td class="cf-wh">&nbsp;</td><td><?php _e('Author\'s URL', 'cforms'); ?>:</td><td> <code>url</code></td></tr>
+	                <tr><td><?php _e('Multi select boxes', 'cforms'); ?>:</td><td> <code>multiselectbox</code></td><td class="cf-wh">&nbsp;</td><td><?php _e('Author\'s Comment', 'cforms'); ?>:</td><td> <code>comment</code></td></tr>
+	                <tr><td><?php _e('Radio buttons', 'cforms'); ?>:</td><td> <code>radiobuttons</code></td><td class="cf-wh">&nbsp;</td><td><?php _e('Select: Email/Comment', 'cforms'); ?>:</td><td> <code>send2author</code></td></tr>
+	                <tr><td><?php _e('\'CC\' check box', 'cforms'); ?> <sup>*)</sup>:</td><td> <code>ccbox</code></td></tr>
+	                <tr><td><?php _e('Multi-recipients field', 'cforms'); ?> <sup>*)</sup>:</td><td> <code>emailtobox</code></td></tr>
+	                <tr><td><?php _e('Spam/Q&amp;A verification', 'cforms'); ?> <sup>*)</sup>:</td><td> <code>verification</code></td></tr>
+	                <tr><td><?php _e('Spam/captcha verification', 'cforms'); ?> <sup>*)</sup>:</td><td> <code>captcha</code></td></tr>
+	                <tr><td><?php _e('File upload fields', 'cforms'); ?> <sup>*)</sup>:</td><td> <code>upload</code></td></tr>
+	                <tr><td><?php _e('Begin of a fieldset', 'cforms'); ?>:</td><td> <code>fieldsetstart</code></td></tr>
 	                <tr><td><?php _e('End of a fieldset', 'cforms'); ?>:</td><td> <code>fieldsetend</code></td></tr>
 	            </table>
 	        </li>
@@ -998,18 +1003,20 @@ add_action('cforms_data','process_data');</code></pre>
 $fields = array();
 
 $formdata = array(	
-		array('<?php _e('Your Name|Your Name', 'cforms'); ?>','textfield','0','1','0','1'),
-		array('<?php _e('Your Email', 'cforms'); ?>','textfield','0','0','1','0'),
+		array('<?php _e('Your Name|Your Name', 'cforms'); ?>','textfield',0,1,0,1,0),
+		array('<?php _e('Your Email', 'cforms'); ?>','textfield',0,0,1,0,0)
+		array('<?php _e('Your Message', 'cforms'); ?>','textarea',0,0,0,0,0)
 		);
 				
 $i=0;
 foreach ( $formdata as $field ) {
-	$fields['label'][$i] = $field[0];
-	$fields['type'][$i] = $field[1];
-	$fields['isdisabled'][$i] = $field[2];
-	$fields['isreq'][$i] = $field[3];
-	$fields['isemail'][$i] = $field[4];						
-	$fields['isclear'][$i++] = $field[5];						
+	$fields['label'][$i]        = $field[0];
+	$fields['type'][$i]         = $field[1];
+	$fields['isdisabled'][$i]   = $field[2];
+	$fields['isreq'][$i]        = $field[3];
+	$fields['isemail'][$i]      = $field[4];						
+	$fields['isclear'][$i]      = $field[5];						
+	$fields['isreadonly'][$i++] = $field[6];		
 }
 
 insert_custom_cform($fields,'');    //<?php _e('Call default form with two defined fields', 'cforms'); ?></code></pre>
