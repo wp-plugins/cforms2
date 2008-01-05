@@ -37,3 +37,4 @@ cforms currently supports the following languages:
 *) Japanese            Author: Hiroaki Miyashita        webmaster@wordpressgogo.com
 *) Russian             Author: Sofia Panchenko          letter@sonika.ru
 *) Spanish             Author: Samuel Aguilera          samuel.aguilera@agamum.net
+*) Turkish             Author: Resat Diker              rd@resatdiker.com
