@@ -7,6 +7,7 @@ function cforms_phpmailer( $no, $frommail, $field_email, $to, $vsubject, $messag
 		$mail->ClearAllRecipients();
 		$mail->ClearAddresses();
 		$mail->ClearAttachments();
+		$mail->CharSet = 'utf-8';
 		
 		include_once ('phpmailer.lang-en.php');
         $mail->language = $PHPMAILER_LANG;
