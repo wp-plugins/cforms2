@@ -508,8 +508,8 @@ function cforms_submitcomment($content) {
 	
 		// actual user message
 		$htmlmessage = get_option('cforms'.$no.'_header_html');					
-		$htmlmessage = str_replace('=','=3D', check_default_vars($htmlmessage,$no));
-		$htmlmessage = stripslashes( check_cust_vars($htmlmessage,$track) );
+		$htmlmessage = check_default_vars($htmlmessage,$no);
+		$htmlmessage = str_replace('=','=3D', stripslashes( check_cust_vars($htmlmessage,$track) ) );
 
 		$fmessage .= "------MIME_BOUNDRY_main_message"  . $eol;
 		$fmessage .= "Content-Type: text/html; charset=\"" . get_option('blog_charset') . "\"". $eol;
@@ -588,8 +588,8 @@ function cforms_submitcomment($content) {
 					
 						// actual user message
 						$cmsghtml = get_option('cforms'.$no.'_cmsg_html');					
-						$cmsghtml = str_replace('=','=3D', check_default_vars($cmsghtml,$no));
-						$cmsghtml = check_cust_vars($cmsghtml,$track);
+						$cmsghtml = check_default_vars($cmsghtml,$no);
+						$cmsghtml = str_replace('=','=3D', check_cust_vars($cmsghtml,$track));
 
 						$automessage .= "------MIME_BOUNDRY_main_message"  . $eol;
 						$automessage .= "Content-Type: text/html; charset=\"" . get_option('blog_charset') . "\"". $eol;
@@ -1767,8 +1767,6 @@ if (function_exists('add_action')){
 	if ( $admin ) {
 		require_once(dirname(__FILE__) . '/lib_functions.php');
 		add_action('activate_'.$plugindir.'/cforms.php', 'cforms_init');
-		if ( function_exists('wp_deregister_script') )
-			wp_deregister_script('jquery');
 		add_action('admin_head', 'cforms_options_page_style');
 		add_action('admin_menu', 'cforms_menu');
 		add_action('init', 'download_cforms');

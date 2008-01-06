@@ -494,14 +494,6 @@ if( isset($_POST['sendbutton'.$no]) && $all_valid ) {
 	// assemble html formdata
 	$htmlformdata = '<div class=3D"datablock"><table width=3D"100%" cellpadding=3D"2">' . stripslashes( $htmlformdata ) . '</table></div><span class=3D"cforms">powered by <a href=3D"http://www.deliciousdays.com/cforms-plugin">cformsII</a></span>';
 
-
-	//
-	// now replace the left over {xyz} variables with the input data
-	//
-	$message	= get_option('cforms'.$no.'_header');
-	$message	= check_default_vars($message,$no);
-	$message	= check_cust_vars($message,$track);
-
 	//
 	// FIRST into the database is required!
 	//
@@ -604,8 +596,8 @@ if( isset($_POST['sendbutton'.$no]) && $all_valid ) {
 	
 		// actual user message
 		$htmlmessage = get_option('cforms'.$no.'_header_html');					
-		$htmlmessage = str_replace('=','=3D', check_default_vars($htmlmessage,$no));
-		$htmlmessage = stripslashes( check_cust_vars($htmlmessage,$track) );
+		$htmlmessage = check_default_vars($htmlmessage,$no);
+		$htmlmessage = str_replace('=','=3D', stripslashes( check_cust_vars($htmlmessage,$track) ) );
 
 
 		$fmessage .= "------MIME_BOUNDRY_sub_message"  . $eol;	
@@ -723,8 +715,8 @@ if( isset($_POST['sendbutton'.$no]) && $all_valid ) {
 						
 							// actual user message
 							$cmsghtml = get_option('cforms'.$no.'_cmsg_html');					
-							$cmsghtml = str_replace('=','=3D', check_default_vars($cmsghtml,$no));
-							$cmsghtml = check_cust_vars($cmsghtml,$track);
+							$cmsghtml = check_default_vars($cmsghtml,$no);
+							$cmsghtml = str_replace('=','=3D', check_cust_vars($cmsghtml,$track));
 	
 							$automsg .= "------MIME_BOUNDRY_main_message"  . $eol;
 							$automsg .= "Content-Type: text/html; charset=\"" . get_option('blog_charset') . "\"". $eol;
