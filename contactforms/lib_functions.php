@@ -158,6 +158,14 @@ function cforms_init() {
 function cforms_options_page_style() {  
  	// other admin pages
 	global $cforms_root,$wpmu_version,$wp_version;
+
+	if (!isset($_SERVER['REQUEST_URI'])){
+	    if(isset($_SERVER['SCRIPT_NAME']))
+	        $_SERVER['REQUEST_URI'] = $_SERVER['SCRIPT_NAME'];
+	    else
+	        $_SERVER['REQUEST_URI'] = $_SERVER['PHP_SELF'];
+	}
+
 	if (   strpos($_SERVER['REQUEST_URI'], $plugindir.'/cforms') !== false ){
 
 		if ( function_exists('wp_deregister_script') )
