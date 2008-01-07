@@ -8,6 +8,8 @@ Stable tag: 7.11
 
 cforms II is an extremely customizable, flexible & powerful contact form plugin!
 
+* **ATTENTION** v7.1 could potentially cause your web page to stall after reload, please update to v7.11
+
 == Description ==
 
 For **WHAT'S NEW** and a complete version history (new features, bug fixes etc.), see [here.](http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1)
@@ -22,9 +24,6 @@ cforms is a highly customizable, flexible and powerful contact form plugin, cove
 For all the new features, see the Help documentation. 
 
 = Some of the New Features =
-
-* **ATTENTION** v7.1 could potentially cause your web page to stall after reload, please update to v7.11
-
 * **NEW:** Languages: **Turkish**!
 * **NEW:** **4 additional CSS themes** (monospace light&dark, fancy white/blue)
 * **NEW:** cforms' "*WP comment feature*" fixed
