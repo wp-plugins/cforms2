@@ -8,9 +8,9 @@ Stable tag: 7.11
 
 cforms II is an extremely customizable, flexible & powerful contact form plugin!
 
-* **ATTENTION** v7.1 could potentially cause your web page to stall after reload, please update to v7.11
-
 == Description ==
+
+* **ATTENTION** v7.1 could potentially cause your web page to stall after reload, please update to v7.11
 
 For **WHAT'S NEW** and a complete version history (new features, bug fixes etc.), see [here.](http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1)
 
