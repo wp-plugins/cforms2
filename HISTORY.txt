@@ -2,6 +2,9 @@
 Copyright 2006-2007  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
+WHAT's NEW in cforms II - v7.11
+*) critical fix: some server / browser combos caused the site to stall
+
 WHAT's NEW in cforms II - v7.1
 *) feature: 4 additional themes (monospace light&dark, fancy white/blue)
 *) bugfix: WP comment feature - broken in v7.0

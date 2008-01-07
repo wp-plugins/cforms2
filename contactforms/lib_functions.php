@@ -158,11 +158,24 @@ function cforms_init() {
 function cforms_options_page_style() {  
  	// other admin pages
 	global $cforms_root,$wpmu_version,$wp_version;
+
+	if (!isset($_SERVER['REQUEST_URI'])){
+	    if(isset($_SERVER['SCRIPT_NAME']))
+	        $_SERVER['REQUEST_URI'] = $_SERVER['SCRIPT_NAME'];
+	    else
+	        $_SERVER['REQUEST_URI'] = $_SERVER['PHP_SELF'];
+	}
+
 	if (   strpos($_SERVER['REQUEST_URI'], $plugindir.'/cforms') !== false ){
+
+		if ( function_exists('wp_deregister_script') )
+			wp_deregister_script('jquery');
+
 		echo	'<link rel="stylesheet" type="text/css" href="' . $cforms_root . '/cforms-admin.css" />' . "\n" .
 				'<script type="text/javascript" src="' . $cforms_root . '/js/jquery.js"></script>' . "\n" .
 				'<script type="text/javascript" src="' . $cforms_root . '/js/interface.js"></script>' . "\n".
 				'<script type="text/javascript" src="' . $cforms_root . '/js/cformsadmin.js"></script>' . "\n";
+
 	}
 }
 

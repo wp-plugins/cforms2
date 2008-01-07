@@ -4,7 +4,7 @@ Plugin Name: cforms II
 Plugin URI: http://www.deliciousdays.com/cforms-plugin
 Description: cforms II offers unparalleled flexibility in deploying contact forms across your blog. Features include: comprehensive SPAM protection, Ajax support, Backup & Restore, Multi-Recipients, Role Manager support, Database tracking and many more. Please see the <a href="http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1">VERSION HISTORY</a> for <strong>what's new</strong> and current <strong>bugfixes</strong>.
 Author: Oliver Seidel
-Version: 7.1
+Version: 7.11
 Author URI: http://www.deliciousdays.com
 */
 
@@ -16,20 +16,12 @@ Copyright 2006  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 *** PLEASE NOTE UPDATED "WP comment feature" code snippet, check with the HELP page
 ***
 
-WHAT's NEW in cforms II - v7.1
-*) feature: 4 additional themes (monospace light&dark, fancy white/blue)
-*) bugfix: WP comment feature - broken in v7.0
-*) bugfix: WP comment feature - success message now being displayed when sending email
-*) bugfix: WP comment feature - comment label points to right input field
-*) bugfix: fixed and enhanced dynamic form feature
-*) bugfix: fixed upload path config error (upload was still working though)
-*) bugfix: fixed possible issues with existing WP jQuery (1.1.4) library
-*) other: more CSS theme enhancements
-*) other: WP 2.3.2 certififed
-*) other: Turkish language pack available
+WHAT's NEW in cforms II - v7.11
+*) critical fix: some server / browser combos caused the site to stall
+
 */
 
-$localversion = '7.1';
+$localversion = '7.11';
 load_plugin_textdomain('cforms');
 
 ### http://trac.wordpress.org/ticket/3002
@@ -74,7 +66,7 @@ $AjaxURL = '';
 ### need this for captchas
 add_action('template_redirect', 'start_cforms_session');
 function start_cforms_session() {
-	@session_cache_limiter('private');
+	@session_cache_limiter('private, must-revalidate');
 	@session_cache_expire(0);
 	@session_start();
 }
@@ -508,8 +500,8 @@ function cforms_submitcomment($content) {
 	
 		// actual user message
 		$htmlmessage = get_option('cforms'.$no.'_header_html');					
-		$htmlmessage = str_replace('=','=3D', check_default_vars($htmlmessage,$no));
-		$htmlmessage = stripslashes( check_cust_vars($htmlmessage,$track) );
+		$htmlmessage = check_default_vars($htmlmessage,$no);
+		$htmlmessage = str_replace('=','=3D', stripslashes( check_cust_vars($htmlmessage,$track) ) );
 
 		$fmessage .= "------MIME_BOUNDRY_main_message"  . $eol;
 		$fmessage .= "Content-Type: text/html; charset=\"" . get_option('blog_charset') . "\"". $eol;
@@ -588,8 +580,8 @@ function cforms_submitcomment($content) {
 					
 						// actual user message
 						$cmsghtml = get_option('cforms'.$no.'_cmsg_html');					
-						$cmsghtml = str_replace('=','=3D', check_default_vars($cmsghtml,$no));
-						$cmsghtml = check_cust_vars($cmsghtml,$track);
+						$cmsghtml = check_default_vars($cmsghtml,$no);
+						$cmsghtml = str_replace('=','=3D', check_cust_vars($cmsghtml,$track));
 
 						$automessage .= "------MIME_BOUNDRY_main_message"  . $eol;
 						$automessage .= "Content-Type: text/html; charset=\"" . get_option('blog_charset') . "\"". $eol;
@@ -1767,8 +1759,6 @@ if (function_exists('add_action')){
 	if ( $admin ) {
 		require_once(dirname(__FILE__) . '/lib_functions.php');
 		add_action('activate_'.$plugindir.'/cforms.php', 'cforms_init');
-		if ( function_exists('wp_deregister_script') )
-			wp_deregister_script('jquery');
 		add_action('admin_head', 'cforms_options_page_style');
 		add_action('admin_menu', 'cforms_menu');
 		add_action('init', 'download_cforms');
