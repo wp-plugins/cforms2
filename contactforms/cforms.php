@@ -1253,7 +1253,7 @@ function cforms($args = '',$no = '') {
 					}
 				}
 				
-				$field .= $nttt . '<li class="cf_hidden"><input type="hidden" name="'.$input_name.'" id="'.$input_id.'" value="' . rawurlencode($field_value)  . '"/></li>';
+				$field .= $nttt . '<li class="cf_hidden"><input type="hidden" class="cfhidden" name="'.$input_name.'" id="'.$input_id.'" value="' . rawurlencode($field_value)  . '"/></li>';
 				break;
 
 			case "comment":
