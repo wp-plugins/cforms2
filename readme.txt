@@ -4,7 +4,7 @@ Donate link: http://www.deliciousdays.com/cforms-forum?forum=2&topic=368&page=1
 Tags: ajax, email, secure, visitor, input, order, form, contact, sidebar, order
 Requires at least: 2.0.2
 Tested up to: 2.3.2
-Stable tag: 7.1
+Stable tag: 7.2
 
 cforms II is an extremely customizable, flexible & powerful contact form plugin!
 
@@ -22,11 +22,9 @@ cforms is a highly customizable, flexible and powerful contact form plugin, cove
 For all the new features, see the Help documentation. 
 
 = Some of the New Features =
-* **NEW:** Languages: **Turkish**!
-* **NEW:** **4 additional CSS themes** (monospace light&dark, fancy white/blue)
-* **NEW:** cforms' "*WP comment feature*" fixed
-* **NEW:** **WP 2.3.2** certififed
-* **NEW:** more CSS enhancements across all themes
+* **NEW:** **CSS** (cforms themes) can now be completely *turned off*
+* **NEW:** **Full CAPTCHA image** customization support
+* **OTHER & BUGFIXES:** *see version history*
 
 [Check out the cforms CSS Guide and webcast on layout customization](http://www.deliciousdays.com/cforms-forum?forum=1&topic=428&page=1)
 
