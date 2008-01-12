@@ -1,0 +1,26 @@
+
+// cforms addition to wp-comments-post.php 
+// place it right under "nocache_headers();"
+// line 12 or so
+
+if ( isset($_POST['send2author']) && $_POST['send2author']=='1' ) { // cforms
+
+	$keys = array_keys($_POST);
+	
+	foreach ( $keys as $key ){
+		if ( preg_match('/sendbutton(.*)/',$key,$no ) )
+			break;
+	}
+
+	$no = $no[1];
+		
+	cforms( '',$no );
+
+	$cfpre = ( strpos( get_permalink($_POST['comment_post_ID']) ,'?')!==false ) ? '&':'?';
+
+	$location = ( empty($_POST['redirect_to'] ) ? get_permalink($_POST['comment_post_ID']).$cfpre.'cfemail=sent' : $_POST['redirect_to'] );
+	$location = apply_filters('comment_post_redirect', $location, $comment);
+	
+	wp_redirect($location);
+	exit;
+}
