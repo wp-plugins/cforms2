@@ -4,7 +4,7 @@ Donate link: http://www.deliciousdays.com/cforms-forum?forum=2&topic=368&page=1
 Tags: ajax, email, secure, visitor, input, order, form, contact, sidebar, order
 Requires at least: 2.0.2
 Tested up to: 2.3.2
-Stable tag: 7.1
+Stable tag: 7.3
 
 cforms II is an extremely customizable, flexible & powerful contact form plugin!
 
@@ -22,11 +22,11 @@ cforms is a highly customizable, flexible and powerful contact form plugin, cove
 For all the new features, see the Help documentation. 
 
 = Some of the New Features =
-* **NEW:** Languages: **Turkish**!
-* **NEW:** **4 additional CSS themes** (monospace light&dark, fancy white/blue)
-* **NEW:** cforms' "*WP comment feature*" fixed
-* **NEW:** **WP 2.3.2** certififed
-* **NEW:** more CSS enhancements across all themes
+* **NEW:** added **{Author}** variable
+* **NEW:** **GeoMapLookup** support for tracked submissions
+* **NEW:** Improved **calendar navigation** (Year!)
+* **NEW:** Include **cforms HTML HEADER** only one specified pages (optional)
+* **OTHER & BUGFIXES:** *see version history*
 
 [Check out the cforms CSS Guide and webcast on layout customization](http://www.deliciousdays.com/cforms-forum?forum=1&topic=428&page=1)
 
@@ -83,6 +83,7 @@ cforms has been revised to fully support WP localization. If you'd like to contr
 	* **German** \* Author: [Sven Wappler](http://www.wappler.eu/cforms/)
 	* **Hungarian** \* Author: [Ungv&aacute;ri B&eacute;la](http://www.deliciousdays.com/download/cformsII-hu_hu.zip)
 	* **Japanese** \* Author: [Hiroaki Miyashita](http://wordpressgogo.com/development/translation_cforms_ja.html)
+	* **Norwegian** \* Author: [Pål Andreas Tomter](http://soon.to.come)
 	* **Russian** \* Author: [Sofia Panchenko](http://www.sonika.ru/blog/wordpress/cforms-rus.htm)
 	* **Spanish** \* Author: [Samuel Aguilera](http://agamum.net/blog/archivo/plugin-cforms-en-espanol-formularios-para-tu-wordpress.xhtml)
 	* **Turkish** \* Author: [Resat Diker](http://weblog.resatdiker.com/cforms)

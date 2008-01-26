@@ -2,6 +2,22 @@
 Copyright 2006-2007  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
+WHAT's NEW in cforms II - v7.3
+*) feature: added {Author} default variable
+*) feature: added IP lookup (GeoMapLookup) to Tracking Table
+*) feature: calendar shows "Year" navigation
+*) feature: enable cforms only for specified pages, keeps your blog neat
+*) critical bugfix: anyone using "WP Cache enabled" *may* be affected by malefunctioning form deletion/duplication
+*) bugfix: line breaks in multi-line text fields are now displayed correctly in the (HTML) admin email
+*) bugfix: captcha reset link was corrupted
+*) other: CAPTCHA now case sensitive (supporting UPPER and lower case)!
+*) other: enabled structuring of drop down "select lists" with multiple " &nbsp; ", e.g.
+	item 1
+	&nbsp;&nbsp;item 1.1
+	item 2
+	&nbsp;&nbsp;item 2.1
+	&nbsp;&nbsp;&nbsp;item 2.1.1
+
 WHAT's NEW in cforms II - v7.2
 *) feature: system {variables} can now be used for the "default values"
 *) feature: "jump to error" (javascript) can now be turned off

@@ -35,6 +35,7 @@ cforms currently supports the following languages:
 *) German              Author: Sven Wappler             wappler@wappler.eu
 *) Hungarian           Author: Ungvári Béla             life-univ@freemail.hu
 *) Japanese            Author: Hiroaki Miyashita        webmaster@wordpressgogo.com
+*) Norwegian           Author: Pål Andreas Tomter       paal.andreas.tomter@frilogg.no
 *) Russian             Author: Sofia Panchenko          letter@sonika.ru
 *) Spanish             Author: Samuel Aguilera          samuel.aguilera@agamum.net
 *) Turkish             Author: Resat Diker              rd@resatdiker.com
