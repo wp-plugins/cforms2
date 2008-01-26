@@ -1131,6 +1131,10 @@ insert_custom_cform($fields,5);    //<?php _e('Call form #5 with new fields', 'c
 					<td class="bright"><code><?php _e('Inserts the URL of the WP post/page.', 'cforms'); ?></code></td>
 				</tr>
 				<tr>
+					<td class="bleft">{Author}</td>
+					<td class="bright"><code><?php _e('Inserts the Author\'s name (<em>Nickname</em>).', 'cforms'); ?></code></td>
+				</tr>
+				<tr>
 					<td class="bleft">{Title}</td>
 					<td class="bright"><code><?php _e('Inserts the WP post or page title.', 'cforms'); ?></code></td>
 				</tr>

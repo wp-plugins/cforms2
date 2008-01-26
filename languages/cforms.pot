@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-01-26 16:55+0100\n"
+"POT-Creation-Date: 2008-01-26 16:59+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,7 +70,7 @@ msgstr ""
 #: cforms-help.php:519 cforms-help.php:545 cforms-help.php:666
 #: cforms-help.php:759 cforms-help.php:803 cforms-help.php:872
 #: cforms-help.php:906 cforms-help.php:940 cforms-help.php:1082
-#: cforms-help.php:1242 cforms-help.php:1252 cforms-options.php:434
+#: cforms-help.php:1246 cforms-help.php:1256 cforms-options.php:434
 #: cforms-options.php:481 cforms-options.php:586 cforms-options.php:641
 #: cforms-options.php:691 cforms-options.php:706 cforms-options.php:747
 #: cforms-options.php:790 cforms-options.php:814
@@ -134,7 +134,7 @@ msgstr ""
 msgid "Theme is disabled"
 msgstr ""
 
-#: cforms-css.php:164 cforms-help.php:1247
+#: cforms-css.php:164 cforms-help.php:1251
 #, php-format
 msgid ""
 "You might also want to study the <a href=\"%s\">PDF guide on cforms CSS & a "
@@ -365,8 +365,8 @@ msgstr ""
 #: cforms-global-settings.php:465 cforms-global-settings.php:494
 #: cforms-global-settings.php:523 cforms-help.php:44 cforms-help.php:66
 #: cforms-help.php:82 cforms-help.php:872 cforms-help.php:906
-#: cforms-help.php:940 cforms-help.php:1082 cforms-help.php:1242
-#: cforms-help.php:1252 cforms-options.php:434 cforms-options.php:481
+#: cforms-help.php:940 cforms-help.php:1082 cforms-help.php:1246
+#: cforms-help.php:1256 cforms-options.php:434 cforms-options.php:481
 #: cforms-options.php:586 cforms-options.php:641 cforms-options.php:691
 #: cforms-options.php:706 cforms-options.php:747 cforms-options.php:790
 #: cforms-options.php:814
@@ -670,8 +670,8 @@ msgstr ""
 
 #: cforms-global-settings.php:469 cforms-help.php:78 cforms-help.php:86
 #: cforms-help.php:403 cforms-help.php:600 cforms-help.php:715
-#: cforms-help.php:894 cforms-help.php:921 cforms-help.php:1184
-#: cforms-help.php:1210 cforms-options.php:628 cforms-options.php:684
+#: cforms-help.php:894 cforms-help.php:921 cforms-help.php:1188
+#: cforms-help.php:1214 cforms-options.php:628 cforms-options.php:684
 msgid "Note:"
 msgstr ""
 
@@ -842,7 +842,7 @@ msgstr ""
 msgid "Styling your forms"
 msgstr ""
 
-#: cforms-help.php:40 cforms-help.php:1252
+#: cforms-help.php:40 cforms-help.php:1256
 msgid "Need more help?"
 msgstr ""
 
@@ -2226,14 +2226,18 @@ msgid "Inserts the URL of the WP post/page."
 msgstr ""
 
 #: cforms-help.php:1135
-msgid "Inserts the WP post or page title."
+msgid "Inserts the Author's name (<em>Nickname</em>)."
 msgstr ""
 
 #: cforms-help.php:1139
-msgid "Inserts the WP post or page excerpt."
+msgid "Inserts the WP post or page title."
 msgstr ""
 
 #: cforms-help.php:1143
+msgid "Inserts the WP post or page excerpt."
+msgstr ""
+
+#: cforms-help.php:1147
 #, php-format
 msgid ""
 "Alternatively, you can also include any of your form input fields by "
@@ -2241,141 +2245,141 @@ msgid ""
 "The default form comes with a %1$sYour Name%2$s and %1$sWebsite%2$s field."
 msgstr ""
 
-#: cforms-help.php:1145
+#: cforms-help.php:1149
 #, php-format
 msgid ""
 "The corresponding variables to be used would be: %1$s{Your Name}%2$s &amp; %1"
 "$s{Website}%2$s."
 msgstr ""
 
-#: cforms-help.php:1152
+#: cforms-help.php:1156
 msgid ""
 "<strong>IMPORTANT:</strong> If you are using multiple input fields with "
 "<strong>the same</strong> recorded field label (you can always check the "
 "\"Tracking\" menu tab for how the fields are stored), e.g:"
 msgstr ""
 
-#: cforms-help.php:1160
+#: cforms-help.php:1164
 #, php-format
 msgid ""
 "Results in the first field labeled %1$s to be addressed with %2$s. The "
 "second instance of %1$s can be addressed by %3$s, and so on..."
 msgstr ""
 
-#: cforms-help.php:1167
+#: cforms-help.php:1171
 #, php-format
 msgid ""
 "Here is an example for a simple <a href=\"%s\" %s>Admin HTML message</a> <em>"
 "(you can copy and paste the below code or change to your liking)</em>:"
 msgstr ""
 
-#: cforms-help.php:1172 cforms-help.php:1196 cforms-help.php:1222
+#: cforms-help.php:1176 cforms-help.php:1200 cforms-help.php:1226
 msgid "HTML code:"
 msgstr ""
 
-#: cforms-help.php:1173
+#: cforms-help.php:1177
 #, php-format
 msgid "a form has been submitted on %s, via: %s [IP %s]"
 msgstr ""
 
-#: cforms-help.php:1178 cforms-help.php:1202 cforms-help.php:1231
+#: cforms-help.php:1182 cforms-help.php:1206 cforms-help.php:1235
 msgid "Output:"
 msgstr ""
 
-#: cforms-help.php:1179
+#: cforms-help.php:1183
 msgid ""
 "a form has been submitted on June 13, 2007 @ 9:38 pm, via: / [IP "
 "184.153.91.231]"
 msgstr ""
 
-#: cforms-help.php:1184
+#: cforms-help.php:1188
 msgid ""
 "With this limited message you'd want to enable the option \"Include pre "
 "formatted form data table in HTML part\""
 msgstr ""
 
-#: cforms-help.php:1191
+#: cforms-help.php:1195
 #, php-format
 msgid ""
 "Here is another example for a more detailed <a href=\"%s\" %s>Admin HTML "
 "message</a>:"
 msgstr ""
 
-#: cforms-help.php:1197
+#: cforms-help.php:1201
 msgid ""
 "{Your Name} just submitted {Form Name}. You can get in touch with him/her "
 "via &lt;a href=\"mailto:{Email}\"&gt;{Email}&lt;/a&gt; and might want to "
 "check out his/her web page at &lt;a href=\"{Website}\"&gt;{Website}&lt;/a&gt;"
 msgstr ""
 
-#: cforms-help.php:1197 cforms-help.php:1204
+#: cforms-help.php:1201 cforms-help.php:1208
 msgid "The message is:"
 msgstr ""
 
-#: cforms-help.php:1197
+#: cforms-help.php:1201
 msgid "{Message}"
 msgstr ""
 
-#: cforms-help.php:1203
+#: cforms-help.php:1207
 msgid ""
 "John Doe just submitted MY NEW FORM. You can get in touch with him/her via "
 "<a href=\"mailto:#\">john.doe@doe.com</a> and might want to check out his/"
 "her web page at <a href=\"#\">http://website.com</a>"
 msgstr ""
 
-#: cforms-help.php:1205
+#: cforms-help.php:1209
 msgid "Hey there! Just wanted to get in touch. Give me a ring at 555-..."
 msgstr ""
 
-#: cforms-help.php:1210
+#: cforms-help.php:1214
 msgid ""
 "With this more detailed message you can disable the option \"Include pre "
 "formatted form data table in HTML part\" since you already have all fields "
 "covered in the actual message/header."
 msgstr ""
 
-#: cforms-help.php:1217
+#: cforms-help.php:1221
 #, php-format
 msgid ""
 "And a final example for a <a href=\"%s\" %s>HTML auto confirmation message</"
 "a>:"
 msgstr ""
 
-#: cforms-help.php:1223 cforms-help.php:1232
+#: cforms-help.php:1227 cforms-help.php:1236
 msgid "auto confirmation message"
 msgstr ""
 
-#: cforms-help.php:1224 lib_activate.php:32 lib_activate.php:34
+#: cforms-help.php:1228 lib_activate.php:32 lib_activate.php:34
 #: lib_options_add.php:28 lib_options_add.php:30
 msgid "Dear {Your Name},"
 msgstr ""
 
-#: cforms-help.php:1225 cforms-help.php:1234 lib_activate.php:32
+#: cforms-help.php:1229 cforms-help.php:1238 lib_activate.php:32
 #: lib_activate.php:34 lib_options_add.php:28 lib_options_add.php:30
 msgid "Thank you for your note!"
 msgstr ""
 
-#: cforms-help.php:1226 cforms-help.php:1235 lib_activate.php:32
+#: cforms-help.php:1230 cforms-help.php:1239 lib_activate.php:32
 #: lib_activate.php:34 lib_options_add.php:28 lib_options_add.php:30
 msgid "We will get back to you as soon as possible."
 msgstr ""
 
-#: cforms-help.php:1233
+#: cforms-help.php:1237
 msgid "Dear John Doe,"
 msgstr ""
 
-#: cforms-help.php:1242
+#: cforms-help.php:1246
 msgid "Styling Your Forms (CSS theme files)"
 msgstr ""
 
-#: cforms-help.php:1245
+#: cforms-help.php:1249
 #, php-format
 msgid ""
 "Please see the <a href=\"%s\">Styling page</a> for theme selection and "
 "editing options."
 msgstr ""
 
-#: cforms-help.php:1246
+#: cforms-help.php:1250
 msgid ""
 "cforms comes with a few theme examples (some of the may require adjustments "
 "to work with <strong>your</strong> forms!) but you can of course create your "
@@ -2383,7 +2387,7 @@ msgid ""
 "put it in the <code>/styling</code> directory."
 msgstr ""
 
-#: cforms-help.php:1248
+#: cforms-help.php:1252
 msgid ""
 "Your form <strong>doesn't</strong> look like the preview image, or your "
 "individual changes don't take effect, check your global WP theme CSS! It may "
@@ -2392,7 +2396,7 @@ msgid ""
 "excellent CSS troubleshooting tool!"
 msgstr ""
 
-#: cforms-help.php:1255
+#: cforms-help.php:1259
 msgid ""
 "For up-to-date information check the <a href=\"http://www.deliciousdays.com/"
 "cforms-forum\">cforms forum</a> and comment section on the plugin homepage."
