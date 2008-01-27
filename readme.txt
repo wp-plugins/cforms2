@@ -83,7 +83,7 @@ cforms has been revised to fully support WP localization. If you'd like to contr
 	* **German** \* Author: [Sven Wappler](http://www.wappler.eu/cforms/)
 	* **Hungarian** \* Author: [Ungv&aacute;ri B&eacute;la](http://www.deliciousdays.com/download/cformsII-hu_hu.zip)
 	* **Japanese** \* Author: [Hiroaki Miyashita](http://wordpressgogo.com/development/translation_cforms_ja.html)
-	* **Norwegian** \* Author: [Pål Andreas Tomter](http://soon.to.come)
+	* **Norwegian** \* Author: [P&aring;l Andreas Tomter](http://soon.to.come)
 	* **Russian** \* Author: [Sofia Panchenko](http://www.sonika.ru/blog/wordpress/cforms-rus.htm)
 	* **Spanish** \* Author: [Samuel Aguilera](http://agamum.net/blog/archivo/plugin-cforms-en-espanol-formularios-para-tu-wordpress.xhtml)
 	* **Turkish** \* Author: [Resat Diker](http://weblog.resatdiker.com/cforms)

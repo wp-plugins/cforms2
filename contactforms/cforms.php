@@ -278,6 +278,10 @@ function cforms_submitcomment($content) {
 	$segments = explode('$#$', $content[0]);
 	$params = array();
 
+	$wpsettings = substr( dirname(__FILE__),0,strpos(dirname(__FILE__),'wp-content')) . 'wp-settings.php';
+
+	if ( file_exists($wpsettings) )
+		include_once($wpsettings);
 
 	for($i = 1; $i <= sizeof($segments); $i++)
 		$params['field_' . $i] = $segments[$i];
