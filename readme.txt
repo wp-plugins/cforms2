@@ -1,4 +1,4 @@
-=== contactforms cformsII ===
+=== cformsII - contact form ===
 Contributors: olivers
 Donate link: http://www.deliciousdays.com/cforms-forum?forum=2&topic=368&page=1
 Tags: ajax, email, secure, visitor, input, order, form, contact, sidebar, order
