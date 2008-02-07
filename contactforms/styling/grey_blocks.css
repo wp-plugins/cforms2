@@ -83,7 +83,7 @@ label.cf-before {
 
 label.cf-after 	{
 	margin:2px 1px 0pt 3px !important;
-	width:100px;
+	width:90px;
 	text-align:left;
 	background:none;
 	padding:2px;
@@ -91,7 +91,7 @@ label.cf-after 	{
 }
 
 label.cf-after span {
-	width:100px;
+	width:90px;
 	display:block;
 }
 
