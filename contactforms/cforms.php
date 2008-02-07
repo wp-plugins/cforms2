@@ -961,8 +961,8 @@ function cforms($args = '',$no = '') {
 	}
 
 
-	if ( get_option('cforms'.$no.'_tellafriend')=='2' && $send2author )
-		return;
+	if ( get_option('cforms'.$no.'_tellafriend')=='2' && $send2author ) //called from wp-comments-post ?
+		return $all_valid;
 
 
 	//
@@ -970,7 +970,7 @@ function cforms($args = '',$no = '') {
 	//
 	$success=false;
 	if ( ((isset($_GET['email']) && $_GET['email']=='sent') || (isset($_GET['cfemail']) && $_GET['cfemail']=='sent'))
-			&& get_option('cforms'.$no.'_tellafriend')=='2' ){ // fix for WP Comment
+			&& get_option('cforms'.$no.'_tellafriend')=='2' ){ // fix for WP Comment (loading after redirect)
 		$usermessage_class = ' success';
 		$usermessage_text = preg_replace ( '|\r\n|', '<br />', stripslashes(get_option('cforms'.$no.'_success')) );
 		$success=true;
