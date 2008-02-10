@@ -1,7 +1,7 @@
 === cformsII - contact form ===
 Contributors: olivers
 Donate link: http://www.deliciousdays.com/cforms-forum?forum=2&topic=368&page=1
-Tags: ajax, email, secure, visitor, input, order, form, contact, sidebar, order
+Tags: contact form, ajax, email, secure, visitor, input, order, form, contact, sidebar, order
 Requires at least: 2.0.2
 Tested up to: 2.3.2
 Stable tag: 7.4
