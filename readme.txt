@@ -23,9 +23,9 @@ For all the new features, see the Help documentation.
 
 = Some of the New Features =
 * **NEW:** WP comments feature completely revised
-        * **no more dependency** on wp-comments-post.php - configuration only
-        * fully supporting **comment form validation** - no more SPAM (esp. nonAjax!)
-        * fully **Ajax'iefied** - direct comment insertion 
+	* **no more dependency** on wp-comments-post.php - configuration only
+	* fully supporting **comment form validation** - no more SPAM (esp. nonAjax!)
+	* fully **Ajax'iefied** - direct comment insertion 
 * **NEW:** admin UI **xHTML compliant** again
 * **OTHER & BUGFIXES:** [*see version history*](http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1)
 
