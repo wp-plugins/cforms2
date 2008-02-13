@@ -1,10 +1,10 @@
 === cformsII - contact form ===
 Contributors: olivers
 Donate link: http://www.deliciousdays.com/cforms-forum?forum=2&topic=368&page=1
-Tags: contact form, ajax, email, secure, visitor, input, order, form, contact, sidebar, order
+Tags: contact form, ajax, contact, form, input, comments, post, sidebar, spam, admin
 Requires at least: 2.0.2
-Tested up to: 2.3.2
-Stable tag: 7.4
+Tested up to: 2.3.3
+Stable tag: 7.5
 
 cforms II is an extremely customizable, flexible & powerful contact form plugin!
 
@@ -22,8 +22,11 @@ If you have been using the **do_action hook** previously, v7.4 will require a fe
 For all the new features, see the Help documentation. 
 
 = Some of the New Features =
-* **NEW:** CHANGED and improved "custom processing", action & filters (see /my-functions.php & Help)
-* **NEW:** New system variables referencing the currently logged in user (see Help)
+* **NEW:** WP comments feature completely revised
+        * **no more dependency** on wp-comments-post.php - configuration only
+        * fully supporting **comment form validation** - no more SPAM (esp. nonAjax!)
+        * fully **Ajax'iefied** - direct comment insertion 
+* **NEW:** admin UI **xHTML compliant** again
 * **OTHER & BUGFIXES:** [*see version history*](http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1)
 
 [Check out the cforms CSS Guide and webcast on layout customization](http://www.deliciousdays.com/cforms-forum?forum=1&topic=428&page=1)
@@ -66,6 +69,7 @@ For all the new features, see the Help documentation.
 	* SPAM protection Q &amp;A
 	* SPAM protection using CAPTCHA NEW: + Ajax CAPTCHA reset
 * **Extensibility**
+	* Custom procession (filter, actions) of user input
 	* Support for alternative SMTP server, PHPmailer 2.0 included (SSL/TLS support)
 	* Generate dynamic forms in real-time
 	* Filtering &amp; Download of recorded data
