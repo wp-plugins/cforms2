@@ -2,8 +2,18 @@
 Copyright 2006-2008  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
-WHAT's NEW in cforms II - v7.4
+WHAT's NEW in cforms II - v7.5
+*) feature: WP comments feature completely revised
+	+) no more dependency on wp-comments-post.php
+	+) fully supporting comment form validation (esp. nonAjax!)
+	+) Ajax'iefied
 
+*) bugfix: PHP regexp testing for '0' caused a false positive
+*) bugfix: T-A-F enable new posts/pages by default -> was broken if TAF form was your default (1st) form
+*) bugfix: a few CSS fixes (.mailerr and other)
+*) other: major admin UI clean-up, making it xHTML compliant again
+
+WHAT's NEW in cforms II - v7.4
 *) feature: CHANGED and improved "custom processing" (see /my-functions.php)
 	function my_cforms_action : gets triggered after user input validation and processing
 	function my_cforms_filter : after validation, before processing (nonAJAX)
