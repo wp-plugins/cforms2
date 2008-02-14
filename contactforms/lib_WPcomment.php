@@ -145,6 +145,9 @@ if ( $isAjaxWPcomment ){
 		//
 		// Write Comment
 		//
+		if( function_exists('my_cforms_filter') )
+			$_POST = my_cforms_filter($_POST);
+
 		$status = $wpdb->get_row("SELECT post_status, comment_status FROM $wpdb->posts WHERE ID = '$comment_post_ID'");
 		
 		if ( empty($status->comment_status) ) {
