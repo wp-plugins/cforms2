@@ -190,7 +190,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><input type="submit" name="Submit9" class="allbuttons updbutton" value="<?php _e('Update Settings &raquo;', 'cforms'); ?>" onclick="javascript:document.mainform.action='#wpcomment';"/><a id="b28" class="blindminus" onfocus="this.blur()" onclick="toggleui(28);return false;" href="#" title="<?php _e('Expand/Collapse', 'cforms') ?>"></a><?php _e('WP Comment Feature Settings', 'cforms') ?></p>
 
 			<div id="o28">
-				<p><?php _e('Specific the ID(s) of <strong>pages or posts</strong> separated by comma on which you\'d like to show cforms. The cforms header will onlcy be included specifically on those pages, helping to maintain all other pages neat.', 'cforms') ?></p>
+				<p><?php _e('Find below the additional settings for cforms WP comment feature.', 'cforms') ?></p>
 				<div class="optionsbox">
 					<div class="optionsboxL"><label for="cforms_commentsuccess"><strong><?php _e('Comment Success Message', 'cforms'); ?></strong></label></div>
 					<div class="optionsboxR">
