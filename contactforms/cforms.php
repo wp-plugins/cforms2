@@ -1639,7 +1639,7 @@ function get_captcha_uri()
 	$f2 = ( $captcha['f2']<>'' ) ? stripslashes(htmlspecialchars( $captcha['f2'] )) : 19;
 	$bg = ( $captcha['bg']<>'' ) ? stripslashes(htmlspecialchars( $captcha['bg'] )) : '1.gif';
 		
-	return "&w={$w}&h={$h}&c={$c}&l={$l}&f={$f}&a1={$a1}&a2={$a2}&f1={$f1}&f2={$f2}&b={$bg}";
+	return "&amp;w={$w}&amp;h={$h}&amp;c={$c}&amp;l={$l}&amp;f={$f}&amp;a1={$a1}&amp;a2={$a2}&amp;f1={$f1}&amp;f2={$f2}&amp;b={$bg}";
 }
 
 
