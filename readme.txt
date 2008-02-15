@@ -17,6 +17,7 @@ cforms is a highly customizable, flexible and powerful contact form plugin, cove
 
 = Attention!  =
 If you've been using the *WP comment feature* of cforms previously (before v7.5) you should...
+
 * check your form fields (especially the '**author**' field!)
 * configure the extended settings on the *Global Settings* tab
 * and feel free to remove the old code snippet you had copied into your WP file
