@@ -31,9 +31,9 @@ For *WHAT'S NEW* and a complete version history (new [features](http://www.delic
 
 == Installation ==
 
-[Please see the cforms plugin home page for details.](http://www.deliciousdays.com/cforms-plugin)
+Please see the [cforms plugin home page](http://www.deliciousdays.com/cforms-plugin) for details.
 
-[Check out the cforms CSS Guide and webcast on layout customization](http://www.deliciousdays.com/cforms-forum?forum=1&topic=428&page=1)
+Check out the [cforms CSS Guide and webcast](http://www.deliciousdays.com/cforms-forum?forum=1&topic=428&page=1) on layout customization.
 
 == Frequently Asked Questions ==
 
@@ -41,6 +41,7 @@ Please visit the [cforms plugin forum](http://www.deliciousdays.com/cforms-forum
 
 == Screenshots ==
 
-[Please visit the cforms plugin page for screenshots & sample](http://www.deliciousdays.com/cforms-plugin)
+Please visit the [cforms plugin page](http://www.deliciousdays.com/cforms-plugin) for screenshots & sample.
 
-[Check out the cforms CSS Guide and webcast on layout customization](http://www.deliciousdays.com/cforms-forum?forum=1&topic=428&page=1)
+Check out the [cforms CSS Guide and webcast](http://www.deliciousdays.com/cforms-forum?forum=1&topic=428&page=1) on layout customization.
+
