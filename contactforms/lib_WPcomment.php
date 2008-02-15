@@ -143,11 +143,19 @@ if ( $isAjaxWPcomment ){
 		}
 	
 		//
-		// Write Comment
+		// Filter first?
 		//
+		$sep = (strpos(__FILE__,'/')===false)?'\\':'/';
+		$CFfunctions = dirname(__FILE__).$sep.'my-functions.php';
+		if ( file_exists($CFfunctions) )
+			include_once($CFfunctions);
+
 		if( function_exists('my_cforms_filter') )
 			$_POST = my_cforms_filter($_POST);
 
+		//
+		// Write Comment
+		//
 		$status = $wpdb->get_row("SELECT post_status, comment_status FROM $wpdb->posts WHERE ID = '$comment_post_ID'");
 		
 		if ( empty($status->comment_status) ) {
