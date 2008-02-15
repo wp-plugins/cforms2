@@ -12,23 +12,22 @@ cforms II is the most extremely customizable, flexible & powerful contact form p
 
 cforms is a highly customizable, flexible and powerful contact form plugin, covering a variety of use cases and features from attachments to multi form management, you can even have multiple forms on the same page!
 
-
 = WHAT'S NEW? =
 
 For *WHAT'S NEW* and a complete version history (new [features](http://www.deliciousdays.com/cforms-plugin), bug fixes etc.), see [here.](http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1)
 
 = Localization =
 
-	* **Chinese, Simplified** \* Author: [Winnie Law (Liu Dongyan)](http://www.translateforyou.cn/cforms-translation/)
-	* **Danish** \* Author: [Mads Christian Jensen](http://mads.eu/wp-plugins#cforms)
-	* **French** \* Author: [La maison de l&rsquo;informatiqu](http://serge-rauber.fr/27-traduction-de-cforms-v55)
-	* **German** \* Author: [Sven Wappler](http://www.wappler.eu/cforms/)
-	* **Hungarian** \* Author: [Ungv&aacute;ri B&eacute;la](http://www.deliciousdays.com/download/cformsII-hu_hu.zip)
-	* **Japanese** \* Author: [Hiroaki Miyashita](http://wordpressgogo.com/development/translation_cforms_ja.html)
-	* **Norwegian** \* Author: [P&aring;l Andreas Tomter](http://soon.to.come)
-	* **Russian** \* Author: [Sofia Panchenko](http://www.sonika.ru/blog/wordpress/cforms-rus.htm)
-	* **Spanish** \* Author: [Samuel Aguilera](http://agamum.net/blog/archivo/plugin-cforms-en-espanol-formularios-para-tu-wordpress.xhtml)
-	* **Turkish** \* Author: [Resat Diker](http://weblog.resatdiker.com/cforms)
+* **Chinese, Simplified** \* Author: [Winnie Law (Liu Dongyan)](http://www.translateforyou.cn/cforms-translation/)
+* **Danish** \* Author: [Mads Christian Jensen](http://mads.eu/wp-plugins#cforms)
+* **French** \* Author: [La maison de l&rsquo;informatiqu](http://serge-rauber.fr/27-traduction-de-cforms-v55)
+* **German** \* Author: [Sven Wappler](http://www.wappler.eu/cforms/)
+* **Hungarian** \* Author: [Ungv&aacute;ri B&eacute;la](http://www.deliciousdays.com/download/cformsII-hu_hu.zip)
+* **Japanese** \* Author: [Hiroaki Miyashita](http://wordpressgogo.com/development/translation_cforms_ja.html)
+* **Norwegian** \* Author: [P&aring;l Andreas Tomter](http://soon.to.come)
+* **Russian** \* Author: [Sofia Panchenko](http://www.sonika.ru/blog/wordpress/cforms-rus.htm)
+* **Spanish** \* Author: [Samuel Aguilera](http://agamum.net/blog/archivo/plugin-cforms-en-espanol-formularios-para-tu-wordpress.xhtml)
+* **Turkish** \* Author: [Resat Diker](http://weblog.resatdiker.com/cforms)
 
 == Installation ==
 
