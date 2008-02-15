@@ -16,7 +16,7 @@ For **WHAT'S NEW** and a complete version history (new features, bug fixes etc.)
 cforms is a highly customizable, flexible and powerful contact form plugin, covering a variety of use cases and features from attachments to multi form management, you can even have multiple forms on the same page!
 
 = Attention!  =
-If you've been using the *WP comment feature* of cforms previsouly (before v7.5) you should...
+If you've been using the *WP comment feature* of cforms previously (before v7.5) you should...
 * check your form fields (especially the '**author**' field!)
 * configure the extended settings on the *Global Settings* tab
 * and feel free to remove the old code snippet you had copied into your WP file
