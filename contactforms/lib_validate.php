@@ -138,16 +138,17 @@ for($i = 1; $i <= $field_count; $i++) {
 				if ( $_REQUEST['cforms_a'.$no] <> md5(rawurlencode(strtolower($_REQUEST['cforms_q'.$no]))) ) {
 						$validations[$i+$off] = 0;
 						$err = !($err)?2:$err;
-						}
+				}
 						
 		}
 		else if( $field_type == 'captcha' ){  // captcha verification
 		
         		$validations[$i+$off] = 1;
+
 				if ( $_SESSION['turing_string_'.$no] <> $_REQUEST['cforms_captcha'.$no] ) {
 						$validations[$i+$off] = 0;
 						$err = !($err)?2:$err;
-						}
+				}
 				
 		}
 		else

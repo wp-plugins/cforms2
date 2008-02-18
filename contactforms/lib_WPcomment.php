@@ -125,6 +125,11 @@ if ( $isAjaxWPcomment ){
 	//
 	// non Ajax WP comment submission
 	//
+
+	@session_cache_limiter('private, must-revalidate');
+	@session_cache_expire(0);
+	@session_start();
+
 	$keys = array_keys($_POST);
 	
 	foreach ( $keys as $key ){
