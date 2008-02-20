@@ -6,7 +6,7 @@ Requires at least: 2.0.2
 Tested up to: 2.3.3
 Stable tag: 7.51
 
-cforms II is the most extremely customizable, flexible & powerful contact form plugin!
+cforms II is the most customizable, flexible & powerful ajax supporting contact form plugin!
 
 == Description ==
 
