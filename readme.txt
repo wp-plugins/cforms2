@@ -4,7 +4,7 @@ Donate link: http://www.deliciousdays.com/cforms-forum?forum=2&topic=368&page=1
 Tags: contact form, ajax, contact, form, input, comments, post, sidebar, spam, admin
 Requires at least: 2.0.2
 Tested up to: 2.3.3
-Stable tag: 7.51
+Stable tag: 7.52
 
 cforms II is the most customizable, flexible & powerful ajax supporting contact form plugin!
 
