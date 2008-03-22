@@ -12,8 +12,15 @@ Author URI: http://www.deliciousdays.com
 Copyright 2006-2008  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
-WHAT's NEW in cformsII - v8.0   ***  WP 2.5 compatible
+WHAT's NEW in cformsII - v8.0   
 
+***
+***  WP 2.5 compatible
+***
+
+*) bugfix: checkbox would not be validated if no custom value was provided
+*) bugfix: several issues with "WP comment feature" and sending a note to the post author
+*) bugfix: Better SMTP integration / support for other SMTP Plugins,eg. "WP Mail SMTP"
 
 */
 
@@ -45,8 +52,6 @@ if ( ABSPATH=='' || WPINC=='' ) {
 
 if ( $smtpsettings[0]=='1' ) {
 	if ( file_exists(dirname(__FILE__) . '/phpmailer/class.phpmailer.php') ) {
-		require_once(dirname(__FILE__) . '/phpmailer/class.phpmailer.php');
-		require_once(dirname(__FILE__) . '/phpmailer/class.smtp.php');
 		require_once(dirname(__FILE__) . '/phpmailer/cforms_phpmailer.php');
 	}
 	else
@@ -399,9 +404,12 @@ function cforms_submitcomment($content) {
 			    $field_name = substr($field_name,0,$pos);
 
 			// special WP comment fields
-			if( in_array($field_stat[1],array('cauthor','email','url','comment','send2author')) )
+			if( in_array($field_stat[1],array('cauthor','email','url','comment','send2author')) ){
 				$field_name = $field_stat[1];
-
+				if ( $field_stat[1] == 'email' )
+					$field_email = $params['field_' . $i];
+			}
+			
 			// special Tell-A-Friend fields
 			if ( $taf_friendsemail == '' && $field_type=='friendsemail' && $field_stat[3]=='1')
 					$field_email = $taf_friendsemail = $params ['field_' . $i];
@@ -543,13 +551,17 @@ function cforms_submitcomment($content) {
 	$replyto = preg_replace( array('/;|#|\|/'), array(','), stripslashes(get_option('cforms'.$no.'_email')) );
 
 	// multiple recipients? and to whom is the email sent? to_one = picked recip.
-	if ( $to_one <> "-1" ) {
+	if ( $isAjaxWPcomment!==false && $track['send2author']=='1' ){
+			$to = $wpdb->get_results("SELECT U.user_email FROM $wpdb->users as U, $wpdb->posts as P WHERE P.ID = {$Ajaxpid} AND U.ID=P.post_author");
+			$to = $replyto = ($to[0]->user_email<>'')?$to[0]->user_email:$replyto;
+	}
+	else if ( $to_one <> "-1" ) {
 			$all_to_email = explode(',', $replyto);
 			$replyto = $to = $all_to_email[ $to_one ];
 	} else
 			$to = $replyto;
 
-	// T-A-F overwrite?
+	// T-A-F override?
 	if ( $taf_youremail && $taf_friendsemail && substr(get_option('cforms'.$no.'_tellafriend'),0,1)=='1' )
 		$replyto = "\"{$taf_yourname}\" <{$taf_youremail}>";
 
@@ -1411,7 +1423,8 @@ function cforms($args = '',$no = '') {
 				 		$ba = 'b';
 				}
 				//if | val provided, then use "X" 
-				$field = $nttt . $before . '<input' . $readonly.$disabled . ' type="checkbox" name="'.$input_name.'" id="'.$input_id.'" class="cf-box-' . $ba . $field_class . '"'.($field_value?' checked="checked"':'').' value="'.$opt[1].'"/>' . $after;
+				$val = ($opt[1]<>'')?' value="'.$opt[1].'"':'';
+				$field = $nttt . $before . '<input' . $readonly.$disabled . ' type="checkbox" name="'.$input_name.'" id="'.$input_id.'" class="cf-box-' . $ba . $field_class . '"'.($field_value?' checked="checked"':'').$val.'/>' . $after;
 
 				break;
 

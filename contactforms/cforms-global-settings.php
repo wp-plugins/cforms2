@@ -415,7 +415,7 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 			<p class="cflegend"><a class="helptop" href="#top"><?php _e('top', 'cforms'); ?></a><input type="submit" name="Submit7" class="allbuttons updbutton" value="<?php _e('Update Settings &raquo;', 'cforms') ?>" onclick="javascript:document.mainform.action='#captcha';"/><a id="b26" class="blindminus" onfocus="this.blur()" onclick="toggleui(26);return false;" href="#" title="<?php _e('Expand/Collapse', 'cforms') ?>"></a><?php _e('CAPTCHA Image Settings', 'cforms') ?></p>
 
 			<div id="o26">						   
-				<p><?php _e('Below you can find a few switches and options to change the default look of the captcha image. Feel free to upload your own backgrounds and fonts to the respective directories (<em>contactforms/captchabg/</em> &amp; <em>contactforms/captchafonts/</em>).', 'cforms') ?></p>
+				<p><?php _e('Below you can find a few switches and options to change the default look of the captcha image. Feel free to upload your own backgrounds and fonts to the respective directories (<em>cforms/captchabg/</em> &amp; <em>cforms/captchafonts/</em>).', 'cforms') ?></p>
 	
 				<?php 
 					$captcha = get_option('cforms_captcha_def'); 

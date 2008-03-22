@@ -1,8 +1,14 @@
 <?php
 // phpmailer support
 function cforms_phpmailer( $no, $frommail, $field_email, $to, $vsubject, $message, $formdata, $htmlmessage, $htmlformdata, $fileext='' ) {	
-		global $smtpsettings;
-		
+
+	global $smtpsettings, $phpmailer;
+
+	if ( file_exists(dirname(__FILE__) . '/class.phpmailer.php') ) {
+		require_once(dirname(__FILE__) . '/class.phpmailer.php');
+		require_once(dirname(__FILE__) . '/class.smtp.php');
+	}
+			
 		$mail = new PHPMailer();
 		$mail->ClearAllRecipients();
 		$mail->ClearAddresses();

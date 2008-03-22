@@ -5,7 +5,9 @@
 //
 
 $cflimit = '';
-//print_r($_REQUEST);
+
+//echo "***<br><pre>";print_r($_POST);echo "</pre>";  //debug
+
 for($i = 1; $i <= $field_count; $i++) {
 
 		if ( !$custom ) 

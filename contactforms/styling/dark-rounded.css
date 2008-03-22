@@ -421,6 +421,7 @@ div.mailerr {
 * html span.emailreqtxt { 
 	display: inline-block;  /*for ie6*/
 }
+*+html ol.cf-ol,
 *+html .cform label,
 *+html span.reqtxt,
 *+html span.emailreqtxt {

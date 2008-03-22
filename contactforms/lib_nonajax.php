@@ -293,8 +293,8 @@ if( isset($_POST['sendbutton'.$no]) && $all_valid ) {
 
 	// multiple recipients? and to whom is the email sent?
 	if ( get_option('cforms'.$no.'_tellafriend')=='2' ){
-			$to = get_userdata( $wpdb->get_var("SELECT U.user_email FROM $wpdb->users as U, $wpdb->posts as P WHERE P.ID = {$_POST['comment_post_ID']} AND U.ID=P.post_author") );		
-			$to = ($to->user_email<>'')?$to->user_email:$replyto;
+			$to = $wpdb->get_results("SELECT U.user_email FROM $wpdb->users as U, $wpdb->posts as P WHERE P.ID = {$_POST['comment_post_ID']} AND U.ID=P.post_author");
+			$to = $replyto =  ($to[0]->user_email<>'')?$to[0]->user_email:$replyto;			
 	}
 	else if ( $to_one <> "-1" ) {
 			$all_to_email = explode(',', $replyto);
