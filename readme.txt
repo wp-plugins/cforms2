@@ -30,6 +30,7 @@ For *WHAT'S NEW* and a complete version history (new [features](http://www.delic
 * **French** \* Author: [La maison de l&rsquo;informatiqu](http://serge-rauber.fr/27-traduction-de-cforms-v55)
 * **German** \* Author: [Sven Wappler](http://www.wappler.eu/cforms/)
 * **Hungarian** \* Author: [Ungv&aacute;ri B&eacute;la](http://www.life-univ.net/ubh/2008/02/26/a-cforms-ii-plugin-magyar-nyelvu-fajljai.html)
+* **Italian** \* Author: [Gianni](http://gidibao.net/index.php/2008/03/27/cforms-ii-in-italiano/)
 * **Japanese** \* Author: [Hiroaki Miyashita](http://wordpressgogo.com/development/translation_cforms_ja.html)
 * **Norwegian** \* Author: [P&aring;l Andreas Tomter](http://soon.to.come)
 * **Russian** \* Author: [Sofia Panchenko](http://www.sonika.ru/blog/wordpress/cforms-rus.htm)
