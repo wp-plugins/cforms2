@@ -12,14 +12,14 @@ cforms II is the most customizable, flexible & powerful ajax supporting contact 
 
 cforms is a highly customizable, flexible and powerful contact form plugin, covering a variety of use cases and features from attachments to multi form management, you can even have multiple forms on the same page!
 
-= WP 2.5 Support & One-Click Updates=
+= WP 2.5 Support & One-Click Updates =
 
 cforms v8+ fully supports WP2.5 as well as one-click updates going foward.
 
-NOTE -1-
+**NOTE -1-**
 As part of the *one-click update support*, cforms v8+ will come with a new directory structure - please backup/remove your old **/contactforms/** directory after upgrading!
 
-NOTE -2-
+**NOTE -2-**
 Going forward the file **js/cforms.js** has changed, as well as an automatism has been put in place to *guess proper settings* during plugin *activation*! 
 
 = WHAT'S NEW? =
