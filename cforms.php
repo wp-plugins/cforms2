@@ -22,7 +22,7 @@ WHAT's NEW in cformsII - v8.1
 *) feature: additional form presets 
 *) feature: |title:  now available to add 'titles' to input fields
 *) feature: auto guessing (during activation) of proper Ajax path settings (cforms.js)
-*) feature: drop down box- and radiob button options can now be moved around in the "edit dialog"
+*) feature: drop down box- and radio button options can now be moved around in the "edit dialog"
 *) bugfix: fixed issue textarea being erased when custom error triggered and shown
 *) bugfix: fixed/improved Javascript 'jump to error' feature
 *) bugfix: fixed issue with 'hanging' input field editor (wizard dialog)
@@ -32,7 +32,7 @@ WHAT's NEW in cformsII - v8.1
 *) bugfix: properly localized months in confirmation emails
 *) other: slimmer main cforms file, hopefully helping narrow down PHP MEM issues
 *) other: major code clean-up
-*) other: improved and streamlined 'Install Form Preset' Dialog
+*) other: improved and streamlined 'Install Form Preset' dialog
 *) other: admin UI WP2.5'yfied
 
 */
