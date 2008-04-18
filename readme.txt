@@ -4,7 +4,7 @@ Donate link: http://www.deliciousdays.com/cforms-forum?forum=2&topic=368&page=1
 Tags: contact form, ajax, contact, form, input, comments, post, sidebar, spam, admin
 Requires at least: 2.0.2
 Tested up to: 2.6
-Stable tag: 8.3
+Stable tag: 8.3b
 
 cforms II is the most customizable, flexible & powerful ajax supporting contact form plugin (& comment form)!
 
@@ -13,7 +13,7 @@ cforms II is the most customizable, flexible & powerful ajax supporting contact 
 cforms is a highly customizable, flexible and powerful form builder plugin, covering a variety of use cases and features from attachments to multi form management, you can even have multiple forms on the same page!
 
 **NOTE**
-The form tracking data section has become a full make over, now allowing to edit submitted data!
+The form tracking data section has gotten a full make over, now allowing to edit submitted data!
 
 = WHAT'S NEW? =
 
