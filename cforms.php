@@ -1009,9 +1009,9 @@ function cf_check_plugin_version($plugin)
 	
 			if( (version_compare(strval($theVersion), strval($version), '>') == 1) )
 			{
-				$msg = __("Latest version available:", "sforum").' <strong>'.$theVersion.'</strong> - '.$theMessage;
-				$msg.= ' - <a href="http://www.deliciousdays.com/cforms-plugin/">cforms by delicious:days</a>';
-				echo '<td colspan="5" class="plugin-update">'.$msg.'</td>';
+				$msg = __("Latest version available:", "sforum").' <strong>'.$theVersion.'</strong><br />'.$theMessage;
+				$msg.= '<br /><a href="http://www.deliciousdays.com/cforms-plugin/">cforms by delicious:days</a>';
+				echo '<td colspan="5" class="plugin-update" style="line-height:1.2em;">'.$msg.'</td>';
 			} else {
 				return;
 			}

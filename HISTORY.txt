@@ -8,6 +8,7 @@ WHAT's NEW in cformsII - v8.4
 *) added feature: custom variables (referencing input field) can now be written as {_fieldXY}
 	with XY being the input field no. as it appears in the admin form configuration, e.g
 	{_field2}  =  2nd form field
+	or even as {ID}  where id = [id:ID] when using custom IDS for your input fields
 *) added feature: enhanced custom input field names: if "[id:]" present in field name string,
 	e.g. Your Name[id:fullname]|Your Name
 	then what's given as the 'id' is being used for the fields id/name
