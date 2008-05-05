@@ -256,6 +256,7 @@ if( strlen($fd)<=2 ) {
 								if ( strpos($allfields[$i],'captcha')!==false )			$captchaused = true;
 								if ( strpos($allfields[$i],'emailtobox')!==false )		$emailtoboxused = true;
 								if ( strpos($allfields[$i],'ccbox')!==false )			$ccboxused = true;
+								if ( strpos($allfields[$i],'upload')!==false )			$fileupload = true; //needed for config
 						}
 						
 						for($i = 1; $i <= $field_count; $i++) {
