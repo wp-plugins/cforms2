@@ -15,7 +15,7 @@ cforms is a highly customizable, flexible and powerful form builder plugin, cove
 **NOTE for v8.5 (auto-update)**
 To *circumvent* the shortcoming of the core *WP auto update* feature in terms of overwriting customized files (CSS, etc.) cforms now supports a custom user folder under */plugins/*. Simply create 
 `/plugins/cforms-custom`
-and move you CSS (including images!), font & background (CAPTCHA) files to it.
+and move your CSS (including images!), font & background (CAPTCHA) files to it.
 
 = WHAT'S NEW? =
 
