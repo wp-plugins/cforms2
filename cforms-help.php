@@ -68,13 +68,14 @@ if(!current_user_can('manage_cforms')) {
 		<div id="o18">
 			<p><strong><?php _e('In posts and pages:', 'cforms'); ?></strong></p>
 
-			<p><?php echo sprintf(__('If you like to do it the old-fashioned way using tags, make sure to use %1s for the first form and/or %2s for your other forms to include them in your <em>Pages/Posts</em>.', 'cforms'),'<code>&lt;!--cforms--&gt;</code>','<code>&lt;!--cforms<span style="color:red; font-weight:bold;">X</span>--&gt;</code>'); ?></p>
-			<p><?php echo sprintf(__('However, using the TinyMCE Button is much more elegant and safer (double check if <a href="%3s" %s>Button Support</a> is enabled!).', 'cforms'),'?page=' . $plugindir . '/cforms-global-settings.php#wpeditor','onclick="setshow(12)"'); ?></p>
+			<p><?php echo sprintf(__('If you like to do it the \'code\' way, make sure to use %1s to include them in your <em>Pages/Posts</em>. With %2s being <u>your form NAME</u>.', 'cforms'),'<code>&lt;!--cforms name="XYZ"--&gt;</code>','<code>XYZ</code>'); ?></p>
+			<p><?php echo sprintf(__('A more elegant and safer way is to use the TinyMCE Button (double check if <a href="%3s" %s>Button Support</a> is enabled!).', 'cforms'),'?page=' . $plugindir . '/cforms-global-settings.php#wpeditor','onclick="setshow(12)"'); ?></p>
+			<p><?php echo sprintf(__('For backwards compatibility, the old-fashioned way is still supported: %1s for the first form and/or %2s for your other forms.', 'cforms'),'<code>&lt;!--cforms--&gt;</code>','<code>&lt;!--cforms<span style="color:red; font-weight:bold;">X</span>--&gt;</code>'); ?></p>
 
 			<p align="center"><img src="<?php echo $cforms_root; ?>/images/example-tiny.png"  alt=""/></p>
 
 			<p><strong><?php _e('Via PHP function call:', 'cforms'); ?></strong></p>
-			<p><?php echo sprintf(__('Alternatively, you can specifically insert a form (into the sidebar for instance etc.) per the PHP function call %1s for the default/first form and/or %2s for any other form.', 'cforms'),'<code>insert_cform();</code>','<code>insert_cform(\'<span style="color:red; font-weight:bold;">X</span>\');</code>'); ?></p>
+			<p><?php echo sprintf(__('Alternatively, you can specifically insert a form (into the sidebar for instance etc.) per the PHP function call %1s, or alternatively %2s for the default/first form and/or %2s for any other form.', 'cforms'),'<code>insert_cform(\'XYZ\');</code>','<code>insert_cform();</code>','<code>insert_cform(\'<span style="color:red; font-weight:bold;">X</span>\');</code>'); ?></p>
 			<p><strong><?php _e('Note:', 'cforms'); ?></strong> <?php echo sprintf(__('"%1s" represents the number of the form, starting with %2s ..and so forth.', 'cforms'),'<span style="color:red; font-weight:bold;">X</span>','<span style="color:red; font-weight:bold;">2</span>, 3,4'); ?></p>
 		</div>
 	

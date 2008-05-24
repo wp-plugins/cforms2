@@ -856,6 +856,8 @@ function build_fstat($fields) {
 function insert_cform($no='') {	
 	global $post;
 
+	$no = check_form_name($no);
+
 	if ( isset($_GET['pid']) )
 		$pid = $_GET['pid'];
 	else if ($post->ID == 0)
@@ -872,6 +874,8 @@ function insert_cform($no='') {
 ### inserts a custom cform anywhere you want
 function insert_custom_cform($fields='',$no='') { 
 	global $post;
+
+	$no = check_form_name($no);
 	
 	if ( isset($_GET['pid']) )
 		$pid = $_GET['pid'];
@@ -884,6 +888,20 @@ function insert_custom_cform($fields='',$no='') {
 		cforms($fields,$no.'+');
 	else
 		echo check_for_taf($no,$pid)?cforms($fields,$no.'+'):''; 
+}
+
+### check form names/id's
+function check_form_name($no) {
+
+	if( is_numeric($no) ) return $no;
+
+	$forms = get_option('cforms_formcount');
+
+	for ($i=0;$i<$forms;$i++) {
+		$no2 = ($i==0)?'':($i+1);
+		if ( stripslashes(get_option('cforms'.$no2.'_fname')) == $no )
+			return $no2;
+	}
 }
 
 ### check if t-f-a is set
