@@ -69,7 +69,7 @@ if(!current_user_can('manage_cforms')) {
 			<p><strong><?php _e('In posts and pages:', 'cforms'); ?></strong></p>
 
 			<p><?php echo sprintf(__('If you like to do it the \'code\' way, make sure to use %1s to include them in your <em>Pages/Posts</em>. With %2s being <u>your form NAME</u>.', 'cforms'),'<code>&lt;!--cforms name="XYZ"--&gt;</code>','<code>XYZ</code>'); ?></p>
-			<p><?php echo sprintf(__('A more elegant and safer way is to use the TinyMCE Button (double check if <a href="%3s" %s>Button Support</a> is enabled!).', 'cforms'),'?page=' . $plugindir . '/cforms-global-settings.php#wpeditor','onclick="setshow(12)"'); ?></p>
+			<p><?php echo sprintf(__('A more elegant and safer way is to use the <strong>TinyMCE Button</strong> (double check if <a href="%3s" %s>Button Support</a> is enabled!).', 'cforms'),'?page=' . $plugindir . '/cforms-global-settings.php#wpeditor','onclick="setshow(12)"'); ?></p>
 			<p><?php echo sprintf(__('For backwards compatibility, the old-fashioned way is still supported: %1s for the first form and/or %2s for your other forms.', 'cforms'),'<code>&lt;!--cforms--&gt;</code>','<code>&lt;!--cforms<span style="color:red; font-weight:bold;">X</span>--&gt;</code>'); ?></p>
 
 			<p align="center"><img src="<?php echo $cforms_root; ?>/images/example-tiny.png"  alt=""/></p>
