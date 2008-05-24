@@ -19,7 +19,7 @@ WHAT's NEW in cformsII - v8.5
 *) other: added {Referer} & {PostID}
 *) other: enhanced XML download format
 *) other: replaced all deprecated get_settings()
-*) feature: added the possiblity to change the FROM: address to fake the user's
+*) feature: added the possibility to change the FROM: address to fake the user's
 	this is not recommended, but a widely asked for 'feature', use at your own risk
 
 WHAT's NEW in cformsII - v8.4.2
