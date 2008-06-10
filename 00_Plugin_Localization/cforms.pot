@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-06-09 21:14+0200\n"
+"POT-Creation-Date: 2008-06-10 17:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3391,27 +3391,27 @@ msgstr ""
 msgid "cforms out-of-the-box-form repository"
 msgstr ""
 
-#: cforms.php:458
+#: cforms.php:460
 msgid "reset captcha image"
 msgstr ""
 
-#: cforms.php:979 cforms.php:985
+#: cforms.php:981 cforms.php:987
 msgid "cforms Tell-A-Friend"
 msgstr ""
 
-#: cforms.php:990
+#: cforms.php:992
 msgid "T-A-F enable this post/page"
 msgstr ""
 
-#: cforms.php:1035
+#: cforms.php:1037
 msgid "Add cforms default form"
 msgstr ""
 
-#: cforms.php:1035
+#: cforms.php:1037
 msgid "Add form"
 msgstr ""
 
-#: cforms.php:1078
+#: cforms.php:1080
 msgid "Latest version available:"
 msgstr ""
 
@@ -3860,7 +3860,7 @@ msgstr ""
 msgid "Entry successfully removed"
 msgstr ""
 
-#: js\include\lib_database_dlentries.php:112
+#: js\include\lib_database_dlentries.php:116
 msgid "Form"
 msgstr ""
 
