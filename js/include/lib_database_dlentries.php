@@ -30,7 +30,7 @@ $query = $_GET['query'];
 
 ### get form id from name
 $query = str_replace('*','',$query);
-if ( $qtype == 'form_id' && $query <> '' ){
+if ( $qtype == 'form_id' && $query <> '' && $query <> 'undefined'){
 
 	$form_id = false;
 	$forms = get_option('cforms_formcount');	
@@ -43,8 +43,10 @@ if ( $qtype == 'form_id' && $query <> '' ){
 		}
 	}
 	$query = ( !$form_id )?'$%&/':$form_id;
-}else{
+}else if ( $query <> 'undefined' ) {
 	$query = '%'.$query.'%';
+}else{
+	$query = '';
 }
 
 if ( $query<>'' && $query<>'undefined' && $sub_ids=='all' )
@@ -65,6 +67,7 @@ if ($sub_ids<>'') {
 		$in_list = '';
 	
 	$sql = "SELECT *, form_id FROM {$wpdb->cformsdata},{$wpdb->cformssubmissions} WHERE sub_id=id $where $in_list ORDER BY $sortBy $sortOrder, f_id ASC";
+
 	$entries = $wpdb->get_results($sql);
 	
 	if ( $format=='xml' )
@@ -73,6 +76,7 @@ if ($sub_ids<>'') {
 		$buffer = getCSVTAB($entries);
 	else if ( $format=='tab' )
 		$buffer = getCSVTAB($entries,'tab');
+
 	
 	header("Pragma: public");
 	header("Expires: 0");

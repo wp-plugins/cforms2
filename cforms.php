@@ -15,6 +15,8 @@ Copyright 2006-2008  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 WHAT's NEW in cformsII - v8.5.1
 
 *) feature: user CAPTCHA response can now be treated case insensitive
+*) bugfix: tracking page: "download all" fixed
+*) bugfix: tracking page: filtered results count fixed
 *) bugfix: fixed some annoying MSXML IE specific errors...
 *) bugfix: custom files had to be all lowercase, now case insensitive
 *) bugfix: custom CSS file would not be pre-selected in Styling/drop-down

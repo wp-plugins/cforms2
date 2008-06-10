@@ -11,8 +11,8 @@ $wpdb->cformssubmissions	= $wpdb->prefix . 'cformssubmissions';
 $wpdb->cformsdata       	= $wpdb->prefix . 'cformsdata';
 
 function countRec() {
-	global $wpdb;
-	$sql = "SELECT count(id) FROM {$wpdb->cformssubmissions}";
+	global $wpdb, $where, $sort, $limit;
+	$sql = "SELECT count(id) FROM {$wpdb->cformssubmissions} $where $sort $limit";
 	return $wpdb->get_var($sql);
 }
 
@@ -60,12 +60,14 @@ if (!$rp)
 $start = (($page-1) * $rp);
 $limit = "LIMIT $start, $rp";
 
-$total = countRec();
-
 for ($i=1; $i <= get_option('cforms_formcount'); $i++){
 	$n = ( $i==1 )?'':$i; 
 	$fnames[$i]=stripslashes(get_option('cforms'.$n.'_fname'));
 }
+
+
+$total = countRec();
+
 
 $sql="SELECT * FROM {$wpdb->cformssubmissions} $where $sort $limit";
 $result = $wpdb->get_results($sql);
