@@ -17,7 +17,7 @@ To *circumvent* the shortcoming of the core *WP auto update* feature in terms of
 `/plugins/cforms-custom`
 and move your CSS (including images!), font & background (CAPTCHA) files to it.
 
-**NOTE for v8.5.1 (wp_auotp)**
+**NOTE for v8.5.1 (wp_autop)**
 v8.5.1 comes with a fix that addresses the annoying Wordpress wp_autop 'feature' which can be responsible for breaking xHTML
 
 = WHAT'S NEW? =
