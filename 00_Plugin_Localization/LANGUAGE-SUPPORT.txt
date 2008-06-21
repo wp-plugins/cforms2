@@ -31,7 +31,7 @@ cforms currently supports the following languages:
 *) Chinese, Simplified Author: Winnie Law (Liu Dongyan) hiswinnie@gmail.com
 *) Danish              Author: Mads C. Jensen           jensen.mads@gmail.com
 *) English (default)   Author: Oliver Seidel            oliver.seidel@deliciousdays.com
-*) French              Author: Serge RAUBER             serge@kalyx.fr
+*) French              Author: Serge Rauber             serge@kalyx.fr
 *) German              Author: Sven Wappler             wappler@wappler.eu
 *) Hungarian           Author: Ungvári Béla             life-univ@freemail.hu
 *) Italian             Author: Gianni                   infocafe@gidibao.net
