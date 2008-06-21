@@ -29,7 +29,7 @@ For *WHAT'S NEW* and a complete [version history](http://www.deliciousdays.com/c
 * **Chinese, Simplified** \* Author: [Winnie Law (Liu Dongyan)](http://www.translateforyou.cn/cforms-translation/)
 * **Danish** \* Author: [Mads Christian Jensen](http://mads.eu/wp-plugins#cforms)
 * **Dutch** \* Author: [Anja](http://www.werkgroepen.net/wordpress25/vertaald-cforms-ii/)
-* **French** \* Author: [La maison de l&rsquo;informatiqu](http://serge-rauber.fr/27-traduction-de-cforms-v55)
+* **French** \* Author: [La maison de l&rsquo;informatiqu](http://wp.kalyxstudio.com/cforms-ll)
 * **German** \* Author: [Sven Wappler](http://www.wappler.eu/cforms/)
 * **Hungarian** \* Author: [Ungv&aacute;ri B&eacute;la](http://www.life-univ.net/ubh/2008/02/26/a-cforms-ii-plugin-magyar-nyelvu-fajljai.html)
 * **Italian** \* Author: [Gianni](http://gidibao.net/index.php/2008/03/27/cforms-ii-in-italiano/)
