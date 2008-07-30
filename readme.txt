@@ -4,21 +4,13 @@ Donate link: http://www.deliciousdays.com/cforms-forum?forum=2&topic=368&page=1
 Tags: contact form, ajax, contact, form, input, comments, post, sidebar, spam, admin
 Requires at least: 2.0.2
 Tested up to: 2.6
-Stable tag: 8.5.2
+Stable tag: 8.6
 
 cforms II is the most customizable, flexible & powerful ajax supporting contact form plugin (& comment form)!
 
 == Description ==
 
 cforms is a highly customizable, flexible and powerful form builder plugin, covering a variety of use cases and features from attachments to multi form management, you can even have multiple forms on the same page!
-
-**NOTE for v8.5 (auto-update)**
-To *circumvent* the shortcoming of the core *WP auto update* feature in terms of overwriting customized files (CSS, etc.) cforms now supports a custom user folder under */plugins/*. Simply create 
-`/plugins/cforms-custom`
-and move your CSS (including images!), font & background (CAPTCHA) files to it.
-
-**NOTE for v8.5.1 (wp_autop)**
-v8.5.1 comes with a fix that addresses the annoying Wordpress wp_autop 'feature' which can be responsible for breaking xHTML
 
 = WHAT'S NEW? =
 
