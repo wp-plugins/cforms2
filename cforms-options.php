@@ -793,7 +793,7 @@ if( strlen($fd)<=2 ) {
 				</div>
 				
 
-				<p><?php _e('cforms\' WP comment feature supports the following comment plugins:', 'cforms') ?> <a href="http://www.fiddyp.co.uk/commentluv-wordpress-plugin/">Comment Luv</a>, <a href="http://txfx.net/code/wordpress/subscribe-to-comments/">Subscribe To Comment</a> & <a href="http://www.raproject.com/ajax-edit-comments/">WP Ajax Edit Comments</a>!</p>
+				<p><?php _e('cforms\' WP comment feature supports the following comment plugins:', 'cforms') ?> <a href="http://www.fiddyp.co.uk/commentluv-wordpress-plugin/">Comment Luv</a>, <a href="http://txfx.net/code/wordpress/subscribe-to-comments/">Subscribe To Comment</a> & <a href="http://www.raproject.com/ajax-edit-comments-20/">WP Ajax Edit Comments</a>!</p>
 
 			</div>
 		</fieldset>	

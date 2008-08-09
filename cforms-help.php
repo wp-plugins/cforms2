@@ -731,7 +731,7 @@ if ( is_tellafriend( $post-&gt;ID ) ) <br />
 			</tr>
 			<tr>
 				<td class="ball" colspan="2">
-					<strong><?php _e('Other comment plugins?', 'cforms'); ?></strong> <?php _e('cforms\' WP comment feature supports the following comment plugins:', 'cforms') ?> <a href="http://www.fiddyp.co.uk/commentluv-wordpress-plugin/">Comment Luv</a>, <a href="http://txfx.net/code/wordpress/subscribe-to-comments/">Subscribe To Comment</a> & <a href="http://www.raproject.com/ajax-edit-comments/">WP Ajax Edit Comments</a>.
+					<strong><?php _e('Other comment plugins?', 'cforms'); ?></strong> <?php _e('cforms\' WP comment feature supports the following comment plugins:', 'cforms') ?> <a href="http://www.fiddyp.co.uk/commentluv-wordpress-plugin/">Comment Luv</a>, <a href="http://txfx.net/code/wordpress/subscribe-to-comments/">Subscribe To Comment</a> & <a href="http://www.raproject.com/ajax-edit-comments-20/">WP Ajax Edit Comments</a>.
 				</td>
 			</tr>
 			<tr>
