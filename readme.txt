@@ -14,7 +14,7 @@ cforms is a highly customizable, flexible and powerful form builder plugin, cove
 
 = WHAT'S NEW? =
 
-cforms' WP comment feature **supports the following comment plugins**: [Comment Luv](http://www.fiddyp.co.uk/commentluv-wordpress-plugin/), [Subscribe To Comment](http://txfx.net/code/wordpress/subscribe-to-comments/) & [WP Ajax Edit Comments](http://www.raproject.com/ajax-edit-comments/)!
+cforms' WP comment feature **supports the following comment plugins**: [Comment Luv](http://www.fiddyp.co.uk/commentluv-wordpress-plugin/), [Subscribe To Comment](http://txfx.net/code/wordpress/subscribe-to-comments/) & [WP Ajax Edit Comments](http://www.raproject.com/ajax-edit-comments-20/)!
 
 For *WHAT'S NEW* and a complete [version history](http://www.deliciousdays.com/cforms-forum?forum=2&topic=2&page=1).
 
