@@ -16,13 +16,13 @@ cforms is a highly customizable, flexible and powerful form builder plugin, cove
 
 Quick heads up on what to expect mid-term. v9.0 will come with a completely revamped way of storing its settings.
 
-*only \*1\* entry in wp_options
-*supporting backup of all options/forms in one step
-*overall performance increase
-*much less get_option() calls
-	*direct $var access for settings
-	*less memory consumption
-	*There will be specific steps required in terms of upgrading (including backups just to be on the safe side of things) since it's essentially a *heart transplant*.
+* only \*1\* entry in wp\_options
+* supporting backup of all options/forms in one step
+* overall performance increase
+* much less get_option() calls
+	* direct $var access for settings
+	* less memory consumption
+	* There will be specific steps required in terms of upgrading (including backups just to be on the safe side of things) since it's essentially a *heart transplant*.
 
 = WHAT'S NEW? =
 
