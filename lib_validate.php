@@ -166,13 +166,11 @@ for($i = 1; $i <= $field_count; $i++) {
 				$captcha = get_option('cforms_captcha_def'); 
         		$validations[$i+$off] = 1;
 
-				$a = $_SESSION['turing_string_'.$no];
-				$b = $_REQUEST['cforms_captcha'.$no];
+				$a = explode('+',$_COOKIE['turing_string_'.$no]);
+				$a = $a[1];
+				$b = md5( ($captcha['i'] == 'i')?strtolower($_REQUEST['cforms_captcha'.$no]):$_REQUEST['cforms_captcha'.$no]);
 				
-				if ($captcha['i'] == 'i' ){
-					$a = strtolower($a);
-					$b = strtolower($b);
-				}
+				echo "****<br>$a<br>$b";
 				
 				if ( $a <> $b ) {
 						$validations[$i+$off] = 0;
