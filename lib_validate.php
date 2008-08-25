@@ -169,9 +169,7 @@ for($i = 1; $i <= $field_count; $i++) {
 				$a = explode('+',$_COOKIE['turing_string_'.$no]);
 				$a = $a[1];
 				$b = md5( ($captcha['i'] == 'i')?strtolower($_REQUEST['cforms_captcha'.$no]):$_REQUEST['cforms_captcha'.$no]);
-				
-				echo "****<br>$a<br>$b";
-				
+								
 				if ( $a <> $b ) {
 						$validations[$i+$off] = 0;
 						$err = !($err)?2:$err;
