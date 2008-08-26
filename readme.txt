@@ -14,6 +14,8 @@ cforms is a highly customizable, flexible and powerful form builder plugin, cove
 
 = v9.0 Outlook =
 
+**I'm looking for beta testers to try the v9.0 (once it's in beta state). Let me know [here](http://www.deliciousdays.com/contact/)**
+
 Quick heads up on what to expect mid-term. v9.0 will come with a completely revamped way of storing its settings.
 
 * only \*1\* entry in wp\_options
