@@ -40,7 +40,7 @@ database backup first (!) and then migrate your settings (cforms will guide you!
 *) other: tracking page layout more fluid (CSS: Show->Submissions)
 
 */
-$localversion = '9.0b5';
+$localversion = '9.0';
 load_plugin_textdomain('cforms');
 
 ### db settings
