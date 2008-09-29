@@ -3,8 +3,8 @@
 // WP comment feature
 //
 ### supporting WP2.6 wp-load & custom wp-content / plugin dir
-if ( file_exists('../../abspath.php') )
-	include_once('../../abspath.php');
+if ( file_exists('abspath.php') )
+	include_once('abspath.php');
 else
 	$abspath='../../../';
 
