@@ -211,6 +211,10 @@ if( isset($_REQUEST['Submit1']) || isset($_REQUEST['Submit2']) || isset($_REQUES
 	}
 
 }
+
+### check for abspath.php
+abspath_check();
+
 ?>
 
 <div class="wrap" id="top">

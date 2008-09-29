@@ -89,10 +89,8 @@ if(!empty($_POST['save_css'])){
 }
 
 
-
-//
-// Pick new CSS
-//
+### check for abspath.php
+abspath_check();
 
 ?>
 

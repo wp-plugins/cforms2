@@ -29,6 +29,9 @@ if( $cformsSettings['global']['update'] )
 if ( check_erased() )
 	return;
 
+### check for abspath.php
+abspath_check();
+
 ?>
 <div class="wrap"><a id="top"></a>
 <img src="<?php echo $cforms_root; ?>/images/cfii.gif" alt="" align="right"/><img src="<?php echo $cforms_root; ?>/images/p3-title.jpg" alt=""/>

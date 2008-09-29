@@ -95,6 +95,7 @@ function cforms_init() {
 	global $wpdb;
 
 	$plugindir   = basename(dirname(__FILE__));
+	$sep = strpos(dirname(__FILE__), '\\') !==false ? '\\' : '/';
 
 	$role = get_role('administrator');
 	if(!$role->has_cap('manage_cforms')) {
@@ -133,17 +134,29 @@ function cforms_init() {
 
        	$jsContentNew = str_replace('\'/wp-content/plugins/cforms/lib_ajax.php\'',"'{$pathToAjax}'",$jsContent);
 	}
-	if ( $jsContentNew<>'' && $jsContentNew<>$jsContent && ($fhandle = fopen(dirname(__FILE__).'/js/cforms.js', "w")) ) {
+	if ( $jsContentNew<>'' && $jsContentNew<>$jsContent && ($fhandle = fopen(dirname(__FILE__).$sep.'js'.$sep.'cforms.js', "w")) ) {
 	    fwrite($fhandle, $jsContentNew);
 	    fclose($fhandle);
 	}
 
 	### save ABSPATH for ajax routines
-	if ( defined('ABSPATH') && ($fhandle = fopen(dirname(__FILE__).'/abspath.php', "w")) ) {
+	if ( defined('ABSPATH') && ($fhandle = fopen(dirname(__FILE__).$sep.'abspath.php', "w")) ) {
 	    fwrite($fhandle, "<?php \$abspath = '". ABSPATH ."'; ?>\n");
 	    fclose($fhandle);
 	}
 
+}
+
+### check for abspath.php
+function abspath_check() {
+	global $cformsSettings;
+	if ( !file_exists( dirname(__FILE__).$cformsSettings['global']['cforms_IIS'].'abspath.php' ) ){
+    	echo '<div class="updated fade"><p>'.
+        	__('It appears that cforms was not able to create <strong>abspath.php</strong> in your cforms plugin folder. Please check file/folder permissions and <strong>re-activate</strong> cforms.', 'cforms').
+            '</p><p>'.
+            __('If the problem persists, please create abspath.php manually with the following content:', 'cforms').
+            '<br/><code>&lt;?php $abspath = \''.ABSPATH.'\'; ?&gt;</code></p></div>';
+        }
 }
 
 ### some css for arranging the table fields in wp-admin

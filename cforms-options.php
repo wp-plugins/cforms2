@@ -177,6 +177,8 @@ if( strlen($fd)<=2 ) {
     update_option('cforms_settings',$cformsSettings);
 }
 
+### check for abspath.php
+abspath_check();
 
 ?>
 <div class="wrap" id="top">
