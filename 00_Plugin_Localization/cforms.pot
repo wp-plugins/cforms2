@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-09-28 10:51+0200\n"
+"POT-Creation-Date: 2008-09-29 10:04+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,11 +21,11 @@ msgstr ""
 msgid "Access Denied"
 msgstr ""
 
-#: cforms-css.php:37 lib_functions.php:178
+#: cforms-css.php:37 lib_functions.php:191
 msgid "All cforms data has been erased!"
 msgstr ""
 
-#: cforms-css.php:38 lib_functions.php:179
+#: cforms-css.php:38 lib_functions.php:192
 msgid ""
 "Please go to your <strong>Plugins</strong> tab and either disable the "
 "plugin, or toggle its status (disable/enable) to revive cforms!"
@@ -43,24 +43,24 @@ msgstr ""
 msgid "New theme selected."
 msgstr ""
 
-#: cforms-css.php:102
+#: cforms-css.php:100
 msgid ""
 "Please select a theme file that comes closest to what you're looking for and "
 "apply your own custom changes via the editor below."
 msgstr ""
 
-#: cforms-css.php:103
+#: cforms-css.php:101
 msgid ""
 "This is <strong>optional</strong> of course, if you're happy with the "
 "default look and feel, no need to do anything here."
 msgstr ""
 
-#: cforms-css.php:108 cforms-css.php:225 cforms-global-settings.php:239
-#: cforms-global-settings.php:324 cforms-global-settings.php:336
-#: cforms-global-settings.php:384 cforms-global-settings.php:437
-#: cforms-global-settings.php:491 cforms-global-settings.php:509
-#: cforms-global-settings.php:625 cforms-global-settings.php:665
-#: cforms-global-settings.php:719 cforms-global-settings.php:733
+#: cforms-css.php:106 cforms-css.php:223 cforms-global-settings.php:243
+#: cforms-global-settings.php:328 cforms-global-settings.php:340
+#: cforms-global-settings.php:388 cforms-global-settings.php:441
+#: cforms-global-settings.php:495 cforms-global-settings.php:513
+#: cforms-global-settings.php:629 cforms-global-settings.php:669
+#: cforms-global-settings.php:723 cforms-global-settings.php:737
 #: cforms-help.php:48 cforms-help.php:70 cforms-help.php:87
 #: cforms-help.php:119 cforms-help.php:149 cforms-help.php:184
 #: cforms-help.php:218 cforms-help.php:258 cforms-help.php:298
@@ -69,112 +69,112 @@ msgstr ""
 #: cforms-help.php:524 cforms-help.php:550 cforms-help.php:671
 #: cforms-help.php:754 cforms-help.php:798 cforms-help.php:867
 #: cforms-help.php:905 cforms-help.php:982 cforms-help.php:1124
-#: cforms-help.php:1343 cforms-help.php:1353 cforms-options.php:422
-#: cforms-options.php:469 cforms-options.php:542 cforms-options.php:670
-#: cforms-options.php:719 cforms-options.php:734 cforms-options.php:778
-#: cforms-options.php:818 cforms-options.php:858
+#: cforms-help.php:1343 cforms-help.php:1353 cforms-options.php:424
+#: cforms-options.php:471 cforms-options.php:544 cforms-options.php:672
+#: cforms-options.php:721 cforms-options.php:736 cforms-options.php:780
+#: cforms-options.php:820 cforms-options.php:860
 msgid "top"
 msgstr ""
 
-#: cforms-css.php:108
+#: cforms-css.php:106
 msgid "Select a form style"
 msgstr ""
 
-#: cforms-css.php:116
+#: cforms-css.php:114
 msgid "Please choose a theme file <br />to style your forms"
 msgstr ""
 
-#: cforms-css.php:124
+#: cforms-css.php:122
 msgid ""
 "Please make sure that the <code>/styling</code> folder exists in the cforms "
 "plugin directory!"
 msgstr ""
 
-#: cforms-css.php:132
+#: cforms-css.php:130
 msgid "custom css files"
 msgstr ""
 
-#: cforms-css.php:150 cforms-global-settings.php:770
+#: cforms-css.php:148 cforms-global-settings.php:774
 msgid "cform css files"
 msgstr ""
 
-#: cforms-css.php:173
+#: cforms-css.php:171
 msgid "Select Style &raquo;"
 msgstr ""
 
-#: cforms-css.php:178
+#: cforms-css.php:176
 msgid ""
 "For comprehensive customization support you may choose to turn on "
 "<strong>label &amp; list element ID's</strong>. This way each input field "
 "&amp; label can be specifically addressed via CSS styles."
 msgstr ""
 
-#: cforms-css.php:180
+#: cforms-css.php:178
 msgid "Activate Label IDs"
 msgstr ""
 
-#: cforms-css.php:180
+#: cforms-css.php:178
 msgid "Deactivate Label IDs"
 msgstr ""
 
-#: cforms-css.php:181 cforms-css.php:184
+#: cforms-css.php:179 cforms-css.php:182
 msgid "Currently turned on "
 msgstr ""
 
-#: cforms-css.php:183
+#: cforms-css.php:181
 msgid "Activate List Element IDs"
 msgstr ""
 
-#: cforms-css.php:183
+#: cforms-css.php:181
 msgid "Deactivate List Element IDs"
 msgstr ""
 
-#: cforms-css.php:187
+#: cforms-css.php:185
 msgid "Deactivate CSS styling altogether!"
 msgstr ""
 
-#: cforms-css.php:187
+#: cforms-css.php:185
 msgid "Reactivate CSS styling!"
 msgstr ""
 
-#: cforms-css.php:188
+#: cforms-css.php:186
 msgid "Theme is disabled"
 msgstr ""
 
-#: cforms-css.php:194
+#: cforms-css.php:192
 #, php-format
 msgid ""
 "You might also want to study the <a href=\"%s\">PDF guide on cforms CSS & a "
 "web screencast</a> I put together to give you a head start."
 msgstr ""
 
-#: cforms-css.php:206
+#: cforms-css.php:204
 msgid "PREVIEW:"
 msgstr ""
 
-#: cforms-css.php:206
+#: cforms-css.php:204
 msgid "Theme Preview"
 msgstr ""
 
-#: cforms-css.php:225
+#: cforms-css.php:223
 msgid "Update Changes &raquo;"
 msgstr ""
 
-#: cforms-css.php:225
+#: cforms-css.php:223
 msgid "Basic CSS editor. Current style file: "
 msgstr ""
 
-#: cforms-css.php:227
+#: cforms-css.php:225
 msgid ""
 "Use this simple editor to further tailor your forms' style to meet your "
 "requirements. Currently you're editing: "
 msgstr ""
 
-#: cforms-css.php:240
+#: cforms-css.php:238
 msgid "Sorry. The file you are looking for doesn't exist."
 msgstr ""
 
-#: cforms-database.php:36
+#: cforms-database.php:39
 msgid ""
 "All your recorded form submissions are listed below. View individual entries "
 "or a whole bunch and download as XML, TAB or CSV formatted file. Attachments "
@@ -182,89 +182,89 @@ msgid ""
 "deleting entries, associated attachments will be removed, too! "
 msgstr ""
 
-#: cforms-database.php:38
+#: cforms-database.php:41
 msgid ""
 "If you want to select <strong>ALL</strong> entries, e.g. for download, "
 "simply don't select any particular row. When <strong>viewing records</"
 "strong>: Fields with a <em>grey background</em> can be clicked on and edited!"
 msgstr ""
 
-#: cforms-database.php:51 cforms-database.php:63 cforms-options.php:222
+#: cforms-database.php:54 cforms-database.php:66 cforms-options.php:224
 msgid "Form Name"
 msgstr ""
 
-#: cforms-database.php:52 cforms-database.php:64
+#: cforms-database.php:55 cforms-database.php:67
 msgid "e-mail Address"
 msgstr ""
 
-#: cforms-database.php:53 cforms-database.php:65
+#: cforms-database.php:56 cforms-database.php:68
 msgid "Date"
 msgstr ""
 
-#: cforms-database.php:54 cforms-database.php:66
+#: cforms-database.php:57 cforms-database.php:69
 msgid "IP"
 msgstr ""
 
-#: cforms-database.php:57
+#: cforms-database.php:60
 msgid "View records"
 msgstr ""
 
-#: cforms-database.php:58
+#: cforms-database.php:61
 msgid "Delete records"
 msgstr ""
 
-#: cforms-database.php:59
+#: cforms-database.php:62
 msgid "Download records"
 msgstr ""
 
-#: cforms-database.php:71
+#: cforms-database.php:74
 msgid "Form Submissions"
 msgstr ""
 
-#: cforms-database.php:72
+#: cforms-database.php:75
 msgid "Connection Error"
 msgstr ""
 
-#: cforms-database.php:73
+#: cforms-database.php:76
 msgid "Displaying {from} to {to} of {total} items"
 msgstr ""
 
-#: cforms-database.php:74
+#: cforms-database.php:77
 msgid "Processing, please wait ..."
 msgstr ""
 
-#: cforms-database.php:75
+#: cforms-database.php:78
 msgid "No items"
 msgstr ""
 
-#: cforms-database.php:76
+#: cforms-database.php:79
 msgid "Page {%1} of"
 msgstr ""
 
-#: cforms-database.php:96 cforms-database.php:105
+#: cforms-database.php:99 cforms-database.php:108
 msgid "Please Confirm"
 msgstr ""
 
-#: cforms-database.php:99
+#: cforms-database.php:102
 msgid "Are you sure you want to delete the record(s)?"
 msgstr ""
 
-#: cforms-database.php:100 cforms-database.php:117 cforms-options.php:894
+#: cforms-database.php:103 cforms-database.php:120 cforms-options.php:896
 msgid "Install"
 msgstr ""
 
-#: cforms-database.php:100 cforms-database.php:117 cforms-options.php:886
-#: cforms-options.php:894
+#: cforms-database.php:103 cforms-database.php:120 cforms-options.php:888
+#: cforms-options.php:896
 msgid "OK"
 msgstr ""
 
-#: cforms-database.php:100 cforms-database.php:117 cforms-options.php:886
-#: cforms-options.php:894 editor.php:177 js\insertdialog.php:78
+#: cforms-database.php:103 cforms-database.php:120 cforms-options.php:888
+#: cforms-options.php:896 editor.php:177 js\insertdialog.php:78
 #: js\insertdialog25.php:80
 msgid "Cancel"
 msgstr ""
 
-#: cforms-database.php:115
+#: cforms-database.php:118
 msgid "Please pick a format!"
 msgstr ""
 
@@ -312,157 +312,157 @@ msgstr ""
 msgid "Found existing cforms tracking tables with %s records!"
 msgstr ""
 
-#: cforms-global-settings.php:223
+#: cforms-global-settings.php:227
 msgid "Debug Info (all major setting groups)"
 msgstr ""
 
-#: cforms-global-settings.php:225
+#: cforms-global-settings.php:229
 msgid "Debug Info (all cforms settings)"
 msgstr ""
 
-#: cforms-global-settings.php:233
+#: cforms-global-settings.php:237
 msgid "All settings and configuration options on this page apply to all forms."
 msgstr ""
 
-#: cforms-global-settings.php:239 cforms-global-settings.php:324
-#: cforms-global-settings.php:336 cforms-global-settings.php:384
-#: cforms-global-settings.php:438 cforms-global-settings.php:491
-#: cforms-global-settings.php:509 cforms-global-settings.php:625
-#: cforms-global-settings.php:665 cforms-options.php:221
-#: cforms-options.php:422 cforms-options.php:469 cforms-options.php:542
-#: cforms-options.php:670 cforms-options.php:734 cforms-options.php:778
-#: cforms-options.php:818 cforms-options.php:858
+#: cforms-global-settings.php:243 cforms-global-settings.php:328
+#: cforms-global-settings.php:340 cforms-global-settings.php:388
+#: cforms-global-settings.php:442 cforms-global-settings.php:495
+#: cforms-global-settings.php:513 cforms-global-settings.php:629
+#: cforms-global-settings.php:669 cforms-options.php:223
+#: cforms-options.php:424 cforms-options.php:471 cforms-options.php:544
+#: cforms-options.php:672 cforms-options.php:736 cforms-options.php:780
+#: cforms-options.php:820 cforms-options.php:860
 msgid "Update Settings &raquo;"
 msgstr ""
 
-#: cforms-global-settings.php:239 cforms-global-settings.php:324
-#: cforms-global-settings.php:336 cforms-global-settings.php:384
-#: cforms-global-settings.php:438 cforms-global-settings.php:491
-#: cforms-global-settings.php:509 cforms-global-settings.php:625
-#: cforms-global-settings.php:665 cforms-global-settings.php:719
-#: cforms-global-settings.php:733 cforms-help.php:48 cforms-help.php:70
+#: cforms-global-settings.php:243 cforms-global-settings.php:328
+#: cforms-global-settings.php:340 cforms-global-settings.php:388
+#: cforms-global-settings.php:442 cforms-global-settings.php:495
+#: cforms-global-settings.php:513 cforms-global-settings.php:629
+#: cforms-global-settings.php:669 cforms-global-settings.php:723
+#: cforms-global-settings.php:737 cforms-help.php:48 cforms-help.php:70
 #: cforms-help.php:87 cforms-help.php:867 cforms-help.php:905
 #: cforms-help.php:982 cforms-help.php:1124 cforms-help.php:1343
-#: cforms-help.php:1353 cforms-options.php:422 cforms-options.php:469
-#: cforms-options.php:542 cforms-options.php:670 cforms-options.php:719
-#: cforms-options.php:734 cforms-options.php:778 cforms-options.php:818
-#: cforms-options.php:858
+#: cforms-help.php:1353 cforms-options.php:424 cforms-options.php:471
+#: cforms-options.php:544 cforms-options.php:672 cforms-options.php:721
+#: cforms-options.php:736 cforms-options.php:780 cforms-options.php:820
+#: cforms-options.php:860
 msgid "Expand/Collapse"
 msgstr ""
 
-#: cforms-global-settings.php:239
+#: cforms-global-settings.php:243
 msgid "WP Comment Feature Settings"
 msgstr ""
 
-#: cforms-global-settings.php:242
+#: cforms-global-settings.php:246
 msgid "Find below the additional settings for cforms WP comment feature."
 msgstr ""
 
-#: cforms-global-settings.php:244
+#: cforms-global-settings.php:248
 msgid "Comment Success Message"
 msgstr ""
 
-#: cforms-global-settings.php:253
+#: cforms-global-settings.php:257
 msgid "Ajax Settings"
 msgstr ""
 
-#: cforms-global-settings.php:257
+#: cforms-global-settings.php:261
 msgid "Wait time for new comments (in seconds)"
 msgstr ""
 
-#: cforms-global-settings.php:261
+#: cforms-global-settings.php:265
 msgid "Parent Comment Container"
 msgstr ""
 
-#: cforms-global-settings.php:262 cforms-global-settings.php:343
-#: cforms-global-settings.php:403 cforms-global-settings.php:637
-#: cforms-global-settings.php:672
+#: cforms-global-settings.php:266 cforms-global-settings.php:347
+#: cforms-global-settings.php:407 cforms-global-settings.php:641
+#: cforms-global-settings.php:676
 msgid "Note &raquo;"
 msgstr ""
 
-#: cforms-global-settings.php:263
+#: cforms-global-settings.php:267
 msgid ""
 "The HTML <strong>element ID</strong> of the parent element containing<br /"
 ">all comments, for example:"
 msgstr ""
 
-#: cforms-global-settings.php:273 cforms-global-settings.php:285
+#: cforms-global-settings.php:277 cforms-global-settings.php:289
 msgid "Comment in moderation"
 msgstr ""
 
-#: cforms-global-settings.php:278
+#: cforms-global-settings.php:282
 msgid "New comment HTML template"
 msgstr ""
 
-#: cforms-global-settings.php:280
+#: cforms-global-settings.php:284
 msgid "Supported Variables &raquo;"
 msgstr ""
 
-#: cforms-global-settings.php:280
+#: cforms-global-settings.php:284
 msgid "Default Template &raquo;"
 msgstr ""
 
-#: cforms-global-settings.php:286
+#: cforms-global-settings.php:290
 msgid "New comment ID"
 msgstr ""
 
-#: cforms-global-settings.php:287
+#: cforms-global-settings.php:291
 msgid "Comment Text"
 msgstr ""
 
-#: cforms-global-settings.php:288 cforms-help.php:683 cforms-help.php:1023
-#: cforms-options.php:351
+#: cforms-global-settings.php:292 cforms-help.php:683 cforms-help.php:1023
+#: cforms-options.php:353
 msgid "Comment Author"
 msgstr ""
 
-#: cforms-global-settings.php:289
+#: cforms-global-settings.php:293
 msgid "The author's website"
 msgstr ""
 
-#: cforms-global-settings.php:290
+#: cforms-global-settings.php:294
 msgid "Current date."
 msgstr ""
 
-#: cforms-global-settings.php:291
+#: cforms-global-settings.php:295
 msgid "Current time."
 msgstr ""
 
-#: cforms-global-settings.php:292
+#: cforms-global-settings.php:296
 msgid "User avatar."
 msgstr ""
 
-#: cforms-global-settings.php:312
+#: cforms-global-settings.php:316
 msgid "Avatar Settings"
 msgstr ""
 
-#: cforms-global-settings.php:316
+#: cforms-global-settings.php:320
 msgid "Size (in pixel)"
 msgstr ""
 
-#: cforms-global-settings.php:324
+#: cforms-global-settings.php:328
 msgid "Include cforms header data only on specific pages"
 msgstr ""
 
-#: cforms-global-settings.php:327
+#: cforms-global-settings.php:331
 msgid ""
 "Specify the ID(s) of <strong>pages or posts</strong> separated by comma on "
 "which you'd like to show cforms. The cforms header will only be included "
 "specifically on those pages, helping to maintain all other pages neat."
 msgstr ""
 
-#: cforms-global-settings.php:329
+#: cforms-global-settings.php:333
 msgid "Page/Post ID(s)"
 msgstr ""
 
-#: cforms-global-settings.php:330
+#: cforms-global-settings.php:334
 msgid "Leave empty to enable for your entire blog"
 msgstr ""
 
-#: cforms-global-settings.php:336
+#: cforms-global-settings.php:340
 msgid "Popup Date Picker"
 msgstr ""
 
-#: cforms-global-settings.php:339
+#: cforms-global-settings.php:343
 #, php-format
 msgid ""
 "If you'd like to offer a Javascript based date picker for more convenient "
@@ -471,143 +471,143 @@ msgid ""
 "for more info and <strong>date formats</strong>."
 msgstr ""
 
-#: cforms-global-settings.php:343
+#: cforms-global-settings.php:347
 msgid "Enable Javascript date picker"
 msgstr ""
 
-#: cforms-global-settings.php:344
+#: cforms-global-settings.php:348
 msgid ""
 "Note that turning on this feature will result in loading an additional "
 "Javascript file to support the date picker."
 msgstr ""
 
-#: cforms-global-settings.php:348
+#: cforms-global-settings.php:352
 msgid "Date Format"
 msgstr ""
 
-#: cforms-global-settings.php:352
+#: cforms-global-settings.php:356
 msgid "Days (Columns)"
 msgstr ""
 
-#: cforms-global-settings.php:356
+#: cforms-global-settings.php:360
 msgid "Months"
 msgstr ""
 
-#: cforms-global-settings.php:361 lib_activate.php:142
+#: cforms-global-settings.php:365 lib_activate.php:142
 msgid "Previous Year"
 msgstr ""
 
-#: cforms-global-settings.php:363 lib_activate.php:143
+#: cforms-global-settings.php:367 lib_activate.php:143
 msgid "Previous Month"
 msgstr ""
 
-#: cforms-global-settings.php:365 lib_activate.php:144
+#: cforms-global-settings.php:369 lib_activate.php:144
 msgid "Next Year"
 msgstr ""
 
-#: cforms-global-settings.php:367 lib_activate.php:145
+#: cforms-global-settings.php:371 lib_activate.php:145
 msgid "Next Month"
 msgstr ""
 
-#: cforms-global-settings.php:369 lib_activate.php:146
+#: cforms-global-settings.php:373 lib_activate.php:146
 msgid "Close"
 msgstr ""
 
-#: cforms-global-settings.php:371 lib_activate.php:147
+#: cforms-global-settings.php:375 lib_activate.php:147
 msgid "Choose Date"
 msgstr ""
 
-#: cforms-global-settings.php:375
+#: cforms-global-settings.php:379
 msgid "Week start day"
 msgstr ""
 
-#: cforms-global-settings.php:376
+#: cforms-global-settings.php:380
 msgid "0=Sunday, 1=Monday, etc."
 msgstr ""
 
-#: cforms-global-settings.php:384
+#: cforms-global-settings.php:388
 msgid "SMTP Server Settings"
 msgstr ""
 
-#: cforms-global-settings.php:384
+#: cforms-global-settings.php:388
 msgid "In a normal WP environment you do not need to configure these settings!"
 msgstr ""
 
-#: cforms-global-settings.php:387
+#: cforms-global-settings.php:391
 msgid ""
 "In case your web hosting provider doesn't support the <strong>native PHP mail"
 "()</strong> command feel free to configure <strong>cforms</strong> to "
 "utilize an external <strong>SMTP mail server</strong> to deliver the emails."
 msgstr ""
 
-#: cforms-global-settings.php:395 cforms-help.php:719 cforms-help.php:859
+#: cforms-global-settings.php:399 cforms-help.php:719 cforms-help.php:859
 #: cforms-help.php:1253
 msgid "Important:"
 msgstr ""
 
-#: cforms-global-settings.php:395
+#: cforms-global-settings.php:399
 msgid ""
 "If you require SSL / TLS make sure your webserver/PHP environment permits "
 "it! If in doubt, check with your web hosting company regarding "
 "<strong>openssl</strong> support."
 msgstr ""
 
-#: cforms-global-settings.php:396 lib_options_err.php:76
+#: cforms-global-settings.php:400 lib_options_err.php:76
 msgid "Remove Message"
 msgstr ""
 
-#: cforms-global-settings.php:403
+#: cforms-global-settings.php:407
 msgid "Enable an external SMTP server"
 msgstr ""
 
-#: cforms-global-settings.php:404
+#: cforms-global-settings.php:408
 msgid ""
 "To avoid additional sources of error, cformsII v6.4 and beyond includes the "
 "PHPmailer 2.0 scripts, now <strong>supporting</strong> both <strong>SSL</"
 "strong> and <strong>TLS</strong> for authentication."
 msgstr ""
 
-#: cforms-global-settings.php:408
+#: cforms-global-settings.php:412
 msgid "SMTP server address"
 msgstr ""
 
-#: cforms-global-settings.php:412
+#: cforms-global-settings.php:416
 msgid "Secure Connection"
 msgstr ""
 
-#: cforms-global-settings.php:414
+#: cforms-global-settings.php:418
 msgid "No"
 msgstr ""
 
-#: cforms-global-settings.php:415
+#: cforms-global-settings.php:419
 msgid "SSL (e.g. gmail)"
 msgstr ""
 
-#: cforms-global-settings.php:416
+#: cforms-global-settings.php:420
 msgid "TLS"
 msgstr ""
 
-#: cforms-global-settings.php:420
+#: cforms-global-settings.php:424
 msgid "Port"
 msgstr ""
 
-#: cforms-global-settings.php:421
+#: cforms-global-settings.php:425
 msgid "Usually 465 (e.g. gmail) or 587"
 msgstr ""
 
-#: cforms-global-settings.php:424
+#: cforms-global-settings.php:428
 msgid "Username"
 msgstr ""
 
-#: cforms-global-settings.php:428
+#: cforms-global-settings.php:432
 msgid "Password"
 msgstr ""
 
-#: cforms-global-settings.php:438
+#: cforms-global-settings.php:442
 msgid "Global File Upload Settings"
 msgstr ""
 
-#: cforms-global-settings.php:442 cforms-options.php:426
+#: cforms-global-settings.php:446 cforms-options.php:428
 #, php-format
 msgid ""
 "Configure and double-check these settings in case you are adding a "
@@ -615,76 +615,76 @@ msgid ""
 "s>Help!</a> for further information)."
 msgstr ""
 
-#: cforms-global-settings.php:443
+#: cforms-global-settings.php:447
 #, php-format
 msgid ""
 "Form specific settings (directory path etc.) have been moved to <a href=\"%s"
 "\" %s>here</a>."
 msgstr ""
 
-#: cforms-global-settings.php:447
+#: cforms-global-settings.php:451
 msgid ""
 "Also, note that by adding a <em>File Upload Box</em> to your form, the Ajax "
 "(if enabled) submission method will (automatically) <strong>gracefully "
 "degrade</strong> to the standard method, due to general HTML limitations."
 msgstr ""
 
-#: cforms-global-settings.php:448
+#: cforms-global-settings.php:452
 msgid "Below, error messages shown in case something goes awry:"
 msgstr ""
 
-#: cforms-global-settings.php:452
+#: cforms-global-settings.php:456
 msgid "File type not allowed"
 msgstr ""
 
-#: cforms-global-settings.php:459
+#: cforms-global-settings.php:463
 msgid "Generic (unknown) error"
 msgstr ""
 
-#: cforms-global-settings.php:466
+#: cforms-global-settings.php:470
 msgid "File is empty"
 msgstr ""
 
-#: cforms-global-settings.php:473
+#: cforms-global-settings.php:477
 msgid "File size too big"
 msgstr ""
 
-#: cforms-global-settings.php:480
+#: cforms-global-settings.php:484
 msgid "Error during upload"
 msgstr ""
 
-#: cforms-global-settings.php:491
+#: cforms-global-settings.php:495
 msgid "WP Editor Button support"
 msgstr ""
 
-#: cforms-global-settings.php:494
+#: cforms-global-settings.php:498
 msgid ""
 "If you would like to use editor buttons to insert your cforms please enable "
 "them below."
 msgstr ""
 
-#: cforms-global-settings.php:498
+#: cforms-global-settings.php:502
 msgid "Enable TinyMCE"
 msgstr ""
 
-#: cforms-global-settings.php:498
+#: cforms-global-settings.php:502
 msgid "&amp; Code editor buttons"
 msgstr ""
 
-#: cforms-global-settings.php:502
+#: cforms-global-settings.php:506
 msgid "Fix TinyMCE error"
 msgstr ""
 
-#: cforms-global-settings.php:503
+#: cforms-global-settings.php:507
 msgid ""
 "Select in case you experience a TinyMCE editor error caused by other plugins."
 msgstr ""
 
-#: cforms-global-settings.php:509
+#: cforms-global-settings.php:513
 msgid "CAPTCHA Image Settings"
 msgstr ""
 
-#: cforms-global-settings.php:512
+#: cforms-global-settings.php:516
 msgid ""
 "Below you can find a few switches and options to change the default look of "
 "the captcha image. Feel free to upload your own backgrounds and fonts to the "
@@ -693,87 +693,87 @@ msgid ""
 "code> )."
 msgstr ""
 
-#: cforms-global-settings.php:539
+#: cforms-global-settings.php:543
 msgid "Preview Image"
 msgstr ""
 
-#: cforms-global-settings.php:541
+#: cforms-global-settings.php:545
 msgid "Captcha Preview"
 msgstr ""
 
-#: cforms-global-settings.php:558 cforms-global-settings.php:631
+#: cforms-global-settings.php:562 cforms-global-settings.php:635
 msgid "Force display"
 msgstr ""
 
-#: cforms-global-settings.php:559
+#: cforms-global-settings.php:563
 msgid "Force CAPTCHA display for logged in users"
 msgstr ""
 
-#: cforms-global-settings.php:564
+#: cforms-global-settings.php:568
 msgid "Width"
 msgstr ""
 
-#: cforms-global-settings.php:567
+#: cforms-global-settings.php:571
 msgid "Height"
 msgstr ""
 
-#: cforms-global-settings.php:570
+#: cforms-global-settings.php:574
 msgid "Border Color"
 msgstr ""
 
-#: cforms-global-settings.php:575
+#: cforms-global-settings.php:579
 msgid "Background Image"
 msgstr ""
 
-#: cforms-global-settings.php:582
+#: cforms-global-settings.php:586
 msgid "Font Type"
 msgstr ""
 
-#: cforms-global-settings.php:587
+#: cforms-global-settings.php:591
 msgid "Min Size"
 msgstr ""
 
-#: cforms-global-settings.php:590
+#: cforms-global-settings.php:594
 msgid "Max Size"
 msgstr ""
 
-#: cforms-global-settings.php:593
+#: cforms-global-settings.php:597
 msgid "Min Angle"
 msgstr ""
 
-#: cforms-global-settings.php:596
+#: cforms-global-settings.php:600
 msgid "Max Angle"
 msgstr ""
 
-#: cforms-global-settings.php:599
+#: cforms-global-settings.php:603
 msgid "Color"
 msgstr ""
 
-#: cforms-global-settings.php:606
+#: cforms-global-settings.php:610
 msgid "Number of shown characters"
 msgstr ""
 
-#: cforms-global-settings.php:607
+#: cforms-global-settings.php:611
 msgid "Minimum"
 msgstr ""
 
-#: cforms-global-settings.php:610
+#: cforms-global-settings.php:614
 msgid "Maximum"
 msgstr ""
 
-#: cforms-global-settings.php:613
+#: cforms-global-settings.php:617
 msgid "Allowed characters"
 msgstr ""
 
-#: cforms-global-settings.php:617
+#: cforms-global-settings.php:621
 msgid "User response is treated case insensitive"
 msgstr ""
 
-#: cforms-global-settings.php:625
+#: cforms-global-settings.php:629
 msgid "Visitor Verification Settings (Q&amp;A)"
 msgstr ""
 
-#: cforms-global-settings.php:628
+#: cforms-global-settings.php:632
 msgid ""
 "Getting a lot of <strong>SPAM</strong>? Use these Q&amp;A's to counteract "
 "spam and ensure it's a human submitting the form. To use in your form, add "
@@ -781,17 +781,17 @@ msgid ""
 "preferably in its own FIELDSET!"
 msgstr ""
 
-#: cforms-global-settings.php:632
+#: cforms-global-settings.php:636
 msgid "Force Q&A display for logged in users"
 msgstr ""
 
-#: cforms-global-settings.php:639
+#: cforms-global-settings.php:643
 msgid ""
 "The below error/failure message is also used for <strong>captcha</strong> "
 "verification!"
 msgstr ""
 
-#: cforms-global-settings.php:640
+#: cforms-global-settings.php:644
 #, php-format
 msgid ""
 "Depending on your personal preferences and level of SPAM security you intend "
@@ -799,26 +799,26 @@ msgid ""
 "a>!"
 msgstr ""
 
-#: cforms-global-settings.php:645
+#: cforms-global-settings.php:649
 msgid "<strong>Failure message</strong><br />(for a wrong answer)"
 msgstr ""
 
-#: cforms-global-settings.php:654
+#: cforms-global-settings.php:658
 msgid "<strong>Questions &amp; Answers</strong><br />format: Q=A"
 msgstr ""
 
-#: cforms-global-settings.php:665
+#: cforms-global-settings.php:669
 msgid "Database Input Tracking"
 msgstr ""
 
-#: cforms-global-settings.php:668
+#: cforms-global-settings.php:672
 msgid ""
 "If you like to track your form submissions also via the database, please "
 "enable this feature below. If required, two new tables will be created and "
 "you'll see a new sub tab \"<strong>Tracking</strong>\" under the cforms menu."
 msgstr ""
 
-#: cforms-global-settings.php:673
+#: cforms-global-settings.php:677
 #, php-format
 msgid ""
 "If you've enabled the <a href=\"%s\" %s>auto confirmation message</a> "
@@ -827,125 +827,125 @@ msgid ""
 "form tracking ID by using the variable <code>{ID}</code>."
 msgstr ""
 
-#: cforms-global-settings.php:677
+#: cforms-global-settings.php:681
 msgid "Enable Database Tracking"
 msgstr ""
 
-#: cforms-global-settings.php:678
+#: cforms-global-settings.php:682
 msgid "Will create two new tables in your WP database."
 msgstr ""
 
-#: cforms-global-settings.php:682
+#: cforms-global-settings.php:686
 msgid "Show on dashboard"
 msgstr ""
 
-#: cforms-global-settings.php:683
+#: cforms-global-settings.php:687
 msgid "Make sure to enable your forms individually as well!"
 msgstr ""
 
-#: cforms-global-settings.php:687
+#: cforms-global-settings.php:691
 msgid "Enable global RSS"
 msgstr ""
 
-#: cforms-global-settings.php:688
+#: cforms-global-settings.php:692
 msgid "Enables an RSS feed to track all new submissions across all forms."
 msgstr ""
 
-#: cforms-global-settings.php:693 cforms-options.php:652
+#: cforms-global-settings.php:697 cforms-options.php:654
 msgid "RSS entries"
 msgstr ""
 
-#: cforms-global-settings.php:697 cforms-options.php:656
+#: cforms-global-settings.php:701 cforms-options.php:658
 msgid "RSS Feed Security Key"
 msgstr ""
 
-#: cforms-global-settings.php:700 cforms-options.php:659
+#: cforms-global-settings.php:704 cforms-options.php:661
 msgid "Reset RSS Key"
 msgstr ""
 
-#: cforms-global-settings.php:701 cforms-options.php:660
+#: cforms-global-settings.php:705 cforms-options.php:662
 msgid "The complete RSS URL &raquo;"
 msgstr ""
 
-#: cforms-global-settings.php:709
+#: cforms-global-settings.php:713
 msgid "<strong>Wipe out</strong> all collected data and drop tables."
 msgstr ""
 
-#: cforms-global-settings.php:710
+#: cforms-global-settings.php:714
 msgid "Be careful with this one!"
 msgstr ""
 
-#: cforms-global-settings.php:710
+#: cforms-global-settings.php:714
 msgid "Delete cforms Tracking Tables"
 msgstr ""
 
-#: cforms-global-settings.php:710
+#: cforms-global-settings.php:714
 msgid "Do you really want to erase all collected data?"
 msgstr ""
 
-#: cforms-global-settings.php:719
+#: cforms-global-settings.php:723
 msgid "Backup All cforms Settings"
 msgstr ""
 
-#: cforms-global-settings.php:722
+#: cforms-global-settings.php:726
 msgid ""
 "Individual form configurations can be backup up on the respective form admin "
 "page."
 msgstr ""
 
-#: cforms-global-settings.php:723
+#: cforms-global-settings.php:727
 msgid ""
 "Restoring all settings will overwrite all form settings & global settings!"
 msgstr ""
 
-#: cforms-global-settings.php:725
+#: cforms-global-settings.php:729
 msgid "Backup all settings now!"
 msgstr ""
 
-#: cforms-global-settings.php:726
+#: cforms-global-settings.php:730
 msgid "Restore all settings now!"
 msgstr ""
 
-#: cforms-global-settings.php:726
+#: cforms-global-settings.php:730
 msgid ""
 "With a broken backup file, this action may erase all your settings! Do you "
 "want to continue?"
 msgstr ""
 
-#: cforms-global-settings.php:733
+#: cforms-global-settings.php:737
 msgid "Uninstalling / Removing cforms"
 msgstr ""
 
-#: cforms-global-settings.php:736
+#: cforms-global-settings.php:740
 msgid ""
 "Generally, deactivating this plugin does <strong>not</strong> erase any of "
 "its data, if you like to quit using cforms for good, please erase all data "
 "before deactivating the plugin."
 msgstr ""
 
-#: cforms-global-settings.php:738
+#: cforms-global-settings.php:742
 msgid ""
 "This erases <strong>all</strong> cforms data (form &amp; plugin settings). "
 "<strong>This is irrevocable!</strong> Be careful."
 msgstr ""
 
-#: cforms-global-settings.php:739
+#: cforms-global-settings.php:743
 msgid "Are you sure you want to do this?!"
 msgstr ""
 
-#: cforms-global-settings.php:739
+#: cforms-global-settings.php:743
 msgid "DELETE *ALL* CFORMS DATA"
 msgstr ""
 
-#: cforms-global-settings.php:739
+#: cforms-global-settings.php:743
 msgid "Do you really want to erase all of the plugin config data?"
 msgstr ""
 
-#: cforms-global-settings.php:760
+#: cforms-global-settings.php:764
 msgid "custom files"
 msgstr ""
 
-#: cforms-global-settings.php:782 js\include\installpreset.php:67
+#: cforms-global-settings.php:786 js\include\installpreset.php:67
 msgid "Not available"
 msgstr ""
 
@@ -1121,7 +1121,7 @@ msgstr ""
 
 #: cforms-help.php:83 cforms-help.php:408 cforms-help.php:605
 #: cforms-help.php:893 cforms-help.php:1285 cforms-help.php:1311
-#: cforms-options.php:590 cforms-options.php:711
+#: cforms-options.php:592 cforms-options.php:713
 msgid "Note:"
 msgstr ""
 
@@ -1583,7 +1583,7 @@ msgid ""
 "strong> which reference custom fields of posts or pages."
 msgstr ""
 
-#: cforms-help.php:464 cforms-options.php:339
+#: cforms-help.php:464 cforms-options.php:341
 msgid "Visitor verification (Q&amp;A)"
 msgstr ""
 
@@ -1667,7 +1667,7 @@ msgstr ""
 msgid "Fields:"
 msgstr ""
 
-#: cforms-help.php:561 cforms-help.php:1017 cforms-options.php:344
+#: cforms-help.php:561 cforms-help.php:1017 cforms-options.php:346
 msgid "T-A-F * Your Name"
 msgstr ""
 
@@ -1676,7 +1676,7 @@ msgid "T-A-F * Your Email <em>(make sure it's checked 'Email')</em>"
 msgstr ""
 
 #: cforms-help.php:563 cforms-help.php:1019 cforms-help.php:1020
-#: cforms-options.php:346
+#: cforms-options.php:348
 msgid "T-A-F * Friend's Name"
 msgstr ""
 
@@ -1829,15 +1829,15 @@ msgstr ""
 msgid "Special Fields:"
 msgstr ""
 
-#: cforms-help.php:684 cforms-help.php:1024 cforms-options.php:352
+#: cforms-help.php:684 cforms-help.php:1024 cforms-options.php:354
 msgid "Author's Email"
 msgstr ""
 
-#: cforms-help.php:685 cforms-help.php:1025 cforms-options.php:353
+#: cforms-help.php:685 cforms-help.php:1025 cforms-options.php:355
 msgid "Author's URL"
 msgstr ""
 
-#: cforms-help.php:686 cforms-help.php:1026 cforms-options.php:354
+#: cforms-help.php:686 cforms-help.php:1026 cforms-options.php:356
 msgid "Author's Comment"
 msgstr ""
 
@@ -1860,7 +1860,7 @@ msgstr ""
 msgid "Special Field"
 msgstr ""
 
-#: cforms-help.php:699 cforms-help.php:1027 cforms-options.php:355
+#: cforms-help.php:699 cforms-help.php:1027 cforms-options.php:357
 msgid "Select: Email/Comment"
 msgstr ""
 
@@ -1939,7 +1939,7 @@ msgstr ""
 msgid "Other comment plugins?"
 msgstr ""
 
-#: cforms-help.php:738 cforms-options.php:851
+#: cforms-help.php:738 cforms-options.php:853
 msgid "cforms' WP comment feature supports the following comment plugins:"
 msgstr ""
 
@@ -2306,7 +2306,7 @@ msgstr ""
 msgid "Single input field"
 msgstr ""
 
-#: cforms-help.php:1018 cforms-options.php:345
+#: cforms-help.php:1018 cforms-options.php:347
 msgid "T-A-F * Your Email"
 msgstr ""
 
@@ -2326,7 +2326,7 @@ msgstr ""
 msgid "Date picker field"
 msgstr ""
 
-#: cforms-help.php:1022 cforms-options.php:818
+#: cforms-help.php:1022 cforms-options.php:820
 msgid "WP Comment Feature"
 msgstr ""
 
@@ -2346,7 +2346,7 @@ msgstr ""
 msgid "'CC' check box"
 msgstr ""
 
-#: cforms-help.php:1028 cforms-options.php:358
+#: cforms-help.php:1028 cforms-options.php:360
 msgid "Subscribe To Comments"
 msgstr ""
 
@@ -2354,7 +2354,7 @@ msgstr ""
 msgid "Multi-recipients field"
 msgstr ""
 
-#: cforms-help.php:1029 cforms-options.php:361
+#: cforms-help.php:1029 cforms-options.php:363
 msgid "Comment Luv"
 msgstr ""
 
@@ -2774,35 +2774,35 @@ msgstr ""
 msgid "Go"
 msgstr ""
 
-#: cforms-options.php:188
+#: cforms-options.php:190
 msgid "Navigate to your other forms."
 msgstr ""
 
-#: cforms-options.php:190
+#: cforms-options.php:192
 msgid "adds a new form with default values"
 msgstr ""
 
-#: cforms-options.php:190
+#: cforms-options.php:192
 msgid "Add New Form"
 msgstr ""
 
-#: cforms-options.php:191
+#: cforms-options.php:193
 msgid "clones the current form"
 msgstr ""
 
-#: cforms-options.php:191
+#: cforms-options.php:193
 msgid "Duplicate This Form"
 msgstr ""
 
-#: cforms-options.php:194
+#: cforms-options.php:196
 msgid "This will delete the current form - no warning!"
 msgstr ""
 
-#: cforms-options.php:194
+#: cforms-options.php:196
 msgid "Delete THIS Form(!)"
 msgstr ""
 
-#: cforms-options.php:210
+#: cforms-options.php:212
 #, php-format
 msgid ""
 "<strong>cforms</strong> allows you <a href=\"%s\" %s>to insert</a> one or "
@@ -2811,327 +2811,327 @@ msgid ""
 "feedback in the database."
 msgstr ""
 
-#: cforms-options.php:211
+#: cforms-options.php:213
 #, php-format
 msgid ""
 "<a href=\"%s\" %s>Here</a> is a quick step by step quide to get you up and "
 "running quickly."
 msgstr ""
 
-#: cforms-options.php:223
+#: cforms-options.php:225
 msgid ""
 "You may give each form an optional name to better identify incoming emails."
 msgstr ""
 
-#: cforms-options.php:225
+#: cforms-options.php:227
 msgid "Ajax enabled"
 msgstr ""
 
-#: cforms-options.php:226
+#: cforms-options.php:228
 msgid "Install a form preset"
 msgstr ""
 
-#: cforms-options.php:230
+#: cforms-options.php:232
 #, php-format
 msgid ""
 "Please see the <strong>Help!</strong> section for information on how to "
 "deploy the various <a href=\"%s\" %s>supported fields</a>,"
 msgstr ""
 
-#: cforms-options.php:231
+#: cforms-options.php:233
 #, php-format
 msgid "set up forms using <a href=\"%s\" %s>FIELDSETS</a>,"
 msgstr ""
 
-#: cforms-options.php:232
+#: cforms-options.php:234
 #, php-format
 msgid ""
 "use <a href=\"%s\" %s>default values</a> &amp; <a href=\"%s\" %s>regular "
 "expressions</a> for single &amp; multi-line fields. "
 msgstr ""
 
-#: cforms-options.php:233
+#: cforms-options.php:235
 #, php-format
 msgid ""
 "Besides the generic success &amp; failure messages below, you can add <a "
 "href=\"%s\" %s>custom error messages</a>."
 msgstr ""
 
-#: cforms-options.php:236
+#: cforms-options.php:238
 msgid "Please save the new order of fields (<em>Update Settings</em>)!"
 msgstr ""
 
-#: cforms-options.php:239
+#: cforms-options.php:241
 msgid "No."
 msgstr ""
 
-#: cforms-options.php:240
+#: cforms-options.php:242
 msgid "Can be a simple label or a more complex expression. See Help!"
 msgstr ""
 
-#: cforms-options.php:240
+#: cforms-options.php:242
 msgid "Field Name"
 msgstr ""
 
-#: cforms-options.php:241
+#: cforms-options.php:243
 msgid "Pick one of the supported input field types."
 msgstr ""
 
-#: cforms-options.php:241
+#: cforms-options.php:243
 msgid "Type"
 msgstr ""
 
-#: cforms-options.php:242
+#: cforms-options.php:244
 msgid "Makes an input field required for proper form validation."
 msgstr ""
 
-#: cforms-options.php:242
+#: cforms-options.php:244
 msgid "Required"
 msgstr ""
 
-#: cforms-options.php:243
+#: cforms-options.php:245
 msgid "Makes the field required and verifies the email address."
 msgstr ""
 
-#: cforms-options.php:243
+#: cforms-options.php:245
 msgid "E-Mail"
 msgstr ""
 
-#: cforms-options.php:244
+#: cforms-options.php:246
 msgid "Clears the field (default value) upon focus."
 msgstr ""
 
-#: cforms-options.php:244
+#: cforms-options.php:246
 msgid "Auto Clear"
 msgstr ""
 
-#: cforms-options.php:245
+#: cforms-options.php:247
 msgid "Grey's out a form field (field will be completely disabled)."
 msgstr ""
 
-#: cforms-options.php:245
+#: cforms-options.php:247
 msgid "Disabled"
 msgstr ""
 
-#: cforms-options.php:246
+#: cforms-options.php:248
 msgid "Form field will be readonly!"
 msgstr ""
 
-#: cforms-options.php:246
+#: cforms-options.php:248
 msgid "Read-Only"
 msgstr ""
 
-#: cforms-options.php:277 cforms-options.php:295
+#: cforms-options.php:279 cforms-options.php:297
 msgid "New Field"
 msgstr ""
 
-#: cforms-options.php:316
+#: cforms-options.php:318
 msgid "Drag me"
 msgstr ""
 
-#: cforms-options.php:319
+#: cforms-options.php:321
 msgid "Please enter field definition"
 msgstr ""
 
-#: cforms-options.php:319
+#: cforms-options.php:321
 msgid "edit"
 msgstr ""
 
-#: cforms-options.php:319
+#: cforms-options.php:321
 msgid "Pick a field type"
 msgstr ""
 
-#: cforms-options.php:321
+#: cforms-options.php:323
 msgid "New Fieldset"
 msgstr ""
 
-#: cforms-options.php:322
+#: cforms-options.php:324
 msgid "Text only (no input)"
 msgstr ""
 
-#: cforms-options.php:323
+#: cforms-options.php:325
 msgid "Single line of text"
 msgstr ""
 
-#: cforms-options.php:324
+#: cforms-options.php:326
 msgid "Multiple lines of text"
 msgstr ""
 
-#: cforms-options.php:325
+#: cforms-options.php:327
 msgid "Check Box"
 msgstr ""
 
-#: cforms-options.php:326
+#: cforms-options.php:328
 msgid "Check Box Group"
 msgstr ""
 
-#: cforms-options.php:327
+#: cforms-options.php:329
 msgid "Radio Buttons"
 msgstr ""
 
-#: cforms-options.php:328
+#: cforms-options.php:330
 msgid "Select Box"
 msgstr ""
 
-#: cforms-options.php:329
+#: cforms-options.php:331
 msgid "Multi Select Box"
 msgstr ""
 
-#: cforms-options.php:330
+#: cforms-options.php:332
 msgid "File Upload Box"
 msgstr ""
 
-#: cforms-options.php:331
+#: cforms-options.php:333
 msgid "Date Entry/Dialog"
 msgstr ""
 
-#: cforms-options.php:332
+#: cforms-options.php:334
 msgid "Password Field"
 msgstr ""
 
-#: cforms-options.php:333
+#: cforms-options.php:335
 msgid "Hidden Field"
 msgstr ""
 
-#: cforms-options.php:334
+#: cforms-options.php:336
 msgid "End Fieldset"
 msgstr ""
 
-#: cforms-options.php:336
+#: cforms-options.php:338
 msgid "--------- Special ------------"
 msgstr ""
 
-#: cforms-options.php:337
+#: cforms-options.php:339
 msgid "CC: option for user"
 msgstr ""
 
-#: cforms-options.php:338
+#: cforms-options.php:340
 msgid "Multiple Recipients"
 msgstr ""
 
-#: cforms-options.php:340
+#: cforms-options.php:342
 msgid "Captcha verification (image)"
 msgstr ""
 
-#: cforms-options.php:343
+#: cforms-options.php:345
 msgid "----- T-A-F form fields ------"
 msgstr ""
 
-#: cforms-options.php:347
+#: cforms-options.php:349
 msgid "T-A-F * Friend's Email"
 msgstr ""
 
-#: cforms-options.php:350
+#: cforms-options.php:352
 msgid "--- WP comment form fields ---"
 msgstr ""
 
-#: cforms-options.php:366
+#: cforms-options.php:368
 msgid "Remove input field"
 msgstr ""
 
-#: cforms-options.php:369 cforms-options.php:375 cforms-options.php:381
-#: cforms-options.php:387 cforms-options.php:393
+#: cforms-options.php:371 cforms-options.php:377 cforms-options.php:383
+#: cforms-options.php:389 cforms-options.php:395
 msgid "n/a"
 msgstr ""
 
-#: cforms-options.php:369 cforms-options.php:375 cforms-options.php:381
-#: cforms-options.php:387 cforms-options.php:393
+#: cforms-options.php:371 cforms-options.php:377 cforms-options.php:383
+#: cforms-options.php:389 cforms-options.php:395
 msgid "Not available."
 msgstr ""
 
-#: cforms-options.php:371
+#: cforms-options.php:373
 msgid "input required"
 msgstr ""
 
-#: cforms-options.php:377
+#: cforms-options.php:379
 msgid "email required"
 msgstr ""
 
-#: cforms-options.php:383
+#: cforms-options.php:385
 msgid "clear field"
 msgstr ""
 
-#: cforms-options.php:389
+#: cforms-options.php:391
 msgid "disabled"
 msgstr ""
 
-#: cforms-options.php:395
+#: cforms-options.php:397
 msgid "read-only"
 msgstr ""
 
-#: cforms-options.php:407
+#: cforms-options.php:409
 msgid "Add another input field"
 msgstr ""
 
-#: cforms-options.php:412
+#: cforms-options.php:414
 msgid "Backup This Form"
 msgstr ""
 
-#: cforms-options.php:413
+#: cforms-options.php:415
 msgid " or restore previously saved settings:"
 msgstr ""
 
-#: cforms-options.php:415
+#: cforms-options.php:417
 msgid "Restore Settings"
 msgstr ""
 
-#: cforms-options.php:422
+#: cforms-options.php:424
 msgid "File Upload Settings"
 msgstr ""
 
-#: cforms-options.php:427
+#: cforms-options.php:429
 #, php-format
 msgid ""
 "You may also want to verify the global, file upload specific  <a href=\"%s\" "
 "%s>error messages</a>."
 msgstr ""
 
-#: cforms-options.php:435
+#: cforms-options.php:437
 msgid ""
 "Can't find the specified <strong>Upload Directory</strong> ! Please verify "
 "that it exists!"
 msgstr ""
 
-#: cforms-options.php:440 cforms-options.php:445
+#: cforms-options.php:442 cforms-options.php:447
 msgid "Upload directory"
 msgstr ""
 
-#: cforms-options.php:441
+#: cforms-options.php:443
 msgid "[make sure the dir exists!]"
 msgstr ""
 
-#: cforms-options.php:446
+#: cforms-options.php:448
 msgid "[if outside of ../wp-content/..]"
 msgstr ""
 
-#: cforms-options.php:450
+#: cforms-options.php:452
 msgid "Allowed file extensions"
 msgstr ""
 
-#: cforms-options.php:451
+#: cforms-options.php:453
 msgid "[empty=all files are allowed]"
 msgstr ""
 
-#: cforms-options.php:455
+#: cforms-options.php:457
 msgid "Maximum file size<br />in kilobyte"
 msgstr ""
 
-#: cforms-options.php:460
+#: cforms-options.php:462
 msgid "Do not email attachments"
 msgstr ""
 
-#: cforms-options.php:461
+#: cforms-options.php:463
 #, php-format
 msgid ""
 "<u>Note</u>: Attachments are stored on the server &amp; can be accessed via "
 "the <a href=\"%s\" %s>cforms tracking</a> tables."
 msgstr ""
 
-#: cforms-options.php:469
+#: cforms-options.php:471
 msgid "Messages, Text and Button Label"
 msgstr ""
 
-#: cforms-options.php:472
+#: cforms-options.php:474
 #, php-format
 msgid ""
 "These are the messages displayed to the user on successful (or failed) form "
@@ -3140,77 +3140,77 @@ msgid ""
 "\" %s>here</a>."
 msgstr ""
 
-#: cforms-options.php:476
+#: cforms-options.php:478
 msgid "Submit button text"
 msgstr ""
 
-#: cforms-options.php:481
+#: cforms-options.php:483
 msgid "Waiting message"
 msgstr ""
 
-#: cforms-options.php:485
+#: cforms-options.php:487
 msgid "\"required\" label"
 msgstr ""
 
-#: cforms-options.php:489
+#: cforms-options.php:491
 msgid "\"email required\" label"
 msgstr ""
 
-#: cforms-options.php:494
+#: cforms-options.php:496
 msgid "<strong>Success message</strong><br />when form filled out correctly"
 msgstr ""
 
-#: cforms-options.php:497 cforms-options.php:505
+#: cforms-options.php:499 cforms-options.php:507
 msgid "Opt. Popup Msg"
 msgstr ""
 
-#: cforms-options.php:502
+#: cforms-options.php:504
 msgid ""
 "<strong>Failure message</strong><br />when missing fields or wrong field<br /"
 ">formats (regular expr.)"
 msgstr ""
 
-#: cforms-options.php:509
+#: cforms-options.php:511
 msgid "Show messages"
 msgstr ""
 
-#: cforms-options.php:511
+#: cforms-options.php:513
 msgid "Above form"
 msgstr ""
 
-#: cforms-options.php:512
+#: cforms-options.php:514
 msgid "Below form"
 msgstr ""
 
-#: cforms-options.php:519
+#: cforms-options.php:521
 msgid "Jump to Error"
 msgstr ""
 
-#: cforms-options.php:521
+#: cforms-options.php:523
 msgid "(Only Javascript)"
 msgstr ""
 
-#: cforms-options.php:525
+#: cforms-options.php:527
 msgid "Fancy Error messages"
 msgstr ""
 
-#: cforms-options.php:527
+#: cforms-options.php:529
 msgid "Enhanced display of errors (see also new theme CSS classes)"
 msgstr ""
 
-#: cforms-options.php:531
+#: cforms-options.php:533
 msgid "Embedded Custom Error<br />Messages"
 msgstr ""
 
-#: cforms-options.php:533
+#: cforms-options.php:535
 msgid "Field specific error messages will be shown above input field"
 msgstr ""
 
-#: cforms-options.php:542
+#: cforms-options.php:544
 msgid "Core Form Admin / Email Options"
 msgstr ""
 
-#: cforms-options.php:545
+#: cforms-options.php:547
 #, php-format
 msgid ""
 "These settings determine basic cforms behaviour and the form email recipient"
@@ -3218,7 +3218,7 @@ msgid ""
 "accept the format of choice!"
 msgstr ""
 
-#: cforms-options.php:546
+#: cforms-options.php:548
 msgid ""
 "The default FROM: address is based on your blog's name and the WP default "
 "address. It can be changed, but I highly recommend you do not, as it may "
@@ -3226,19 +3226,19 @@ msgid ""
 "if all admin emails are being sent/received! "
 msgstr ""
 
-#: cforms-options.php:549
+#: cforms-options.php:551
 msgid "FROM: email address"
 msgstr ""
 
-#: cforms-options.php:554
+#: cforms-options.php:556
 msgid "Admin email address(es)"
 msgstr ""
 
-#: cforms-options.php:555
+#: cforms-options.php:557
 msgid "More than one \"<strong>form admin</strong>\"? &raquo;"
 msgstr ""
 
-#: cforms-options.php:557
+#: cforms-options.php:559
 #, php-format
 msgid ""
 "Simply add additional email addresses separated by a <strong style=\"color:"
@@ -3251,35 +3251,35 @@ msgid ""
 "form data will go out to <strong>every address listed</strong>!"
 msgstr ""
 
-#: cforms-options.php:559
+#: cforms-options.php:561
 msgid "BCC"
 msgstr ""
 
-#: cforms-options.php:563
+#: cforms-options.php:565
 msgid "Subject admin email"
 msgstr ""
 
-#: cforms-options.php:564 cforms-options.php:680 cforms-options.php:701
-#: cforms-options.php:726 cforms-options.php:751 cforms-options.php:757
-#: cforms-options.php:768
+#: cforms-options.php:566 cforms-options.php:682 cforms-options.php:703
+#: cforms-options.php:728 cforms-options.php:753 cforms-options.php:759
+#: cforms-options.php:770
 #, php-format
 msgid "<a href=\"%s\" %s>Variables</a> allowed."
 msgstr ""
 
-#: cforms-options.php:570
+#: cforms-options.php:572
 msgid "Include in <strong>last 5 entries shown</strong> on the dashboard."
 msgstr ""
 
-#: cforms-options.php:577
+#: cforms-options.php:579
 msgid "Use custom input<br />field NAMES &amp; ID's"
 msgstr ""
 
-#: cforms-options.php:578 cforms-options.php:585 cforms-options.php:637
-#: cforms-options.php:743 cforms-options.php:806
+#: cforms-options.php:580 cforms-options.php:587 cforms-options.php:639
+#: cforms-options.php:745 cforms-options.php:808
 msgid "Please read note &raquo;"
 msgstr ""
 
-#: cforms-options.php:581
+#: cforms-options.php:583
 msgid ""
 "This feature replaces the default NAMEs/IDs (e.g. <strong>cf_field_12</"
 "strong>) with <em>custom ones</em>, either derived from the field label you "
@@ -3289,11 +3289,11 @@ msgid ""
 "$_POST variable)."
 msgstr ""
 
-#: cforms-options.php:584
+#: cforms-options.php:586
 msgid "Extra variables<br />e.g. {Title}"
 msgstr ""
 
-#: cforms-options.php:589
+#: cforms-options.php:591
 #, php-format
 msgid ""
 "There a <a href=\"%s\" %s>three additional</a>, <em>predefined variables</"
@@ -3301,63 +3301,63 @@ msgid ""
 "actually turning on T-A-F."
 msgstr ""
 
-#: cforms-options.php:590
+#: cforms-options.php:592
 msgid ""
 "This will add two more hidden fields to your form to ensure that all data is "
 "available also in AJAX mode."
 msgstr ""
 
-#: cforms-options.php:596
+#: cforms-options.php:598
 msgid "Limit"
 msgstr ""
 
-#: cforms-options.php:597
+#: cforms-options.php:599
 msgid ""
 "<u>total</u> # of form submissions accepted [<strong>empty = no limit</"
 "strong>] (tracking must be enabled!)"
 msgstr ""
 
-#: cforms-options.php:603
+#: cforms-options.php:605
 msgid "Limit text"
 msgstr ""
 
-#: cforms-options.php:613
+#: cforms-options.php:615
 msgid "<strong>Redirect</strong><br />options:"
 msgstr ""
 
-#: cforms-options.php:615
+#: cforms-options.php:617
 msgid "Disabled (default setting)"
 msgstr ""
 
-#: cforms-options.php:616
+#: cforms-options.php:618
 msgid "Hide form after successful submission"
 msgstr ""
 
-#: cforms-options.php:617
+#: cforms-options.php:619
 msgid "Enable alternative success page (redirect)"
 msgstr ""
 
-#: cforms-options.php:625
+#: cforms-options.php:627
 msgid "Don't reset fields"
 msgstr ""
 
-#: cforms-options.php:627
+#: cforms-options.php:629
 msgid "Re-display user input after form submission."
 msgstr ""
 
-#: cforms-options.php:627
+#: cforms-options.php:629
 msgid "(currently not available for Ajax submissions)"
 msgstr ""
 
-#: cforms-options.php:634
+#: cforms-options.php:636
 msgid "<strong>Send form data</strong><br /> to an alternative page:"
 msgstr ""
 
-#: cforms-options.php:636
+#: cforms-options.php:638
 msgid "Enable alternative form action!"
 msgstr ""
 
-#: cforms-options.php:641
+#: cforms-options.php:643
 msgid ""
 "If you enable an alternative <strong>form action</strong> you <u>will loose "
 "any cforms application logic</u> (spam security, field validation, DB "
@@ -3366,26 +3366,26 @@ msgid ""
 "turn cforms into a front-end only, a \"form builder\" so to speak."
 msgstr ""
 
-#: cforms-options.php:646
+#: cforms-options.php:648
 msgid "Enable RSS"
 msgstr ""
 
-#: cforms-options.php:647
+#: cforms-options.php:649
 msgid "Enables an RSS feed to track new submissions."
 msgstr ""
 
-#: cforms-options.php:670
+#: cforms-options.php:672
 msgid "Admin Email Message Options"
 msgstr ""
 
-#: cforms-options.php:673
+#: cforms-options.php:675
 msgid ""
 "Generally, emails sent to the admin and the submitting user can be both in "
 "plain text and HTML. The TXT part <strong>is required</strong>, HTML is "
 "<strong>optional</strong>."
 msgstr ""
 
-#: cforms-options.php:674
+#: cforms-options.php:676
 #, php-format
 msgid ""
 "Below you'll find the settings for both the <strong>TXT part</strong> of the "
@@ -3396,42 +3396,42 @@ msgid ""
 "message examples!)."
 msgstr ""
 
-#: cforms-options.php:677
+#: cforms-options.php:679
 msgid "<strong>Admin TEXT message</strong><br />(Header)"
 msgstr ""
 
-#: cforms-options.php:684 cforms-options.php:705
+#: cforms-options.php:686 cforms-options.php:707
 msgid "(Footer)"
 msgstr ""
 
-#: cforms-options.php:685
+#: cforms-options.php:687
 msgid "<strong>Include</strong>  user input at the bottom of the admin email"
 msgstr ""
 
-#: cforms-options.php:689
+#: cforms-options.php:691
 msgid ""
 "(# characters) : spacing between labels &amp; data, for plain txt version "
 "only"
 msgstr ""
 
-#: cforms-options.php:693 cforms-options.php:761
+#: cforms-options.php:695 cforms-options.php:763
 msgid "Enable HTML"
 msgstr ""
 
-#: cforms-options.php:698
+#: cforms-options.php:700
 msgid "<strong>Admin HTML message</strong><br />(Header)"
 msgstr ""
 
-#: cforms-options.php:707
+#: cforms-options.php:709
 msgid "<strong>Include</strong> user input at the bottom of the admin email"
 msgstr ""
 
-#: cforms-options.php:709
+#: cforms-options.php:711
 msgid ""
 "'Don't like the default (blue) form data block in your admin email?  &raquo;"
 msgstr ""
 
-#: cforms-options.php:711
+#: cforms-options.php:713
 msgid ""
 "To avoid sending ALL of the submitted user data (especially for very long "
 "forms) to the form admin simply <strong>uncheck</strong> \"<em>Include user "
@@ -3439,26 +3439,26 @@ msgid ""
 "the use of <strong>custom variables</strong>."
 msgstr ""
 
-#: cforms-options.php:719
+#: cforms-options.php:721
 msgid "CC Settings"
 msgstr ""
 
-#: cforms-options.php:722
+#: cforms-options.php:724
 msgid ""
 "This is the subject of the CC email that goes out the user submitting the "
 "form and as such requires the <strong>CC:</strong> field in your form "
 "definition above."
 msgstr ""
 
-#: cforms-options.php:725
+#: cforms-options.php:727
 msgid "Subject CC"
 msgstr ""
 
-#: cforms-options.php:734
+#: cforms-options.php:736
 msgid "Auto Confirmation"
 msgstr ""
 
-#: cforms-options.php:737
+#: cforms-options.php:739
 msgid ""
 "These settings apply to an auto response/confirmation sent to the visitor. "
 "If enabled AND your form contains a \"<code>CC me</code>\" field "
@@ -3466,11 +3466,11 @@ msgid ""
 "sent!"
 msgstr ""
 
-#: cforms-options.php:742
+#: cforms-options.php:744
 msgid "Activate auto confirmation"
 msgstr ""
 
-#: cforms-options.php:745
+#: cforms-options.php:747
 msgid ""
 "For the <em>auto confirmation</em> feature to work, make sure to mark at "
 "least one field <code>Email</code>, otherwise <strong>NO</strong> auto "
@@ -3478,81 +3478,81 @@ msgid ""
 "\", only the first in the list will receive a notification."
 msgstr ""
 
-#: cforms-options.php:750
+#: cforms-options.php:752
 msgid "Subject auto confirmation"
 msgstr ""
 
-#: cforms-options.php:754
+#: cforms-options.php:756
 msgid "TEXT message"
 msgstr ""
 
-#: cforms-options.php:765
+#: cforms-options.php:767
 msgid "HTML message"
 msgstr ""
 
-#: cforms-options.php:778
+#: cforms-options.php:780
 msgid "Tell-A-Friend Form Support"
 msgstr ""
 
-#: cforms-options.php:778
+#: cforms-options.php:780
 #, php-format
 msgid ""
 "BEFORE turning on this feature, please see the Help section for <a href=\"%s"
 "\" %s>more details.</a>"
 msgstr ""
 
-#: cforms-options.php:783
+#: cforms-options.php:785
 msgid "posts and pages processed and tell-a-friend <strong>enabled</strong>."
 msgstr ""
 
-#: cforms-options.php:785
+#: cforms-options.php:787
 msgid ""
 "All posts &amp; pages processed and tell-a-friend <strong>disabled</strong>."
 msgstr ""
 
-#: cforms-options.php:788
+#: cforms-options.php:790
 msgid ""
 "If enabled, new field types will be made available to cover tell-a-friend "
 "requirements."
 msgstr ""
 
-#: cforms-options.php:792
+#: cforms-options.php:794
 msgid "Enable Tell-A-Friend"
 msgstr ""
 
-#: cforms-options.php:798
+#: cforms-options.php:800
 msgid "T-A-F enable <strong>new posts/pages</strong> by default"
 msgstr ""
 
-#: cforms-options.php:802
+#: cforms-options.php:804
 msgid "<strong>Batch T-A-F dis-/enable</strong><br />all your previous posts."
 msgstr ""
 
-#: cforms-options.php:804
+#: cforms-options.php:806
 msgid "This will add a T-A-F custom field per post/page."
 msgstr ""
 
-#: cforms-options.php:804
+#: cforms-options.php:806
 msgid "Enable all"
 msgstr ""
 
-#: cforms-options.php:804
+#: cforms-options.php:806
 msgid "Do you really want to enable all previous posts and pages for T-A-F?"
 msgstr ""
 
-#: cforms-options.php:805
+#: cforms-options.php:807
 msgid "This will remove the T-A-F custom field on all posts/pages."
 msgstr ""
 
-#: cforms-options.php:805
+#: cforms-options.php:807
 msgid "Disable all"
 msgstr ""
 
-#: cforms-options.php:805
+#: cforms-options.php:807
 msgid "Do you really want to disable all previous posts and pages for T-A-F?"
 msgstr ""
 
-#: cforms-options.php:808
+#: cforms-options.php:810
 msgid ""
 "You will find a <strong>cforms Tell-A-Friend</strong> checkbox on your "
 "<strong>admin/edit page</strong> (typically under \"Post/Author\")! <br /"
@@ -3560,7 +3560,7 @@ msgid ""
 "page."
 msgstr ""
 
-#: cforms-options.php:822
+#: cforms-options.php:824
 msgid ""
 "cforms can be used to replace your <em>default Wordpress comment form</em> "
 "(on posts &amp; pages), allowing your readers to either <strong>comment on "
@@ -3568,7 +3568,7 @@ msgid ""
 "strong>!"
 msgstr ""
 
-#: cforms-options.php:823
+#: cforms-options.php:825
 #, php-format
 msgid ""
 "There will be additional, comment specific <em>input field types</em> "
@@ -3576,28 +3576,28 @@ msgid ""
 "comment form preset</em>. <a href=\"%s\" %s>Configuration details.</a>"
 msgstr ""
 
-#: cforms-options.php:826
+#: cforms-options.php:828
 msgid "WP comment form"
 msgstr ""
 
-#: cforms-options.php:827
+#: cforms-options.php:829
 msgid ""
 "Enable this form to optionally (user determined) act as a WP comment form"
 msgstr ""
 
-#: cforms-options.php:830
+#: cforms-options.php:832
 msgid "Comment notification"
 msgstr ""
 
-#: cforms-options.php:831
+#: cforms-options.php:833
 msgid "Extra comment notification (check your autoresponder setting, too!)"
 msgstr ""
 
-#: cforms-options.php:834
+#: cforms-options.php:836
 msgid "<em>Tell a friend</em> or <em>WP comment</em>? &raquo;"
 msgstr ""
 
-#: cforms-options.php:837
+#: cforms-options.php:839
 #, php-format
 msgid ""
 "This feature and T-A-F (above) are mutually exclusive. If you need both "
@@ -3605,11 +3605,11 @@ msgid ""
 "s\" %s>help section</a> on proper use."
 msgstr ""
 
-#: cforms-options.php:840
+#: cforms-options.php:842
 msgid "Important additional configuration requirements &raquo;"
 msgstr ""
 
-#: cforms-options.php:843
+#: cforms-options.php:845
 #, php-format
 msgid ""
 "Please see the extended <a href=\"%s\" %s>WP comment options under "
@@ -3619,50 +3619,50 @@ msgid ""
 "want to thank the user for his/her comment ;-) !"
 msgstr ""
 
-#: cforms-options.php:858
+#: cforms-options.php:860
 msgid "3rd Party Read-Notification Support"
 msgstr ""
 
-#: cforms-options.php:861
+#: cforms-options.php:863
 #, php-format
 msgid ""
 "If you'd like to utilize 3rd party email tracking such as %s or %s, add the "
 "respective suffix (e.g.: %s) here:"
 msgstr ""
 
-#: cforms-options.php:864
+#: cforms-options.php:866
 msgid "Suffix for email tracking"
 msgstr ""
 
-#: cforms-options.php:883
+#: cforms-options.php:885
 msgid "Input Field Settings"
 msgstr ""
 
-#: cforms-options.php:890
+#: cforms-options.php:892
 msgid "cforms out-of-the-box-form repository"
 msgstr ""
 
-#: cforms.php:507
+#: cforms.php:499
 msgid "reset captcha image"
 msgstr ""
 
-#: cforms.php:1082 cforms.php:1088
+#: cforms.php:1074 cforms.php:1080
 msgid "cforms Tell-A-Friend"
 msgstr ""
 
-#: cforms.php:1093
+#: cforms.php:1085
 msgid "T-A-F enable this post/page"
 msgstr ""
 
-#: cforms.php:1138
+#: cforms.php:1130
 msgid "Add cforms default form"
 msgstr ""
 
-#: cforms.php:1138
+#: cforms.php:1130
 msgid "Add form"
 msgstr ""
 
-#: cforms.php:1193
+#: cforms.php:1185
 msgid "Latest version available:"
 msgstr ""
 
@@ -3876,18 +3876,31 @@ msgstr ""
 msgid "Help!"
 msgstr ""
 
-#: lib_functions.php:163
+#: lib_functions.php:155
+msgid ""
+"It appears that cforms was not able to create <strong>abspath.php</strong> "
+"in your cforms plugin folder. Please check file/folder permissions and "
+"<strong>re-activate</strong> cforms."
+msgstr ""
+
+#: lib_functions.php:157
+msgid ""
+"If the problem persists, please create abspath.php manually with the "
+"following content:"
+msgstr ""
+
+#: lib_functions.php:176
 #, php-format
 msgid "For more information and support, visit the %s support forum %s. "
 msgstr ""
 
-#: lib_functions.php:164
+#: lib_functions.php:177
 msgid ""
 "Translation provided by Oliver Seidel, for updates <a href=\"http://"
 "deliciousdays.com/cforms-plugin\">check here.</a>"
 msgstr ""
 
-#: lib_functions.php:180
+#: lib_functions.php:193
 msgid ""
 "In case disabling/enabling doesn't seem to properly set the plugin defaults, "
 "try login out and back in and <strong>don't select the checkbox for "
