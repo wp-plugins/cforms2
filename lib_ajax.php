@@ -7,7 +7,7 @@
 if ( file_exists('abspath.php') )
 	include_once('abspath.php');
 else
-	$abspath='../../../../../';
+	$abspath='../../../';
 
 if ( file_exists( $abspath . 'wp-load.php') )
 	require_once( $abspath . 'wp-load.php' );
