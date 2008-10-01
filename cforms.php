@@ -21,6 +21,7 @@ and then migrate your settings (cforms will guide you!)
 *) bugfix: a couple of custom variables were broken, e.g. {Form Name}
 *) bugfix: fixed lib_WPcomment path issues
 *) bugfix: fixed include path in lib_ajax.php
+*) bugfix: now migrates successfully forms 10-... from pre v9 versions
 *) other: added warning message in case abspath.php could not be created
 *) other: made some missing text translatable
 
