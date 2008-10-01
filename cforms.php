@@ -55,6 +55,7 @@ function start_cforms_session() {
 
 
 ### do a couple of things necessary as part of plugin activation
+$dummy = __('Please go to the <a href="%s">cforms admin page</a> and run the update process.', 'cforms');
 add_action('admin_notices', create_function('', 'global $plugindir, $cformsSettings; if ($cformsSettings[\'global\'][\'update\']) echo \'<div class="error"><p><strong>\' . sprintf( __(\'Please go to the <a href="%s">cforms admin page</a> and run the update process.\', \'cforms\') ,\'admin.php?page=\'.$plugindir.\'/cforms-global-settings.php\') . \'</strong></p></div>\';') );
 register_activation_hook( __FILE__, 'cforms_activate' );
 function cforms_activate() {
