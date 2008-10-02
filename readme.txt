@@ -26,6 +26,7 @@ For *WHAT'S NEW* and a complete [version history](http://www.deliciousdays.com/c
 
 = Localization =
 
+* ** NEW: Bahasa Indonesia** \* Author: [Hendry Lee](http://blogbuildingu.com/wordpress-cforms-id)
 * **Chinese, Simplified** \* Author: [Winnie Law (Liu Dongyan)](http://www.translateforyou.cn/cforms-translation/)
 * **Danish** \* Author: [Mads Christian Jensen](http://mads.eu/wp-plugins#cforms)
 * **Dutch** \* Author: [Anja](http://www.werkgroepen.net/wordpress25/vertaald-cforms-ii/)
