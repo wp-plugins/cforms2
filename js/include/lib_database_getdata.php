@@ -22,12 +22,6 @@ $wpdb->cformsdata       	= $wpdb->prefix . 'cformsdata';
 ### new global settings container, will eventually be the only one!
 $cformsSettings = get_option('cforms_settings');
 
-function countRec() {
-	global $wpdb, $where, $sort, $limit;
-	$sql = "SELECT count(id) FROM {$wpdb->cformssubmissions} $where $sort $limit";
-	return $wpdb->get_var($sql);
-}
-
 $page = $_POST['page'];
 $rp = $_POST['rp'];
 $sortname = $_POST['sortname'];
@@ -81,9 +75,11 @@ for ($i=1; $i <= $cformsSettings['global']['cforms_formcount']; $i++){
 }
 
 
-$total = countRec();
+### total count
+$sql = "SELECT count(id) FROM {$wpdb->cformssubmissions} $where";
+$total = $wpdb->get_var($sql);
 
-
+### get results
 $sql="SELECT * FROM {$wpdb->cformssubmissions} $where $sort $limit";
 $result = $wpdb->get_results($sql);
 
