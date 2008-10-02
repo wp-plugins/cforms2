@@ -41,7 +41,8 @@ For *WHAT'S NEW* and a complete [version history](http://www.deliciousdays.com/c
 * **Russian** \* Author: [Sofia Panchenko](http://www.sonika.ru/blog/wordpress/cforms-rus.htm)
 * **Spanish** \* Author: [Samuel Aguilera](http://agamum.net/blog/archivo/plugin-cforms-en-espanol-formularios-para-tu-wordpress.xhtml)
 * **Turkish** \* Author: [Resat Diker](http://weblog.resatdiker.com/cforms)
-* **NEW: Ukrainian ** \* Author: [Stas Mykhajlyuk](http://kosivart.if.ua/2008/10/02/471/)
+* **NEW: Ukrainian** \* Author: [Stas Mykhajlyuk](http://kosivart.if.ua/2008/10/02/471/)
+
 
 == Installation ==
 
