@@ -16,7 +16,7 @@ cforms is a highly customizable, flexible and powerful form builder plugin, cove
 
 v9.0 introduces a completely new method of storing its settings,
 
-	\*\*\*\*\* please make a WP database backup first (!) \*\*\*\*\*
+	please make a WP database backup first (!)
 
 and then migrate your settings (cforms will guide you!)
 
