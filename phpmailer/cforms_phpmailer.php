@@ -105,10 +105,13 @@ function cforms_phpmailer( $no, $frommail, $field_email, $to, $vsubject, $messag
 								 "ppt"=>"application/vnd.ms-powerpoint", "ppj"=>"application/vnd.ms-project", "xls"=>"application/vnd.ms-excel",
 								 "doc"=>"application/msword");
 
+	            $temp = explode( '$#$',stripslashes(htmlspecialchars($cformsSettings['form'.$no]['cforms'.$no.'_upload_dir'])) );
+	            $fileuploaddir = $temp[0];
+
 				for ( $filefield=0; $filefield < count($_FILES['cf_uploadfile'.$no][name]); $filefield++) {
 					if ( $_FILES['cf_uploadfile'.$no]['size'][$filefield] > 0 ){
 						$mime = (!$all_mime[$fileext[$filefield]])?'application/octet-stream':$all_mime[$fileext[$filefield]];
-						$mail->AddAttachment($_FILES['cf_uploadfile'.$no]['tmp_name'][$filefield], $_FILES['cf_uploadfile'.$no]['name'][$filefield],'base64',$mime); // optional name
+						$mail->AddAttachment($fileuploaddir.'/'.$subID.'-'.str_replace(' ','_',$_FILES['cf_uploadfile'.$no]['name'][$filefield]), $_FILES['cf_uploadfile'.$no]['name'][$filefield],'base64',$mime); // optional name
 					}
 
 				}
