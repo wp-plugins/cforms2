@@ -186,7 +186,7 @@ function cforms($args = '',$no = '') {
 	else if( substr($cformsSettings['form'.$no]['cforms'.$no.'_tellafriend'],0,1)=='2' )
 		$action = $cforms_root . '/lib_WPcomment.php'; ### re-route and use WP comment processing
  	else
-		$action = get_current_page(true) . '#usermessage'. $no . $actiontarget;
+		$action = get_current_page(false) . '#usermessage'. $no . $actiontarget;
 
 	$content .= $ntt . '<form enctype="multipart/form-data" action="' . $action . '" method="post" class="cform" id="cforms'.$no.'form">' . $nl;
 
