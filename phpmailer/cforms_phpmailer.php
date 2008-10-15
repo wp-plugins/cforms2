@@ -111,7 +111,7 @@ function cforms_phpmailer( $no, $frommail, $field_email, $to, $vsubject, $messag
 				for ( $filefield=0; $filefield < count($_FILES['cf_uploadfile'.$no][name]); $filefield++) {
 					if ( $_FILES['cf_uploadfile'.$no]['size'][$filefield] > 0 ){
 						$mime = (!$all_mime[$fileext[$filefield]])?'application/octet-stream':$all_mime[$fileext[$filefield]];
-						$mail->AddAttachment($fileuploaddir.'/'.$subID.'-'.str_replace(' ','_',$_FILES['cf_uploadfile'.$no]['name'][$filefield]), $_FILES['cf_uploadfile'.$no]['name'][$filefield],'base64',$mime); // optional name
+						$mail->AddAttachment($_FILES['cf_uploadfile'.$no]['tmp_name'][$filefield], $_FILES['cf_uploadfile'.$no]['name'][$filefield],'base64',$mime); // optional name
 					}
 
 				}

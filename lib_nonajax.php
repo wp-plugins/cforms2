@@ -293,21 +293,6 @@ if( isset($_POST['sendbutton'.$no]) && $all_valid ) {
 	$subID = ( substr($cformsSettings['form'.$no]['cforms'.$no.'_tellafriend'],0,1)=='2' && !$send2author )?'noid':write_tracking_record($no,$field_email);
 
 	//
-	// Files uploaded??
-	//
-	$filefield=0;
-    $temp = explode( '$#$',stripslashes(htmlspecialchars($cformsSettings['form'.$no]['cforms'.$no.'_upload_dir'])) );
-    $fileuploaddir = $temp[0];
-	if ( isset($_FILES['cf_uploadfile'.$no]) ) {
-		foreach( $_FILES['cf_uploadfile'.$no][tmp_name] as $tmpfile ) {
-            //copy attachment to local server dir
-            if ( is_uploaded_file($tmpfile) )
-            	move_uploaded_file($tmpfile,$fileuploaddir.'/'.$subID.'-'.str_replace(' ','_',$file['name'][$filefield]) );
-        	$filefield++;
-		}
-	}
-
-	//
 	// allow the user to use form data for other apps
 	//
 	$trackf['id'] = $no;
@@ -573,6 +558,23 @@ if( isset($_POST['sendbutton'.$no]) && $all_valid ) {
   	} // if first email already failed
 	else
 		$usermessage_text = __('Error occurred while sending the message: ','cforms') . '<br />'. $smtpsettings[0]?'<br />'.$sentadmin:'';
+
+
+	//
+	// Files uploaded??
+	//
+	$filefield=0;
+    $temp = explode( '$#$',stripslashes(htmlspecialchars($cformsSettings['form'.$no]['cforms'.$no.'_upload_dir'])) );
+    $fileuploaddir = $temp[0];
+
+	if ( isset($_FILES['cf_uploadfile'.$no]) ) {
+		foreach( $_FILES['cf_uploadfile'.$no][tmp_name] as $tmpfile ) {
+            //copy attachment to local server dir
+            if ( is_uploaded_file($tmpfile) )
+            	move_uploaded_file($tmpfile,$fileuploaddir.'/'.$subID.'-'.str_replace(' ','_',$_FILES['cf_uploadfile'.$no]['name'][$filefield]) );
+        	$filefield++;
+		}
+	}
 
 } //if isset & valid sendbutton
 
