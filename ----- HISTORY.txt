@@ -16,6 +16,7 @@ and then migrate your settings (cforms will guide you!)
 	for now only page redirection is being supported, more to come in the future
 *) feature: revamped the code driving the deletion of forms (allowing also allowing the first form to be deleted)
 
+*) bugfix: PHPMailer support for attachments (couldn't attach files to email)
 *) bugfix: "Cannot use string offset as an array in lib_aux.php on line 12"
 *) bugfix: minor bug in rendering nonAjax action path in form tag
 *) bugfix: fixed paging on the tracking page
