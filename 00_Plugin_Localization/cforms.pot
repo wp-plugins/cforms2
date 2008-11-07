@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-10-15 18:19+0200\n"
+"POT-Creation-Date: 2008-10-21 09:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3678,34 +3678,34 @@ msgstr ""
 msgid "cforms out-of-the-box-form repository"
 msgstr ""
 
-#: cforms.php:73
+#: cforms.php:74
 #, php-format
 msgid ""
 "Please go to the <a href=\"%s\">cforms admin page</a> and run the update "
 "process."
 msgstr ""
 
-#: cforms.php:499
+#: cforms.php:500
 msgid "reset captcha image"
 msgstr ""
 
-#: cforms.php:1074 cforms.php:1080
+#: cforms.php:1075 cforms.php:1081
 msgid "cforms Tell-A-Friend"
 msgstr ""
 
-#: cforms.php:1085
+#: cforms.php:1086
 msgid "T-A-F enable this post/page"
 msgstr ""
 
-#: cforms.php:1130
+#: cforms.php:1131
 msgid "Add cforms default form"
 msgstr ""
 
-#: cforms.php:1130
+#: cforms.php:1131
 msgid "Add form"
 msgstr ""
 
-#: cforms.php:1186
+#: cforms.php:1187
 msgid "Latest version available:"
 msgstr ""
 
@@ -3863,11 +3863,11 @@ msgstr ""
 msgid "Q&A"
 msgstr ""
 
-#: lib_ajax.php:587 lib_nonajax.php:556
+#: lib_ajax.php:587 lib_nonajax.php:541
 msgid "Error occurred while sending the auto confirmation message: "
 msgstr ""
 
-#: lib_ajax.php:618 lib_nonajax.php:575
+#: lib_ajax.php:618 lib_nonajax.php:560
 msgid "Error occurred while sending the message: "
 msgstr ""
 
