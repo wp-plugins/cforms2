@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2008-11-06 23:04+0100\n"
+"POT-Creation-Date: 2008-11-07 18:42+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,38 +25,38 @@ msgstr ""
 msgid "Please deactivate and then re-activate the cforms plugin now."
 msgstr ""
 
-#: cforms-corrupted.php:50
+#: cforms-corrupted.php:51
 msgid ""
 "It appears that WP has corrupted your cforms settings, the settings array "
 "can not be read properly."
 msgstr ""
 
-#: cforms-corrupted.php:61
+#: cforms-corrupted.php:62
 msgid "Corrupted cforms settings detected"
 msgstr ""
 
-#: cforms-corrupted.php:62
+#: cforms-corrupted.php:63
 msgid ""
 "You can either try and fix the settings array or reset it and start from "
 "scratch."
 msgstr ""
 
-#: cforms-corrupted.php:62
+#: cforms-corrupted.php:63
 msgid "RESET"
 msgstr ""
 
-#: cforms-corrupted.php:65
+#: cforms-corrupted.php:66
 msgid "Corrupted cforms settings array (raw code)"
 msgstr ""
 
-#: cforms-corrupted.php:66
+#: cforms-corrupted.php:67
 msgid ""
 "Depending on your Wordpress/PHP skills you may want to try and fix the "
 "serialized data below, then hit the fix button or try just like that, cforms "
 "may magically fix it for you."
 msgstr ""
 
-#: cforms-corrupted.php:68
+#: cforms-corrupted.php:69
 msgid "FIX and save data"
 msgstr ""
 
@@ -3391,7 +3391,7 @@ msgstr ""
 
 #: cforms-options.php:599
 msgid ""
-"<u>total</u> # of form submissions accepted [<strong>empty = no limit</"
+"<u>total</u> # of submissions accepted [<strong>empty or 0 (zero) = off</"
 "strong>] (tracking must be enabled!)"
 msgstr ""
 
@@ -4052,7 +4052,11 @@ msgstr ""
 msgid "Form deleted"
 msgstr ""
 
-#: lib_options_dup.php:17
+#: lib_options_dup.php:15
+msgid "copy of form #"
+msgstr ""
+
+#: lib_options_dup.php:20
 msgid "The form has been duplicated, you're now working on the copy."
 msgstr ""
 
