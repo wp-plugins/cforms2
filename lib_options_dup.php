@@ -11,7 +11,10 @@
 	### new settings container
 	foreach( array_keys($cformsSettings['form'.$no]) as $k ){
 		$tmp = preg_match('/cforms\d*_(.*)/',$k, $kk);
-		$cformsSettings['form'.$FORMCOUNT]['cforms'.$FORMCOUNT.'_'.$kk[1]] = $cformsSettings['form'.$no][$k];
+        if( strpos($k,'_fname')!==false )
+			$cformsSettings['form'.$FORMCOUNT]['cforms'.$FORMCOUNT.'_'.$kk[1]] = $cformsSettings['form'.$no][$k].' ('.__('duplicate of form #', 'cforms').$no.')';
+		else
+			$cformsSettings['form'.$FORMCOUNT]['cforms'.$FORMCOUNT.'_'.$kk[1]] = $cformsSettings['form'.$no][$k];
 	}
 
     echo '<div id="message" class="updated fade"><p>'.__('The form has been duplicated, you\'re now working on the copy.', 'cforms').'</p></div>';
