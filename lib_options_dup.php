@@ -12,7 +12,7 @@
 	foreach( array_keys($cformsSettings['form'.$no]) as $k ){
 		$tmp = preg_match('/cforms\d*_(.*)/',$k, $kk);
         if( strpos($k,'_fname')!==false )
-			$cformsSettings['form'.$FORMCOUNT]['cforms'.$FORMCOUNT.'_'.$kk[1]] = $cformsSettings['form'.$no][$k].' ('.__('duplicate of form #', 'cforms').($no=''?'1':$no).')';
+			$cformsSettings['form'.$FORMCOUNT]['cforms'.$FORMCOUNT.'_'.$kk[1]] = $cformsSettings['form'.$no][$k].' ('.__('copy of form #', 'cforms').($no==''?'1':$no).')';
 		else
 			$cformsSettings['form'.$FORMCOUNT]['cforms'.$FORMCOUNT.'_'.$kk[1]] = $cformsSettings['form'.$no][$k];
 	}
