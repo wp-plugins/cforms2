@@ -596,7 +596,7 @@ abspath_check();
 
 				<div class="optionsbox">
 					<div class="optionsboxL"><strong><?php _e('Limit', 'cforms'); ?></strong></div>
-					<div class="optionsboxR"><input type="text" id="cforms_maxentries" name="cforms_maxentries" value="<?php echo stripslashes(htmlspecialchars($cformsSettings['form'.$no]['cforms'.$no.'_maxentries'])); ?>"/><label for="cforms_maxentries"><?php _e('<u>total</u> # of form submissions accepted [<strong>empty = no limit</strong>] (tracking must be enabled!)', 'cforms') ?></label></div>
+					<div class="optionsboxR"><input type="text" id="cforms_maxentries" name="cforms_maxentries" value="<?php echo stripslashes(htmlspecialchars($cformsSettings['form'.$no]['cforms'.$no.'_maxentries'])); ?>"/><label for="cforms_maxentries"><?php _e('<u>total</u> # of form submissions accepted [<strong>empty or 0 (zero) = no limit</strong>] (tracking must be enabled!)', 'cforms') ?></label></div>
 				</div>
 
 				<div class="optionsbox">
