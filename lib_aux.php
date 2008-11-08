@@ -321,7 +321,7 @@ function get_cforms_entries($fname=false,$from=false,$to=false,$sort=false,$limi
 	$where = 'sub_id IN ('.substr($in,0,-1).')';
     $sql = "SELECT * FROM {$wpdb->cformsdata} WHERE $where";
 	$all = $wpdb->get_results($sql);
-    echo $sql."<br>";
+    //echo $sql."<br>";
 	foreach ( $all as $d )
     	$data[$d->sub_id]['data'][$d->field_name] = $d->field_val;
 
