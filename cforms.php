@@ -47,6 +47,8 @@ $wpdb->cformsdata       	= $wpdb->prefix . 'cformsdata';
 if( !class_exists('buttonsnap') )
 	require_once (dirname(__FILE__) . '/buttonsnap.php');
 
+require_once(dirname(__FILE__) . '/lib_functions.php');
+
 ### new global settings container, will eventually be the only one!
 global $cformsSettings;
 $cformsSettings = get_option('cforms_settings');
@@ -57,6 +59,7 @@ $dummy = __('Please go to the <a href="%s">cforms admin page</a> and run the upd
 add_action('admin_notices', create_function('', 'global $plugindir, $cformsSettings; if (is_array($cformsSettings) && $cformsSettings[\'global\'][\'update\']) echo \'<div class="error"><p><strong>\' . sprintf( __(\'Please go to the <a href="%s">cforms admin page</a> and run the update process.\', \'cforms\') ,\'admin.php?page=\'.$plugindir.\'/cforms-global-settings.php\') . \'</strong></p></div>\';') );
 register_activation_hook( __FILE__, 'cforms_activate' );
 function cforms_activate() {
+	cforms_init();
 	require_once(dirname(__FILE__) . '/lib_activate.php');
 }
 
@@ -1245,7 +1248,6 @@ if (function_exists('add_action')){
 	### other admin stuff
 	if ( $admin ) {
 		require_once(dirname(__FILE__) . '/lib_functions.php');
-		add_action('activate_cforms/cforms.php', 'cforms_init');
 		add_action('admin_menu', 'cforms_menu');
 	}
 
