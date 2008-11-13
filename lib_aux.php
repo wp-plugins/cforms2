@@ -307,7 +307,7 @@ function get_cforms_entries($fname=false,$from=false,$to=false,$sort=false,$limi
     $in = '';
     $sql = "SELECT * FROM {$wpdb->cformssubmissions} $where $sort $limit";
 	$all = $wpdb->get_results($sql);
-    echo $sql."<br>";
+
 	foreach ( $all as $d ){
     	$in = $in . $d->id . ',';
 	    $n = ( $d->form_id=='' )?1:$d->form_id;
