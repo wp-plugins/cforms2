@@ -417,7 +417,7 @@ function ajaxMail($isAjaxWPcomment,$no,$field_email,$formdata,$htmlformdata,$taf
 	$html_show = ( substr($cformsSettings['form'.$no]['cforms'.$no.'_formdata'],2,1)=='1' )?true:false;
 
 	$fmessage='';
-	$htmlmessage=''
+	$htmlmessage='';
 
 	$eol = "\n";
 
