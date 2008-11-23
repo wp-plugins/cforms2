@@ -3,6 +3,24 @@ Copyright 2006-2008  Oliver Seidel   (email : oliver.seidel@deliciousdays.com)
 /*
 
 
+WHAT's NEW in cformsII - v9.3
+
+README:
+v9.0 introduces a completely new method of storing its settings,
+	***** please make a WP database backup first (!) *****
+and then migrate your settings (cforms will guide you!)
+
+*) feature: added title feature to widget control
+
+*) other: added explanatory code to API call "to retrieve all tracking records"
+*) other: corrected some typos
+*) other: label and input fields now support capital letters
+
+*) bugfix: removed debug message in API call to retrieve all tracking records
+*) bugfix: v9.2 required plugin to be activated 2x for it to show up in the admin menu
+*) bugfix: for IIS servers abspath.php needs to escape the backslash
+
+
 WHAT's NEW in cformsII - v9.2
 
 README:
