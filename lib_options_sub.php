@@ -88,7 +88,7 @@
 	$cformsSettings['form'.$no]['cforms'.$no.'_rss'] = $_REQUEST['cforms_rss']?true:false;
 	$cformsSettings['form'.$no]['cforms'.$no.'_rss_count'] = $_REQUEST['cforms_rsscount'];
 
-	$cformsSettings['form'.$no]['cforms'.$no.'_dontclear'] = $_REQUEST['cforms_confirm']?true:false;
+	$cformsSettings['form'.$no]['cforms'.$no.'_dontclear'] = $_REQUEST['cforms_dontclear']?true:false;
 
 	$cformsSettings['form'.$no]['cforms'.$no.'_upload_dir'] =  $_REQUEST['cforms_upload_dir'].'$#$'.$_REQUEST['cforms_upload_dir_url'];
 	$cformsSettings['form'.$no]['cforms'.$no.'_upload_ext'] =  $_REQUEST['cforms_upload_ext'];
