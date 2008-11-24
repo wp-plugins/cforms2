@@ -29,7 +29,7 @@ For *WHAT'S NEW* and a complete [version history](http://www.deliciousdays.com/c
 = Localization =
 
 * **NEW: Bahasa Indonesia** \* Author: [Hendry Lee](http://blogbuildingu.com/wordpress-cforms-id)
-* **Chinese, Simplified** \* Author: [Winnie Law (Liu Dongyan)](http://www.translateforyou.cn/cforms-translation/)
+* **Chinese, Simplified** \* Author: [Charles](http://www.charlestang.cn/wp-plugins-cformsii-intro.htm)
 * **Danish** \* Author: [Mads Christian Jensen](http://mads.eu/wp-plugins#cforms)
 * **Dutch** \* Author: [Anja](http://www.werkgroepen.net/wordpress25/vertaald-cforms-ii/)
 * **French** \* Author: [La maison de l&rsquo;informatiqu](http://wp.kalyxstudio.com/cforms-ll)
@@ -39,6 +39,7 @@ For *WHAT'S NEW* and a complete [version history](http://www.deliciousdays.com/c
 * **Japanese** \* Author: [Hiroaki Miyashita](http://wordpressgogo.com/development/translation_cforms_ja.html)
 * **Polish** \* Authors: [Kasia Nocek](http://www.nietoperzka.com/wptraining/tlumaczenie-cforms/) & [WEST28](http://west.vdl.pl/word-press/tlumaczenie-cforms/)
 * **Russian** \* Author: [Sofia Panchenko](http://www.sonika.ru/blog/wordpress/cforms-rus.htm)
+* **Romanian** \* Author: [George Hari Popescu](http://www.cyberculture.ro/blog/wordpress/)
 * **Spanish** \* Author: [Samuel Aguilera](http://agamum.net/blog/archivo/plugin-cforms-en-espanol-formularios-para-tu-wordpress.xhtml)
 * **Turkish** \* Author: [Resat Diker](http://weblog.resatdiker.com/cforms)
 * **NEW: Ukrainian** \* Author: [Stas Mykhajlyuk](http://kosivart.if.ua/2008/10/02/471/)
