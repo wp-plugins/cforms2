@@ -20,7 +20,7 @@ and then migrate your settings (cforms will guide you!)
 
 *) feature: post form submission admin-email-TO: address correction ("dynamic admin email address")
 *) feature: specific insert position can now be determined when adding new fields
-*) feature: TAF: added support for porper WP 2.7 custom field registration (screen options)
+*) feature: TAF: added support for proper WP 2.7 custom field registration (screen options)
 
 *) bugfix: major bug causing the tracking page to not display correctly
 *) bugfix: fixed some WP2.7 admin UI incompatibilities

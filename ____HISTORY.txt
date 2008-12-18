@@ -10,7 +10,7 @@ v9x introduces a completely new method of storing its settings,
 and then migrate your settings (cforms will guide you!)
 
 *) feature: specific insert position can now be determined when adding new fields
-*) feature: TAF: added support for porper WP 2.7 custom field registration (screen options)
+*) feature: TAF: added support for proper WP 2.7 custom field registration (screen options)
 
 *) bugfix: fixed some WP2.7 admin UI incompatibilities
 *) bugfix: fixed TAF-option for WP2.7 New post/page UI (drag&drop, open/close)
