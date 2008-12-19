@@ -6,7 +6,7 @@
 
 $cflimit = '';
 
-$captchaopt = $cformsSettings['cforms_captcha_def'];
+$captchaopt = $cformsSettings['global']['cforms_captcha_def'];
 
 for($i = 1; $i <= $field_count; $i++) {
 
