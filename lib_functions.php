@@ -5,9 +5,6 @@ function download_cforms() {
 	global $buffer, $wpdb, $cformsSettings;
 	$br="\n";
 
-	### per user suggestion
-    load_plugin_textdomain('cforms');
-
 	if( isset($_REQUEST['savecformsdata']) || isset($_REQUEST['saveallcformsdata']) ) {
 
 		if( isset($_REQUEST['savecformsdata']) ){

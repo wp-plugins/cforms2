@@ -1249,6 +1249,7 @@ if (function_exists('add_action')){
 	if ( $admin ) {
 		require_once(dirname(__FILE__) . '/lib_functions.php');
 		add_action('admin_menu', 'cforms_menu');
+		add_action('init', create_function('', 'load_plugin_textdomain(\'cforms\');') );
 
 	    ### Check all forms for TAF and set variables
 	    for ( $i=1;$i<=$cformsSettings['global']['cforms_formcount'];$i++ ) {
