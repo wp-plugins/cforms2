@@ -12,7 +12,14 @@ cforms II is the most customizable, flexible & powerful ajax supporting contact 
 
 cforms is a highly customizable, flexible and powerful form builder plugin, covering a variety of use cases and features from attachments to multi form management, you can even have multiple forms on the same page!
 
+= beta tester required for multi part (multi page) forms =
+v9.5 will finally support multiple chained forms, data gathering across these forms and a final form that triggers the admin email and tracking.
+If you'd like to *help beta test*, [pls get in touch](http://www.deliciousdays.com/contact/).
+
+v9.4 fixes the issues that WP 2.7 caused due to their UI updates
+
 = WP 2.7 UI compliance release =
+v9.4 fixes the issues that WP 2.7 caused due to their UI updates
 
 = UPGRADING from v8x to v9x- IMPORTANT: =
 
