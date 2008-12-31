@@ -41,7 +41,7 @@ For *WHAT'S NEW* and a complete [version history](http://www.deliciousdays.com/c
 * **Dutch** \* Author: [Anja](http://www.werkgroepen.net/wordpress25/vertaald-cforms-ii/)
 * **French** \* Author: [La maison de l&rsquo;informatiqu](http://wp.kalyxstudio.com/cforms-ll)
 * **German** \* Author: [Sven Wappler](http://www.wappler.eu/cforms/)
-* **Hungarian** \* Author: [Ungv&aacute;ri B&eacute;la](http://www.life-univ.net/ubh/2008/02/26/a-cforms-ii-plugin-magyar-nyelvu-fajljai.html)
+* **Hungarian** \* Author: [Ungv&aacute;ri B&eacute;la](http://life-univ.com/ubh/2008/02/26/a-cforms-ii-plugin-magyar-nyelvu-fajljai.html)
 * **Italian** \* Author: [Gianni](http://gidibao.net/index.php/2008/03/27/cforms-ii-in-italiano/)
 * **Japanese** \* Author: [Hiroaki Miyashita](http://wordpressgogo.com/development/translation_cforms_ja.html)
 * **Polish** \* Authors: [Kasia Nocek](http://www.nietoperzka.com/wptraining/tlumaczenie-cforms/) & [WEST28](http://west.vdl.pl/word-press/tlumaczenie-cforms/)
