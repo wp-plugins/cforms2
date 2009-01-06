@@ -14,12 +14,10 @@ cforms is a highly customizable, flexible and powerful form builder plugin, cove
 
 = Major Feature & Maintenance Release =
 
-= UPGRADING from v8x to v9x- IMPORTANT: =
+**UPGRADING from v8x to v9x- IMPORTANT:**
 
 v9+ introduces a completely new method of storing its settings,
-
 	please make a WP database backup first (!)
-
 and then migrate your settings (cforms will guide you!)
 
 = WHAT'S NEW? =
