@@ -47,7 +47,7 @@ $cforms_root = $cformsSettings['global']['cforms_root'];
 				<li><?php echo sprintf(__('First take a look at the <a href="%s">default form</a>', 'cforms'),'?page=' . $plugindir . '/cforms-options.php#anchorfields'); ?>
 					<ul style="margin:10px 0 0 30px;">
 						<li><?php _e('Verify that it contains all the fields you need, are they in the right order', 'cforms'); ?> <img style="vertical-align:middle;" src="<?php echo $cforms_root; ?>/images/move.gif" alt="" title=""/>?</li>
-						<li><?php _e('Check the field labels (field names), if needed make your adjustments', 'cforms'); ?> <button type="button" name="wrench" style="vertical-align:middle;" disabled="disabled" class="wrench"></button> </li>
+						<li><?php _e('Check the field labels (field names), if needed make your adjustments', 'cforms'); ?> &nbsp;<button type="button" name="wrench" style="vertical-align:middle;" disabled="disabled" class="wrench"></button> </li>
 						<li><?php _e('Check the flags for each field (check boxes to the right).', 'cforms'); ?></li>
 						<li><?php echo sprintf(__('Want to include SPAM protection? Choose between <a href="%s" %s>Q&amp;A</a>, <a href="%s" %s>captcha</a> add an input field accordingly and configure <a href="%s" %s>here</a>.', 'cforms'),'#qa','onclick="setshow(19)"','#captcha','onclick="setshow(19)"','?page=' . $plugindir . '/cforms-global-settings.php#visitorv','onclick="setshow(13)"'); ?></li>
 					</ul>
