@@ -1,6 +1,6 @@
 === cformsII - contact form ===
 Contributors: olivers
-Donate link: http://www.deliciousdays.com/cforms-forum?forum=2&topic=368&page=1
+Donate link: http://www.deliciousdays.com/cforms-donation
 Tags: contact form, ajax, contact, form, input, comments, post, sidebar, spam, admin
 Requires at least: 2.0.2
 Tested up to: 2.7
