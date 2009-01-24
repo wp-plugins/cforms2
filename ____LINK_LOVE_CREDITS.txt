@@ -26,9 +26,9 @@ So what are the options for the users/your clients?
 (1) Obviously the best: simply leaving the credits/link love in place :-)
 (2) Use cforms without Ajax capabilities
 (3) Alternative link love in some other place on the site (e.g. credits page)
-(4) Or users / commercial clients paying my donations page visit
-(I leave it up the user to determine how much, perhaps reflecting 
-the value cforms has to them/their business)
+(4) Or users/commercial clients can pay my donations page a visit
+(I leave it up the user to determine how much, perhaps reflecting
+the value cforms has to them/their business, see link below)
 
 (3) & (4) will give you a key that 'unlocks' cforms
 
