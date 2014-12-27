@@ -2,8 +2,8 @@
 Contributors: bgermann, olivers
 Donate link: https://www.betterplace.org/organisations/tatkraeftig/donations/new
 Tags: contact form, ajax, contact, form, input, comments, post, sidebar, spam, admin
-Requires at least: 3.5
-Tested up to: 4.0
+Requires at least: 3.9
+Tested up to: 4.1
 Stable tag: trunk
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0
@@ -29,7 +29,11 @@ Translations are provided by:
 * Leadvirus
 * Gianni Diurno
 * Gill Ajoft
-* Stas Mykhajlyuk
+* Serge Rauber
+* Cyrille Sanson-Stern
+* Pedro Germani Ghiorzi
+* Cátia Kitahara
+* [Stas Mykhajlyuk](http://kosivart.if.ua)
 * Charles Tang
 
 Please see the *.po gettext files for further information.
@@ -61,7 +65,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 You can install the plugin via Wordpress Dashboard. It should show up by searching
 for cforms2. If this does not work for you, there should be an option to upload a
 zip file, which is available on the
-[wordpress.org plugin directory](https://downloads.wordpress.org/plugin/cforms2).
+[wordpress.org plugin directory](https://wordpress.org/plugins/cforms2/).
 
 If you want to install manually, please upload the complete plugin folder "cforms2",
 contained in the zip file, to your WP plugin directory!
@@ -138,6 +142,9 @@ Some things are to be done:
 
 == Upgrade Notice ==
 
+= 14.8 =
+This is only compatible with Wordpress 3.9+. Version 3.5 to 3.8 support is dropped.
+
 = 14.7 =
 Explicit Subscribe To Comments support is removed. Please delete all the remaining input elements from your forms. Also check the styling on comment forms!
 
@@ -164,6 +171,13 @@ GPL compliance!
 
 
 == Changelog ==
+
+= 14.8 =
+* feature:  add Shortcode to insert forms
+* bugfix:   fix remote code execution via file upload
+* enhanced: make TinyMCE plugin localization part of gettext
+* enhanced: use TinyMCE 4 API and redesign TinyMCE form insertion
+* added:    Brazilian Portuguese and French translations
 
 = 14.7 =
 * enhanced: replace Subscribe To Comments support with a more general approach to also support Subscribe To Comments Reloaded

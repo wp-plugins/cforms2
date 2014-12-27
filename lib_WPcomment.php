@@ -141,8 +141,7 @@ if ( $isAjaxWPcomment ){
 			$template = str_replace('{author}',     $comment_author,$template);
 			$template = str_replace('{date}',       mysql2date(get_option('date_format'), current_time('mysql')),$template);
 			$template = str_replace('{time}',       gmdate(get_option('time_format'), current_time('timestamp')),$template);
-			if ( function_exists('get_avatar') )
-				$template = str_replace('{avatar}',     get_avatar( $comment->comment_author_email, stripslashes(htmlspecialchars( $cformsSettings['global']['cforms_avatar'] )) ), $template);
+			$template = str_replace('{avatar}',     get_avatar( $comment->comment_author_email, stripslashes(htmlspecialchars( $cformsSettings['global']['cforms_avatar'] )) ), $template);
 
 			$WPresp = stripslashes( $cformsSettings['global']['cforms_commentParent'] ).'$#$'. $template .'$#$'. preg_replace ( '|\r?\n|', '<br />', stripslashes($cformsSettings['global']['cforms_commentsuccess']));
 			$WPsuccess = true;
@@ -162,8 +161,7 @@ if ( $isAjaxWPcomment ){
 
 	$no = $no[1];
 
-	if ( function_exists('wp_get_current_user') )
-		$user = wp_get_current_user();
+	$user = wp_get_current_user();
 
 	require_once (plugin_dir_path(__FILE__) . 'lib_validate.php');
 
@@ -176,7 +174,7 @@ if ( $isAjaxWPcomment ){
 			cforms( '',$no );
 			header("HTTP/1.0 301 Temporary redirect");
 			header("Location: ".get_permalink($comment_post_ID).$cfpre.'cfemail=sent#cforms'.$no.'form' );
-			exit;
+			die();
 		}
 
 		###
@@ -199,13 +197,13 @@ if ( $isAjaxWPcomment ){
 
 		if ( empty($status->comment_status) ) {
 			do_action('comment_id_not_found', $comment_post_ID);
-			exit;
+			die();
 		} elseif ( 'closed' ==  $status->comment_status ) {
 			do_action('comment_closed', $comment_post_ID);
 			wp_die( __('Sorry, comments are closed for this item.','cforms') );
 		} elseif ( in_array($status->post_status, array('draft', 'pending') ) ) {
 			do_action('comment_on_draft', $comment_post_ID);
-			exit;
+			die();
 		}
 
 		$comment_author       = trim(strip_tags($_POST['cauthor']));
