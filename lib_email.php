@@ -18,34 +18,28 @@
  */
 
 class cforms2_mail {
-	public $eolH;
 	public $eol;
 	public $html_show;
 	public $html_show_ac;
 
 	public $f_txt;
 	public $f_html;
-	public $frommail;
 
-	public $priority = 3;
 	public $char_set = 'utf-8';
-	public $content_type = 'text/plain';
-	public $enc = '8bit';
 	public $err  = '';
 
-	public $from = '';
-	public $fname = 'cforms';
-	public $split_to  = false;
-    public $confirm_to = '';
-
-	public $sender = '';
 	public $subj  = '';
 
 	public $body = '';
 	public $body_alt  = '';
 
-	public $host = '';
-	public $msg_id = '';
+	private $priority = 3;
+	private $content_type = 'text/plain';
+	private $enc = '8bit';
+	private $from = '';
+	private $fname = 'cforms';
+
+	private $host = '';
 
 	private $to = array();
 	private $cc = array();
@@ -64,8 +58,7 @@ class cforms2_mail {
     public function __construct($no, $from, $to, $replyto='',$adminEmail=false){
 		$cformsSettings = get_option('cforms_settings');
 
-	    $this->eolH = ($cformsSettings['global']['cforms_crlf'][h]!=1)?"\r\n":"\n";
-	    $this->eol  = ($cformsSettings['global']['cforms_crlf'][b]!=1)?"\r\n":"\n";
+	    $this->eol  = ($cformsSettings['global']['cforms_crlf']['b']!=1)?"\r\n":"\n";
 
         if( (int)$cformsSettings['form'.$no]['cforms'.$no.'_emailpriority'] > 0 )
 	        $this->priority = (int)$cformsSettings['form'.$no]['cforms'.$no.'_emailpriority'];
@@ -85,7 +78,6 @@ class cforms2_mail {
 	    ### from
 	    if ( $from=='' )
 	        $from = '"'.get_option('blogname').'" <wordpress@' . preg_replace('#^www\.#', '', strtolower($_SERVER['SERVER_NAME'])) . '>';
-		$this->frommail = $from;
 
 	    $fe=array();
 	    $f=array();
@@ -148,10 +140,10 @@ class cforms2_mail {
 	public function is_html($bool) {
 		$this->content_type = $bool?'text/html':'text/plain';
 	}
-	public function is_err() {
+	private function is_err() {
 		return ($this->err_count > 0);
 	}
-	public function has_inline_img() {
+	private function has_inline_img() {
 	    $r = false;
 	    for($i = 0; $i < count($this->up); $i++) {
 	      if($this->up[$i][6] == 'inline') {
@@ -165,22 +157,22 @@ class cforms2_mail {
 	###
 	### Header Functions
 	###
-	public function add_addr($address, $name = '') {
+	private function add_addr($address, $name = '') {
 	    $t = count($this->to);
 	    $this->to[$t][0] = trim($address);
 	    $this->to[$t][1] = $name;
 	}
-	public function add_cc($address, $name = '') {
+	private function add_cc($address, $name = '') {
 	    $t = count($this->cc);
 	    $this->cc[$t][0] = trim($address);
 	    $this->cc[$t][1] = $name;
 	}
-	public function add_bcc($address, $name = '') {
+	private function add_bcc($address, $name = '') {
 	    $t = count($this->bcc);
 	    $this->bcc[$t][0] = trim($address);
 	    $this->bcc[$t][1] = $name;
 	}
-	public function add_reply($address, $name = '') {
+	private function add_reply($address, $name = '') {
 	    $t = count($this->replyto);
 	    $this->replyto[$t][0] = trim($address);
 	    $this->replyto[$t][1] = $name;
@@ -193,7 +185,7 @@ class cforms2_mail {
                 $addr_str .= ', ' . $this->addr_fmt($addr[$i]);
             }
 	    }
-		return $addr_str . $this->eolH;
+		return $addr_str;
 	}
 	private function addr_fmt($addr) {
 		return empty($addr[1]) ? $this->fix_header($addr[0]) : $this->enc_h($this->fix_header($addr[1]), 'phrase') . " <" . $this->fix_header($addr[0]) . ">";
@@ -204,8 +196,8 @@ class cforms2_mail {
 	    return str_replace("\n", "", $t);
 	}
 	private function mail_header() {
-	    $r = $this->h_line('Date', $this->get_date());
-	    $r .= ($this->sender == '')?$this->h_line('Return-Path', trim($this->from)):$this->h_line('Return-Path', trim($this->sender));
+		$r = array();
+	    $r[] = 'Date: ' . $this->get_date();
 
 	    $u_id = md5(uniqid(time()));
 	    $this->boundary[1] = 'b1_' . $u_id;
@@ -214,37 +206,33 @@ class cforms2_mail {
 	    $from = array();
 	    $from[0][0] = trim($this->from);
 	    $from[0][1] = $this->fname;
-	    $r .= $this->addr_add('From', $from);
+	    $r[] = $this->addr_add('From', $from);
 
-		$r .= (count($this->cc) > 0) ? $this->addr_add('Cc', $this->cc):'';
-        $r .= (count($this->bcc) > 0) ? $this->addr_add('Bcc', $this->bcc):'';
-	    $r .= (count($this->replyto) > 0) ? $this->addr_add('Reply-to', $this->replyto):'';
-	    $r .= ($this->msg_id != '') ? $this->h_line('Message-ID',$this->msg_id):sprintf("Message-ID: <%s@%s>%s", $u_id, $this->server_name(), $this->eolH);
+		$r[] = (count($this->cc) > 0) ? $this->addr_add('Cc', $this->cc):'';
+        $r[] = (count($this->bcc) > 0) ? $this->addr_add('Bcc', $this->bcc):'';
+	    $r[] = (count($this->replyto) > 0) ? $this->addr_add('Reply-to', $this->replyto):'';
 
-	    $r .= $this->h_line('X-Priority', $this->priority);
-	    $r .= ($this->confirm_to != '') ? $this->h_line('Disposition-Notification-To', '<' . trim($this->confirm_to) . '>'):'';
-	    $r .= $this->h_line('MIME-Version', '1.0');
+	    $r[] = 'X-Priority: ' . $this->priority;
+	    $r[] = 'MIME-Version: 1.0';
 
         ### get mime
 	    switch($this->msg_type) {
-	      case 'plain':
-	        $r .= $this->h_line('Content-Transfer-Encoding', $this->enc) . sprintf("Content-Type: %s; charset=\"%s\"", $this->content_type, $this->char_set);
-	        break;
-	      case 'attachments':
-	      case 'alt_attachments':
-	        if( $this->has_inline_img() )
-	          $r .= sprintf("Content-Type: %s;%s\ttype=\"text/html\";%s\tboundary=\"%s\"%s", 'multipart/related', $this->eolH, $this->eolH, $this->boundary[1], $this->eolH);
-	        else
-	          $r .= $this->h_line('Content-Type', 'multipart/mixed;') . $this->t_line("\tboundary=\"" . $this->boundary[1] . '"');
-	        break;
-	      case 'alt':
-	        $r .= $this->h_line('Content-Type', 'multipart/alternative;') . $this->t_line("\tboundary=\"" . $this->boundary[1] . '"');
-	        break;
+			case 'plain':
+				$r[] = 'Content-Transfer-Encoding: ' . $this->enc . sprintf("Content-Type: %s; charset=\"%s\"", $this->content_type, $this->char_set);
+				break;
+			case 'attachments':
+			case 'alt_attachments':
+				if( $this->has_inline_img() )
+					$modifier = 'related;type="text/html"';
+				else
+					$modifier = 'mixed';
+				$r[] = 'Content-Type: multipart/'.$modifier.';boundary="' . $this->boundary[1] . '"';
+				break;
+			case 'alt':
+				$r[] = 'Content-Type: multipart/alternative;boundary="' . $this->boundary[1] . '"';
+				break;
 	    }
 	    return $r;
-	}
-	private function h_line($n, $v) {
-		return $n . ': ' . $v . $this->eolH;
 	}
 
 	###
@@ -269,7 +257,7 @@ class cforms2_mail {
 	        break;
 	      case 'alt_attachments':
 	        $r  = sprintf("--%s%s", $this->boundary[1], $this->eol);
-	        $r .= sprintf("Content-Type: %s;%s" . "\tboundary=\"%s\"%s", 'multipart/alternative', $this->eol, $this->boundary[2], $this->eol.$this->eol);
+	        $r .= sprintf("Content-Type: multipart/alternative;%s" . "\tboundary=\"%s\"%s", $this->eol, $this->boundary[2], $this->eol.$this->eol);
 	        $r .= $this->begin_b($this->boundary[2], '', 'text/plain', '') . $this->eol;
 	        $r .= $this->enc_str($this->body_alt, $this->enc) . $this->eol.$this->eol;
 	        $r .= $this->begin_b($this->boundary[2], '', 'text/html', '') . $this->eol;
@@ -290,7 +278,7 @@ class cforms2_mail {
 
 	    $r  = $this->t_line('--' . $boundary);
 	    $r .= sprintf("Content-Type: %s; charset = \"%s\"", $content_type, $char_set) . $this->eol;
-	    return $r . $this->h_line('Content-Transfer-Encoding', $encoding) . $this->eol;
+	    return $r . 'Content-Transfer-Encoding: ' . $encoding . $this->eol . $this->eol;
 	}
 	private function end_b($b) {
 		return $this->eol . '--' . $b . '--' . $this->eol;
@@ -426,15 +414,7 @@ class cforms2_mail {
 	    for($i = 0; $i < count($this->to); $i++) {
             $to .= (($i != 0) ? ', ':'' ) . $this->addr_fmt($this->to[$i]);
         }
-
-	    $to_all = explode(',', $to);
-
-	    if ($this->split_to === true && count($to_all) > 1) {
-	        foreach ($to_all as $val) {
-                $rt = wp_mail($val, $this->enc_h($this->fix_header($this->subj)), $body, $header);
-            }
-	    } else
-	        $rt = wp_mail($to, $this->enc_h($this->fix_header($this->subj)), $body, $header);
+		$rt = wp_mail($to, $this->enc_h($this->fix_header($this->subj)), $body, $header);
 
 	    if(!$rt) {
 	      $this->set_err(__('Could not instantiate wp_mail function.','cforms'));

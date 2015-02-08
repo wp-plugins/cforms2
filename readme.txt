@@ -33,6 +33,7 @@ Translations are provided by:
 * Cyrille Sanson-Stern
 * Pedro Germani Ghiorzi
 * Cátia Kitahara
+* Sofia Panchenko
 * [Stas Mykhajlyuk](http://kosivart.if.ua)
 * Charles Tang
 
@@ -171,6 +172,11 @@ GPL compliance!
 
 
 == Changelog ==
+
+= 14.8.1 =
+* bugfix:   fix warning introduced with last version's remote code execution fix
+* added:    Russian translation
+* other:    clean mail handling
 
 = 14.8 =
 * feature:  add Shortcode to insert forms
