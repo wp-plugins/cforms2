@@ -1,7 +1,7 @@
 <?php
 /*
  * Copyright (c) 2006-2012 Oliver Seidel (email : oliver.seidel @ deliciousdays.com)
- * Copyright (c) 2014      Bastian Germann
+ * Copyright (c) 2014-2015 Bastian Germann
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -66,76 +66,76 @@ if ( isset($_REQUEST['deletetables']) ) {
 
 // Update Settings
 if( isset($_REQUEST['SubmitOptions']) ) {
-
-	$cformsSettings['global']['cforms_html5'] = $_REQUEST['cforms_html5']?'1':'0';
-	$cformsSettings['global']['cforms_show_quicktag'] = $_REQUEST['cforms_show_quicktag']?'1':'0';
-	$cformsSettings['global']['cforms_sec_qa'] = 		$_REQUEST['cforms_sec_qa'];
-	$cformsSettings['global']['cforms_codeerr'] = 		$_REQUEST['cforms_codeerr'];
-	$cformsSettings['global']['cforms_database'] = 		$_REQUEST['cforms_database']?'1':'0';
-	$cformsSettings['global']['cforms_showdashboard'] = $_REQUEST['cforms_showdashboard']?'1':'0';
-	$cformsSettings['global']['cforms_datepicker'] = 	$_REQUEST['cforms_datepicker']?'1':'0';
-	$cformsSettings['global']['cforms_dp_date'] = 		$_REQUEST['cforms_dp_date'];
-	$cformsSettings['global']['cforms_dp_days'] = 		$_REQUEST['cforms_dp_days'];
-	$cformsSettings['global']['cforms_dp_start'] = 		$_REQUEST['cforms_dp_start']==''?'0':$_REQUEST['cforms_dp_start'];
-	$cformsSettings['global']['cforms_dp_months'] = 	$_REQUEST['cforms_dp_months'];
+		
+	$cformsSettings['global']['cforms_html5'] 		  = cforms2_get_from_request('cforms_html5','1','0');
+	$cformsSettings['global']['cforms_show_quicktag'] = cforms2_get_boolean_from_request('cforms_show_quicktag');
+	$cformsSettings['global']['cforms_sec_qa'] = 		cforms2_get_from_request('cforms_sec_qa');
+	$cformsSettings['global']['cforms_codeerr'] = 		cforms2_get_from_request('cforms_codeerr');
+	$cformsSettings['global']['cforms_database'] = 		cforms2_get_boolean_from_request('cforms_database');
+	$cformsSettings['global']['cforms_showdashboard'] = cforms2_get_boolean_from_request('cforms_showdashboard');
+	$cformsSettings['global']['cforms_datepicker'] = 	cforms2_get_boolean_from_request('cforms_datepicker');
+	$cformsSettings['global']['cforms_dp_date'] = 		cforms2_get_from_request('cforms_dp_date');
+	$cformsSettings['global']['cforms_dp_days'] = 		cforms2_get_from_request('cforms_dp_days');
+	$cformsSettings['global']['cforms_dp_start'] = 		cforms2_get_from_request('cforms_dp_start');
+	$cformsSettings['global']['cforms_dp_months'] = 	cforms2_get_from_request('cforms_dp_months');
 
 	$nav=array();
-	$nav[0]=$_REQUEST['cforms_dp_prevY'];
-	$nav[1]=$_REQUEST['cforms_dp_prevM'];
-	$nav[2]=$_REQUEST['cforms_dp_nextY'];
-	$nav[3]=$_REQUEST['cforms_dp_nextM'];
-	$nav[4]=$_REQUEST['cforms_dp_close'];
-	$nav[5]=$_REQUEST['cforms_dp_choose'];
-	$nav[6]=$_REQUEST['cforms_dp_Ybuttons']?'1':'0';
+	$nav[0]=cforms2_get_from_request('cforms_dp_prevY');
+	$nav[1]=cforms2_get_from_request('cforms_dp_prevM');
+	$nav[2]=cforms2_get_from_request('cforms_dp_nextY');
+	$nav[3]=cforms2_get_from_request('cforms_dp_nextM');
+	$nav[4]=cforms2_get_from_request('cforms_dp_close');
+	$nav[5]=cforms2_get_from_request('cforms_dp_choose');
+	$nav[6]=cforms2_get_boolean_from_request('cforms_dp_Ybuttons');
 	$cformsSettings['global']['cforms_dp_nav'] = $nav;
 
  	$cformsSettings['global']['cforms_inexclude']['ex'] = '';
-  if( $_REQUEST['cforms_inc-or-ex']=='exclude' )
-  	$cformsSettings['global']['cforms_inexclude']['ex'] = '1';
 
- 	$cformsSettings['global']['cforms_inexclude']['ids'] = $_REQUEST['cforms_include'];
+	if( cforms2_get_from_request('cforms_inc-or-ex')=='exclude' )
+		$cformsSettings['global']['cforms_inexclude']['ex'] = '1';
 
-	$cformsSettings['global']['cforms_commentsuccess'] =$_REQUEST['cforms_commentsuccess'];
-	$cformsSettings['global']['cforms_commentWait'] =  	$_REQUEST['cforms_commentWait'];
-	$cformsSettings['global']['cforms_commentParent'] =	$_REQUEST['cforms_commentParent'];
-	$cformsSettings['global']['cforms_commentHTML'] =	$_REQUEST['cforms_commentHTML'];
-	$cformsSettings['global']['cforms_commentInMod'] =	$_REQUEST['cforms_commentInMod'];
-	$cformsSettings['global']['cforms_avatar'] =	   	$_REQUEST['cforms_avatar'];
+	$cformsSettings['global']['cforms_inexclude']['ids'] = cforms2_get_from_request('cforms_include');
 
-	$cformsSettings['global']['cforms_crlf']['b'] =	   	$_REQUEST['cforms_crlf']?'1':'0';
+	$cformsSettings['global']['cforms_commentsuccess'] =cforms2_get_from_request('cforms_commentsuccess');
+	$cformsSettings['global']['cforms_commentWait'] =  	cforms2_get_from_request('cforms_commentWait');
+	$cformsSettings['global']['cforms_commentParent'] =	cforms2_get_from_request('cforms_commentParent');
+	$cformsSettings['global']['cforms_commentHTML'] =	cforms2_get_from_request('cforms_commentHTML');
+	$cformsSettings['global']['cforms_commentInMod'] =	cforms2_get_from_request('cforms_commentInMod');
+	$cformsSettings['global']['cforms_avatar'] =	   	cforms2_get_from_request('cforms_avatar');
 
+	$cformsSettings['global']['cforms_crlf']['b'] =	   	cforms2_get_boolean_from_request('cforms_crlf')?'1':'0';
 	$cformsSettings['global']['cforms_smtp'] = null ;
 
-	$cformsSettings['global']['cforms_upload_err1'] = $_REQUEST['cforms_upload_err1'];
-	$cformsSettings['global']['cforms_upload_err2'] = $_REQUEST['cforms_upload_err2'];
-	$cformsSettings['global']['cforms_upload_err3'] = $_REQUEST['cforms_upload_err3'];
-	$cformsSettings['global']['cforms_upload_err4'] = $_REQUEST['cforms_upload_err4'];
-	$cformsSettings['global']['cforms_upload_err5'] = $_REQUEST['cforms_upload_err5'];
+	$cformsSettings['global']['cforms_upload_err1'] = cforms2_get_from_request('cforms_upload_err1');
+	$cformsSettings['global']['cforms_upload_err2'] = cforms2_get_from_request('cforms_upload_err2');
+	$cformsSettings['global']['cforms_upload_err3'] = cforms2_get_from_request('cforms_upload_err3');
+	$cformsSettings['global']['cforms_upload_err4'] = cforms2_get_from_request('cforms_upload_err4');
+	$cformsSettings['global']['cforms_upload_err5'] = cforms2_get_from_request('cforms_upload_err5');
 
 	$cap = array();
-	$cap['i'] = $_REQUEST['cforms_cap_i'];
-	$cap['w'] = $_REQUEST['cforms_cap_w'];
-	$cap['h'] = $_REQUEST['cforms_cap_h'];
-	$cap['c'] = $_REQUEST['cforms_cap_c'];
-	$cap['l'] = $_REQUEST['cforms_cap_l'];
-	$cap['bg']= $_REQUEST['cforms_cap_b'];
-	$cap['f'] = $_REQUEST['cforms_cap_f'];
-	$cap['fo']= $_REQUEST['cforms_cap_fo'];
-	$cap['foqa']= $_REQUEST['cforms_cap_foqa'];
-	$cap['f1']= $_REQUEST['cforms_cap_f1'];
-	$cap['f2']= $_REQUEST['cforms_cap_f2'];
-	$cap['a1']= $_REQUEST['cforms_cap_a1'];
-	$cap['a2']= $_REQUEST['cforms_cap_a2'];
-	$cap['c1']= $_REQUEST['cforms_cap_c1'];
-	$cap['c2']= $_REQUEST['cforms_cap_c2'];
-	$cap['ac']= $_REQUEST['cforms_cap_ac'];
-
+	$cap['i'] = cforms2_get_from_request('cforms_cap_i');
+	$cap['w'] = cforms2_get_from_request('cforms_cap_w');
+	$cap['h'] = cforms2_get_from_request('cforms_cap_h');
+	$cap['c'] = cforms2_get_from_request('cforms_cap_c');
+	$cap['l'] = cforms2_get_from_request('cforms_cap_l');
+	$cap['bg']= cforms2_get_from_request('cforms_cap_b');
+	$cap['f'] = cforms2_get_from_request('cforms_cap_f');
+	$cap['fo']= cforms2_get_from_request('cforms_cap_fo');
+	$cap['foqa']= cforms2_get_from_request('cforms_cap_foqa');
+	$cap['f1']= cforms2_get_from_request('cforms_cap_f1');
+	$cap['f2']= cforms2_get_from_request('cforms_cap_f2');
+	$cap['a1']= cforms2_get_from_request('cforms_cap_a1');
+	$cap['a2']= cforms2_get_from_request('cforms_cap_a2');
+	$cap['c1']= cforms2_get_from_request('cforms_cap_c1');
+	$cap['c2']= cforms2_get_from_request('cforms_cap_c2');
+	$cap['ac']= cforms2_get_from_request('cforms_cap_ac');
+	
     ###	update new settings container
-	$cformsSettings['global']['cforms_rssall'] = $_REQUEST['cforms_rss']?true:false;
-	$cformsSettings['global']['cforms_rssall_count'] = $_REQUEST['cforms_rsscount'];
-    $cformsSettings['global']['cforms_captcha_def'] = $cap;
+	$cformsSettings['global']['cforms_rssall'] = cforms2_get_from_request('cforms_rss')?true:false;
+	$cformsSettings['global']['cforms_rssall_count'] = cforms2_get_from_request('cforms_rsscount');
+	$cformsSettings['global']['cforms_captcha_def'] = $cap;
 
-    update_option('cforms_settings',$cformsSettings);
+	update_option('cforms_settings',$cformsSettings);
 
 	// Setup database tables ?
 	if ( isset($_REQUEST['cforms_database']) && $_REQUEST['cforms_database_new']=='true' ) {
@@ -189,7 +189,6 @@ if( isset($_REQUEST['SubmitOptions']) ) {
 			<?php
 		}
 	}
-
 }
 
 ?>

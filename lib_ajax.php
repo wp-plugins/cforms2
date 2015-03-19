@@ -1,7 +1,7 @@
 <?php
 /*
  * Copyright (c) 2006-2012 Oliver Seidel (email : oliver.seidel @ deliciousdays.com)
- * Copyright (c) 2014      Bastian Germann
+ * Copyright (c) 2014-2015 Bastian Germann
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -163,8 +163,7 @@ function cforms2_submitcomment() {
 
 			### remove [id: ] first
 			if ( strpos($field_name,'[id:')!==false ){
-				
-				preg_match('/^([^\[]*)\[id:([^\|]+(\[\])?)\]([^\|]*).*/',$field_name,$input_name); // 2.6.2012  
+				preg_match('/^([^\[]*)\[id:([^\|\]]+(\[\])?)\]([^\|]*).*/',$field_name,$input_name); // author: cbacchini
 				$field_name = $input_name[1].$input_name[4];
 				$customTrackingID	= cforms2_sanitize_ids( $input_name[2] );
 
@@ -390,7 +389,6 @@ function cforms2_submitcomment() {
 	
 	$mail = new cforms2_mail($no,$frommail,$to,$userReplyTo, true);
 	$mail->subj  = $vsubject;
-	$mail->char_set = 'utf-8';
 
 	### HTML email
 	if ( $mail->html_show ) {
@@ -457,12 +455,8 @@ function cforms2_submitcomment() {
 	                $a = $cformsSettings['form'.$no]['cforms'.$no.'_cattachment'][0];
 	                $a = (substr($a,0,1)=='/') ? $a : plugin_dir_path(__FILE__).$a;
 	                if ( $a<>'' && file_exists( $a ) ) {
-	                    $n = substr( $a, strrpos($a,DIRECTORY_SEPARATOR)+1, strlen($a) );
-	                    $m = wp_check_filetype( strtolower( $n ) );
-	                    $mail->add_file($a, $n,'base64',$m); ### optional name
+	                    $mail->add_file($a); ### optional name
 	                }
-
-	                $mail->char_set = 'utf-8';
 
 	                ### CC or auto conf?
 	                if ( $ccme&&$trackf[data][$ccme]<>'' ) {

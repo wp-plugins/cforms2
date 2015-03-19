@@ -1138,6 +1138,9 @@ color: #999;
 color:#999!important;
 }
 
+.wrap p
+{clear:both}
+
 .showformfield .R {
 float:left;
 width:55%;
@@ -1151,6 +1154,7 @@ float:left;
 width:35%;
 margin:1px 0;
 padding:3px;
+clear:both;
 }
 
 .showformfield .L {
@@ -1171,31 +1175,14 @@ margin:5px 0 2px 0;
 display:inline-block;
 }
 
-.dataheader:after,
-.showformfield:after {
-content:".";
+.dataheader,
+.showformfield {
 display:block;
-height:0;
-clear:both;
-visibility:hidden;
 }
 
 /****************************************************************
   HELP PAGE
 *****************************************************************/
-.donateTXT{
-float: right;
-width: 290px;
-background: #F7F7F7;
-padding: 10px;
-line-height: 1.3em;
-}
-a.allbuttons.donatebutton{
-font-size: 14px;
-padding: 4px 10px;
-line-height: 2.3em;
-}
-
 h4 a.helptop {
 color:#fff!important;
 border-bottom:1px solid #fff;

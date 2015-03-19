@@ -1,7 +1,7 @@
 <?php
 /*
  * Copyright (c) 2006-2012 Oliver Seidel (email : oliver.seidel @ deliciousdays.com)
- * Copyright (c) 2014      Bastian Germann
+ * Copyright (c) 2014-2015 Bastian Germann
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -68,6 +68,7 @@ if( isset($_POST['sendbutton'.$no]) && $all_valid ) {
 				$field_stat = explode('$#$', $cformsSettings['form'.$no]['cforms'.$no.'_count_field_' . $i ]);
 			else
 				$field_stat = explode('$#$', $customfields[$i-1]);
+			$field_stat[] = "";
 
 			###  filter non input fields
 			while ( in_array($field_stat[1],array('fieldsetstart','fieldsetend','textonly','captcha','verification')) ) {
@@ -91,6 +92,7 @@ if( isset($_POST['sendbutton'.$no]) && $all_valid ) {
                     $field_stat = explode('$#$', $cformsSettings['form'.$no]['cforms'.$no.'_count_field_' . $i ]);
                 else
                     $field_stat = explode('$#$', $customfields[$i-1]);
+				$field_stat[] = "";
 
                 if( $field_stat[1] == '')
                         break 2; ###  all fields searched, break both while & for
@@ -110,7 +112,7 @@ if( isset($_POST['sendbutton'.$no]) && $all_valid ) {
 				if ( strpos($tmpName,'[id:')!==false ){
 					$isFieldArray = strpos($tmpName,'[]');
 
-				preg_match('/^([^\[]*)\[id:([^\|]+(\[\])?)\]([^\|]*).*/',$tmpName,$input_name); // 2.6.2012  
+				preg_match('/^([^\[]*)\[id:([^\|\]]+(\[\])?)\]([^\|]*).*/',$tmpName,$input_name); // author: cbacchini
 				$field_name = $input_name[1].$input_name[4];
 				$customTrackingID	= cforms2_sanitize_ids( $input_name[2] );
 
@@ -134,11 +136,13 @@ if( isset($_POST['sendbutton'.$no]) && $all_valid ) {
 			
 			###  dissect field
 		    $obj = explode('|', $field_name,3);
+			$obj[]="";
 			$defaultval = stripslashes($obj[1]);
 
 			###  strip out default value
 			$field_name = $obj[0];
-
+			if (!isset ($_POST[$current_field])) 	
+				$_POST[$current_field] = "";
 			###  special Tell-A-Friend fields
 			if ( !$taf_friendsemail && $field_type=='friendsemail' && $field_stat[3]=='1')
 					$field_email = $taf_friendsemail = $_POST[$current_field];
@@ -203,7 +207,7 @@ if( isset($_POST['sendbutton'.$no]) && $all_valid ) {
  		}
  		else if ( $field_type == "upload" ){
 
-			if ( is_array($file) && is_array($file['name']) ) {
+			if ( is_array($file) && is_array($file['name']) && isset($file['name'][$filefield])) {
 				### $fsize = $file['size'][$filefield]/1000;
 				$value = str_replace(' ','_',$file['name'][$filefield++]);
 			}else{
@@ -271,7 +275,7 @@ if( isset($_POST['sendbutton'.$no]) && $all_valid ) {
         $inc='';
         $trackname = trim( ($field_type == "upload") ? $field_name.'[*'.($no==''?1:$no).']' : $field_name );
         if ( array_key_exists($trackname, $track) ){
-            if ( $trackinstance[$trackname]==''  )
+            if ( !isset ($trackinstance[$trackname]) || $trackinstance[$trackname]==''  )
                 $trackinstance[$trackname]=2;
             $inc = '___'.($trackinstance[$trackname]++);
         }
@@ -442,7 +446,6 @@ if( isset($_POST['sendbutton'.$no]) && $all_valid ) {
 
 	$mail = new cforms2_mail($no,$frommail,$to,$userReplyTo, true);
 	$mail->subj  = $vsubject;
-	$mail->char_set = 'utf-8';
 
 	### HTML email
 	if ( $mail->html_show ) {
@@ -472,12 +475,12 @@ if( isset($_POST['sendbutton'.$no]) && $all_valid ) {
 		### debug
 		cforms2_dbg( 'File Attachments:' );
 
-	    ###  attachments wanted for current form? (tracking session form uploads handled above!)
+		### attachments wanted for current form? (tracking session form uploads handled above!)
 		$doAttach = !($cformsSettings['form'.$no]['cforms'.$no.'_noattachments']);
 		
 		### form w/ files, within session or single form 
-		if ( $doAttach && $ongoingSession!='0' && is_array($file) ){
-			foreach( $file[tmp_name] as $fn ){
+		if ( $doAttach && $ongoingSession!='0' && is_array($file)  && !empty($file) ){
+			foreach( $file['tmp_name'] as $fn ){
 				cforms2_base64($fn, $doAttach);
 				### debug
 				cforms2_dbg( "File = $fn, attach = $doAttach" );
@@ -496,12 +499,10 @@ if( isset($_POST['sendbutton'.$no]) && $all_valid ) {
 		}
 		### parse through all files (both single and mp forms)
 		foreach ( $fdata as $file ) {
-			if ( $file[doAttach] && $file[name] <> '' ){
-				$n = substr( $file[name], strrpos($file[name],DIRECTORY_SEPARATOR)+1, strlen($file[name]) );
-				$m = wp_check_filetype( strtolower( $n ) );
-				$mail->add_file($file[name], $n,'base64',$m); ### optional name
+			if ( $file[doAttach] && $file['name'] <> '' ){
+				$mail->add_file($file['name']); ### optional name
 				### debug
-				cforms2_dbg( 'Attaching file ('.$file[name].') to email' );
+				cforms2_dbg( 'Attaching file ('.$file['name'].') to email' );
 			}
 		}
 
@@ -523,7 +524,8 @@ if( isset($_POST['sendbutton'.$no]) && $all_valid ) {
 	    if( $sentadmin == 1 ) {
 
 				#debug
-				cforms2_dbg("is CC: = $ccme, active = {$trackf[data][$ccme]} | ");
+				if (isset($trackf['data'][$ccme]))
+					cforms2_dbg("is CC: = $ccme, active = {$trackf['data'][$ccme]} | ");
 
 	            ###  send copy or notification?
                 ###  not if no email & already CC'ed				
@@ -572,12 +574,8 @@ if( isset($_POST['sendbutton'.$no]) && $all_valid ) {
 	                $a = $cformsSettings['form'.$no]['cforms'.$no.'_cattachment'][0];
 	                $a = (substr($a,0,1)=='/') ? $a : plugin_dir_path(__FILE__).$a;
 	                if ( $a<>'' && file_exists( $a ) ) {
-	                    $n = substr( $a, strrpos($a,DIRECTORY_SEPARATOR)+1, strlen($a) );
-	                    $m = wp_check_filetype( strtolower( $n ) );
-	                    $mail->add_file($a, $n,'base64',$m); ### optional name
+	                    $mail->add_file($a); ### optional name
                     }
-
-	                $mail->char_set = 'utf-8';
 
                     ### CC or auto conf?
 	                if ( $ccme&&$trackf[data][$ccme]<>'' ) {

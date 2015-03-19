@@ -1,7 +1,7 @@
 <?php
 /*
  * Copyright (c) 2006-2012 Oliver Seidel (email : oliver.seidel @ deliciousdays.com)
- * Copyright (c) 2014      Bastian Germann
+ * Copyright (c) 2014-2015 Bastian Germann
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -44,6 +44,12 @@ $cformsSettings['global']['cforms_style']['dear'] 		= 'style="margin:0.5em 30px;
 $cformsSettings['global']['cforms_style']['confp'] 		= 'style="margin:0.5em 30px;"';
 $cformsSettings['global']['cforms_style']['confirmationmsg'] = 'style="margin:4em 30px 0; padding-bottom:1em; font-size:80%; color:#aaa; font-family:Tahoma,Arial;"';
 
+cforms2_setINI('global','cforms_showdashboard', '');
+if (!isset($cformsSettings['global']['cforms_inexclude']['ex']))
+	$cformsSettings['global']['cforms_inexclude']['ex'] = '';
+if (!isset($cformsSettings['global']['cforms_inexclude']['ids']))
+	$cformsSettings['global']['cforms_inexclude']['ids'] = '';
+cforms2_setINI('global','cforms_no_css', '');
 
 ### file upload
 $wp_upload_dir = wp_upload_dir();
@@ -70,7 +76,6 @@ cforms2_setINI('form','cforms_emailrequired', __('(valid email required)', 'cfor
 
 cforms2_setINI('form','cforms_confirm', '0');
 cforms2_setINI('form','cforms_ajax', '1');
-cforms2_setINI('form','cforms_emailpriority', '3');
 cforms2_setINI('form','cforms_fname', __('Your default form', 'cforms'));
 cforms2_setINI('form','cforms_csubject', __('Re: Your note', 'cforms').'$#$'.__('Re: Submitted form (copy)', 'cforms'));
 ### below is also in cforms-options.php!

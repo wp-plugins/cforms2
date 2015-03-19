@@ -1,7 +1,7 @@
 <?php
 /*
  * Copyright (c) 2006-2012 Oliver Seidel (email : oliver.seidel @ deliciousdays.com)
- * Copyright (c) 2014      Bastian Germann
+ * Copyright (c) 2014-2015 Bastian Germann
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -27,14 +27,17 @@ $AjaxURL = '';
 
 
 ### debug message handling
-function cforms2_dbg($m){
-    if ( WP_DEBUG ) trigger_error('DEBUG cforms2: ' . $m);
+if (!defined('WP_DEBUG_CFORMS2')) {
+	define('WP_DEBUG_CFORMS2', false);
 }
+function cforms2_dbg($m){
+    if ( WP_DEBUG_CFORMS2 ) trigger_error('DEBUG cforms2: ' . $m);
+} 
 
 
 
 ### make time
-function cforms2_sec2hms($s){
+function cforms2_sec2hms($s) {
 	$t='';
     $h = intval(intval($s) / 3600);
     $m = intval(($s / 60) % 60);
@@ -48,8 +51,11 @@ function cforms2_sec2hms($s){
 ### make time
 function cforms2_make_time($t) {
     $dh = explode(' ',$t);
+	$dh[] = "";
     $d  = explode('/',$dh[0]);
+	$d[] = "";
     $h  = explode(':',$dh[1]);
+	$h[] = "";
     return mktime((int)$h[0], (int)$h[1], 0, (int)$d[1], (int)$d[0], (int)$d[2]);
 }
 
@@ -290,8 +296,8 @@ function cforms2_move_files($trackf, $no, $subID){
 	### debug
 	cforms2_dbg("... in session=$inSession, moving files on form $no, tracking ID=$subID_");
 	
-  	if ( is_array($file2) && isset($file2[tmp_name]) ) {
-  		foreach( $file2[tmp_name] as $tmpfile ) {
+  	if ( is_array($file2) && isset($file2['tmp_name']) ) {
+  		foreach( $file2['tmp_name'] as $tmpfile ) {
 		
             ### copy attachment to local server dir
             if ( is_uploaded_file($tmpfile) ){
@@ -312,7 +318,7 @@ function cforms2_move_files($trackf, $no, $subID){
 				### debug
 				cforms2_dbg("   $tmpfile -> $destfile");
       			
-				$file[tmp_name][$i] = $destfile;
+				$file['tmp_name'][$i] = $destfile;
 
 				if( $inSession )
 					$_SESSION['cforms']['upload'][$no]['files'][] = $destfile;
@@ -373,14 +379,14 @@ function cforms2_check_default_vars($m,$no) {
 
 	    $eol = ($cformsSettings['global']['cforms_crlf']['b']!=1)?"\r\n":"\n";
 
-		if ( $_POST['comment_post_ID'.$no] )
+		if ( isset($_POST['comment_post_ID'.$no] ) && $_POST['comment_post_ID'.$no] )
 			$pid = $_POST['comment_post_ID'.$no];
 		else if ( $Ajaxpid<>'' )
 			$pid = $Ajaxpid;
 		else
 			$pid = get_the_ID();
 
-		if ( $_POST['cforms_pl'.$no] )
+		if ( isset($_POST['cforms_pl'.$no] ) && $_POST['cforms_pl'.$no] )
 			$permalink = $_POST['cforms_pl'.$no];
 		else if ( $Ajaxpid<>'' )
 			$permalink = $AjaxURL;
@@ -403,7 +409,8 @@ function cforms2_check_default_vars($m,$no) {
 
 		$CurrUser = wp_get_current_user();
 
-		$m  = str_replace( '{Referer}',		$_SERVER['HTTP_REFERER'], $m );
+		if (isset($_SERVER['HTTP_REFERER'])) 
+			$m  = str_replace( '{Referer}',	$_SERVER['HTTP_REFERER'], $m );
 		$m  = str_replace( '{PostID}',		$pid, $m );
 		$m 	= str_replace( '{Form Name}',	$cformsSettings['form'.$no]['cforms'.$no.'_fname'], $m );
 		$m 	= str_replace( '{Page}',		$page, $m );
@@ -610,7 +617,7 @@ function get_cforms_entries($fname=false,$from=false,$to=false,$s=false,$limit=f
 
 	//set limit
     $limit = ($limit && $limit<>'')?'LIMIT 0,'.$limit:'';
-
+	
 	
 	$ORDER_1 = $cfsort = '';
 	if( in_array($s,array('id','form','timestamp','email','ip')) )
@@ -662,11 +669,10 @@ function get_cforms_entries($fname=false,$from=false,$to=false,$s=false,$limit=f
 
     $sql = "SELECT * FROM {$wpdb->cformsdata} WHERE sub_id IN (".substr($in,0,-1).")";
 	$all = $wpdb->get_results($sql);
-
 	$offsets = array();
 	foreach ( $all as $d ){
 
-		if( $offsets[$d->sub_id][$d->field_name]<>'')
+		if( isset($offsets[$d->sub_id][$d->field_name]) && $offsets[$d->sub_id][$d->field_name]<>'')
 	    	$offsets[$d->sub_id][$d->field_name]++;
         else
 			$offsets[$d->sub_id][$d->field_name]=1;
