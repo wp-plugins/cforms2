@@ -55,14 +55,6 @@ function cforms2_submitcomment() {
 	$segments = explode('$#$', $content[0]);
 	$params = array();
 
-    $CFfunctionsC = plugin_dir_path(dirname(__FILE__)).'cforms-custom'.DIRECTORY_SEPARATOR.'my-functions.php';
-    $CFfunctions = plugin_dir_path(__FILE__).'my-functions.php';
-    if ( file_exists($CFfunctionsC) )
-        include_once($CFfunctionsC);
-    else if ( file_exists($CFfunctions) )
-        include_once($CFfunctions);
-
-
 	$user = wp_get_current_user();
 
 	for($i = 1; $i <= sizeof($segments); $i++) {
@@ -79,7 +71,7 @@ function cforms2_submitcomment() {
 
 	###  user filter ?
 	if( function_exists('my_cforms_ajax_filter') )
-		$params = my_cforms_ajax_filter($params);
+		my_cforms_ajax_filter($params);
 
 
 	###  init variables
