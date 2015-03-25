@@ -5,7 +5,7 @@ Tags: contact form, ajax, contact, form, input, comments, post, sidebar, spam, a
 Requires at least: 3.9
 Tested up to: 4.1
 Stable tag: trunk
-License: GPLv3
+License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0
 
 cformsII is the most customizable, flexible & powerful ajax supporting contact form plugin (& comment form)!
@@ -189,6 +189,10 @@ GPL compliance!
 
 
 == Changelog ==
+
+= 14.9.1 =
+* enhanced: convert Q&A feature to the new pluggable captcha API
+* added:    pluggable captcha API
 
 = 14.9 =
 * enhanced: change the my-functions API to be an extra plugin

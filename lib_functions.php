@@ -1,7 +1,7 @@
 <?php
 /*
  * Copyright (c) 2006-2012 Oliver Seidel (email : oliver.seidel @ deliciousdays.com)
- * Copyright (c) 2014      Bastian Germann
+ * Copyright (c) 2014-2015 Bastian Germann
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -209,13 +209,7 @@ function cforms2_admin_enqueue_scripts() {
         'installpreset' => wp_create_nonce('cforms2_installpreset'),
         'reset_captcha' => wp_create_nonce('cforms2_reset_captcha'),
 
-		'checkbox'      => wp_create_nonce('cforms2_field_checkbox'),
-		'checkboxgroup' => wp_create_nonce('cforms2_field_checkboxgroup'),
-		'fieldsetstart' => wp_create_nonce('cforms2_field_fieldsetstart'),
-		'html5field'    => wp_create_nonce('cforms2_field_html5field'),
-		'selectbox'     => wp_create_nonce('cforms2_field_selectbox'),
-		'textfield'     => wp_create_nonce('cforms2_field_textfield'),
-		'textonly'      => wp_create_nonce('cforms2_field_textonly'),
+		'cforms2_field' => wp_create_nonce('cforms2_field'),
 
         'deleteentries' => wp_create_nonce('database_deleteentries'),
 		'deleteentry'   => wp_create_nonce('database_deleteentry'),
@@ -294,4 +288,17 @@ function cforms2_get_from_request($index) {
 		return $_REQUEST[$index];
 	else
 		return '';
+}
+function cforms2_get_pluggable_captchas() {
+	static $captchas = array();
+	if (empty($captchas))
+		// This filter is meant to add one element to the associative array per cforms2_captcha
+		// implementation consisting of the classname as key and object as value
+		$captchas = apply_filters('cforms2_add_captcha', $captchas);
+	return $captchas;
+}
+function cforms2_check_pluggable_captchas_authn_users($field_type) {
+	$captchas = cforms2_get_pluggable_captchas();
+	return array_key_exists($field_type, $captchas) && is_user_logged_in()
+	       && !$captchas[$field_type]->check_authn_users();
 }
