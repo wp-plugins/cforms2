@@ -4,7 +4,7 @@ Donate link: https://www.betterplace.org/organisations/tatkraeftig/donations/new
 Tags: contact form, ajax, contact, form, input, comments, post, sidebar, spam, admin
 Requires at least: 3.9
 Tested up to: 4.1
-Stable tag: 14.9
+Stable tag: trunk
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0
 
@@ -189,6 +189,10 @@ GPL compliance!
 
 
 == Changelog ==
+
+= 14.9.2 =
+* bugfix:   eliminate scattered > and missing labels
+* bugfix:   fix corrupt settings page path
 
 = 14.9.1 =
 * enhanced: convert Q&A feature to the new pluggable captcha API

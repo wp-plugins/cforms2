@@ -20,13 +20,13 @@
  * Plugin URI: https://wordpress.org/plugins/cforms2/
  * Description: cformsII offers unparalleled flexibility in deploying contact forms across your blog. Features include: comprehensive SPAM protection, Ajax support, Backup & Restore, Multi-Recipients, Role Manager support, Database tracking and many more.
  * Author: Oliver Seidel, Bastian Germann
- * Version: 14.9.1
+ * Version: 14.9.2
  * Text Domain: cforms
  * Domain Path: ____Plugin_Localization
  */
 
 global $localversion;
-$localversion = '14.9.1';
+$localversion = '14.9.2';
 
 ### db settings
 global $wpdb;
@@ -63,10 +63,10 @@ if ( !is_array($cformsSettings) ){
     return;
 }
 function cforms2_settings_corrupted() {
-	$tmp = plugin_dir_path(dirname(__FILE__));
+	$tmp = plugin_dir_path(__FILE__).'cforms-corrupted.php';
 
-	add_menu_page(__('cformsII', 'cforms'), __('cformsII', 'cforms'), 'manage_cforms', $tmp.'cforms-corrupted.php', '', plugin_dir_url(__FILE__).'images/cformsicon.png' );
-	add_submenu_page($tmp.'cforms-corrupted.php', __('Corrupted Settings', 'cforms'), __('Corrupted Settings', 'cforms'), 'manage_cforms', $tmp.'cforms-corrupted.php' );
+	add_menu_page(__('cformsII', 'cforms'), __('cformsII', 'cforms'), 'manage_cforms', $tmp, '', plugin_dir_url(__FILE__).'images/cformsicon.png' );
+	add_submenu_page($tmp, __('Corrupted Settings', 'cforms'), __('Corrupted Settings', 'cforms'), 'manage_cforms', $tmp );
 
     add_action('admin_enqueue_scripts', 'cforms2_enqueue_style_admin' );
 }
@@ -635,7 +635,7 @@ function cforms2($args = '',$no = '') {
 		if($standard_field) {
 			$content .= '<li'.$liID.' class="'.$liERR.'">'.$insertErr;
 			if (!in_array($field_type, array_keys($captchas)))
-				$content .= '<label' . $labelID . ' for="'.$input_id.'"'. $field_type == 'captcha' ? ' class="seccap"' : '' . '><span>' . stripslashes(($field_name)) . '</span></label>';
+				$content .= '<label' . $labelID . ' for="'.$input_id.'"'. ($field_type == 'captcha' ? ' class="seccap"' : '') . '><span>' . stripslashes(($field_name)) . '</span></label>';
 		}
 
 
