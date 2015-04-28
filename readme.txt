@@ -3,7 +3,7 @@ Contributors: bgermann, olivers, cbacchini, codifex
 Donate link: https://www.betterplace.org/organisations/tatkraeftig/donations/new
 Tags: contact form, ajax, contact, form, input, comments, post, sidebar, spam, admin
 Requires at least: 3.9
-Tested up to: 4.2
+Tested up to: 4.1
 Stable tag: trunk
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0
@@ -11,6 +11,8 @@ License URI: http://www.gnu.org/licenses/gpl-3.0
 cformsII is the most customizable, flexible & powerful ajax supporting contact form plugin (& comment form)!
 
 == Description ==
+
+** The forms admin section is broken for WordPress 4.2 **
 
 This is a fork of cformsII, a highly customizable, flexible and powerful form builder plugin, covering a variety of use cases and features from attachments to multi form management, you can even have multiple forms on the same page!
 
