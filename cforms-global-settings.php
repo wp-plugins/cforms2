@@ -67,7 +67,7 @@ if ( isset($_REQUEST['deletetables']) ) {
 // Update Settings
 if( isset($_REQUEST['SubmitOptions']) ) {
 		
-	$cformsSettings['global']['cforms_html5'] 		  = cforms2_get_from_request('cforms_html5','1','0');
+	$cformsSettings['global']['cforms_html5'] 		  = cforms2_get_boolean_from_request('cforms_html5');
 	$cformsSettings['global']['cforms_show_quicktag'] = cforms2_get_boolean_from_request('cforms_show_quicktag');
 	$cformsSettings['global']['cforms_sec_qa'] = 		cforms2_get_from_request('cforms_sec_qa');
 	$cformsSettings['global']['cforms_codeerr'] = 		cforms2_get_from_request('cforms_codeerr');
@@ -600,7 +600,7 @@ if( isset($_REQUEST['SubmitOptions']) ) {
             </div>
 
 			<div class="cf-content" id="o13">
-				<p><?php _e('Getting a lot of <strong>SPAM</strong>? Use these Q&amp;A\'s to counteract spam and ensure it\'s a human submitting the form. To use in your form, add the corresponding input field "<code>Visitor verification</code>" preferably in its own FIELDSET!', 'cforms') ?></p>
+				<p><?php echo sprintf(__('Getting a lot of <strong>SPAM</strong>? Use these Q&amp;A\'s to counteract spam and ensure it\'s a human submitting the form. To use in your form, add the corresponding input field %s preferably in its own FIELDSET!', 'cforms'), '<code>' . __('Visitor verification (Q&amp;A)', 'cforms') . '</code>'); ?></p>
 
 				<table class="form-table">
 				<tr class="ob">
