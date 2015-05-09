@@ -20,13 +20,13 @@
  * Plugin URI: https://wordpress.org/plugins/cforms2/
  * Description: cformsII offers unparalleled flexibility in deploying contact forms across your blog. Features include: comprehensive SPAM protection, Ajax support, Backup & Restore, Multi-Recipients, Role Manager support, Database tracking and many more.
  * Author: Oliver Seidel, Bastian Germann
- * Version: 14.9.3
+ * Version: 14.9.4
  * Text Domain: cforms
  * Domain Path: ____Plugin_Localization
  */
 
 global $localversion;
-$localversion = '14.9.3';
+$localversion = '14.9.4';
 
 ### db settings
 global $wpdb;
@@ -1095,7 +1095,7 @@ function cforms2_enqueue_scripts() {
 
 		### add calendar
 		if( $cformsSettings['global']['cforms_datepicker']=='1' ){
-			cforms2_enqueue_script_datepicker($localversion);
+			cforms2_enqueue_script_datepicker($localversion, stripslashes($cformsSettings['global']['cforms_dp_date']));
 		}
         wp_register_script( 'jquery-md5', plugin_dir_url(__FILE__) . "js/jquery.md5.js", array('jquery'), '1.2.1');
 		wp_register_script( 'cforms2', plugin_dir_url(__FILE__) . 'js/cforms.js', array('jquery', 'jquery-md5'), $localversion);
