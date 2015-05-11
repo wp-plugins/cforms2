@@ -100,7 +100,7 @@ fork.
 If you want to delete the original version, make sure you do not delete your
 upload directory.
 
-= Did you modify any cforms theme (CSS) files, images etc? =
+= Did you modify any cforms theme (CSS) files? =
 
 Create a custom folder under your WP plugin directory & call it "cforms-custom".
 Move all your custom files into it. This folder will protect your changes going
@@ -129,7 +129,8 @@ You can find old versions in the
 That function was removed. The Wordpress function wp_mail is now used for mails,
 which makes use of built-in PHPMailer.
 If you want to configure it to use an external SMTP server, use an appropriate
-plugin, e.g. [WP Mail SMTP](https://wordpress.org/plugins/wp-mail-smtp/).
+plugin, e.g. [WP Mail SMTP](https://wordpress.org/plugins/wp-mail-smtp/)
+or [Postman SMTP Mailer](https://wordpress.org/plugins/postman-smtp/).
 
 = I upgraded and lost my widgets. What can I do? =
 
@@ -220,6 +221,9 @@ GPL compliance!
 
 
 == Changelog ==
+
+= 14.9.5 =
+* bugfix:   circumvent fatal error on wrong form date settings
 
 = 14.9.4 =
 * bugfix:   remove warning message after form submission
