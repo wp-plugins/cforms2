@@ -548,7 +548,6 @@ if( strlen($fd)<=2 ) {
 					<td class="obR">
                     	<table><tr>
 						<td><textarea class="resizable" rows="80px" cols="200px" name="cforms_success" id="cforms_success"><?php echo stripslashes(htmlspecialchars($cformsSettings['form'.$no]['cforms'.$no.'_success'])); ?></textarea></td>
-						<td><input class="allchk" type="checkbox" id="cforms_popup1" name="cforms_popup1" <?php if(substr($cformsSettings['form'.$no]['cforms'.$no.'_popup'],0,1)=="y") echo "checked=\"checked\""; ?>/><label for="cforms_popup1"><?php _e('Opt. Popup Msg', 'cforms'); ?></label></td>
                     	</tr></table>
 					</td>
 				</tr>
@@ -558,7 +557,6 @@ if( strlen($fd)<=2 ) {
 					<td class="obR">
                     	<table><tr>
 						<td><textarea class="resizable" rows="80px" cols="200px" name="cforms_failure" id="cforms_failure" ><?php echo stripslashes(htmlspecialchars($cformsSettings['form'.$no]['cforms'.$no.'_failure'])); ?></textarea></td>
-						<td><input class="allchk" type="checkbox" id="cforms_popup2" name="cforms_popup2" <?php if(substr($cformsSettings['form'.$no]['cforms'.$no.'_popup'],1,1)=="y") echo "checked=\"checked\""; ?>/><label for="cforms_popup2"><?php _e('Opt. Popup Msg', 'cforms'); ?></label></td>
                     	</tr></table>
 					</td>
 				</tr>
@@ -666,8 +664,8 @@ if( strlen($fd)<=2 ) {
 					<td class="obL" style="padding-top:7px"><strong><?php _e('Start Date', 'cforms'); ?></strong></td>
 					<?php $date = explode(' ',stripslashes(htmlspecialchars($cformsSettings['form'.$no]['cforms'.$no.'_startdate'])) ); ?>
 					<td class="obR">
-                    	<input type="text" class="cf_date" id="cforms_startdate" name="cforms_startdate" placeholder="DD/MM/YYYY" value="<?php echo $date[0]; ?>"/>
-                        <input type="text" id="cforms_starttime" name="cforms_starttime" placeholder="HH:MM" value="<?php echo $date[1]; ?>" title="<?php _e('Time entry.', 'cforms') ?>"/>
+                    	<input type="text" class="cf_date" id="cforms_startdate" name="cforms_startdate" placeholder="<?php echo cforms2_admin_date_format(); ?>" value="<?php echo $date[0]; ?>"/>
+                        <input type="text" id="cforms_starttime" name="cforms_starttime" placeholder="<?php _e('HH:MM', 'cforms'); ?>" value="<?php echo $date[1]; ?>" title="<?php _e('Time entry.', 'cforms') ?>"/>
 						<label for="cforms_startdate"><?php
 						$dt='x';
                         if( strlen($cformsSettings['form'.$no]['cforms'.$no.'_startdate'])>1 ):
@@ -687,8 +685,8 @@ if( strlen($fd)<=2 ) {
 					<td class="obL" style="padding-top:7px"><strong><?php _e('End Date', 'cforms'); ?></strong></td>
 					<?php $date = explode(' ',stripslashes(htmlspecialchars($cformsSettings['form'.$no]['cforms'.$no.'_enddate'])) ); ?>
 					<td class="obR">
-                    	<input type="text" class="cf_date" id="cforms_enddate" name="cforms_enddate" placeholder="DD/MM/YYYY" value="<?php echo $date[0]; ?>"/>
-                        <input type="text" id="cforms_endtime" name="cforms_endtime" placeholder="HH:MM" value="<?php echo $date[1]; ?>" title="<?php _e('Time entry.', 'cforms') ?>"/>
+                    	<input type="text" class="cf_date" id="cforms_enddate" name="cforms_enddate" placeholder="<?php echo cforms2_admin_date_format(); ?>" value="<?php echo $date[0]; ?>"/>
+                        <input type="text" id="cforms_endtime" name="cforms_endtime" placeholder="<?php _e('HH:MM', 'cforms'); ?>" value="<?php echo $date[1]; ?>" title="<?php _e('Time entry.', 'cforms') ?>"/>
 						<label for="cforms_startdate"><?php
                         if( $dt=='x' && strlen($cformsSettings['form'.$no]['cforms'.$no.'_enddate'])>1 ):
                             $dt = cforms2_make_time(stripslashes($cformsSettings['form'.$no]['cforms'.$no.'_enddate'])) - time();

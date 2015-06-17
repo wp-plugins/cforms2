@@ -4,7 +4,7 @@ Donate link: https://www.betterplace.org/organisations/tatkraeftig/donations/new
 Tags: contact form, ajax, contact, form, input, comments, post, sidebar, spam, admin
 Requires at least: 3.9
 Tested up to: 4.2
-Stable tag: 14.9.5
+Stable tag: trunk
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0
 
@@ -115,7 +115,7 @@ on layout customization.
 
 = I do not get any emails from my form. Why? =
 
-Most pobably this is not cformsII's fault. Please check your Wordpress mail
+Most probably this is not cformsII's fault. Please check your Wordpress mail
 configuration with a plugin like
 [Check Email](https://wordpress.org/plugins/check-email/).
 
@@ -221,6 +221,12 @@ GPL compliance!
 
 
 == Changelog ==
+
+= 14.9.7 =
+* bugfix:   cforms2_make_time: do not depend on timezone being a region
+* bugfix:   do not depend on TLD consisting of only 2-4 characters
+* bugfix:   undo problematic change from 14.9.6
+* other:    remove possibility to show JavaScript alert messages
 
 = 14.9.6 =
 * enhanced: make PHP 5.2 compatible again (in 14.9.4 one 5.3 function was introduced)
