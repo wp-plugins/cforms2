@@ -1671,7 +1671,7 @@ if (function_exists('add_action')){
 	$request_uri = get_request_uri();
 
 	$admin   = ( strpos($request_uri,'wp-admin')!==false )?true:false;
-	$cfadmin = ( strpos($_SERVER['QUERY_STRING'],$plugindir.'/cforms')!==false )?true:false;
+	$cfadmin = strpos($_SERVER['QUERY_STRING'], 'cforms') !== false;
 
 	### dashboard
 	if ( $cformsSettings['global']['cforms_showdashboard']=='1' && $cformsSettings['global']['cforms_database']=='1' ) {

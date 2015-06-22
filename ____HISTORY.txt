@@ -32,7 +32,11 @@
 
 	!!! IMPORTANT !!!
 
-	
+WHAT's NEW in cformsII - v14.6.0.5
+*) fixed:   The fix mentioned in
+            https://wordpress.org/support/topic/help-cforms-admin-is-broken-in-wordpress-42?replies=32#post-6985409
+            is applied by Bastian Germann to allow upgrading cformsII in a WordPress 4.2+.
+
 WHAT's NEW in cformsII - v14.6
 *) added:   NEW: my_cforms_filter()  in my-functions.php  (input filter)
 *) fixed:   Security/SPAM issue with TellAFriend feature
