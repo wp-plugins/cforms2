@@ -4,7 +4,7 @@ Donate link: https://www.betterplace.org/organisations/tatkraeftig/donations/new
 Tags: contact form, ajax, contact, form, input, comments, post, sidebar, spam, admin
 Requires at least: 3.9
 Tested up to: 4.2
-Stable tag: 14.9.5
+Stable tag: trunk
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0
 
@@ -221,6 +221,9 @@ GPL compliance!
 
 
 == Changelog ==
+
+= 14.9.8 =
+* bugfix:   no duplicate form rendering
 
 = 14.9.7 =
 * bugfix:   cforms2_make_time: do not depend on timezone being a region
