@@ -105,7 +105,7 @@ if ($showIDs<>'') {
 				echo '<div class="showform" id="entry'.$entry->sub_id.'">'.
 					 '<table class="dataheader"><tr><td>'.__('Form:','cforms').' </td><td class="b">'. stripslashes($cformsSettings['form'.$entry->form_id]['cforms'.$entry->form_id.'_fname']) . '</td><td class="e">(ID:' . $entry->sub_id . ')</td><td class="d">' . $time.' &nbsp; '.$date. '</td>' .
 					 '<td class="s">&nbsp;</td><td><a href="#" class="xdatabutton allbuttons deleteall" type="submit" id="xbutton'.$entry->sub_id.'">'.__('Delete this entry', 'cforms').'</a></td>' .
-					 '<td><a class="cdatabutton" type="submit" id="cbutton'.$entry->sub_id.'" title="'.__('close this entry', 'cforms').'" value=""></a></td>' .
+					 '<td><a class="cdatabutton dashicons dashicons-dismiss" type="submit" id="cbutton'.$entry->sub_id.'" title="'.__('close this entry', 'cforms').'"></a></td>' .
                      "</tr></table>\n";
 			}
 
@@ -124,10 +124,9 @@ if ($showIDs<>'') {
 					$subID = ($cformsSettings['form'.$no]['cforms'.$no.'_noid'])?'':$entry->sub_id.'-';
 
 					if ( $fileuploaddirurl=='' ) {
-						$plugindir = dirname(dirname(dirname(plugin_basename(__FILE__))));
-	                    $fileurl = plugin_dir_url( __FILE__ ).substr($fileuploaddir,strpos($fileuploaddir,$plugindir)+strlen($plugindir)+1);
+	                    $fileurl = plugin_dir_url($fileuploaddir);
 					} else
-	                    $fileurl = $fileuploaddirurl;
+	                    $fileurl = trailingslashit($fileuploaddirurl);
 
 
 					$passID = ($cformsSettings['form'.$no]['cforms'.$no.'_noid']) ? '':$entry->sub_id;
@@ -139,7 +138,7 @@ if ($showIDs<>'') {
 					if( ! array_key_exists('modified', $fileInfoArr) )
 						$fileInfoArr['name'] = $subID . $fileInfoArr['name'];
 					
-					$fileurl = $fileInfoArr['path'] . '/' . $fileInfoArr['name'] . $_GET['format'];
+					$fileurl = $fileInfoArr['path'] . $fileInfoArr['name'] . $_GET['format'];
 					
 					echo '<div class="showformfield meta"><div class="L">';
 					echo substr($name, 0,strpos($name,'[*'));
@@ -168,7 +167,7 @@ if ($showIDs<>'') {
 			} else {
 
 					echo '<div class="showformfield"><div class="L">' . $name . '</div>' .
-							'<div id="'.$entry->f_id.'" class="R editable" title="'.__('edit this field', 'cforms').'">' . str_replace("\n","<br />", strip_tags($val) ) . '</div></div>' . "\n";
+							'<div id="'.$entry->f_id.'" class="R">' . str_replace("\n","<br />", strip_tags($val) ) . '</div></div>' . "\n";
 
 			}
 

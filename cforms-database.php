@@ -42,7 +42,7 @@ if ( cforms2_check_erased() )
 	<div id="ctrlmessage"></div>
 	<div class="bborderx"><table id="flex1" style="display:none"><tr><td></td></tr></table></div>
 	<div id="entries"></div>
-	<div id="geturl" title="<?php echo plugin_dir_url(__FILE__); ?>js/include/"></div>
+	<div id="geturl" title="<?php echo plugin_dir_url(__FILE__); ?>include/"></div>
 
 	<?php
 	### if called from dashboard
@@ -64,9 +64,9 @@ jQuery("#flex1").flexigrid ( {
 		{display: '<?php _e('IP','cforms'); ?>', name : 'ip', width : 100, sortable : true, align: 'center'}
 		],
 	buttons : [
-		{name: '<?php _e('View records','cforms'); ?>', bclass: 'add', onpress : cf_tracking_view},
-		{name: '<?php _e('Delete records','cforms'); ?>', bclass: 'delete', onpress : function (){jQuery('#cf_delete_dialog').jqmShow();} },
-		{name: '<?php _e('Download records','cforms'); ?>', bclass: 'dl', onpress : function (){jQuery('#cf_dl_dialog').jqmShow();}},
+		{name: '<?php _e('View records','cforms'); ?>', bclass: 'dashicons-before dashicons-media-text', onpress : cf_tracking_view},
+		{name: '<?php _e('Delete records','cforms'); ?>', bclass: 'dashicons-before dashicons-trash', onpress : function (){jQuery('#cf_delete_dialog').jqmShow();} },
+		{name: '<?php _e('Download records','cforms'); ?>', bclass: 'dashicons-before dashicons-download', onpress : function (){jQuery('#cf_dl_dialog').jqmShow();}},
 		{separator: true}
 		],
 	searchitems : [
@@ -116,16 +116,16 @@ function cforms2_insert_modal_tracking(){
 
 ?>
 	<div class="jqmWindow" id="cf_delete_dialog">
-		<div class="cf_ed_header jqDrag"><?php _e('Please Confirm','cforms'); ?></div>
+		<div class="cf_ed_header"><?php _e('Please Confirm','cforms'); ?></div>
 		<div class="cf_ed_main">
 			<form action="" name="deleteform" method="post">
 				<div id="cf_target_del"><?php _e('Are you sure you want to delete the record(s)?','cforms'); ?></div>
-				<div class="controls"><a href="#" id="okDelete" class="jqmClose"><img src="<?php echo plugin_dir_url(__FILE__) ?>images/dialog_ok.gif" alt="<?php _e('Install', 'cforms') ?>" title="<?php _e('OK', 'cforms') ?>"/></a><a href="#" class="jqmClose"><img src="<?php echo plugin_dir_url(__FILE__) ?>images/dialog_cancel.gif" alt="<?php _e('Cancel', 'cforms') ?>" title="<?php _e('Cancel', 'cforms') ?>"/></a></div>
+				<div class="controls"><a href="#" id="okDelete" class="jqmClose dashicons dashicons-yes" title="<?php _e('OK', 'cforms') ?>"></a><a href="#" class="jqmClose dashicons dashicons-no-alt" title="<?php _e('Cancel', 'cforms') ?>"></a></div>
 			</form>
 		</div>
 	</div>
 	<div class="jqmWindow" id="cf_dl_dialog">
-		<div class="cf_ed_header jqDrag"><?php _e('Please Confirm','cforms'); ?></div>
+		<div class="cf_ed_header"><?php _e('Please Confirm','cforms'); ?></div>
 		<div class="cf_ed_main">
 			<form action="" name="downloadform" method="post" id="downloadform">
 				<div id="cf_target_dl">
@@ -142,7 +142,7 @@ function cforms2_insert_modal_tracking(){
                     <input type="checkbox" class="chkBoxW" id="addip" name="addip" value="true"/><label for="addip"><?php echo sprintf(__('Include IP address of submitting user','cforms')); ?></label><br />
                     <input type="checkbox" class="chkBoxW" id="addurl" name="addurl" value="true"/><label for="addurl"><?php echo sprintf(__('Add URL for upload fields','cforms')); ?></label>
 				</div>
-				<div class="controls"><a href="#" id="okDL" class="jqmClose"><img src="<?php echo plugin_dir_url(__FILE__); ?>images/dialog_ok.gif" alt="<?php _e('Install', 'cforms') ?>" title="<?php _e('OK', 'cforms') ?>"/></a><a href="#" class="jqmClose"><img src="<?php echo plugin_dir_url(__FILE__); ?>images/dialog_cancel.gif" alt="<?php _e('Cancel', 'cforms') ?>" title="<?php _e('Cancel', 'cforms') ?>"/></a></div>
+				<div class="controls"><a href="#" id="okDL" class="jqmClose dashicons dashicons-yes" title="<?php _e('OK', 'cforms') ?>"></a><a href="#" class="jqmClose dashicons dashicons-no-alt" title="<?php _e('Cancel', 'cforms') ?>"></a></div>
 			</form>
 		</div>
 	</div>

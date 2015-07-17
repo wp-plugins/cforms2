@@ -220,7 +220,7 @@ if( isset($_REQUEST['SubmitOptions']) ) {
 				<table class="form-table">
 				<tr class="ob">
 					<td class="obL"><label for="cforms_commentsuccess"><strong><?php _e('Comment Success Message', 'cforms'); ?></strong></label></td>
-					<td class="obR"><table><tr><td><textarea class="resizable" rows="80px" cols="200px" name="cforms_commentsuccess" id="cforms_commentsuccess"><?php echo stripslashes(htmlspecialchars($cformsSettings['global']['cforms_commentsuccess'])); ?></textarea></td></tr></table></td>
+					<td class="obR"><table><tr><td><textarea rows="80px" cols="200px" name="cforms_commentsuccess" id="cforms_commentsuccess"><?php echo stripslashes(htmlspecialchars($cformsSettings['global']['cforms_commentsuccess'])); ?></textarea></td></tr></table></td>
 				</tr>
 
 				<tr class="obSEP"><td colspan="2"></td></tr>
@@ -253,7 +253,7 @@ if( isset($_REQUEST['SubmitOptions']) ) {
 				<tr class="ob space15">
 					<td class="obL"><label for="cforms_commentHTML"><strong><?php _e('New comment HTML template', 'cforms'); ?></strong></label></td>
 					<td class="obR" style="padding-bottom:10px;">
-						<table><tr><td><textarea class="resizable" rows="80px" cols="200px" name="cforms_commentHTML" id="cforms_commentHTML"><?php echo stripslashes(htmlspecialchars($cformsSettings['global']['cforms_commentHTML'])); ?></textarea><a class="infobutton" href="#" name="it9"><?php _e('Supported Variables &raquo;', 'cforms'); ?></a>&nbsp;&nbsp;&nbsp;<a class="infobutton" href="#" name="it9b"><?php _e('Default Template &raquo;', 'cforms'); ?></a></td></tr></table>
+						<table><tr><td><textarea rows="80px" cols="200px" name="cforms_commentHTML" id="cforms_commentHTML"><?php echo stripslashes(htmlspecialchars($cformsSettings['global']['cforms_commentHTML'])); ?></textarea><a class="infobutton" href="#" name="it9"><?php _e('Supported Variables &raquo;', 'cforms'); ?></a>&nbsp;&nbsp;&nbsp;<a class="infobutton" href="#" name="it9b"><?php _e('Default Template &raquo;', 'cforms'); ?></a></td></tr></table>
 					</td>
                 </tr>
 				<tr id="it9" class="infotxt"><td>&nbsp;</td><td class="ex">
@@ -386,7 +386,6 @@ if( isset($_REQUEST['SubmitOptions']) ) {
 					<td class="obL">&nbsp;</td>
 					<td class="obR"><input class="allchk" type="checkbox" id="cforms_crlf" name="cforms_crlf" <?php if($cformsSettings['global']['cforms_crlf']['b']=="1") echo "checked=\"checked\""; ?>/><label for="cforms_crlf"><?php echo sprintf(__('Separate lines in email %sbody%s with LF only (CR suppressed)', 'cforms'),'<strong>','</strong>') ?></label></td>
 				</tr>
-				<tr class="obSEP"><td colspan="2"></td></tr>
 				</table>
 
 			</div>
@@ -413,35 +412,35 @@ if( isset($_REQUEST['SubmitOptions']) ) {
 				<tr class="ob">
 					<td class="obL"><label for="cforms_upload_err5"><strong><?php _e('File type not allowed', 'cforms'); ?></strong></label></td>
 					<td class="obR">
-						<table><tr><td><textarea rows="80px" cols="280px" class="errmsgbox resizable" name="cforms_upload_err5" id="cforms_upload_err5" ><?php echo stripslashes(htmlspecialchars($cformsSettings['global']['cforms_upload_err5'])); ?></textarea></td></tr></table>
+						<table><tr><td><textarea rows="80px" cols="280px" class="errmsgbox" name="cforms_upload_err5" id="cforms_upload_err5" ><?php echo stripslashes(htmlspecialchars($cformsSettings['global']['cforms_upload_err5'])); ?></textarea></td></tr></table>
 					</td>
 				</tr>
 
 				<tr class="ob">
 					<td class="obL"><label for="cforms_upload_err1"><strong><?php _e('Generic (unknown) error', 'cforms'); ?></strong></label></td>
 					<td class="obR">
-						<table><tr><td><textarea rows="80px" cols="280px" class="errmsgbox resizable" name="cforms_upload_err1" id="cforms_upload_err1" ><?php echo stripslashes(htmlspecialchars($cformsSettings['global']['cforms_upload_err1'])); ?></textarea></td></tr></table>
+						<table><tr><td><textarea rows="80px" cols="280px" class="errmsgbox" name="cforms_upload_err1" id="cforms_upload_err1" ><?php echo stripslashes(htmlspecialchars($cformsSettings['global']['cforms_upload_err1'])); ?></textarea></td></tr></table>
 					</td>
 				</tr>
 
 				<tr class="ob">
 					<td class="obL"><label for="cforms_upload_err2"><strong><?php _e('File is empty', 'cforms'); ?></strong></label></td>
 					<td class="obR">
-						<table><tr><td><textarea  rows="80px" cols="280px" class="errmsgbox resizable" name="cforms_upload_err2" id="cforms_upload_err2" ><?php echo stripslashes(htmlspecialchars($cformsSettings['global']['cforms_upload_err2'])); ?></textarea></td></tr></table>
+						<table><tr><td><textarea  rows="80px" cols="280px" class="errmsgbox" name="cforms_upload_err2" id="cforms_upload_err2" ><?php echo stripslashes(htmlspecialchars($cformsSettings['global']['cforms_upload_err2'])); ?></textarea></td></tr></table>
 					</td>
 				</tr>
 
 				<tr class="ob">
 					<td class="obL"><label for="cforms_upload_err3"><strong><?php _e('File size too big', 'cforms'); ?></strong></label></td>
 					<td class="obR">
-						<table><tr><td><textarea rows="80px" cols="280px" class="errmsgbox resizable" name="cforms_upload_err3" id="cforms_upload_err3" ><?php echo stripslashes(htmlspecialchars($cformsSettings['global']['cforms_upload_err3'])); ?></textarea></td></tr></table>
+						<table><tr><td><textarea rows="80px" cols="280px" class="errmsgbox" name="cforms_upload_err3" id="cforms_upload_err3" ><?php echo stripslashes(htmlspecialchars($cformsSettings['global']['cforms_upload_err3'])); ?></textarea></td></tr></table>
 					</td>
 				</tr>
 
 				<tr class="ob">
 					<td class="obL"><label for="cforms_upload_err4"><strong><?php _e('Error during upload', 'cforms'); ?></strong></label></td>
 					<td class="obR">
-						<table><tr><td><textarea rows="80px" cols="280px" class="errmsgbox resizable" name="cforms_upload_err4" id="cforms_upload_err4" ><?php echo stripslashes(htmlspecialchars($cformsSettings['global']['cforms_upload_err4'])); ?></textarea></td></tr></table>
+						<table><tr><td><textarea rows="80px" cols="280px" class="errmsgbox" name="cforms_upload_err4" id="cforms_upload_err4" ><?php echo stripslashes(htmlspecialchars($cformsSettings['global']['cforms_upload_err4'])); ?></textarea></td></tr></table>
 					</td>
 				</tr>
 				</table>
@@ -604,7 +603,7 @@ if( isset($_REQUEST['SubmitOptions']) ) {
 				<tr class="ob space15">
 					<td class="obL"><label for="cforms_codeerr"><?php _e('<strong>Failure message</strong><br />(for a wrong answer)', 'cforms'); ?></label></td>
 					<td class="obR">
-						<table><tr><td><textarea class="resizable" rows="80px" cols="280px" name="cforms_codeerr" id="cforms_codeerr" ><?php echo stripslashes(htmlspecialchars($cformsSettings['global']['cforms_codeerr'])); ?></textarea></td></tr></table>
+						<table><tr><td><textarea rows="80px" cols="280px" name="cforms_codeerr" id="cforms_codeerr" ><?php echo stripslashes(htmlspecialchars($cformsSettings['global']['cforms_codeerr'])); ?></textarea></td></tr></table>
 					</td>
 				</tr>
 
@@ -612,7 +611,7 @@ if( isset($_REQUEST['SubmitOptions']) ) {
 
 				<tr class="ob">
 					<td class="obL"><label for="cforms_sec_qa"><?php _e('<strong>Questions &amp; Answers</strong><br />format: Q=A', 'cforms') ?></label></td>
-					<td class="obR"><table><tr><td><textarea class="resizable" rows="80px" cols="280px" name="cforms_sec_qa" id="cforms_sec_qa" ><?php echo $qa; ?></textarea></td></tr></table></td>
+					<td class="obR"><table><tr><td><textarea rows="80px" cols="280px" name="cforms_sec_qa" id="cforms_sec_qa" ><?php echo $qa; ?></textarea></td></tr></table></td>
 				</tr>
 				</table>
 			</div>
@@ -692,7 +691,7 @@ if( isset($_REQUEST['SubmitOptions']) ) {
 </div>
 
 <div class="jqmWindow" id="cf_backupbox">
-    <div class="cf_ed_header jqDrag"><?php _e('Backup &amp; Restore All Settings','cforms'); ?></div>
+    <div class="cf_ed_header"><?php _e('Backup &amp; Restore All Settings','cforms'); ?></div>
     <div class="cf_ed_main_backup">
         <form enctype="multipart/form-data" action="" name="backupform" method="post">
             <div class="controls">
@@ -703,7 +702,7 @@ if( isset($_REQUEST['SubmitOptions']) ) {
                 	<input type="file" id="importall" name="importall" size="25" /><input type="submit" name="restoreallcformsdata" title="<?php _e('Restore all settings now!', 'cforms') ?>" class="allbuttons deleteall" value="<?php _e('Restore all settings now!', 'cforms') ?>" onclick="return confirm('<?php _e('With a broken backup file, this action may erase all your settings! Do you want to continue?', 'cforms') ?>');"/>
 				</p>
 				<em><?php _e('PS: Individual form configurations can be backup up on the respective form admin page.', 'cforms') ?></em>
-                <p class="cancel"><a href="#" id="cancel" class="jqmClose"><img src="<?php echo plugin_dir_url(__FILE__); ?>images/dialog_cancel.gif" alt="<?php _e('Cancel', 'cforms') ?>" title="<?php _e('Cancel', 'cforms') ?>"/></a></p>
+                <p class="cancel"><a href="#" id="cancel" class="jqmClose dashicons dashicons-no-alt" title="<?php _e('Cancel', 'cforms') ?>"></a></p>
 
             </div>
             <input type="hidden" name="noSub" value="<?php if (!empty($noDISP)) echo $noDISP; ?>"/>
@@ -711,7 +710,7 @@ if( isset($_REQUEST['SubmitOptions']) ) {
     </div>
 </div>
 <div class="jqmWindow" id="cf_delall_dialog">
-    <div class="cf_ed_header jqDrag"><?php _e('Uninstalling / Removing cforms','cforms'); ?></div>
+    <div class="cf_ed_header"><?php _e('Uninstalling / Removing cforms','cforms'); ?></div>
     <div class="cf_ed_main_backup">
         <form action="" name="deleteform" method="post">
             <div id="cf_target_del"><?php _e('Warning!','cforms'); ?></div>
@@ -720,7 +719,7 @@ if( isset($_REQUEST['SubmitOptions']) ) {
 				<p><strong><?php _e('This is irrevocable!', 'cforms') ?></strong>&nbsp;&nbsp;&nbsp;<br />
 					 <input type="submit" name="cfdeleteall" title="<?php _e('Are you sure you want to do this?!', 'cforms') ?>" class="allbuttons deleteall" value="<?php _e('DELETE *ALL* CFORMS DATA', 'cforms') ?>" onclick="return confirm('<?php _e('Final Warning!', 'cforms') ?>');"/></p>
 
-                <p class="cancel"><a href="#" id="cancel" class="jqmClose"><img src="<?php echo plugin_dir_url(__FILE__); ?>images/dialog_cancel.gif" alt="<?php _e('Cancel', 'cforms') ?>" title="<?php _e('Cancel', 'cforms') ?>"/></a></p>
+                <p class="cancel"><a href="#" id="cancel" class="jqmClose dashicons dashicons-no-alt" title="<?php _e('Cancel', 'cforms') ?>"></a></p>
             </div>
         </form>
     </div>

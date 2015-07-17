@@ -20,13 +20,13 @@
  * Plugin URI: https://wordpress.org/plugins/cforms2/
  * Description: cformsII offers unparalleled flexibility in deploying contact forms across your blog. Features include: comprehensive SPAM protection, Ajax support, Backup & Restore, Multi-Recipients, Role Manager support, Database tracking and many more.
  * Author: Oliver Seidel, Bastian Germann
- * Version: 14.9.9
+ * Version: 14.9.10
  * Text Domain: cforms
  * Domain Path: ____Plugin_Localization
  */
 
 global $localversion;
-$localversion = '14.9.9';
+$localversion = '14.9.10';
 
 ### db settings
 global $wpdb;
@@ -698,7 +698,7 @@ function cforms2($args = '',$no = '') {
 			case "captcha":
 				$field = '<input type="text" name="'.$input_name.'" id="cforms_captcha'.$no.'" class="secinput' . $field_class . '" title="'.$fieldTitle.'"/>'.
 						 '<img id="cf_captcha_img'.$no.'" class="captcha" src="#" alt=""/><script type="text/javascript">jQuery(function() {reset_captcha('.$no.');});</script>'.
-						 '<a title="'.__('reset captcha image', 'cforms').'" href="javascript:reset_captcha(\''.$no.'\')"><img class="captcha-reset" src="'.plugin_dir_url(__FILE__).'images/spacer.gif" alt="Captcha"/></a>';
+						 '<a title="'.__('reset captcha image', 'cforms').'" href="javascript:reset_captcha(\''.$no.'\')"><img class="captcha-reset" src="#" alt=""/></a>';
 		    	$captcha=true;
 				break;
 
@@ -1440,19 +1440,19 @@ function cforms2_field() {
 
 	$type = $_REQUEST['type'];
 	if (in_array($type, $html5))
-		require ('js/include/html5field.php');
+		require ('include/html5field.php');
 	else if (in_array($type, $checkbox))
-		require ('js/include/checkbox.php');
+		require ('include/checkbox.php');
 	else if (in_array($type, $checkboxgroup))
-		require ('js/include/checkboxgroup.php');
+		require ('include/checkboxgroup.php');
 	else if (in_array($type, $fieldsetstart))
-		require ('js/include/fieldsetstart.php');
+		require ('include/fieldsetstart.php');
 	else if (in_array($type, $selectbox))
-		require ('js/include/selectbox.php');
+		require ('include/selectbox.php');
 	else if (in_array($type, $textfield))
-		require ('js/include/textfield.php');
+		require ('include/textfield.php');
 	else if ($type == 'textonly')
-		require ('js/include/textonly.php');
+		require ('include/textonly.php');
 	else {
 		$captchas = cforms2_get_pluggable_captchas();
 		if (array_key_exists($type, $captchas))
@@ -1491,14 +1491,13 @@ if ( is_admin() ) {
 	add_action( 'wp_ajax_cforms2_field', 'cforms2_field' );
 
 	### admin ajax
-	require_once ('js/include/installpreset.php');
+	require_once ('include/installpreset.php');
 
-	require_once ('js/include/lib_database_deleteentries.php');
-	require_once ('js/include/lib_database_deleteentry.php');
-	require_once ('js/include/lib_database_dlentries.php');
-	require_once ('js/include/lib_database_getentries.php');
-	require_once ('js/include/lib_database_overview.php');
-	require_once ('js/include/lib_database_savedata.php');
+	require_once ('include/lib_database_deleteentries.php');
+	require_once ('include/lib_database_deleteentry.php');
+	require_once ('include/lib_database_dlentries.php');
+	require_once ('include/lib_database_getentries.php');
+	require_once ('include/lib_database_overview.php');
 
 } ### if admin
 
