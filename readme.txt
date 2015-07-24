@@ -83,7 +83,7 @@ If you want to install manually, please upload the complete plugin folder
 "cforms2", contained in the zip file, to your WP plugin directory!
 
 If you want to check integrity of the download, please use the cforms2.*.zip
-downloads and the corresponding cforms2.*.zip.sig
+downloads and the corresponding .sig
 GPG signature files that are published via
 [GitHub releases](https://github.com/bgermann/cforms2/releases).
 The [key used for signing](https://pgp.mit.edu/pks/lookup?op=vindex&fingerprint=on&search=0x2626D16964438E53)
@@ -225,6 +225,12 @@ GPL compliance!
 
 
 == Changelog ==
+
+= 14.9.11 =
+* enhanced: change CAPTCHA reset button
+* enhanced: remove the old static jQuery UI theme and get current from Google Hosted Libraries
+* added:    possibility to change the jQuery UI theme
+* other:    remove dark-rounded theme
 
 = 14.9.10 =
 * enhanced: replace some icons with Dashicons
