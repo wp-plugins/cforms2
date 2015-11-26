@@ -33,7 +33,7 @@ CAPTCHA will be removed in favour of that plugin.
 
 = Credits =
 
-The translations that were distributed up to version 14.9.13 were provided by:
+The translations that are or were distributed were provided by:
 
 * www.alpenimmobilien.de
 * Michael Lederstatter / Buy-Hosting.net
@@ -218,6 +218,9 @@ GPL compliance!
 
 
 == Changelog ==
+
+= 14.10 =
+* other:    remove French, German, Italian, Russian and Ukrainian translations after migration to translate.wordpress.org
 
 = 14.9.13 =
 * other:    change gettext domain from cforms to cforms2
